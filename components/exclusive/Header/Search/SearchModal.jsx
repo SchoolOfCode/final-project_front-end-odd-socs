@@ -14,7 +14,7 @@ import { BsSearch } from "react-icons/bs";
 const ModalStyles = styled.div`
   position: fixed;
   display: flex;
-  z-index: 0;
+  z-index: 10;
   width: 100vw;
   height: 90vh;
   top: 0;
@@ -33,7 +33,7 @@ const ModalContentContainer = styled.div`
   font-family: var(--font-secondary);
   width: 100%;
   gap: 4rem;
-
+  z-index: 10;
 `;
 
 const NavRowSearch = styled.div`
@@ -51,6 +51,7 @@ const NavRow = styled.div`
   gap: 1.5rem;
   color: white;
   padding: 0 1rem;
+
 
   @media screen and (max-width: 400px) {
     flex-direction: column;

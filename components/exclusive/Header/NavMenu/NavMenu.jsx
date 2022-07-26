@@ -18,6 +18,7 @@ const NavStyles = styled.div`
   width: 100vw;
   height: 10vh;
   padding: 0 1rem;
+  background-color: var(--primary);
 `;
 
 const Title = styled.h1`
