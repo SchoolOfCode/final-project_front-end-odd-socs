@@ -19,6 +19,7 @@ const ModalStyles = styled.div`
   backdrop-filter: blur(30px);
   margin-top: 10vh;
   padding: 2rem 0;
+  overflow: hidden;
 
   @media screen and (max-width: 400px) {
     width: 100vw;
@@ -33,7 +34,6 @@ const ModalContentContainer = styled.div`
   color: var(--highlight);
   font-family: var(--font-secondary);
   width: 90%;
-
 `;
 
 const NavRow = styled.div`
