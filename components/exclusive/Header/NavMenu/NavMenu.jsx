@@ -3,6 +3,8 @@ import HamburgerIcon from "./HamburgerIcon";
 import NavSearchIcon from "../Search/NavSearchIcon";
 import NavCloseIcon from "./CloseIcon";
 import NavMenuModal from "./NavModal";
+import SearchCloseIcon from "../Search/SearchCloseIcon";
+import NavSearchModal from "../Search/SearchModal";
 
 import { useState } from "react";
 
@@ -20,20 +22,23 @@ const NavStyles = styled.div`
 
 const Title = styled.h1`
   color: var(--font-primary-color);
-  font-size: 3.5rem;
+  font-size: 3rem;
 `;
 
 const TitleSpan = styled.span`
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--secondary);
 `;
 
 function NavMenu() {
+  // States for menu and search modals
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
+  // Functions to handle menu and search open and close
   function menuModalOpenHandler() {
     setIsMenuModalOpen(true);
+    setIsSearchModalOpen(false);
   }
 
   function menuModalCloseHandler() {
@@ -42,6 +47,7 @@ function NavMenu() {
 
   function searchModalOpenHandler() {
     setIsSearchModalOpen(true);
+    setIsMenuModalOpen(false);
   }
 
   function searchModalCloseHandler() {
@@ -60,7 +66,12 @@ function NavMenu() {
         <TitleSpan>1</TitleSpan>
         Source
       </Title>
-      <NavSearchIcon />
+      {isSearchModalOpen ? (
+        <SearchCloseIcon searchModalCloseHandler={searchModalCloseHandler} />
+      ) : (
+        <NavSearchIcon searchModalOpenHandler={searchModalOpenHandler} />
+      )}
+      {isSearchModalOpen && <NavSearchModal />}
     </NavStyles>
   );
 }
