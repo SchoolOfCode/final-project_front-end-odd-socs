@@ -40,10 +40,12 @@ const TitleIconContainer = styled.div`
 `;
 
 function TitlePageDesktopLeft({movieInfo}) {
+  const imageUrl = `${movieInfo.image.split('_')[0]}@.jpg`
+
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image src={movieInfo.image} layout="fill" quality={100}></Image>
+        <Image src={imageUrl} layout="fill" quality={100}></Image>
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
