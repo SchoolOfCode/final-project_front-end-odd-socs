@@ -8,7 +8,7 @@ import NavSearchModal from "../Search/SearchModal";
 
 import { useState } from "react";
 
-const NavStyles = styled.div`
+export const NavStyles = styled.div`
   display: flex;
   align-items: center;
   position: fixed;
@@ -21,12 +21,12 @@ const NavStyles = styled.div`
   background-color: var(--primary);
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   color: var(--font-primary-color);
   font-size: 3rem;
 `;
 
-const TitleSpan = styled.span`
+export const TitleSpan = styled.span`
   font-size: 3rem;
   color: var(--secondary);
 `;
