@@ -13,17 +13,22 @@ import {
 
 import { movies } from "../../../data/home-test-data/home-test-data";
 
+import moviesList from '../../../data/movie-test-data/movies'
+
+let moviesTop10 = moviesList.slice(0, 10);
+console.log(moviesTop10)
+
 function TopMovies() {
   return (
     <>
       <SectionTitle>Top 10 Movies</SectionTitle>
       <RowContainer>
-        {movies.map((movie) => {
+        {moviesTop10.map((movie) => {
           return (
             <TitleContainer>
               <ImageContainer>
                 <Image
-                  src={movie.image.src}
+                  src={movie.image}
                   style={{ zIndex: -1 }}
                   layout="fill"
                 ></Image>

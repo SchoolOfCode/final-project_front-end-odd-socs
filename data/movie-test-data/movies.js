@@ -1,4 +1,4 @@
-const movies = [
+const moviesList = [
   {
     id: "tt0111161",
     rank: "1",
@@ -3003,4 +3003,4 @@ const movies = [
   },
 ];
 
-export default movies;
+export default moviesList;
