@@ -25,7 +25,7 @@ function Horror() {
             <TitleContainer>
               <ImageContainer>
                 <Image
-                  src={movie.image}
+                  src={`${movie.image.split("_")[0]}@.jpg`}
                   style={{ zIndex: -1 }}
                   layout="fill"
                 ></Image>
