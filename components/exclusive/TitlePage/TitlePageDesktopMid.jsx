@@ -12,6 +12,7 @@ const TitlePageMidContainer = styled.div`
   min-height: 100%;
   width: 100%;
   margin: 0 3rem;
+  gap: 1.5rem;
 `;
 
 const MidContainerTopSection = styled.div`
@@ -84,6 +85,7 @@ const Synopsis = styled.p`
   color: white;
   font-size: 1.2rem;
   text-align: justify;
+  font-weight: 300;
 `;
 
 function TitlePageDesktopMid({ movieInfo }) {
