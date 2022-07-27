@@ -23,6 +23,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "../HomePage/TopMovies";
+import Watchlist from "./Watchlist";
 // import TopTV from "../HomePage/TopTV";
 // import TopMusic from "../HomePage/TopMusic";
 // import TopGames from "../HomePage/TopGames";
@@ -39,6 +40,7 @@ function MoviesPage() {
         <PageContainer>
         <PageTitle>Movies</PageTitle>
             <TopMovies />
+            <Watchlist />
            
            
         </PageContainer>
