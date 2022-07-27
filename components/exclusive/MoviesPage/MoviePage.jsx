@@ -2,12 +2,12 @@
     PLAN
     create movie page component
     - display 10 category components
-        - watchlist
-        - my picks
-        - top movies
-        - 90s films
-        - new releases
-        - random
+        - watchlist - DONE
+        - my picks - DONE
+        - top movies - DONE
+        - 90s films - DONE
+        - new releases - DONE
+        - random - DONE
         - horror
         - sci-fi
         - comedy
@@ -24,6 +24,10 @@ import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "../HomePage/TopMovies";
 import Watchlist from "./Watchlist";
+import MyPicks from "./MyPicks";
+import NinetiesMovies from "./NinetiesMovies";
+import NewReleases from "./NewReleases";
+import Random from "./Random";
 // import TopTV from "../HomePage/TopTV";
 // import TopMusic from "../HomePage/TopMusic";
 // import TopGames from "../HomePage/TopGames";
@@ -31,21 +35,20 @@ import Watchlist from "./Watchlist";
 const PageTitle = styled.div`
   color: var(--secondary);
   font-size: 3.5rem;
-`
-
+`;
 
 function MoviesPage() {
-    return (
-      
-        <PageContainer>
-        <PageTitle>Movies</PageTitle>
-            <TopMovies />
-            <Watchlist />
-           
-           
-        </PageContainer>
-    
-    );
-  }
-  
-  export default MoviesPage;
+  return (
+    <PageContainer>
+      <PageTitle>Movies</PageTitle>
+      <TopMovies />
+      <Watchlist />
+      <MyPicks/>
+      <NinetiesMovies/>
+      <NewReleases/>
+      <Random/>
+    </PageContainer>
+  );
+}
+
+export default MoviesPage;
