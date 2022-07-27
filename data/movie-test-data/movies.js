@@ -10,6 +10,7 @@ const moviesList = [
     crew: "Frank Darabont (dir.), Tim Robbins, Morgan Freeman",
     imDbRating: "9.2",
     imDbRatingCount: "2614885",
+    plot: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
   },
   {
     id: "tt0068646",
