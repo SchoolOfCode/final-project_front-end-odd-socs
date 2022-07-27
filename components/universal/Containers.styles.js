@@ -43,12 +43,12 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.5;
-  width: 7rem;
+  width: 100%;
 `
 
 export const ImageContainer = styled.div`
-  width: 7rem;
-  height: 10rem;
+  width: 10rem;
+  height: 15rem;
   position: relative;
   z-index: -1;
 `

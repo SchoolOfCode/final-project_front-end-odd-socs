@@ -4,7 +4,7 @@ import TitlePageMobile from "./TitlePageMobile";
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-const shawshankRedemption = moviesList.slice(0, 1);
+const shawshankRedemption = moviesList.slice(0, 1)[0];
 
 function TitlePage() {
   return (

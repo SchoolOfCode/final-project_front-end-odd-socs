@@ -6,7 +6,7 @@ const moviesList = [
     fullTitle: "The Shawshank Redemption (1994)",
     year: "1994",
     image:
-      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,3,128,176_AL_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg",
     crew: "Frank Darabont (dir.), Tim Robbins, Morgan Freeman",
     imDbRating: "9.2",
     imDbRatingCount: "2614885",
@@ -19,7 +19,7 @@ const moviesList = [
     fullTitle: "The Godfather (1972)",
     year: "1972",
     image:
-      "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX128_CR0,1,128,176_AL_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@.jpg",
     crew: "Francis Ford Coppola (dir.), Marlon Brando, Al Pacino",
     imDbRating: "9.2",
     imDbRatingCount: "1810312",
@@ -31,7 +31,7 @@ const moviesList = [
     fullTitle: "The Dark Knight (2008)",
     year: "2008",
     image:
-      "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX128_CR0,3,128,176_AL_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@.jpg",
     crew: "Christopher Nolan (dir.), Christian Bale, Heath Ledger",
     imDbRating: "9.0",
     imDbRatingCount: "2587056",
