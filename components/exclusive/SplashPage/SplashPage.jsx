@@ -16,3 +16,12 @@
 4. Graphics
     - Ask CJ if we wants to add a background. 
 */
+
+export default SplashPage = ()=> {
+
+return (
+    <>
+    
+    </>
+)
+}
