@@ -1,24 +1,3 @@
-/*
-    PLAN
-    create movie page component
-    - display 10 category components
-        - watchlist - DONE
-        - my picks - DONE
-        - top movies - DONE
-        - 90s films - DONE
-        - new releases - DONE
-        - random - DONE
-        - horror - DONE
-        - sci-fi - DONE
-        - comedy - DONE
-        - rom-coms - DONE
-        
-
-    - add compopnents to movie page component
-    - add movie page component to pages/movies.jsx
-    - import and add the header component pages/movies.jsx - DONE
-*/
-
 import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
@@ -32,9 +11,6 @@ import Horror from "./Horror";
 import SciFi from "./SciFi";
 import Comedy from "./Comedy";
 import RomComs from "./RomComs";
-// import TopTV from "../HomePage/TopTV";
-// import TopMusic from "../HomePage/TopMusic";
-// import TopGames from "../HomePage/TopGames";
 
 const PageTitle = styled.div`
   color: var(--secondary);
