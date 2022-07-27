@@ -8,10 +8,10 @@
         - 90s films - DONE
         - new releases - DONE
         - random - DONE
-        - horror
-        - sci-fi
-        - comedy
-        - rom-coms 
+        - horror - DONE
+        - sci-fi - DONE
+        - comedy - DONE
+        - rom-coms - DONE
         
 
     - add compopnents to movie page component
@@ -28,6 +28,10 @@ import MyPicks from "./MyPicks";
 import NinetiesMovies from "./NinetiesMovies";
 import NewReleases from "./NewReleases";
 import Random from "./Random";
+import Horror from "./Horror";
+import SciFi from "./SciFi";
+import Comedy from "./Comedy";
+import RomComs from "./RomComs";
 // import TopTV from "../HomePage/TopTV";
 // import TopMusic from "../HomePage/TopMusic";
 // import TopGames from "../HomePage/TopGames";
@@ -47,7 +51,12 @@ function MoviesPage() {
       <NinetiesMovies/>
       <NewReleases/>
       <Random/>
+      <Horror />
+      <SciFi />
+      <Comedy />
+      <RomComs />
     </PageContainer>
+    
   );
 }
 
