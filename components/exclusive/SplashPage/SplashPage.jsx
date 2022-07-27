@@ -17,11 +17,38 @@
     - Ask CJ if we wants to add a background. 
 */
 
-export default SplashPage = ()=> {
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import firebase from "../../../firebase/clientApp"
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
 
+export default SplashPage = ()=> {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+    .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+    }).catch((error) => { 
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+
+    const uiConfig = {
+        signInSuccessUrl: "/home", 
+        signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, 
+            firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,]
+    }
 return (
     <>
-    
+    <Title>
+        <TitleSpan>1</TitleSpan>
+        Source
+    </Title>
     </>
 )
 }
