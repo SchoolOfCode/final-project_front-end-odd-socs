@@ -43,6 +43,7 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.5;
+  width: 7rem;
 `
 
 export const ImageContainer = styled.div`
