@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
 :root {
     --primary: #0E161E;
     --secondary: #3dcfc2;
-    --highlight-1: #1b2b3a;
+    --highlight-1: #8197A3;
     --font-primary-color: #ffffff;
     --font-secondary-color: #ccd2e3;
     --font-primary: "Futura PT", sans-serif;

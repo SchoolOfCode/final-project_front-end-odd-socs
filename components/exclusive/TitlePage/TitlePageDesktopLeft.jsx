@@ -9,19 +9,22 @@ import ShareIcon from "@mui/icons-material/Share";
 const TitlePageLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: max-content;
-  gap: 1.5rem;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 18rem;
 `;
 const TitleImageContainer = styled.div`
-  width: 15rem;
-  height: 22rem;
+  height: 
+  100%;
   position: relative;
-  border: 2px solid white;
   z-index: -1;
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const TitleIconsContainer = styled.div`
   width: 100%;
+  height: 10%;
   display: flex;
   justify-content: space-between;
   color: white;
@@ -39,13 +42,13 @@ const TitleIconContainer = styled.div`
   }
 `;
 
-function TitlePageDesktopLeft({movieInfo}) {
-  const imageUrl = `${movieInfo.image.split('_')[0]}@.jpg`
+function TitlePageDesktopLeft({ movieInfo }) {
+  const imageUrl = `${movieInfo.image.split("_")[0]}@.jpg`;
 
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image src={imageUrl} layout="fill" quality={100}></Image>
+        <Image src={imageUrl} layout="fill" objectFit="contain"></Image>
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
