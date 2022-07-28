@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
  const TitleImageMobileContainer = styled.div`
  position: absolute;
- top: 0;
+ top: 10vh;
  left:0;
  width: 100vw;
  height: 70vh;
