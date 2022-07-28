@@ -18,7 +18,7 @@ console.log(moviesTop10);
 function PlaylistGames() {
   return (
     <>
-      <SectionTitle>Playlist</SectionTitle>
+      <SectionTitle>My Playlist - games</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (

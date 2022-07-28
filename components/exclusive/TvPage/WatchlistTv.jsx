@@ -12,13 +12,13 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-let moviesTop10 = moviesList.slice(10, 20);
+let moviesTop10 = moviesList.slice(200, 210);
 console.log(moviesTop10);
 
 function WatchlistTv() {
   return (
     <>
-      <SectionTitle>Watchlist</SectionTitle>
+      <SectionTitle>Watchlist - TV</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (

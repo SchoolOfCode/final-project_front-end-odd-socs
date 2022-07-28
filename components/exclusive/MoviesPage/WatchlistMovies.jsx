@@ -18,7 +18,7 @@ console.log(moviesTop10);
 function WatchlistMovies() {
   return (
     <>
-      <SectionTitle>Watchlist</SectionTitle>
+      <SectionTitle>Watchlist - Movies</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (
