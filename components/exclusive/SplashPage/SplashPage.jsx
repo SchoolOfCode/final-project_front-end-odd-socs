@@ -27,6 +27,8 @@ import Login from "../../../components/exclusive/SplashPage/Login.jsx"
 import { useState } from "react"
 import LogInModal from "./LogInModal.jsx"
 
+import Background from "./Background.jsx"
+
 const LinkStyles = styled.a`
 display: flex;
 align-items: center;
@@ -35,6 +37,7 @@ justify-content: space-between;
 font-size: 1.25rem;
 color: white;
 text-decoration: none;
+cursor:pointer
 `
 const PageContainer = styled.div`
 justify-content:space-between;
@@ -88,6 +91,9 @@ const SplashPage = ()=> {
     return (
         <>
         <PageContainer>
+
+        <Background/>
+
             <Title >
                 <TitleSpan>1</TitleSpan>
                 Source
