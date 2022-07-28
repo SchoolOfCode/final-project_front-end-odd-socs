@@ -2,16 +2,16 @@
     PLAN
     create tv page component
     - display 10 category components
-        - Top TV -
-        - watchlist - 
-        - my picks - 
-        - 90s show - 
-        - new releases - 
-        - random - 
-        - documentaries - 
-        - drama - 
-        - comedy - 
-        - anime - 
+        - Top TV - DONE
+        - watchlist - DONE
+        - my picks - DONE
+        - 90s show - DONE
+        - new releases - DONE
+        - random - DONE
+        - documentaries - DONE
+        - drama - DONE
+        - comedy - DONE
+        - anime - DONE
         
 
     - add components to tv page component
@@ -27,6 +27,11 @@ import WatchlistTv from "./WatchlistTv";
 import MyPicksTv from "./MyPicksTv";
 import RandomTv from "./RandomTv";
 import NinetiesShows from "./NinetiesShows";
+import NewReleasesTv from "./NewReleasesTv";
+import DocumentariesTv from "./DocumentariesTv";
+import DramaTv from "./DramaTv";
+import ComedyTv from "./ComedyTv";
+import AnimeTv from "./AnimeTv";
 
 // import TopTV from "../HomePage/TopTV";
 // import TopMusic from "../HomePage/TopMusic";
@@ -46,7 +51,11 @@ function TvPage() {
       <MyPicksTv />
       <RandomTv />
       <NinetiesShows />
-      
+      <NewReleasesTv/>
+      <DocumentariesTv/>
+      <DramaTv/>
+      <ComedyTv/>
+      <AnimeTv/>
   
     </PageContainer>
     
