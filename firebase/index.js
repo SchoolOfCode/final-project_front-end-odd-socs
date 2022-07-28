@@ -1,6 +1,9 @@
 import {initializeApp} from 'firebase';
-import {getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, EmailAuthProvider} from 'firebase/auth';
-import {useAuthState} from 'react-firebase-hooks/auth';
+import {getAuth } from 'firebase/auth';
+import {useAuthState, 
+        useSignInWithEmailAndPassword, 
+        useSignInWithPopup,  
+        useSignInWithGoogle} from 'react-firebase-hooks/auth';
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -15,9 +18,51 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const login =
+export const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
 
-const [user, loading, error] = useAuthState(auth);
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+      <div>
+        <p>Signed In User: {user.email}</p>
+      </div>
+    );
+  }
+  return (
+    <div className="App">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={() => signInWithEmailAndPassword(email, password)}>
+        Sign In
+      </button>
+    </div>
+  );
+};
 
 
 
