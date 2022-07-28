@@ -93,7 +93,7 @@ function TitlePageDesktopMid({ movieInfo }) {
     <TitlePageMidContainer>
       <MidContainerTopSection>
         <ContentTitle>{movieInfo.title}</ContentTitle>
-        <StatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating} | 1Source Score`}</StatsContainer>
+        <StatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</StatsContainer>
       </MidContainerTopSection>
       <MidContainerMidSection>
         <WatchOnContainer>
