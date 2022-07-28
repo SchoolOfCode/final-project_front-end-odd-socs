@@ -12,7 +12,7 @@ function TitlePageMobile({movieInfo}) {
 
     return (
         <MobilePageContainer>
-            {/* <TitleImageMobile movieInfo={movieInfo}/> */}
+            <TitleImageMobile movieInfo={movieInfo}/>
             <TitlePageContents movieInfo={movieInfo}/>
         </MobilePageContainer>
     )
