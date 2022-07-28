@@ -44,7 +44,7 @@ const NavRow = styled.div`
   padding: 0 1rem;
 `;
 
-const NavHR = styled.hr`
+export const NavHR = styled.hr`
   border-bottom: 0.5px solid #8197a3;
 `;
 

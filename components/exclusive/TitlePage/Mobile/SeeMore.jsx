@@ -6,8 +6,8 @@ const SeeMoreStyle = styled.a`
   text-decoration: none;
 `;
 
-function SeeMore({ showMoreSynopsis }) {
-  return <SeeMoreStyle onClick={showMoreSynopsis}>see more</SeeMoreStyle>;
+function SeeMore({ toggleFullSynopsis }) {
+  return <SeeMoreStyle onClick={toggleFullSynopsis}>see more</SeeMoreStyle>;
 }
 
 export default SeeMore;

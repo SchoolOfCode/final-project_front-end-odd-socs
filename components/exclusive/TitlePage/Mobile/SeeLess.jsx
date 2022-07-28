@@ -6,8 +6,8 @@ const SeeLessStyle = styled.a`
   text-decoration: none;
 `;
 
-function SeeLess({ showLessSynopsis }) {
-  return <SeeLessStyle onClick={showLessSynopsis}>see less</SeeLessStyle>;
+function SeeLess({ toggleFullSynopsis }) {
+  return <SeeLessStyle onClick={toggleFullSynopsis}>see less</SeeLessStyle>;
 }
 
 export default SeeLess;
