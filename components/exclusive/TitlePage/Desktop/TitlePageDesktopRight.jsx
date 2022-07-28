@@ -35,7 +35,6 @@ const Comment = styled.div`
   color: white;
   font-weight: 300;
   width: 100%;
-  /* padding: 0.5rem; */
   gap: 0.5rem;
 `;
 

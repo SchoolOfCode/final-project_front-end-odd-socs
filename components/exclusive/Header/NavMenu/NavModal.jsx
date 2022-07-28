@@ -11,7 +11,6 @@ import MenuAccountIcon from "./MenuAccountIcon";
 const ModalStyles = styled.div`
   position: fixed;
   display: flex;
-  z-index: 10;
   width: 20rem;
   height: 90vh;
   top: 0;
@@ -29,6 +28,7 @@ const ModalStyles = styled.div`
 const ModalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: space-around;
   margin: 0 auto;
   color: var(--highlight);
@@ -53,7 +53,6 @@ const NavLink = styled.a`
   color: white;
   font-weight: 300;
   text-decoration: none;
-  z-index: 1;
 
   &:hover {
     color: var(--secondary);

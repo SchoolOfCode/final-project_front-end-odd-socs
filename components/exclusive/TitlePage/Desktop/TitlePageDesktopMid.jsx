@@ -65,7 +65,6 @@ const WatchOnIconStyle = styled.div`
   width: 5rem;
   height: 2.2rem;
   position: relative;
-  z-index: -1;
 `;
 
 const VideoContainer = styled.div`

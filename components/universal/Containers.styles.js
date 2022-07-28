@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+// ------ MAIN WRAPPERS FOR MASTER COMPONENTS ------
+
+export const HeaderWrapper = styled.div`
+  position: relative;
+  z-index: 1000;
+`;
+
+export const PageWrapper = styled.div`
+  position: relative;
+  z-index: 0;
+`;
 
 // ------ NAVBAR & SEARCH SPECIFIC CONTAINERS ------
 export const NavIconContainer = {

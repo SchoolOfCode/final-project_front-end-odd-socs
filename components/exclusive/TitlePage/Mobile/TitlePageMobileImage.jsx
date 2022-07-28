@@ -7,7 +7,6 @@ import styled from 'styled-components'
  left:0;
  width: 100vw;
  height: 70vh;
- z-index: -1;
  `
 
 function TitleImageMobile({movieInfo}) {

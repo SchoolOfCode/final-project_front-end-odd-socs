@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
-
-
 
 const TitlePageLeftContainer = styled.div`
   display: flex;
@@ -17,10 +14,9 @@ const TitlePageLeftContainer = styled.div`
   min-width: 18rem;
 `;
 const TitleImageContainer = styled.div`
-  height: 
-  100%;
+  height: 100%;
   position: relative;
-  z-index: -1;
+  /* z-index: -1; */
   display: flex;
   justify-content: flex-start;
 `;
@@ -45,6 +41,10 @@ const TitleIconContainer = styled.div`
   }
 `;
 
+function handler() {
+  console.log("clicked");
+}
+
 function TitlePageDesktopLeft({ movieInfo }) {
   const imageUrl = `${movieInfo.image.split("_")[0]}@.jpg`;
 
@@ -55,7 +55,7 @@ function TitlePageDesktopLeft({ movieInfo }) {
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
-          <AddCommentIcon fontSize="large"/>
+          <AddCommentIcon onClick={handler} fontSize="large" />
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
           <BeenhereIcon fontSize="large" />
