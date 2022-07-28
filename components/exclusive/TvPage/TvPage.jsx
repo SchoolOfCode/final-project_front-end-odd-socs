@@ -1,24 +1,3 @@
-/*
-    PLAN
-    create tv page component
-    - display 10 category components
-        - Top TV - DONE
-        - watchlist - DONE
-        - my picks - DONE
-        - 90s show - DONE
-        - new releases - DONE
-        - random - DONE
-        - documentaries - DONE
-        - drama - DONE
-        - comedy - DONE
-        - anime - DONE
-        
-
-    - add components to tv page component
-    - add tv page component to pages/movies.jsx
-    - import and add the header component pages/tv.jsx - DONE
-*/
-
 import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
@@ -32,10 +11,6 @@ import DocumentariesTv from "./DocumentariesTv";
 import DramaTv from "./DramaTv";
 import ComedyTv from "./ComedyTv";
 import AnimeTv from "./AnimeTv";
-
-// import TopTV from "../HomePage/TopTV";
-// import TopMusic from "../HomePage/TopMusic";
-// import TopGames from "../HomePage/TopGames";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -51,14 +26,12 @@ function TvPage() {
       <MyPicksTv />
       <RandomTv />
       <NinetiesShows />
-      <NewReleasesTv/>
-      <DocumentariesTv/>
-      <DramaTv/>
-      <ComedyTv/>
-      <AnimeTv/>
-  
+      <NewReleasesTv />
+      <DocumentariesTv />
+      <DramaTv />
+      <ComedyTv />
+      <AnimeTv />
     </PageContainer>
-    
   );
 }
 
