@@ -1,7 +1,7 @@
 import Header from "../components/exclusive/Header/Header";
 import MusicPage from "../components/exclusive/MusicPage/MusicPage";
 
-function Movies() {
+function Music() {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Music;
