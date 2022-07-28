@@ -15,7 +15,7 @@ import moviesList from "../../../data/movie-test-data/movies";
 let moviesTop10 = moviesList.slice(20, 30);
 console.log(moviesTop10);
 
-function MyPicks() {
+function MyPicksMovies() {
   return (
     <>
       <SectionTitle>My Picks</SectionTitle>
@@ -39,4 +39,4 @@ function MyPicks() {
   );
 }
 
-export default MyPicks;
+export default MyPicksMovies;

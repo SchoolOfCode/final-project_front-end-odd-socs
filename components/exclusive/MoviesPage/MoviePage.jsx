@@ -2,15 +2,15 @@ import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "../HomePage/TopMovies";
-import Watchlist from "./Watchlist";
-import MyPicks from "./MyPicks";
+import WatchlistMovies from "./WatchlistMovies";
+import MyPicksMovies from "./MyPicksMovies";
 import NinetiesMovies from "./NinetiesMovies";
-import NewReleases from "./NewReleases";
-import Random from "./Random";
-import Horror from "./Horror";
-import SciFi from "./SciFi";
-import Comedy from "./Comedy";
-import RomComs from "./RomComs";
+import NewReleasesMovies from "./NewReleasesMovies";
+import RandomMovies from "./RandomMovies";
+import HorrorMovies from "./HorrorMovies";
+import SciFiMovies from "./SciFiMovies";
+import ComedyMovies from "./ComedyMovies";
+import RomComMovies from "./RomComMovies";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -22,15 +22,15 @@ function MoviesPage() {
     <PageContainer>
       <PageTitle>Movies</PageTitle>
       <TopMovies />
-      <Watchlist />
-      <MyPicks/>
+      <WatchlistMovies />
+      <MyPicksMovies/>
       <NinetiesMovies/>
-      <NewReleases/>
-      <Random/>
-      <Horror />
-      <SciFi />
-      <Comedy />
-      <RomComs />
+      <NewReleasesMovies/>
+      <RandomMovies/>
+      <HorrorMovies />
+      <SciFiMovies />
+      <ComedyMovies />
+      <RomComMovies />
     </PageContainer>
     
   );

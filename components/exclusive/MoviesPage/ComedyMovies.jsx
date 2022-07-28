@@ -12,13 +12,13 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-let moviesTop10 = moviesList.slice(50, 60);
+let moviesTop10 = moviesList.slice(80, 90);
 console.log(moviesTop10);
 
-function Random() {
+function ComedyMovies() {
   return (
     <>
-      <SectionTitle>Random</SectionTitle>
+      <SectionTitle>Comedy</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (
@@ -39,4 +39,4 @@ function Random() {
   );
 }
 
-export default Random;
+export default ComedyMovies;

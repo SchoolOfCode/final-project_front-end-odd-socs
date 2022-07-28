@@ -12,13 +12,13 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-let moviesTop10 = moviesList.slice(70, 80);
+let moviesTop10 = moviesList.slice(20, 30);
 console.log(moviesTop10);
 
-function SciFi() {
+function NewReleasesMovies() {
   return (
     <>
-      <SectionTitle>Sci-Fi</SectionTitle>
+      <SectionTitle>New Releases</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (
@@ -39,4 +39,4 @@ function SciFi() {
   );
 }
 
-export default SciFi;
+export default NewReleasesMovies;
