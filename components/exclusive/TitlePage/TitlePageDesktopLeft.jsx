@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
-import MoodBadIcon from "@mui/icons-material/MoodBad";
+
+import AddCommentIcon from "@mui/icons-material/AddComment";
+import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+
+
 
 const TitlePageLeftContainer = styled.div`
   display: flex;
@@ -52,10 +55,10 @@ function TitlePageDesktopLeft({ movieInfo }) {
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
-          <SentimentVerySatisfiedIcon fontSize="large" />
+          <AddCommentIcon fontSize="large"/>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
-          <MoodBadIcon fontSize="large" />
+          <BeenhereIcon fontSize="large" />
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
           <BookmarkBorderIcon fontSize="large" />
