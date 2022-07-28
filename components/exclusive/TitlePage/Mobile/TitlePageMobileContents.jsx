@@ -48,7 +48,7 @@ function TitlePageContents({ movieInfo }) {
 
     // function cutSynopsis (movieInfo) {
         useEffect(() => {
-          const shortSynopsis = movieInfo.plot.slice(0, 150)
+          const shortSynopsis = `${movieInfo.plot.slice(0, 150)}`
         setSynopsis(shortSynopsis)   
         },[])
        
