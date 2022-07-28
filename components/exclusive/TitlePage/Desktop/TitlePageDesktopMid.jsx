@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
 import YouTube from "react-youtube";
-import GooglePlayIcon from "../../../assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
 
 const TitlePageMidContainer = styled.div`
   display: flex;
