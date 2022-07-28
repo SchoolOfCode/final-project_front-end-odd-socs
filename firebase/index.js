@@ -1,8 +1,8 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import {initializeApp} from 'firebase';
+import {getAuth, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, EmailAuthProvider} from 'firebase/auth';
+import {useAuthState} from 'react-firebase-hooks/auth';
 
-const appCredentials = {
+const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: process.env.FIREBASE_PROJECT_ID,
@@ -12,28 +12,15 @@ const appCredentials = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(appCredentials);
-}
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-const uiConfig = {
-  signInFlow: "popup",
-  signInSuccessUrl: "/home",
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
-  ],
-};
+const login =
 
-export const LogInScreen = () => {
-  return (
-    <div>
-      <h1>Sign In</h1>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-    </div>
-  );
-}
+const [user, loading, error] = useAuthState(auth);
+
+
+
 
 
 

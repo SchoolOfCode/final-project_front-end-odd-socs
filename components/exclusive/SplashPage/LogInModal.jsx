@@ -1,4 +1,3 @@
-import Login from "./Login"
 import styled from "styled-components"
 
 const PageContainer = styled.div`
@@ -22,7 +21,7 @@ const LogInModal = () => {
     return (
         <PageContainer>
             <Background>
-            <Login/>
+                <h1>Log In</h1>
             </Background>
         </PageContainer>
     )
