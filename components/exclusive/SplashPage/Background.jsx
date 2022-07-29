@@ -1,24 +1,33 @@
 import styled from "styled-components";
-import WebmGraphic from "../../../assets/video/WebmGraphic.webm"
+import WebmGraphic from "../../../assets/video/WebmGraphic.webm";
 
 const BackgroundContainer = styled.div`
-    height:100vh;
-    width:100vw;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:-1;
-`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: block;
+`;
 
-function Background(){
-    
-    return(
-        <BackgroundContainer>
-            <video autoPlay loop muted>
-                <source src={WebmGraphic} type="video/webm"/>
-            </video>
-        </BackgroundContainer>
-    )
+const BackgroundStyle = {
+  minWidth: "100%",
+  minHeight: "100%",
+  width: "auto",
+  height: "auto",
+  display: "block",
+};
+
+function Background() {
+  return (
+    <BackgroundContainer>
+      <video style={BackgroundStyle} autoPlay loop muted>
+        <source src={WebmGraphic} type="video/webm" />
+      </video>
+    </BackgroundContainer>
+  );
 }
 
-export default Background
+export default Background;
