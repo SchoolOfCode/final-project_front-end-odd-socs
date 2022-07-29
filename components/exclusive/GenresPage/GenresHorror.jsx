@@ -1,9 +1,11 @@
+/**
+ * have row container dynamicly grow with content amount, flowing onto a new layer after every 10'th title
+ * 
+ */
+
 import styled from "styled-components";
 import Image from "next/image";
-import {
-  TitleText,
-  SectionTitle,
-} from "../../../components/universal/Text.styles";
+import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
   ImageContainer,
@@ -11,17 +13,23 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { movies } from "../../../data/home-test-data/home-test-data";
+export const RowContainerWrap = styled.div`
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+`;
 
-import moviesList from '../../../data/movie-test-data/movies'
+import moviesList from "../../../data/movie-test-data/movies";
 
-const moviesTop10 = moviesList.slice(0, 10);
+let moviesTop10 = moviesList.slice(150, 180);
+console.log(moviesTop10);
 
-function TopMovies() {
+function GenresHorror() {
   return (
     <>
-      <SectionTitle>Top 10 Movies</SectionTitle>
-      <RowContainer>
+      <SectionTitle>Horror</SectionTitle>
+      <RowContainerWrap>
         {moviesTop10.map((movie) => {
           return (
             <TitleContainer>
@@ -36,9 +44,10 @@ function TopMovies() {
             </TitleContainer>
           );
         })}
-      </RowContainer>
+      </RowContainerWrap>
+      
     </>
   );
 }
 
-export default TopMovies;
+export default GenresHorror;

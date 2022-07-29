@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import {
-  TitleText,
-  SectionTitle,
-} from "../../../components/universal/Text.styles";
+import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
   RowContainer,
@@ -18,23 +15,25 @@ const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
   height: 8rem;
 `;
+let moviesTop10 = moviesList.slice(180, 190);
+console.log(moviesTop10);
 
-function TopMusic() {
+function RockMusic() {
   return (
     <>
-      <SectionTitle>Top 10 Music</SectionTitle>
+      <SectionTitle>Rock</SectionTitle>
       <RowContainer>
-        {music.map((music) => {
+        {moviesTop10.map((movie) => {
           return (
             <TitleContainer>
               <MusicImageContainer>
                 <Image
-                  src={music.image.src}
+                  src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
                 ></Image>
               </MusicImageContainer>
-              <TitleText>{music.title}</TitleText>
+              <TitleText>{movie.title}</TitleText>
             </TitleContainer>
           );
         })}
@@ -43,4 +42,4 @@ function TopMusic() {
   );
 }
 
-export default TopMusic;
+export default RockMusic;

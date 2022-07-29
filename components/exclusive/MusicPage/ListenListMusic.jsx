@@ -3,7 +3,7 @@ import Image from "next/image";
 import {
   TitleText,
   SectionTitle,
-} from "../../../components/universal/Text.styles";
+} from "../../universal/Text.styles";
 
 import {
   RowContainer,
@@ -18,23 +18,27 @@ const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
   height: 8rem;
 `;
+let moviesTop10 = moviesList.slice(100, 110);
+console.log(moviesTop10);
 
-function TopMusic() {
+
+
+function ListenListMusic() {
   return (
     <>
-      <SectionTitle>Top 10 Music</SectionTitle>
+      <SectionTitle>Listen List - Music</SectionTitle>
       <RowContainer>
-        {music.map((music) => {
+        {moviesTop10.map((movie) => {
           return (
             <TitleContainer>
               <MusicImageContainer>
                 <Image
-                  src={music.image.src}
+                  src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
                 ></Image>
               </MusicImageContainer>
-              <TitleText>{music.title}</TitleText>
+              <TitleText>{movie.title}</TitleText>
             </TitleContainer>
           );
         })}
@@ -43,4 +47,4 @@ function TopMusic() {
   );
 }
 
-export default TopMusic;
+export default ListenListMusic;

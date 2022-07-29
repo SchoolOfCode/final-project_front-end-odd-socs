@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import {
-  TitleText,
-  SectionTitle,
-} from "../../../components/universal/Text.styles";
+import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
   ImageContainer,
@@ -11,16 +8,17 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { movies } from "../../../data/home-test-data/home-test-data";
+// import { movies } from "../../../data/home-test-data/home-test-data";
 
-import moviesList from '../../../data/movie-test-data/movies'
+import moviesList from "../../../data/movie-test-data/movies";
 
-const moviesTop10 = moviesList.slice(0, 10);
+let moviesTop10 = moviesList.slice(80, 90);
+console.log(moviesTop10);
 
-function TopMovies() {
+function ComedyMovies() {
   return (
     <>
-      <SectionTitle>Top 10 Movies</SectionTitle>
+      <SectionTitle>Comedy</SectionTitle>
       <RowContainer>
         {moviesTop10.map((movie) => {
           return (
@@ -41,4 +39,4 @@ function TopMovies() {
   );
 }
 
-export default TopMovies;
+export default ComedyMovies;

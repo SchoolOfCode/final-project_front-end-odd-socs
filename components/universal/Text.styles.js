@@ -4,6 +4,8 @@ export const TitleText = styled.p`
   color: white;
   font-size: 1.2rem;
   font-weight: 400;
+  margin-top: 0.5rem;
+  text-align: center;
 `;
 
 export const SectionTitle = styled.h1`

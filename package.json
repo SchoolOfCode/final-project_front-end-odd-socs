@@ -20,6 +20,8 @@
     "react-firebase-hooks": "^5.0.3",
     "react-google-button": "^0.7.2",
     "react-icons": "^4.4.0",
+    "react-player": "^2.10.1",
+    "react-youtube": "^9.0.3",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
