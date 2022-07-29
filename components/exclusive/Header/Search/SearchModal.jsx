@@ -32,7 +32,7 @@ const ModalContentContainer = styled.div`
   color: var(--highlight);
   font-family: var(--font-secondary);
   width: 100%;
-  gap: 4rem;
+  gap: 8rem;
   z-index: 10;
 `;
 
@@ -66,24 +66,23 @@ const SearchStyle = styled.h1`
 
 const IconsStyle = styled.div`
   display: flex;
-  border: 1px solid transparent;
-  padding: 0.2rem;
+  border: 2px solid transparent;
+  padding: 0.5rem;
 
   &:focus {
     color: var(--secondary);
-    border: 1px solid var(--secondary);
+    border: 2px solid var(--secondary);
   }
 
   &:hover {
     color: var(--secondary);
     transition: 400ms ease-in-out;
   }
-
 `;
 
 const Searchbar = styled.input`
   width: 25rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
   background-color: transparent;
   border-bottom: 1px solid var(--font-secondary-color);

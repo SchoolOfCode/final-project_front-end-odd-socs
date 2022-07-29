@@ -15,8 +15,7 @@ import { movies } from "../../../data/home-test-data/home-test-data";
 
 import moviesList from '../../../data/movie-test-data/movies'
 
-let moviesTop10 = moviesList.slice(0, 10);
-console.log(moviesTop10)
+const moviesTop10 = moviesList.slice(0, 10);
 
 function TopMovies() {
   return (
@@ -28,7 +27,7 @@ function TopMovies() {
             <TitleContainer>
               <ImageContainer>
                 <Image
-                  src={movie.image}
+                  src={`${movie.image.split("_")[0]}@.jpg`}
                   style={{ zIndex: -1 }}
                   layout="fill"
                 ></Image>
