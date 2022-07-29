@@ -7,3 +7,5 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// Added code for merge
