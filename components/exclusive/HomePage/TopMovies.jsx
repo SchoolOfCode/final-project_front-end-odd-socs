@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import {
   TitleText,
   SectionTitle,
@@ -11,9 +11,7 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { movies } from "../../../data/home-test-data/home-test-data";
-
-import moviesList from '../../../data/movie-test-data/movies'
+import moviesList from "../../../data/movie-test-data/movies";
 
 const moviesTop10 = moviesList.slice(0, 10);
 
@@ -25,13 +23,16 @@ function TopMovies() {
         {moviesTop10.map((movie) => {
           return (
             <TitleContainer>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                ></Image>
-              </ImageContainer>
+              <Link href="/title">
+                <a>
+                  <ImageContainer>
+                    <Image
+                      src={`${movie.image.split("_")[0]}@.jpg`}
+                      layout="fill"
+                    />
+                  </ImageContainer>
+                </a>
+              </Link>
               <TitleText>{movie.title}</TitleText>
             </TitleContainer>
           );

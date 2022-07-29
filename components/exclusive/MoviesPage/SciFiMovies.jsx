@@ -13,7 +13,6 @@ import {
 import moviesList from "../../../data/movie-test-data/movies";
 
 let moviesTop10 = moviesList.slice(70, 80);
-console.log(moviesTop10);
 
 function SciFiMovies() {
   return (
