@@ -4,6 +4,8 @@ import YouTube from "react-youtube";
 import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
 import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
 import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
+import Link from "next/link";
+
 
 const TitlePageMidContainer = styled.div`
   display: flex;
@@ -99,7 +101,7 @@ function TitlePageDesktopMid({ movieInfo }) {
           <WatchOnText>Watch on:</WatchOnText>
           <WatchOnIconsContainer>
             <WatchOnIconStyle>
-              <Image src={GooglePlayIcon} layout="fill" objectFit="contain" />
+              <Image  src={GooglePlayIcon} layout="fill" objectFit="contain"/>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
               <Image src={YouTubeIcon} layout="fill" objectFit="contain" />
