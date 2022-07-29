@@ -16,7 +16,6 @@ const TitlePageLeftContainer = styled.div`
 const TitleImageContainer = styled.div`
   height: 100%;
   position: relative;
-  /* z-index: -1; */
   display: flex;
   justify-content: flex-start;
 `;

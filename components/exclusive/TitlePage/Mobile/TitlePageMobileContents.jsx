@@ -59,6 +59,16 @@ const TitlePageIconsContainer = styled.div`
   justify-content: space-between;
 `;
 
+const TitlePageIcon = styled.div`
+  &:hover {
+    color: var(--secondary);
+  }
+
+  &:focus {
+    color: var(--secondary);
+  }
+`;
+
 const Title = styled.h1`
   color: white;
   font-size: 2.5rem;
@@ -119,7 +129,7 @@ const Comment = styled.div`
 const CommentText = styled.p`
   font-size: 1.5rem;
   /* text-align: justify; */
-`
+`;
 
 function TitlePageContents({ movieInfo }) {
   const [synopsis, setSynopsis] = useState("");
@@ -154,8 +164,6 @@ function TitlePageContents({ movieInfo }) {
     setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
   }
 
-  console.log(isWatchOnOpen);
-
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
@@ -172,10 +180,18 @@ function TitlePageContents({ movieInfo }) {
           )}
         </TitlePageSynopsisContainer>
         <TitlePageIconsContainer>
-          <AddCommentIcon fontSize="large" />
-          <BeenhereIcon fontSize="large" />
-          <BookmarkBorderIcon fontSize="large" />
-          <ShareIcon fontSize="large" />
+          <TitlePageIcon>
+            <AddCommentIcon fontSize="large" />
+          </TitlePageIcon>
+          <TitlePageIcon>
+            <BeenhereIcon fontSize="large" />
+          </TitlePageIcon>
+          <TitlePageIcon>
+            <BookmarkBorderIcon fontSize="large" />
+          </TitlePageIcon>
+          <TitlePageIcon>
+            <ShareIcon fontSize="large" />
+          </TitlePageIcon>
         </TitlePageIconsContainer>
         <NavHR />
         <WatchOnContainer onClick={toggleWatchOnOpen}>
