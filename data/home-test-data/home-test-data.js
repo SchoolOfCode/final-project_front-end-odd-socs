@@ -1,3 +1,5 @@
+// Added code for push
+
 import Rectangle from "../../assets/Rectangle.png";
 
 export const movies = [
