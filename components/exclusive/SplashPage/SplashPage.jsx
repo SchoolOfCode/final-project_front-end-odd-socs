@@ -23,7 +23,6 @@
 import {Title, TitleSpan} from "../../../components/exclusive/Header/NavMenu/NavMenu.jsx"
 import styled from "styled-components"
 import Link from "next/link" 
-import Login from "../../../components/exclusive/SplashPage/Login.jsx"
 import { useState } from "react"
 import LogInModal from "./LogInModal.jsx"
 
@@ -37,7 +36,7 @@ justify-content: space-between;
 font-size: 1.25rem;
 color: white;
 text-decoration: none;
-cursor:pointer
+cursor:pointer;
 `
 const PageContainer = styled.div`
 justify-content:space-between;
@@ -85,8 +84,8 @@ const SplashPage = ()=> {
     function handleLoginClick() {
         openModalHandler()
     }  
-    function handleClickSignUp(){
-        alert("This takes you to Sign Up Modal")
+    function handleSignUpClick(){
+        openModalHandler()
     }
     return (
         <>
@@ -103,7 +102,7 @@ const SplashPage = ()=> {
             {isModalOpen && <LogInModal closeModalHandler={closeModalHandler}/>}
                 <ButtonGroup>
                     <Button onClick={handleLoginClick}>Log In</Button>
-                    <Button onClick={handleClickSignUp}>Sign Up</Button>
+                    <Button onClick={handleSignUpClick}>Sign Up</Button>
                 </ButtonGroup>
                 
                 <Link href = '/home'>

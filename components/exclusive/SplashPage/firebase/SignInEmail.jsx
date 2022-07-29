@@ -2,7 +2,7 @@ import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import { auth } from "../../../../firebase";
 import { useState } from "react";
 
-export const EmailSignIn = () => {
+export const SignInEmail = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [
@@ -31,13 +31,13 @@ export const EmailSignIn = () => {
     }
     return (
       <>
-        <Form
+        <input
           type="email"
           value={email}
           placeholder="Email..."
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Form
+        <input
           type="password"
           value={password}
           placeholder="Password..."
