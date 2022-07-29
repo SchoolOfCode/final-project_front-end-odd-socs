@@ -12,6 +12,7 @@ import {
 } from "../../universal/Containers.styles";
 
 import { music } from "../../../data/home-test-data/home-test-data";
+import moviesList from "../../../data/movie-test-data/movies";
 
 const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
