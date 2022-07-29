@@ -1,11 +1,20 @@
 import GenresPage from "../components/exclusive/GenresPage/GenresPage";
 import Header from "../components/exclusive/Header/Header";
 
+import {
+  HeaderWrapper,
+  PageWrapper,
+} from "../components/universal/Containers.styles";
+
 function Genres() {
   return (
     <>
-      <Header />
-      <GenresPage />
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+      <PageWrapper>
+        <GenresPage />
+      </PageWrapper>
     </>
   );
 }

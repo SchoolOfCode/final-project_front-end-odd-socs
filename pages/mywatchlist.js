@@ -1,12 +1,20 @@
 import Header from "../components/exclusive/Header/Header";
 import MyWatchlistPage from "../components/exclusive/MyWatchlistPage/MyWatchlistPage";
 
+import {
+  HeaderWrapper,
+  PageWrapper,
+} from "../components/universal/Containers.styles";
 
 function MyWatchlist() {
   return (
     <>
-      <Header />
-      <MyWatchlistPage />
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+      <PageWrapper>
+        <MyWatchlistPage />
+      </PageWrapper>
     </>
   );
 }

@@ -1,11 +1,20 @@
 import Header from "../components/exclusive/Header/Header";
 import { ProfilePage } from "../components/exclusive/ProfilePage/ProfilePage";
 
+import {
+  HeaderWrapper,
+  PageWrapper,
+} from "../components/universal/Containers.styles";
+
 function Profile() {
   return (
     <>
-      <Header />
-      <ProfilePage />
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
+      <PageWrapper>
+        <ProfilePage />
+      </PageWrapper>
     </>
   );
 }
