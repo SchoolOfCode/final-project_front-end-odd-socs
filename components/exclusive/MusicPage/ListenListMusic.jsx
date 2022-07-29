@@ -19,7 +19,6 @@ const MusicImageContainer = styled(ImageContainer)`
   height: 8rem;
 `;
 let moviesTop10 = moviesList.slice(100, 110);
-console.log(moviesTop10);
 
 
 

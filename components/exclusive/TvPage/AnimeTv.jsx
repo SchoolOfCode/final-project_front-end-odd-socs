@@ -13,7 +13,6 @@ import {
 import moviesList from "../../../data/movie-test-data/movies";
 
 let moviesTop10 = moviesList.slice(170, 180);
-console.log(moviesTop10);
 
 function AnimeTv() {
   return (

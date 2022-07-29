@@ -13,7 +13,7 @@ import {
 import moviesList from "../../../data/movie-test-data/movies";
 
 let moviesTop10 = moviesList.slice(40, 50);
-console.log(moviesTop10);
+
 
 function NinetiesShows() {
   return (

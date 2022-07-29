@@ -16,7 +16,6 @@ const MusicImageContainer = styled(ImageContainer)`
   height: 8rem;
 `;
 let moviesTop10 = moviesList.slice(240, 250);
-console.log(moviesTop10);
 
 function RandomMusic() {
   return (

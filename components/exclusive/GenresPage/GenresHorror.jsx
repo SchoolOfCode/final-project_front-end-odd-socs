@@ -23,7 +23,6 @@ export const RowContainerWrap = styled.div`
 import moviesList from "../../../data/movie-test-data/movies";
 
 let moviesTop10 = moviesList.slice(150, 180);
-console.log(moviesTop10);
 
 function GenresHorror() {
   return (

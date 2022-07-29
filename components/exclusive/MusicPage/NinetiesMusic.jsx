@@ -16,7 +16,6 @@ const MusicImageContainer = styled(ImageContainer)`
   height: 8rem;
 `;
 let moviesTop10 = moviesList.slice(210, 220);
-console.log(moviesTop10);
 
 function NintiesMusic() {
   return (
