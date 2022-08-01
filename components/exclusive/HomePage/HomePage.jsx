@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Image from "next/image";
+
 import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "./TopMovies";
 import TopTV from "./TopTV";
 import TopMusic from "./TopMusic";
 import TopGames from "./TopGames";
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import SwipeModal from "./SwipeModal";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -15,23 +15,20 @@ const PageTitle = styled.div`
 
 function HomePage() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-
-  // useEffect(() => {
-  //   if (isFirstLoad === true) {
-  //     setIsFirstLoad(false);
-  //   }
-  // }, []);
-
-  
+  const [count, setCount] = useState(0);
 
   return (
+    <>
     <PageContainer>
+      { isFirstLoad && count ===0 && (
+      <SwipeModal setIsFirstLoad={setIsFirstLoad} setCount={setCount} count={count}/> )}
       <PageTitle>Home</PageTitle>
       <TopMovies />
       <TopTV />
       <TopMusic />
       <TopGames />
     </PageContainer>
+    </>
   );
 }
 
