@@ -28,7 +28,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 import LogInModal from "./LogInModal.jsx";
-
+import SiteLogo from "../Header/NavMenu/SiteLogo.jsx";
 import Background from "./Background.jsx";
 
 const LinkStyles = styled.a`
@@ -94,12 +94,7 @@ const SplashPage = () => {
     <>
       <PageContainer>
         <Background />
-
-        <Title>
-          <TitleSpan>1</TitleSpan>
-          Source
-        </Title>
-
+          <SiteLogo/>
         <Main>
           {isModalOpen && <LogInModal closeModalHandler={closeModalHandler} />}
           <ButtonGroup>
