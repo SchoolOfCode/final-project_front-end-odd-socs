@@ -5,6 +5,9 @@ import NavCloseIcon from "./CloseIcon";
 import NavMenuModal from "./NavModal";
 import SearchCloseIcon from "../Search/SearchCloseIcon";
 import NavSearchModal from "../Search/SearchModal";
+import SiteLogo from "./SiteLogo";
+
+// import Logo from "../../../../assets/site-logo/1Source.svg";
 
 import { useState } from "react";
 
@@ -63,10 +66,11 @@ function NavMenu() {
         <HamburgerIcon menuModalOpenHandler={menuModalOpenHandler} />
       )}
       {isMenuModalOpen && <NavMenuModal />}
-      <Title>
+      {/* <Title>
         <TitleSpan>1</TitleSpan>
         Source
-      </Title>
+      </Title> */}
+      <SiteLogo />
       {isSearchModalOpen ? (
         <SearchCloseIcon searchModalCloseHandler={searchModalCloseHandler} />
       ) : (
