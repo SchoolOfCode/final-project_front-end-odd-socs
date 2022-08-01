@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import WebmGraphic from "../../../assets/video/WebmGraphic.webm";
+import WebmGraphic from "../../../assets/video/1Source_Splash_bkg.webm";
 
 const BackgroundContainer = styled.div`
   position: absolute;
