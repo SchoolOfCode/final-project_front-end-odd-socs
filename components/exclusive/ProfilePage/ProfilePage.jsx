@@ -2,9 +2,9 @@
 PLAN
 - make file structure for profile pages & component -DONE
 - make Account component - IN PROGRESS  
- - image
- - user name (hard coded)
- - member since
+ - image - IN PROGRESS
+ - user name (hard coded) - DONE
+ - member since - DONE
 
  - make settings component
     - my account
