@@ -7,10 +7,9 @@ import Image from "next/image";
 
 
  const AccountIconContainer = styled.div`
-  border: 2px solid red;
-  border-radius: 50%;
+  clip-path: circle();
   height: 10rem;
-  width:10rem
+  width:10rem;
 `;
 
 
