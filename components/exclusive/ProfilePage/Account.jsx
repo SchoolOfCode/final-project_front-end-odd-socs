@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import ProfileAccountIcon from "./ProfileAccountIcon";
 
-// const ProfileImage = styled.div`
-
-// `
+const UserInitials = styled.h2`
+    color: var(--font-primary-color);
+    font-size:3rem;
+    font-weight:300;
+`
 
 export function Account(){
     return(
         <>
         {/* <AccountContainer> */}
             <ProfileAccountIcon/>
-            {/* <UserInitials>
-                <h1>SP</h1>
+            <UserInitials>
+                SP
             </UserInitials>
-            <YearJoined>
+            {/* <YearJoined>
                 <h2>Member since 2022</h2>
             </YearJoined> */}
         {/* </AccountContainer> */}
