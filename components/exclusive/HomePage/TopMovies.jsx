@@ -29,6 +29,7 @@ function TopMovies() {
                     <Image
                       src={`${movie.image.split("_")[0]}@.jpg`}
                       layout="fill"
+                      style={{ borderRadius: "3px" }}
                     />
                   </ImageContainer>
                 </a>
