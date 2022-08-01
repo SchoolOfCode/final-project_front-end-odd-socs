@@ -66,10 +66,6 @@ function NavMenu() {
         <HamburgerIcon menuModalOpenHandler={menuModalOpenHandler} />
       )}
       {isMenuModalOpen && <NavMenuModal />}
-      {/* <Title>
-        <TitleSpan>1</TitleSpan>
-        Source
-      </Title> */}
       <SiteLogo />
       {isSearchModalOpen ? (
         <SearchCloseIcon searchModalCloseHandler={searchModalCloseHandler} />
