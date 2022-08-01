@@ -24,17 +24,17 @@ PLAN
 
 
 
-// import styled from "styled-components"
-// import { PageContainer } from "../../universal/Containers.styles"
-// import { Account } from "./Account"
+import styled from "styled-components"
+import { PageContainer } from "../../universal/Containers.styles"
+import { Account } from "./Account"
 
 
-// export function ProfilePage(){
+export function ProfilePage(){
 
-//     return(
-//         <PageContainer>
-//             <Account />
-//         </PageContainer>
+    return(
+        <PageContainer>
+            <Account />
+        </PageContainer>
         
-//     )
-// }
+    )
+}
