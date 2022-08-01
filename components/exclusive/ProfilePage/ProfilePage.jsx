@@ -25,15 +25,28 @@ PLAN
 
 
 import styled from "styled-components"
-import { PageContainer } from "../../universal/Containers.styles"
 import { Account } from "./Account"
+import { Settings } from "./Settings"
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  margin-top: 10vh;
+  height:90vh;
+  width: 100vw;
+  gap: 1rem;
+  padding: 4rem 3rem;
+  position:relative;
+  border:2px solid red;
+`;
 
 export function ProfilePage(){
 
     return(
         <PageContainer>
             <Account />
+            <Settings/>
         </PageContainer>
         
     )
