@@ -1,5 +1,6 @@
+import { filledInputClasses } from "@mui/material";
 import styled from "styled-components";
-import WebmGraphic from "../../../assets/video/WebmGraphic.webm";
+import WebmGraphic from "../../../assets/video/1Source_Splash_bkg.webm";
 
 const BackgroundContainer = styled.div`
   position: absolute;
@@ -13,9 +14,9 @@ const BackgroundContainer = styled.div`
 `;
 
 const BackgroundStyle = {
-  minWidth: "100%",
-  minHeight: "100%",
-  width: "auto",
+  minWidth: "100vw",
+  minHeight: "10vh",
+  width: "100vw",
   height: "auto",
   display: "block",
 };
@@ -23,7 +24,7 @@ const BackgroundStyle = {
 function Background() {
   return (
     <BackgroundContainer>
-      <video style={BackgroundStyle} autoPlay loop muted>
+      <video style={BackgroundStyle} layout="fill" autoPlay loop muted>
         <source src={WebmGraphic} type="video/webm" />
       </video>
     </BackgroundContainer>
