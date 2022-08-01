@@ -6,7 +6,6 @@ import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
 import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
 import Link from "next/link";
 
-
 const TitlePageMidContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -101,13 +100,29 @@ function TitlePageDesktopMid({ movieInfo }) {
           <WatchOnText>Watch on:</WatchOnText>
           <WatchOnIconsContainer>
             <WatchOnIconStyle>
-              <Image  src={GooglePlayIcon} layout="fill" objectFit="contain"/>
+              <Link href="https://play.google.com/store/movies/details/The_Shawshank_Redemption?id=McibEy8umXo.P">
+                <a target="_blank">
+                  <Image
+                    src={GooglePlayIcon}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </a>
+              </Link>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
-              <Image src={YouTubeIcon} layout="fill" objectFit="contain" />
+              <Link href="https://www.youtube.com/watch?v=LeilTRBt-h4">
+                <a target="_blank">
+                  <Image src={YouTubeIcon} layout="fill" objectFit="contain" />
+                </a>
+              </Link>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
-              <Image src={AmazonIcon} layout="fill" objectFit="contain" />
+              <Link href="https://www.amazon.co.uk/Shawshank-Redemption-Morgan-Freeman/dp/B00I6ER1OK">
+                <a target="blank">
+                  <Image src={AmazonIcon} layout="fill" objectFit="contain" />
+                </a>
+              </Link>
             </WatchOnIconStyle>
           </WatchOnIconsContainer>
         </WatchOnContainer>
