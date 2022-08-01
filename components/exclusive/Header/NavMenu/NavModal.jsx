@@ -11,7 +11,6 @@ import MenuAccountIcon from "./MenuAccountIcon";
 const ModalStyles = styled.div`
   position: fixed;
   display: flex;
-  z-index: 10;
   width: 20rem;
   height: 90vh;
   top: 0;
@@ -29,6 +28,7 @@ const ModalStyles = styled.div`
 const ModalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: space-around;
   margin: 0 auto;
   color: var(--highlight);
@@ -44,7 +44,7 @@ const NavRow = styled.div`
   padding: 0 1rem;
 `;
 
-const NavHR = styled.hr`
+export const NavHR = styled.hr`
   border-bottom: 0.5px solid #8197a3;
 `;
 
@@ -53,7 +53,6 @@ const NavLink = styled.a`
   color: white;
   font-weight: 300;
   text-decoration: none;
-  z-index: 1;
 
   &:hover {
     color: var(--secondary);
@@ -70,37 +69,37 @@ function NavMenuModal() {
       <ModalContentContainer>
         <NavRow>
           <MenuHomeIcon />
-          <NavLink href="#">Home</NavLink>
+          <NavLink href="/home">Home</NavLink>
         </NavRow>
         <NavRow>
           <MenuMoviesIcon />
-          <NavLink href="#">Movies</NavLink>
+          <NavLink href="/movies">Movies</NavLink>
         </NavRow>
         <NavRow>
           <MenuTvIcon />
-          <NavLink href="#">TV</NavLink>
+          <NavLink href="/tv">TV</NavLink>
         </NavRow>
         <NavRow>
           <MenuMusicIcon />
-          <NavLink href="#">Music</NavLink>
+          <NavLink href="/music">Music</NavLink>
         </NavRow>
         <NavRow>
           <MenuGamesIcon />
-          <NavLink href="#">Games</NavLink>
+          <NavLink href="/games">Games</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuMyPicksIcon />
-          <NavLink href="#">My Picks</NavLink>
+          <NavLink href="/mypicks">My Picks</NavLink>
         </NavRow>
         <NavRow>
           <MenuWatchlistIcon />
-          <NavLink href="#">My Watchlist</NavLink>
+          <NavLink href="/mywatchlist">My Watchlist</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuAccountIcon />
-          <NavLink href="#">My Account</NavLink>
+          <NavLink href="/">My Account</NavLink>
         </NavRow>
       </ModalContentContainer>
     </ModalStyles>

@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+// ------ MAIN WRAPPERS FOR MASTER COMPONENTS ------
+
+export const HeaderWrapper = styled.div`
+  position: relative;
+  z-index: 1000;
+`;
+
+export const PageWrapper = styled.div`
+  position: relative;
+  z-index: 0;
+`;
 
 // ------ NAVBAR & SEARCH SPECIFIC CONTAINERS ------
 export const NavIconContainer = {
@@ -20,7 +31,7 @@ export const SearchIconsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 2rem;
-`
+`;
 
 // ------ PAGE SETUP CONTAINERS ------
 
@@ -31,24 +42,23 @@ export const PageContainer = styled.div`
   width: 100vw;
   gap: 1rem;
   padding: 4rem 3rem;
-`
+`;
 
 export const RowContainer = styled.div`
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
-`
+`;
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5;
-  width: 7rem;
-`
+  width: 100%;
+`;
 
 export const ImageContainer = styled.div`
-  width: 7rem;
-  height: 10rem;
+  width: 10rem;
+  height: 15rem;
   position: relative;
-  z-index: -1;
-`
+`;

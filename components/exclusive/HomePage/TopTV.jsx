@@ -22,11 +22,7 @@ function TopTV() {
           return (
             <TitleContainer>
               <ImageContainer>
-                <Image
-                  src={tv.image.src}
-                  layout="fill"
-                  style={{ zIndex: -1 }}
-                ></Image>
+                <Image src={tv.image.src} layout="fill"></Image>
               </ImageContainer>
               <TitleText>{tv.title}</TitleText>
             </TitleContainer>
