@@ -1,18 +1,28 @@
 import styled from "styled-components";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 //import { MenuIconContainer } from "../../../universal/Containers.styles";
+import AccountProfileImage  from "../../../assets/Images/AccountProfileImage.png"
+import Image from "next/image";
 
-const AccountContainer = styled.div`
-font-size:1.9rem;
-color: var(--secondary);
-`
+
+
+ const AccountIconContainer = styled.div`
+  border: 2px solid red;
+  border-radius: 50%;
+  height: 10rem;
+  width:10rem
+`;
 
 
 function ProfileAccountIcon() {
   return (
-    <AccountContainer>
-        <AccountCircleIcon/>
-    </AccountContainer>
+      <AccountIconContainer>
+        <Image 
+          src={AccountProfileImage}
+          > 
+        </Image>
+       
+      </AccountIconContainer>
   );
 }
 

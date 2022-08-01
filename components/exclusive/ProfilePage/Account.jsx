@@ -8,7 +8,7 @@ import ProfileAccountIcon from "./ProfileAccountIcon";
 export function Account(){
     return(
         <>
-        <AccountContainer>
+        {/* <AccountContainer> */}
             <ProfileAccountIcon/>
             {/* <UserInitials>
                 <h1>SP</h1>
@@ -16,7 +16,7 @@ export function Account(){
             <YearJoined>
                 <h2>Member since 2022</h2>
             </YearJoined> */}
-        </AccountContainer>
+        {/* </AccountContainer> */}
         </>
     )
 }
