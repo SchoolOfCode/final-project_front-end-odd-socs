@@ -14,7 +14,7 @@ function TitleImageMobile({movieInfo}) {
 
     return (
 <TitleImageMobileContainer>
-    <Image src={imageUrl} layout="fill"></Image>
+    <Image src={imageUrl} layout="fill" alt = "Title Image--Mobile"></Image>
 </TitleImageMobileContainer>
     )
 }

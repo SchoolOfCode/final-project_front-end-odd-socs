@@ -20,9 +20,9 @@ function TopMovies() {
     <>
       <SectionTitle>Top 10 Movies</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie) => {
+        {moviesTop10.map((movie,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <Link href="/title">
                 <a>
                   <ImageContainer>
@@ -30,6 +30,7 @@ function TopMovies() {
                       src={`${movie.image.split("_")[0]}@.jpg`}
                       layout="fill"
                       style={{ borderRadius: "3px" }}
+                      alt={movie.title}
                     />
                   </ImageContainer>
                 </a>

@@ -20,16 +20,17 @@ let moviesTop10 = moviesList.slice(210, 220);
 function NintiesMusic() {
   return (
     <>
-      <SectionTitle>90's Hits</SectionTitle>
+      <SectionTitle>90&apos;s Hits</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie) => {
+        {moviesTop10.map((movie,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <MusicImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
+                  alt={movie.title}
                 ></Image>
               </MusicImageContainer>
               <TitleText>{movie.title}</TitleText>

@@ -48,6 +48,14 @@ export const RowContainer = styled.div`
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
+  max-width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const TitleContainer = styled.div`
   display: flex;

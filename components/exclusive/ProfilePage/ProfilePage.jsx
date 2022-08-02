@@ -2,9 +2,9 @@
 PLAN
 - make file structure for profile pages & component -DONE
 - make Account component - IN PROGRESS  
- - image
- - user name (hard coded)
- - member since
+ - image - IN PROGRESS
+ - user name (hard coded) - DONE
+ - member since - DONE
 
  - make settings component
     - my account
@@ -24,17 +24,29 @@ PLAN
 
 
 
-// import styled from "styled-components"
-// import { PageContainer } from "../../universal/Containers.styles"
-// import { Account } from "./Account"
+import styled from "styled-components"
+import { Account } from "./Account"
+import { Settings } from "./Settings"
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  margin-top: 10vh;
+  height:90vh;
+  width: 100vw;
+  gap: 1rem;
+  padding: 4rem 3rem;
+  position:relative;
+`;
 
-// export function ProfilePage(){
+export function ProfilePage(){
 
-//     return(
-//         <PageContainer>
-//             <Account />
-//         </PageContainer>
+    return(
+        <PageContainer>
+            <Account />
+            <Settings/>
+        </PageContainer>
         
-//     )
-// }
+    )
+}

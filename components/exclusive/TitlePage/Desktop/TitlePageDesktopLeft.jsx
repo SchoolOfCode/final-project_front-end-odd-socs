@@ -6,6 +6,20 @@ import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
+
+const share = {
+  config: [{
+        facebook: {
+          socialShareUrl: 'https://facebook.com'
+        }
+      },{
+        twitter: {
+          socialShareUrl: 'https://twitter.com'
+        }
+  }]
+};
+
+
 const TitlePageLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,7 +64,7 @@ function TitlePageDesktopLeft({ movieInfo }) {
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image src={imageUrl} layout="fill" objectFit="contain"></Image>
+        <Image src={imageUrl} layout="fill" objectFit="contain" alt="Title Image"></Image>
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
