@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import SettingsIcon from "./SettingsIcon";
 
 
 const ProfileSettingsContainer = styled.div`
@@ -6,7 +7,6 @@ const ProfileSettingsContainer = styled.div`
     flex-direction:column;
     color:white;
     width:30vw;
-    text-align:right;
     position:absolute;
     top:25px;
     right:15px;
@@ -14,16 +14,37 @@ const ProfileSettingsContainer = styled.div`
 `
 
 const SettingHeaders = styled.h3`
-font-weight:normal;
+    font-weight:500;
+    font-size: 1.1rem;
+    color: var(--font-secondary-color)
+`
+const HeadingRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
 `
 
 export function Settings(){
     return(
         <ProfileSettingsContainer>
-            <SettingHeaders>My Account</SettingHeaders>
-            <SettingHeaders>Notifications</SettingHeaders>
-            <SettingHeaders>Accessibility</SettingHeaders>
-            <SettingHeaders>Customer Support</SettingHeaders>
+            <HeadingRow>
+                <SettingHeaders>My Account</SettingHeaders>
+                <SettingsIcon />
+            </HeadingRow>
+            <HeadingRow>
+                <SettingHeaders>Notifications</SettingHeaders>
+                <SettingsIcon />
+            </HeadingRow>
+            <HeadingRow>
+                <SettingHeaders>Accessibility</SettingHeaders>
+                <SettingsIcon />
+            </HeadingRow>
+            <HeadingRow>
+                <SettingHeaders>Customer Support</SettingHeaders>
+                <SettingsIcon />
+            </HeadingRow>
         </ProfileSettingsContainer>
     )
 }
