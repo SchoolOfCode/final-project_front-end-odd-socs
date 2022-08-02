@@ -24,11 +24,15 @@ function TopMusic() {
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
       <RowContainer>
-        {music.map((music) => {
+        {music.map((music,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <MusicImageContainer>
-                <Image src={music.image.src} layout="fill"></Image>
+                <Image
+                  src={music.image.src}
+                  layout="fill"
+                  alt="music"
+                ></Image>
               </MusicImageContainer>
               <TitleText>{music.title}</TitleText>
             </TitleContainer>

@@ -18,11 +18,11 @@ function TopTV() {
     <>
       <SectionTitle>Top 10 TV Shows</SectionTitle>
       <RowContainer>
-        {tv.map((tv) => {
+        {tv.map((tv, key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <ImageContainer>
-                <Image src={tv.image.src} layout="fill"></Image>
+                <Image src={tv.image.src} layout="fill" alt="tv"></Image>
               </ImageContainer>
               <TitleText>{tv.title}</TitleText>
             </TitleContainer>
