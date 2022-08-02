@@ -11,7 +11,7 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-import { music } from "../../../data/home-test-data/home-test-data";
+// import { music } from "../../../data/home-test-data/home-test-data";
 import moviesList from "../../../data/movie-test-data/movies";
 
 const MusicImageContainer = styled(ImageContainer)`
@@ -20,16 +20,18 @@ const MusicImageContainer = styled(ImageContainer)`
 `;
 
 function TopMusic() {
+
+  const musicTop10 = moviesList.slice(21, 30);
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
       <RowContainer>
-        {music.map((music,key) => {
+        {musicTop10.map((music,key) => {
           return (
             <TitleContainer key={key}>
               <MusicImageContainer>
                 <Image
-                  src={music.image.src}
+                  src={`${music.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   alt="music"
                 ></Image>
