@@ -13,7 +13,7 @@ function Profile() {
         <Header />
       </HeaderWrapper>
       <PageWrapper>
-        {/* <ProfilePage /> */}
+        <ProfilePage />
       </PageWrapper>
     </>
   );
