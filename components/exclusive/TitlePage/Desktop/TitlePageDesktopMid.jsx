@@ -106,6 +106,7 @@ function TitlePageDesktopMid({ movieInfo }) {
                     src={GooglePlayIcon}
                     layout="fill"
                     objectFit="contain"
+                    alt = "Google Play Icon"
                   />
                 </a>
               </Link>
@@ -113,14 +114,14 @@ function TitlePageDesktopMid({ movieInfo }) {
             <WatchOnIconStyle>
               <Link href="https://www.youtube.com/watch?v=LeilTRBt-h4">
                 <a target="_blank">
-                  <Image src={YouTubeIcon} layout="fill" objectFit="contain" />
+                  <Image src={YouTubeIcon} layout="fill" objectFit="contain" alt = "YouTube Icon" />
                 </a>
               </Link>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
               <Link href="https://www.amazon.co.uk/Shawshank-Redemption-Morgan-Freeman/dp/B00I6ER1OK">
                 <a target="blank">
-                  <Image src={AmazonIcon} layout="fill" objectFit="contain" />
+                  <Image src={AmazonIcon} layout="fill" objectFit="contain" alt = "Amazon Icon" />
                 </a>
               </Link>
             </WatchOnIconStyle>

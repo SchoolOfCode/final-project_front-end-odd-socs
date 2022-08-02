@@ -16,21 +16,21 @@ const MusicImageContainer = styled(ImageContainer)`
   height: 8rem;
 `;
 let moviesTop10 = moviesList.slice(110, 120);
-console.log(moviesTop10);
 
 function TopHitsMusic() {
   return (
     <>
       <SectionTitle>Top Hits</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie) => {
+        {moviesTop10.map((movie, key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <MusicImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
+                  alt={movie.title}
                 ></Image>
               </MusicImageContainer>
               <TitleText>{movie.title}</TitleText>

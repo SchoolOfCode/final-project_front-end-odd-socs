@@ -37,7 +37,7 @@ function GenresHorror() {
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   style={{ zIndex: -1 }}
                   layout="fill"
-                  alt="movie"
+                  alt={movie.title}
                 ></Image>
               </ImageContainer>
               <TitleText>{movie.title}</TitleText>

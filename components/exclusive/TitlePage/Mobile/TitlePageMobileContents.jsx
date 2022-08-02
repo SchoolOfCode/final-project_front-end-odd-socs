@@ -138,7 +138,7 @@ function TitlePageContents({ movieInfo }) {
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
-  }, []);
+  }, [shortSynopsis]);
 
   function toggleFullSynopsis(e) {
     e.preventDefault;
@@ -149,13 +149,13 @@ function TitlePageContents({ movieInfo }) {
     if (isSynopsisOpen === true) {
       setSynopsis(movieInfo.plot);
     }
-  }, [isSynopsisOpen]);
+  }, [isSynopsisOpen, movieInfo.plot]);
 
   useEffect(() => {
     if (isSynopsisOpen === false) {
       setSynopsis(shortSynopsis);
     }
-  }, [isSynopsisOpen]);
+  }, [isSynopsisOpen, shortSynopsis]);
 
   const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
 
@@ -206,9 +206,9 @@ function TitlePageContents({ movieInfo }) {
         </WatchOnContainer>
         {isWatchOnOpen && (
           <WatchOnIconContainer>
-            <Image src={GooglePlayIcon} />
-            <Image src={YouTubeIcon} />
-            <Image src={AmazonIcon} />
+            <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
+            <Image src={YouTubeIcon} alt = "YouTube Icon" />
+            <Image src={AmazonIcon} alt = "Amazon Icon"/>
           </WatchOnIconContainer>
         )}
         <NavHR />
@@ -218,9 +218,9 @@ function TitlePageContents({ movieInfo }) {
           })`}</CommentTitle>
         </CommentHeader>
         <CommentSectionContainer>
-          {Object.values(CommentDummyData).map((comment) => {
+          {Object.values(CommentDummyData).map((comment, key) => {
             return (
-              <Comment>
+              <Comment key={key}>
                 <AccountCircleIcon />
                 <CommentText>{comment}</CommentText>
               </Comment>

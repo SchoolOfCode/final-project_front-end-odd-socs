@@ -10,7 +10,7 @@ const LogoContainer = styled.div`
 function SiteLogo() {
   return (
     <LogoContainer>
-      <Image src={Logo} width={200} height={100}></Image>
+      <Image src={Logo} width={200} height={100} alt="1Source Logo"></Image>
     </LogoContainer>
   );
 }

@@ -19,14 +19,15 @@ function DramaTv() {
     <>
       <SectionTitle>Drama</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie) => {
+        {moviesTop10.map((movie,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <ImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   style={{ zIndex: -1 }}
                   layout="fill"
+                  alt={movie.title}
                 ></Image>
               </ImageContainer>
               <TitleText>{movie.title}</TitleText>

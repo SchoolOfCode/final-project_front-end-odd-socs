@@ -19,14 +19,15 @@ function TopGames() {
     <>
       <SectionTitle>Top 10 Video Games</SectionTitle>
       <RowContainer>
-        {games.map((game) => {
+        {games.map((game,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <ImageContainer>
                 <Image
                   src={game.image.src}
-                  layout='fill'
+                  layout="fill"
                   style={{ zIndex: -1 }}
+                  alt="movie"
                 ></Image>
               </ImageContainer>
               <TitleText>{game.title}</TitleText>

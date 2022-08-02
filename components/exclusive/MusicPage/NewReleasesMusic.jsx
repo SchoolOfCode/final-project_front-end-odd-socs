@@ -22,14 +22,15 @@ function NewReleasesMusic() {
     <>
       <SectionTitle>New Releases</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie) => {
+        {moviesTop10.map((movie,key) => {
           return (
-            <TitleContainer>
+            <TitleContainer key={key}>
               <MusicImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
+                  alt={movie.title}
                 ></Image>
               </MusicImageContainer>
               <TitleText>{movie.title}</TitleText>
