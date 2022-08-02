@@ -3,22 +3,22 @@ import ProfileAccountIcon from "./ProfileAccountIcon";
 
 const UserInitials = styled.h2`
     color: var(--font-primary-color);
-    font-size:3rem;
-    font-weight:300;
-
-    margin-top: 1.5rem;
+    font-size:2.5rem;
+    font-weight: 500;
+    margin-top:0.5rem;
 `
 const YearJoined =  styled.h3`
     color: var(--font-secondary-color);
-    font-size:1.5rem;
-    font-weight:300;
+    font-size:1.4rem;
+    font-weight: 400;
 `
 const AccountContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid white;
+
+    gap:0.5rem;
 `
 
 export function Account(){

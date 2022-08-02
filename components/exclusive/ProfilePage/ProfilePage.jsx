@@ -38,7 +38,6 @@ const PageContainer = styled.div`
   gap: 1rem;
   padding: 4rem 3rem;
   position:relative;
-  border:2px solid red;
 `;
 
 export function ProfilePage(){

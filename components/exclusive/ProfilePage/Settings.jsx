@@ -4,7 +4,6 @@ import styled from "styled-components";
 const ProfileSettingsContainer = styled.div`
     display:flex;
     flex-direction:column;
-    border:2px solid red;
     color:white;
     width:30vw;
     text-align:right;
