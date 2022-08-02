@@ -64,9 +64,9 @@ function TitlePageDesktopRight() {
         })`}</CommentTitle>
       </CommentHeader>
       <CommentSectionContainer>
-        {Object.values(CommentDummyData).map((comment) => {
+        {Object.values(CommentDummyData).map((comment, key) => {
           return (
-            <Comment>
+            <Comment key={key}>
               <AccountCircleIcon />
               <p>{comment}</p>
             </Comment>
