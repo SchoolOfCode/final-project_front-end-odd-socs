@@ -13,7 +13,7 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-const moviesTop10 = moviesList.slice(0, 10);
+export const moviesTop10 = moviesList.slice(0, 10);
 
 function TopMovies() {
   return (
