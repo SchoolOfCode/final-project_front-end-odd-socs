@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { SignInEmail } from "./firebase/SignInEmail"
-import { SignInGoogle } from "./firebase/SignInGoogle"
+// import { SignInEmail } from "./firebase/SignInEmail"
+// import { SignInGoogle } from "./firebase/SignInGoogle"
 
 const PageContainer = styled.div`
     display: flex;
@@ -25,8 +25,8 @@ const LogInModal = () => {
     return (
         <PageContainer>
             <Background>
-                <SignInEmail/>
-                <SignInGoogle/>
+                {/* <SignInEmail/>
+                <SignInGoogle/> */}
             </Background>
         </PageContainer>
     )
