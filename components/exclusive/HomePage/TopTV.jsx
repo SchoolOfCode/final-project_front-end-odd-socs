@@ -15,7 +15,7 @@ import {
 import moviesList from "../../../data/movie-test-data/movies";
 
 function TopTV() {
-  const tvTop10 = moviesList.slice(31, 40);
+  const tvTop10 = moviesList.slice(35, 45);
   return (
     <>
       <SectionTitle>Top 10 TV Shows</SectionTitle>

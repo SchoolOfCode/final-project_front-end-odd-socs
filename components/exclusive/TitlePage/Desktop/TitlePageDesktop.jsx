@@ -22,7 +22,7 @@ const PageContentContainer = styled.div`
   max-height: 60rem;
 `;
 
-function TitlePageDesktop({ movieInfo }) {
+export function TitlePageDesktop({ movieInfo }) {
   return (
     <TitlePageContainer>
       <PageContentContainer>

@@ -15,7 +15,7 @@ import {
 import moviesList from "../../../data/movie-test-data/movies";
 
 function TopGames() {
-  const gamesTop10 = moviesList.slice(11, 20);
+  const gamesTop10 = moviesList.slice(11, 21);
   return (
     <>
       <SectionTitle>Top 10 Video Games</SectionTitle>

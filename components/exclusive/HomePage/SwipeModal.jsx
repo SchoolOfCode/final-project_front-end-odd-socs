@@ -21,6 +21,7 @@ const ModalBackgroundMobile = styled.div`
 const ModalBackgroundDesktop = styled(ModalBackgroundMobile)`
 justify-content: flex-start;
 padding-top: 15rem;
+overflow: hidden;
 `
 
 const ModalText = styled.h2`

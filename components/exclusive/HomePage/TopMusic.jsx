@@ -6,7 +6,7 @@ import {
 } from "../../../components/universal/Text.styles";
 
 import {
-  RowContainer,
+  // RowContainer,
   TitleContainer,
   ImageContainer,
 } from "../../universal/Containers.styles";
@@ -19,13 +19,27 @@ const MusicImageContainer = styled(ImageContainer)`
   height: 8rem;
 `;
 
+export const MusicRowContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  max-width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 function TopMusic() {
 
-  const musicTop10 = moviesList.slice(21, 30);
+  const musicTop10 = moviesList.slice(22, 34);
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
-      <RowContainer>
+      <MusicRowContainer>
         {musicTop10.map((music,key) => {
           return (
             <TitleContainer key={key}>
@@ -40,8 +54,9 @@ function TopMusic() {
             </TitleContainer>
           );
         })}
-      </RowContainer>
+      </MusicRowContainer>
     </>
+
   );
 }
 
