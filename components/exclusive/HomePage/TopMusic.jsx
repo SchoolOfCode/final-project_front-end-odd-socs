@@ -23,7 +23,7 @@ export const MusicRowContainer = styled.div`
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
-  max-width: 100%;
+  max-width: 95%;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -35,7 +35,7 @@ export const MusicRowContainer = styled.div`
 
 function TopMusic() {
 
-  const musicTop10 = moviesList.slice(22, 34);
+  const musicTop10 = moviesList.slice(22, 32);
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>

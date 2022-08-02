@@ -16,6 +16,7 @@ const ModalBackgroundMobile = styled.div`
   z-index: 1998;
   flex-direction: column;
   gap: 2rem;
+  padding-bottom: 50rem;
 `;
 
 const ModalBackgroundDesktop = styled(ModalBackgroundMobile)`
@@ -64,12 +65,12 @@ function SwipeModal({setIsFirstLoad, setCount, count}) {
 
   return (
     <>
-      {isSwipeModalOpen && width >= 500 && (
+      {isSwipeModalOpen && width < 500 && (
         <ModalBackgroundMobile onClick={handleCloseModal}>
           <SwipeIcon style = {modalStyle}/>
           <ModalText>Swipe to Browse </ModalText>
         </ModalBackgroundMobile>)}
-      {isSwipeModalOpen && width < 500 && ( 
+      {isSwipeModalOpen && width >= 500 && ( 
         (<ModalBackgroundDesktop onClick={handleCloseModal}>
           <SwipeIcon style = {modalStyle}/>
           <ModalText>Swipe to Browse </ModalText>
