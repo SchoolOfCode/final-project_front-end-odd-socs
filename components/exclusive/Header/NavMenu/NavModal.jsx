@@ -99,7 +99,7 @@ function NavMenuModal() {
         <NavHR />
         <NavRow>
           <MenuAccountIcon />
-          <NavLink href="/">My Account</NavLink>
+          <NavLink href="/profile">My Account</NavLink>
         </NavRow>
       </ModalContentContainer>
     </ModalStyles>
