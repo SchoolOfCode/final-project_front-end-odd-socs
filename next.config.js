@@ -2,7 +2,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["m.media-amazon.com"],
+    domains: ["m.media-amazon.com", "image.tmdb.org"],
   },
 
   webpack: (config, options) => {

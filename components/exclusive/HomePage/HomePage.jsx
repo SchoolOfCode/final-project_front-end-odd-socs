@@ -20,7 +20,7 @@ function HomePage() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [count, setCount] = useState(0);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   // const [top10Movies, setTop10Movies] = useState();
   const [top10TV, setTop10TV] = useState();

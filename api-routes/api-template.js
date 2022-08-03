@@ -5,14 +5,16 @@ import { useState } from "react";
 
 // To fetch on initial page load - needs to go in homepage
 
-export const getTop10Movies = () => {
+export const getTop10Movies = (setIsLoading, setTop10Movies) => {
   axios
     .get(
       "https://api.themoviedb.org/3/movie/popular?api_key=5b12a167b6f95af9455340da9de5a3ad&language=en-US&page=1"
     )
     .then((response) => {
       const example = response.data.results.slice(0, 10);
-      // console.log(example);
+      console.log(example);
+      setIsLoading(false);
+      setTop10Movies(example);
     });
 };
 
