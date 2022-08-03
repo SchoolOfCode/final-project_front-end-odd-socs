@@ -23,16 +23,15 @@ function MoviesPage() {
       <PageTitle>Movies</PageTitle>
       <TopMovies />
       <WatchlistMovies />
-      <MyPicksMovies/>
-      <NinetiesMovies/>
-      <NewReleasesMovies/>
-      <RandomMovies/>
+      <MyPicksMovies />
+      <NinetiesMovies />
+      <NewReleasesMovies />
+      <RandomMovies />
       <HorrorMovies />
       <SciFiMovies />
       <ComedyMovies />
       <RomComMovies />
     </PageContainer>
-    
   );
 }
 
