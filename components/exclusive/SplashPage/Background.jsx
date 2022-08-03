@@ -1,6 +1,6 @@
 import { filledInputClasses } from "@mui/material";
 import styled from "styled-components";
-import WebmGraphic from "../../../assets/video/1Source_Splash_bkg.webm";
+import WebmGraphic from "../../../assets/video/1Source_Splash_With-bkg.webm";
 
 const BackgroundContainer = styled.div`
   position: absolute;
