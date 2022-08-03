@@ -206,9 +206,9 @@ function TitlePageContents({ movieInfo }) {
         </WatchOnContainer>
         {isWatchOnOpen && (
           <WatchOnIconContainer>
-            <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
-            <Image src={YouTubeIcon} alt = "YouTube Icon" />
-            <Image src={AmazonIcon} alt = "Amazon Icon"/>
+            <Image src={GooglePlayIcon} alt="Google Play Icon" />
+            <Image src={YouTubeIcon} alt="YouTube Icon" />
+            <Image src={AmazonIcon} alt="Amazon Icon" />
           </WatchOnIconContainer>
         )}
         <NavHR />

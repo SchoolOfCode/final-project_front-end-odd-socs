@@ -9,7 +9,6 @@ const ModalBackgroundMobile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid orange; */
   position: absolute;
   top: 0;
   left: 0;
@@ -73,7 +72,7 @@ function SwipeModal({setIsFirstLoad, setCount, count}) {
       {isSwipeModalOpen && width >= 500 && ( 
         (<ModalBackgroundDesktop onClick={handleCloseModal}>
           <SwipeIcon style = {modalStyle}/>
-          <ModalText>Swipe to Browse </ModalText>
+          <ModalText>Swipe or Click & Drag to Browse </ModalText>
         </ModalBackgroundDesktop>)
       )};
     </>
