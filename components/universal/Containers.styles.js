@@ -52,6 +52,7 @@ export const RowContainer = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  cursor: grab;
 
   &::-webkit-scrollbar {
     display: none;
@@ -69,4 +70,7 @@ export const ImageContainer = styled.div`
   width: 10rem;
   height: 15rem;
   position: relative;
+  &:hover {
+    cursor: grab;
+  }
 `;

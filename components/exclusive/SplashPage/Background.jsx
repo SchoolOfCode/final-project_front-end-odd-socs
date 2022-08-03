@@ -2,32 +2,39 @@ import { filledInputClasses } from "@mui/material";
 import styled from "styled-components";
 import WebmGraphic from "../../../assets/video/1Source_Splash_With-bkg.webm";
 
-const BackgroundContainer = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  display: block;
-`;
+// const BackgroundContainer = styled.div`
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   z-index: -1;
+//   height: 100vh;
+//   width: 100%;
+//   overflow: hidden;
+//   display: block;
+//   background-size: cover;
+// `;
 
 const BackgroundStyle = {
-  minWidth: "100vw",
-  minHeight: "10vh",
-  width: "100vw",
+  minWidth: "100%",
+  minHeight: "100%",
+  width: "auto",
   height: "auto",
+  position: "fixed",
+  zIndex: "-1",
+  top: "0",
+  left: "0",
   display: "block",
+  overflow: "hidden",
+  objectFit: "fill",
 };
 
 function Background() {
   return (
-    <BackgroundContainer>
-      <video style={BackgroundStyle} layout="fill" autoPlay loop muted>
-        <source src={WebmGraphic} type="video/webm" />
-      </video>
-    </BackgroundContainer>
+    // <BackgroundContainer>
+    <video style={BackgroundStyle} autoPlay loop muted>
+      <source src={WebmGraphic} type="video/webm" />
+    </video>
+    // </BackgroundContainer>
   );
 }
 
