@@ -13,38 +13,48 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-import { useRef } from "react";
-import { useDraggable } from "react-use-draggable-scroll";
+import { getTop10Movies } from "../../../api-routes/api-template";
 
-export const moviesTop10 = moviesList.slice(0, 10);
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 function TopMovies() {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
+  const [top10Movies, setTop10Movies] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getTop10Movies(setIsLoading, setTop10Movies);
+  }, []);
+
   return (
     <>
       <SectionTitle>Top 10 Movies</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {moviesTop10.map((movie, key) => {
-          return (
-            <TitleContainer key={key}>
-              <Link href="/title">
-                <a>
-                  <ImageContainer>
-                    <Image
-                      src={`${movie.image.split("_")[0]}@.jpg`}
-                      layout="fill"
-                      style={{ borderRadius: "3px" }}
-                      alt={movie.title}
-                    />
-                  </ImageContainer>
-                </a>
-              </Link>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+        {isLoading
+          ? null
+          : top10Movies.map((movie, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <Link href="/title">
+                    <a>
+                      <ImageContainer>
+                        <Image
+                          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                          layout="fill"
+                          style={{ borderRadius: "3px" }}
+                          alt={movie.title}
+                          priority
+                        />
+                      </ImageContainer>
+                    </a>
+                  </Link>
+                  <TitleText>{movie.title}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );
