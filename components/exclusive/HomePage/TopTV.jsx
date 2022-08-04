@@ -11,25 +11,43 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { tv } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
+import { getTop10TV } from "../../../api-routes/api-TMDb";
+
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 function TopTV() {
-  const tvTop10 = moviesList.slice(35, 45);
+  const ref = useRef();
+  const { events } = useDraggable(ref);
+
+  const [top10TV, setTop10TV] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getTop10TV(setIsLoading, setTop10TV);
+  }, []);
+
   return (
     <>
       <SectionTitle>Top 10 TV Shows</SectionTitle>
-      <RowContainer>
-        {tvTop10.map((tv, key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image src={`${tv.image.split("_")[0]}@.jpg`} layout="fill" alt="tv"></Image>
-              </ImageContainer>
-              <TitleText>{tv.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <RowContainer {...events} ref={ref}>
+        {isLoading
+          ? null
+          : top10TV.slice(0, 10).map((tv, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
+                      layout="fill"
+                      alt="tv"
+                      priority
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{tv.name}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );

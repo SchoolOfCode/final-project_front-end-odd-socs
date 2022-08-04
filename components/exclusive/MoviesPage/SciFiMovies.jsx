@@ -8,32 +8,43 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(70, 80);
+import { getSciFiGenre } from "../../../api-routes/api-TMDb";
 
 function SciFiMovies() {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
+
+  const [sciFiGenre, setSciFiGenre] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getSciFiGenre(setIsLoading, setSciFiGenre);
+  }, []);
+
   return (
     <>
-      <SectionTitle>Sci-Fi</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <SectionTitle>Sci-Fi & Fantasy</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {isLoading
+          ? null
+          : sciFiGenre.map((movie, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      layout="fill"
+                      alt={movie.title}
+                      priority
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{movie.title}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );

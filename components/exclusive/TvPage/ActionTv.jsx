@@ -8,34 +8,29 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
+import { getTVActionGenre } from "../../../api-routes/api-TMDb";
+
 import { useEffect, useRef, useState } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-import { getRandomTV } from "../../../api-routes/api-TMDb";
-
-function RandomTv() {
+function DocumentariesTv() {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
-  const [randomTV, setRandomTV] = useState();
+  const [tvActionGenre, setTVActionGenre] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(Math.floor(Math.random() * 100));
-
-  const pageNumberUpdater = () => {
-    setPageNumber(Math.floor(Math.random() * 100));
-  };
 
   useEffect(() => {
-    getRandomTV(setIsLoading, setRandomTV, pageNumber);
-    pageNumberUpdater();
+    getTVActionGenre(setIsLoading, setTVActionGenre);
   }, []);
+
   return (
     <>
-      <SectionTitle>Random TV Shows</SectionTitle>
+      <SectionTitle>Action & Adventure</SectionTitle>
       <RowContainer {...events} ref={ref}>
         {isLoading
           ? null
-          : randomTV.map((tv, key) => {
+          : tvActionGenre.map((tv, key) => {
               return (
                 <TitleContainer key={key}>
                   <ImageContainer>
@@ -43,6 +38,7 @@ function RandomTv() {
                       src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
                       layout="fill"
                       alt={tv.title}
+                      priority
                     ></Image>
                   </ImageContainer>
                   <TitleText>{tv.name}</TitleText>
@@ -54,4 +50,4 @@ function RandomTv() {
   );
 }
 
-export default RandomTv;
+export default DocumentariesTv;

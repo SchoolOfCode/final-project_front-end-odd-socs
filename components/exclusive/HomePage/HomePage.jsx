@@ -9,7 +9,7 @@ import TopGames from "./TopGames";
 import { useState } from "react";
 import SwipeModal from "./SwipeModal";
 
-import { getTop10Movies, getTop10TV } from "../../../api-routes/api-template";
+import { getTop10Movies, getTop10TV } from "../../../api-routes/api-TMDb";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -28,9 +28,7 @@ function HomePage() {
   const [top10Games, setTop10Games] = useState();
 
   // useEffect(() => {
-  //   setTop10Movies(getTop10Movies());
-  //   setIsLoading(false);
-  //   setTop10TV(getTop10TV());
+  //   getTop10Movies(setIsLoading, setTop10Movies);
   // }, []);
 
   return (

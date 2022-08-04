@@ -5,11 +5,11 @@ import TopTV from "../HomePage/TopTV";
 import WatchlistTv from "./WatchlistTv";
 import MyPicksTv from "./MyPicksTv";
 import RandomTv from "./RandomTv";
-import NinetiesShows from "./NinetiesShows";
-import NewReleasesTv from "./NewReleasesTv";
-import DocumentariesTv from "./DocumentariesTv";
+import AiringTodayTv from "./AiringTodayTv";
+import CrimeTv from "./CrimeTv";
+import ActionTv from "./ActionTv";
 import DramaTv from "./DramaTv";
-import ComedyTv from "./ComedyTv";
+import SciFiTv from "./SciFiTv";
 import AnimeTv from "./AnimeTv";
 
 const PageTitle = styled.div`
@@ -24,13 +24,13 @@ function TvPage() {
       <TopTV />
       <WatchlistTv />
       <MyPicksTv />
-      <RandomTv />
-      <NinetiesShows />
-      <NewReleasesTv />
-      <DocumentariesTv />
+      <AiringTodayTv />
+      <ActionTv />
       <DramaTv />
-      <ComedyTv />
+      <SciFiTv />
       <AnimeTv />
+      <CrimeTv />
+      <RandomTv />
     </PageContainer>
   );
 }

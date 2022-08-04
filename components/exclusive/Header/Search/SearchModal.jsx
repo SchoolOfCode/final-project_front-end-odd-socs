@@ -44,14 +44,12 @@ const NavRowSearch = styled.div`
   padding: 0 1rem;
 `;
 
-
 const NavRow = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
   color: white;
   padding: 0 1rem;
-
 
   @media screen and (max-width: 400px) {
     flex-direction: column;

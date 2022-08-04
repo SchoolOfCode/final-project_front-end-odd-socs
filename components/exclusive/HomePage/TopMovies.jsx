@@ -11,9 +11,7 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import moviesList from "../../../data/movie-test-data/movies";
-
-import { getTop10Movies } from "../../../api-routes/api-template";
+import { getTop10Movies } from "../../../api-routes/api-TMDb";
 
 import { useEffect, useRef, useState } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
@@ -35,7 +33,7 @@ function TopMovies() {
       <RowContainer {...events} ref={ref}>
         {isLoading
           ? null
-          : top10Movies.map((movie, key) => {
+          : top10Movies.slice(0, 10).map((movie, key) => {
               return (
                 <TitleContainer key={key}>
                   <Link href="/title">
@@ -44,7 +42,6 @@ function TopMovies() {
                         <Image
                           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                           layout="fill"
-                          style={{ borderRadius: "3px" }}
                           alt={movie.title}
                           priority
                         />

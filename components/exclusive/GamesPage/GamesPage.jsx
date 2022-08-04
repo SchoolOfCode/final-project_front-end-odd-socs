@@ -1,21 +1,4 @@
-/*
-    PLAN
-    create music page component
-    - display 10 category components
-        - Top Games - DONE
-        - Play list - DONE
-        - my picks - DONE
-        - Classics - DONE
-        - new releases - DONE
-        - random - DONE
-        - FPS - DONE
-        - RPG - DONE
-        - Driving - DONE
-        - Sport - DONE
-*/
-
 import styled from "styled-components";
-import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopGames from "../HomePage/TopGames";
 import PlaylistGames from "./PlaylistGames";

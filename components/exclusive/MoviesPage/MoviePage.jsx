@@ -4,13 +4,13 @@ import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "../HomePage/TopMovies";
 import WatchlistMovies from "./WatchlistMovies";
 import MyPicksMovies from "./MyPicksMovies";
-import NinetiesMovies from "./NinetiesMovies";
+import ActionMovies from "./ActionMovies";
 import NewReleasesMovies from "./NewReleasesMovies";
 import RandomMovies from "./RandomMovies";
 import HorrorMovies from "./HorrorMovies";
 import SciFiMovies from "./SciFiMovies";
 import ComedyMovies from "./ComedyMovies";
-import RomComMovies from "./RomComMovies";
+import Documentary from "./Documentary";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -22,15 +22,15 @@ function MoviesPage() {
     <PageContainer>
       <PageTitle>Movies</PageTitle>
       <TopMovies />
+      <NewReleasesMovies />
       <WatchlistMovies />
       <MyPicksMovies />
-      <NinetiesMovies />
-      <NewReleasesMovies />
-      <RandomMovies />
-      <HorrorMovies />
+      <ActionMovies />
       <SciFiMovies />
       <ComedyMovies />
-      <RomComMovies />
+      <HorrorMovies />
+      <Documentary />
+      <RandomMovies />
     </PageContainer>
   );
 }

@@ -1,4 +1,6 @@
 import Logo from "../../../../assets/site-logo/1Source.svg";
+import Logo2 from "../../../../assets/site-logo/1Source-edit2.svg";
+import AltLogo from "../../../../assets/site-logo/1SourceLogo-edit.svg";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
@@ -13,7 +15,12 @@ function SiteLogo() {
     <LogoContainer>
       <Link href="/home">
         <a>
-          <Image src={Logo} width={200} height={100} alt="1Source Logo"></Image>
+          <Image
+            src={Logo2}
+            width={150}
+            height={100}
+            alt="1Source Logo"
+          ></Image>
         </a>
       </Link>
     </LogoContainer>

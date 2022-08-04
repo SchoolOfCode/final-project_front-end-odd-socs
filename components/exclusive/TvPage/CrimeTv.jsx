@@ -8,34 +8,29 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
+import { getTVCrimeGenre } from "../../../api-routes/api-TMDb";
+
 import { useEffect, useRef, useState } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-import { getRandomTV } from "../../../api-routes/api-TMDb";
-
-function RandomTv() {
+function CrimeTv() {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
-  const [randomTV, setRandomTV] = useState();
+  const [tvCrimeGenre, setTVCrimeGenre] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(Math.floor(Math.random() * 100));
-
-  const pageNumberUpdater = () => {
-    setPageNumber(Math.floor(Math.random() * 100));
-  };
 
   useEffect(() => {
-    getRandomTV(setIsLoading, setRandomTV, pageNumber);
-    pageNumberUpdater();
+    getTVCrimeGenre(setIsLoading, setTVCrimeGenre);
   }, []);
+
   return (
     <>
-      <SectionTitle>Random TV Shows</SectionTitle>
+      <SectionTitle>Crime</SectionTitle>
       <RowContainer {...events} ref={ref}>
         {isLoading
           ? null
-          : randomTV.map((tv, key) => {
+          : tvCrimeGenre.map((tv, key) => {
               return (
                 <TitleContainer key={key}>
                   <ImageContainer>
@@ -54,4 +49,4 @@ function RandomTv() {
   );
 }
 
-export default RandomTv;
+export default CrimeTv;

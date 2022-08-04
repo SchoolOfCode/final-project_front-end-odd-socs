@@ -8,32 +8,49 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(50, 60);
+import { getRandomMovies } from "../../../api-routes/api-TMDb";
 
 function RandomMovies() {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
+
+  const [randomMovies, setRandomMovies] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(Math.floor(Math.random() * 100));
+
+  const pageNumberUpdater = () => {
+    setPageNumber(Math.floor(Math.random() * 100));
+  };
+
+  useEffect(() => {
+    getRandomMovies(setIsLoading, setRandomMovies, pageNumber);
+    pageNumberUpdater();
+  }, []);
+
   return (
     <>
-      <SectionTitle>Random</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <SectionTitle>Random Movies</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {isLoading
+          ? null
+          : randomMovies.map((movie, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      layout="fill"
+                      alt={movie.title}
+                      priority
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{movie.title}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );
