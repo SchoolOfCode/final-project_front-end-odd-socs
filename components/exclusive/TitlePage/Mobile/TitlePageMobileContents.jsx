@@ -102,7 +102,7 @@ const WatchOnText = styled.h3`
   color: white;
 `;
 
-const WatchOnArrow = styled.span`
+const DropDownArrow = styled.span`
   color: white;
 `;
 
@@ -117,7 +117,7 @@ const CommentSectionContainer = styled.div`
   gap: 1rem;
 `;
 
-const CommentHeader = styled.div`
+const ReviewHeaderContainer = styled.div`
   display: flex;
 `;
 
@@ -175,6 +175,14 @@ function TitlePageContents({ movieInfo }) {
     setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
   }
 
+  // Reviews section
+  const [isReviewsOpen, setIsReviewsOpen] = useState(false);
+
+  function toggleReviewsOpen(e) {
+    e.preventDefault;
+    setIsReviewsOpen((prevIsReviewsOpen) => !prevIsReviewsOpen);
+  }
+
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
@@ -209,16 +217,18 @@ function TitlePageContents({ movieInfo }) {
           </TitlePageIcon>
         </TitlePageIconsContainer>
         <NavHR />
+        {/* WATCH ON */}
         <WatchOnContainer onClick={toggleWatchOnOpen}>
           <WatchOnText>Watch on:</WatchOnText>
-          <WatchOnArrow>
+          <DropDownArrow>
             {isWatchOnOpen ? (
               <ArrowDropUpIcon fontSize="large" />
             ) : (
               <ArrowDropDownIcon fontSize="large" />
             )}
-          </WatchOnArrow>
+          </DropDownArrow>
         </WatchOnContainer>
+
         {isWatchOnOpen && (
           <WatchOnIconContainer>
             <Image src={GooglePlayIcon} alt="Google Play Icon" />
@@ -227,11 +237,26 @@ function TitlePageContents({ movieInfo }) {
           </WatchOnIconContainer>
         )}
         <NavHR />
-        <CommentHeader>
-          <CommentTitle>{`Comments (${
+        {/* COMMENTS */}
+          {/* Review Section Container (IN PROGRESS - just need to add toggle to it)
+           - "Reviews" Header (DONE)
+           - Drop down/up arrow */}
+        <ReviewHeaderContainer onClick={toggleReviewsOpen}>
+          <CommentTitle>
+            {`Comments (${
             Object.values(CommentDummyData).length
           })`}</CommentTitle>
-        </CommentHeader>
+          <DropDownArrow>
+            {isReviewsOpen ? (
+              <ArrowDropUpIcon fontSize="large" />
+            ) : (
+              <ArrowDropDownIcon fontSize="large" />
+            )}
+          </DropDownArrow>
+        </ReviewHeaderContainer>
+
+          {/* When the arrow is clicked
+            - We want to display the comments */}
         <CommentSectionContainer>
           {Object.values(CommentDummyData).map((comment, key) => {
             return (
@@ -242,9 +267,98 @@ function TitlePageContents({ movieInfo }) {
             );
           })}
         </CommentSectionContainer>
+
+
+
       </TitlePageTitleContainer>
     </TitlePageContentContainer>
   );
 }
 
 export default TitlePageContents;
+
+/* 1. CREATE STATE (DONE)
+const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
+
+*/
+
+/* 2. CREATE TOGGLE FUNCTION ()
+function toggleWatchOnOpen(e) {
+    e.preventDefault;
+    setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
+  }
+
+  - Add the toggle function as an onClick thingy to the MyAccountContainer
+*/
+
+/* 3. ARROW (Changes the arrow from drop up to drop down) ()
+- Remember to import the arrows from mui library
+
+    <WatchOnArrow>
+                {isWatchOnOpen ? (
+                <ArrowDropUpIcon fontSize="large" />
+                ) : (
+                <ArrowDropDownIcon fontSize="large" />
+                )}
+    </WatchOnArrow>
+*/
+
+/* 4. RENDERING STUFF INSIDE DROP DOWN 
+If WatchOn is open, render these components 
+
+    {isWatchOnOpen && (
+            <WatchOnIconContainer>
+                <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
+                <Image src={YouTubeIcon} alt = "YouTube Icon" />
+                <Image src={AmazonIcon} alt = "Amazon Icon"/>
+            </WatchOnIconContainer>
+            )}
+*/
+
+/* 5. STYLING (STYLED DIVS)
+For each of our components we need to create a styled.div
+Here's what Matt prepared earlier
+
+    const WatchOnContainer = styled.div`
+    display: flex;
+    align-items: center;
+    `;
+
+    const WatchOnText = styled.h3`
+    font-size: 1.8rem;
+    color: white;
+    `;
+
+    const WatchOnArrow = styled.span`
+    color: white;
+    `;
+
+    const WatchOnIconContainer = styled.div`
+    display: flex;
+    gap: 3rem;
+    `;
+
+*/
+
+/* FULL JSX SECTION
+<WatchOnContainer onClick={toggleWatchOnOpen}>
+          <WatchOnText>Watch on:</WatchOnText>
+          <WatchOnArrow>
+            {isWatchOnOpen ? (
+              <ArrowDropUpIcon fontSize="large" />
+            ) : (
+              <ArrowDropDownIcon fontSize="large" />
+            )}
+          </WatchOnArrow>
+        </WatchOnContainer>
+
+
+        {isWatchOnOpen && (
+          <WatchOnIconContainer>
+            <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
+            <Image src={YouTubeIcon} alt = "YouTube Icon" />
+            <Image src={AmazonIcon} alt = "Amazon Icon"/>
+          </WatchOnIconContainer>
+        )}
+
+*/
