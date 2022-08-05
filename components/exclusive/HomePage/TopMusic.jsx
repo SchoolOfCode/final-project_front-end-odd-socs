@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import {
   TitleText,
   SectionTitle,
@@ -46,28 +47,31 @@ function TopMusic() {
     getTop10Music(setIsLoading, setTop10Music);
   }, []);
 
+  const albumImage = `#text`;
+
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
       <MusicRowContainer {...events} ref={ref}>
         {isLoading
           ? null
-          : top10Music.slice(0, 10).map((music, key) => {
+          : Object.keys(top10Music).map(function (key) {
+              console.log(top10Music.image[3]["#text"]);
               return (
                 <TitleContainer key={key}>
                   <Link href="/title">
                     <a>
-                      <ImageContainer>
+                      <MusicImageContainer>
                         <Image
-                          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                          src={top10Music.image[3]["#text"]}
                           layout="fill"
-                          alt={music.title}
+                          alt={top10Music.title}
                           priority
                         />
-                      </ImageContainer>
+                      </MusicImageContainer>
                     </a>
                   </Link>
-                  <TitleText>{music.title}</TitleText>
+                  <TitleText>{top10Music.title}</TitleText>
                 </TitleContainer>
               );
             })}
