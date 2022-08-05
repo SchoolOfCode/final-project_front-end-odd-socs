@@ -8,29 +8,29 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { getRPGGames } from "../../../api-routes/api-rawg";
+import { getIndieGames } from "../../../api-routes/api-rawg";
 
 import { useEffect, useRef, useState } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function RPGGames() {
+function ClassicGames() {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
-  const [rpgGames, setRPGGames] = useState();
+  const [indieGames, setIndieGames] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getRPGGames(setIsLoading, setRPGGames);
+    getIndieGames(setIsLoading, setIndieGames);
   }, []);
 
   return (
     <>
-      <SectionTitle>RPG</SectionTitle>
+      <SectionTitle>Indie</SectionTitle>
       <RowContainer {...events} ref={ref}>
         {isLoading
           ? null
-          : rpgGames.map((game, key) => {
+          : indieGames.map((game, key) => {
               return (
                 <TitleContainer key={key}>
                   <ImageContainer>
@@ -52,4 +52,4 @@ function RPGGames() {
   );
 }
 
-export default RPGGames;
+export default ClassicGames;

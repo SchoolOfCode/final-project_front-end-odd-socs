@@ -11,8 +11,10 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-// import { music } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
+import { getTop10Music } from "../../../api-routes/api-lastfm";
+
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
@@ -34,29 +36,43 @@ export const MusicRowContainer = styled.div`
 `;
 
 function TopMusic() {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
-  const musicTop10 = moviesList.slice(22, 32);
+  const [top10Music, setTop10Music] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getTop10Music(setIsLoading, setTop10Music);
+  }, []);
+
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
-      <MusicRowContainer>
-        {musicTop10.map((music,key) => {
-          return (
-            <TitleContainer key={key}>
-              <MusicImageContainer>
-                <Image
-                  src={`${music.image.split("_")[0]}@.jpg`}
-                  layout="fill"
-                  alt="music"
-                ></Image>
-              </MusicImageContainer>
-              <TitleText>{music.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <MusicRowContainer {...events} ref={ref}>
+        {isLoading
+          ? null
+          : top10Music.slice(0, 10).map((music, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <Link href="/title">
+                    <a>
+                      <ImageContainer>
+                        <Image
+                          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                          layout="fill"
+                          alt={music.title}
+                          priority
+                        />
+                      </ImageContainer>
+                    </a>
+                  </Link>
+                  <TitleText>{music.title}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </MusicRowContainer>
     </>
-
   );
 }
 

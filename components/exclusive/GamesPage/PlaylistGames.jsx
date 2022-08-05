@@ -17,9 +17,9 @@ let moviesTop10 = moviesList.slice(80, 90);
 function PlaylistGames() {
   return (
     <>
-      <SectionTitle>My Playlist - games</SectionTitle>
+      <SectionTitle>Playlist - Games</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie,key) => {
+        {moviesTop10.map((movie, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>

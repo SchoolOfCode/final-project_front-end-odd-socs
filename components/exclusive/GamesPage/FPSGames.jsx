@@ -8,32 +8,45 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { getFPSGames } from "../../../api-routes/api-rawg";
 
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(220, 230);
+import { useEffect, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 function FPSGames() {
+   const ref = useRef();
+   const { events } = useDraggable(ref);
+
+   const [fpsGames, setFPSGames] = useState();
+   const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+     getFPSGames(setIsLoading, setFPSGames);
+   }, []);
+
   return (
     <>
       <SectionTitle>First Person Shooters</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <RowContainer {...events} ref={ref}>
+        {isLoading
+          ? null
+          : fpsGames.map((game, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={game.background_image}
+                      objectFit="cover"
+                      alt="game"
+                      priority
+                      width={700}
+                      height={1000}
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{game.name}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );

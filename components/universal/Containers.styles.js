@@ -53,8 +53,9 @@ export const RowContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: grab;
-  /* min-height: 25rem; */
+  /* min-height: max-content; */
   overflow-x: scroll;
+  justify-content: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
@@ -64,7 +65,7 @@ export const RowContainer = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.5;
   width: 100%;
 

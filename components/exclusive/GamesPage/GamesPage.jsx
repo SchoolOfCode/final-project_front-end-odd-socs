@@ -3,13 +3,13 @@ import { PageContainer } from "../../universal/Containers.styles";
 import TopGames from "../HomePage/TopGames";
 import PlaylistGames from "./PlaylistGames";
 import MyPicksGames from "./MyPicksGames";
-import ClassicGames from "./ClassicGames";
-import NewReleaseGames from "./NewReleaseGames";
-import RandomGames from "./RandomGames";
-import FPSGames from "./FPSGames";
+import IndieGames from "./IndieGames";
+import ActionGames from "./ActionGames";
 import RPGGames from "./RPGGames";
-import DrivingGames from "./DrivingGames";
-import SportGames from "./SportGames";
+import FPSGames from "./FPSGames";
+import ArcadeGames from "./ArcadeGames";
+import MMORPGGames from "./MMORPGGames";
+import RandomGames from "./RandomGames";
 
 const PageTitle = styled.div`
   color: var(--secondary);
@@ -23,15 +23,13 @@ function GamesPage() {
       <TopGames />
       <PlaylistGames />
       <MyPicksGames />
-      <ClassicGames />
-      <NewReleaseGames />
-      <RandomGames />
-      <FPSGames />
+      <IndieGames />
+      <ActionGames />
       <RPGGames />
-      <DrivingGames />
-      <SportGames />
-
-   
+      <FPSGames />
+      <ArcadeGames />
+      <MMORPGGames />
+      <RandomGames />   
     </PageContainer>
     
   );
