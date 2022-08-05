@@ -142,6 +142,27 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
+const AddReviewContainer = styled.div`
+  display:flex;
+  color: white;
+`
+const ReviewTextField = styled.input`
+  border: 1px solid #1B2B3A;
+  background-color:#1B2B3A;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 1px 6px;
+  color:white;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 1.2rem;
+  line-height:30px;
+  
+`
+
 function TitlePageContents({ movieInfo }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
@@ -257,16 +278,25 @@ function TitlePageContents({ movieInfo }) {
 
           {/* When the arrow is clicked
             - We want to display the comments */}
-        <CommentSectionContainer>
-          {Object.values(CommentDummyData).map((comment, key) => {
-            return (
-              <Comment key={key}>
+            {isReviewsOpen && (
+              <>
+              <AddReviewContainer>
                 <AccountCircleIcon />
-                <CommentText>{comment}</CommentText>
-              </Comment>
-            );
-          })}
-        </CommentSectionContainer>
+                <ReviewTextField/>
+
+              </AddReviewContainer>
+              <CommentSectionContainer>
+                {Object.values(CommentDummyData).map((comment, key) => {
+                  return (
+                    <Comment key={key}>
+                      <AccountCircleIcon />
+                      <CommentText>{comment}</CommentText>
+                    </Comment>
+                  );
+                })}
+              </CommentSectionContainer>
+              </>
+            )}
 
 
 
@@ -304,16 +334,27 @@ function toggleWatchOnOpen(e) {
 */
 
 /* 4. RENDERING STUFF INSIDE DROP DOWN 
-If WatchOn is open, render these components 
+If reviews is open, render these components 
 
-    {isWatchOnOpen && (
-            <WatchOnIconContainer>
-                <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
-                <Image src={YouTubeIcon} alt = "YouTube Icon" />
-                <Image src={AmazonIcon} alt = "Amazon Icon"/>
-            </WatchOnIconContainer>
-            )}
+  PLAN - add a review text area
+  - add review container
+    - profile icon
+    - text area
+
+    <p><span class="textarea" role="textbox" contenteditable></span></p>
+    
+    const ReviewTextField = styled.span`
+        
+    `
+    
+
+    - submit button (icon)
+
+
+    
+
 */
+
 
 /* 5. STYLING (STYLED DIVS)
 For each of our components we need to create a styled.div
@@ -337,28 +378,44 @@ Here's what Matt prepared earlier
     display: flex;
     gap: 3rem;
     `;
-
 */
 
-/* FULL JSX SECTION
-<WatchOnContainer onClick={toggleWatchOnOpen}>
-          <WatchOnText>Watch on:</WatchOnText>
-          <WatchOnArrow>
-            {isWatchOnOpen ? (
-              <ArrowDropUpIcon fontSize="large" />
-            ) : (
-              <ArrowDropDownIcon fontSize="large" />
-            )}
-          </WatchOnArrow>
-        </WatchOnContainer>
 
 
-        {isWatchOnOpen && (
-          <WatchOnIconContainer>
-            <Image src={GooglePlayIcon} alt = "Google Play Icon"/>
-            <Image src={YouTubeIcon} alt = "YouTube Icon" />
-            <Image src={AmazonIcon} alt = "Amazon Icon"/>
-          </WatchOnIconContainer>
-        )}
+/* REVIEW TEXT AREA CSS
+
+.textarea {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "Write a review...";
+  color: gray;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Heebo", sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+p strong {
+  display: block;
+}
 
 */
