@@ -282,7 +282,7 @@ const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
 
 */
 
-/* 2. CREATE TOGGLE FUNCTION ()
+/* 2. CREATE TOGGLE FUNCTION (DONE)
 function toggleWatchOnOpen(e) {
     e.preventDefault;
     setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
@@ -291,7 +291,7 @@ function toggleWatchOnOpen(e) {
   - Add the toggle function as an onClick thingy to the MyAccountContainer
 */
 
-/* 3. ARROW (Changes the arrow from drop up to drop down) ()
+/* 3. ARROW (Changes the arrow from drop up to drop down) (DONE)
 - Remember to import the arrows from mui library
 
     <WatchOnArrow>
