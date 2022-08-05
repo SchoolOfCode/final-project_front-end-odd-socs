@@ -8752,12 +8752,5 @@ const country = {
         },
       },
     ],
-    "@attr": {
-      tag: "country",
-      page: "5",
-      perPage: "50",
-      totalPages: "172",
-      total: "8572",
-    },
   },
 };
