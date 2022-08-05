@@ -12,6 +12,7 @@ export const getTop10Movies = (setIsLoading, setTop10Movies) => {
       const top10 = response.data.results;
       setIsLoading(false);
       setTop10Movies(top10);
+      console.log(top10);
     });
 };
 
