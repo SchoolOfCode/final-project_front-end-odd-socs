@@ -6,7 +6,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY_RAWG;
 // Top 10
 export const getTop10Games = (setIsLoading, setTop10Games) => {
   axios
-    .get(`https://api.rawg.io/api/games?key=${API_KEY}&?page=2&page_size=20`)
+    .get(`https://api.rawg.io/api/games?key=${API_KEY}&?page=2&page_size=10`)
     .then((response) => {
       const result = response.data.results;
       setIsLoading(false);

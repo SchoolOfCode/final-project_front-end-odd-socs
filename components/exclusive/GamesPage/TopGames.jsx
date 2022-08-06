@@ -1,25 +1,28 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { TitleText, SectionTitle } from "../../universal/Text.styles";
+import {
+  TitleText,
+  SectionTitle,
+} from "../../../components/universal/Text.styles";
 
 import {
-  ImageContainer,
   RowContainer,
   TitleContainer,
+  ImageContainer,
 } from "../../universal/Containers.styles";
 
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function ActionGames({ actionGames }) {
+function TopGames({ topGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
   return (
     <>
-      <SectionTitle>Action</SectionTitle>
+      <SectionTitle>Top 10 Video Games</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {actionGames.map((game, key) => {
+        {topGames.slice(0, 10).map((game, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
@@ -41,4 +44,4 @@ function ActionGames({ actionGames }) {
   );
 }
 
-export default ActionGames;
+export default TopGames;

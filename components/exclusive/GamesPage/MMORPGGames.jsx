@@ -8,45 +8,34 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { getMMORPGGames } from "../../../api-routes/api-rawg";
-
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function MMORPGGames() {
+function MMORPGGames({ mmorpgGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
-  const [mmorpgGames, setMMORPGGames] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getMMORPGGames(setIsLoading, setMMORPGGames);
-  }, []);
 
   return (
     <>
       <SectionTitle>MMORPG</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : mmorpgGames.map((game, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={game.background_image}
-                      objectFit="cover"
-                      alt="game"
-                      priority
-                      width={700}
-                      height={1000}
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{game.name}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {mmorpgGames.map((game, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={game.background_image}
+                  objectFit="cover"
+                  alt="game"
+                  priority
+                  width={700}
+                  height={1000}
+                ></Image>
+              </ImageContainer>
+              <TitleText>{game.name}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );

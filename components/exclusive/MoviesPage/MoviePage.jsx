@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PageContainer } from "../../universal/Containers.styles";
-import TopMovies from "../HomePage/TopMovies";
+import TopMovies from "./TopMovies";
 import WatchlistMovies from "./WatchlistMovies";
 import MyPicksMovies from "./MyPicksMovies";
 import ActionMovies from "./ActionMovies";

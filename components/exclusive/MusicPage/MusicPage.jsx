@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import ListenListMusic from "./ListenListMusic";
-import TopMusic from "../HomePage/TopMusic";
+import TopMusic from "./TopMusic";
 import MyPicksMusic from "./MyPicksMusic";
 import PopMusic from "./PopMusic";
 import NewReleasesMusic from "./NewReleasesMusic";

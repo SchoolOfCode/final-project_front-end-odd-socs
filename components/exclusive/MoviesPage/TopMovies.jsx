@@ -11,7 +11,7 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
 function TopMovies({ topMovies }) {

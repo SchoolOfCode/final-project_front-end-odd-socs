@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PageContainer } from "../../universal/Containers.styles";
-import TopGames from "../HomePage/TopGames";
+import TopGames from "./TopGames";
 import PlaylistGames from "./PlaylistGames";
 import MyPicksGames from "./MyPicksGames";
 import IndieGames from "./IndieGames";
@@ -16,22 +16,21 @@ const PageTitle = styled.div`
   font-size: 3.5rem;
 `;
 
-function GamesPage() {
+function GamesPage({ gameList }) {
   return (
     <PageContainer>
       <PageTitle>Video Games</PageTitle>
-      <TopGames />
+      <TopGames topGames={gameList.top10} />
       <PlaylistGames />
       <MyPicksGames />
-      <IndieGames />
-      <ActionGames />
-      <RPGGames />
-      <FPSGames />
-      <ArcadeGames />
-      <MMORPGGames />
-      <RandomGames />   
+      <IndieGames indieGames={gameList.indie} />
+      <ActionGames actionGames={gameList.action} />
+      <RPGGames rpgGames={gameList.rpg} />
+      <FPSGames fpsGames={gameList.fps} />
+      <ArcadeGames arcadeGames={gameList.arcade} />
+      <MMORPGGames mmorpgGames={gameList.mmorpg} />
+      <RandomGames randomGames={gameList.random} />
     </PageContainer>
-    
   );
 }
 

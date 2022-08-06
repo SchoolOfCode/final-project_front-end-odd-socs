@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
-import TopTV from "../HomePage/TopTV";
+import TopTV from "./TopTV";
 import WatchlistTv from "./WatchlistTv";
 import MyPicksTv from "./MyPicksTv";
 import RandomTv from "./RandomTv";

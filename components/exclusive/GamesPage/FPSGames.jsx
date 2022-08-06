@@ -8,29 +8,19 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { getFPSGames } from "../../../api-routes/api-rawg";
 
-import { useEffect, useRef, useState } from "react";
+import {  useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function FPSGames() {
+function FPSGames({fpsGames}) {
    const ref = useRef();
    const { events } = useDraggable(ref);
-
-   const [fpsGames, setFPSGames] = useState();
-   const [isLoading, setIsLoading] = useState(true);
-
-   useEffect(() => {
-     getFPSGames(setIsLoading, setFPSGames);
-   }, []);
 
   return (
     <>
       <SectionTitle>First Person Shooters</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : fpsGames.map((game, key) => {
+        {fpsGames.map((game, key) => {
               return (
                 <TitleContainer key={key}>
                   <ImageContainer>

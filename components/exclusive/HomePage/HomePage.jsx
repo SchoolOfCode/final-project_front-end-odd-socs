@@ -2,34 +2,21 @@ import styled from "styled-components";
 import { useEffect } from "react";
 
 import { PageContainer } from "../../universal/Containers.styles";
-import TopMovies from "./TopMovies";
-import TopTV from "./TopTV";
-import TopMusic from "./TopMusic";
-import TopGames from "./TopGames";
+import TopMovies from "../MoviesPage/TopMovies";
+import TopTV from "../TvPage/TopTV";
+import TopMusic from "../MusicPage/TopMusic";
+import TopGames from "../GamesPage/TopGames";
 import { useState } from "react";
 import SwipeModal from "./SwipeModal";
-
-import { getTop10Movies, getTop10TV } from "../../../api-routes/api-TMDb";
 
 const PageTitle = styled.div`
   color: var(--secondary);
   font-size: 3.5rem;
 `;
 
-function HomePage() {
+function HomePage({ movieList, tvList, musicList, gameList }) {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [count, setCount] = useState(0);
-
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // const [top10Movies, setTop10Movies] = useState();
-  const [top10TV, setTop10TV] = useState();
-  const [top10Music, setTop10Music] = useState();
-  const [top10Games, setTop10Games] = useState();
-
-  // useEffect(() => {
-  //   getTop10Movies(setIsLoading, setTop10Movies);
-  // }, []);
 
   return (
     <>
@@ -42,10 +29,10 @@ function HomePage() {
           />
         )}
         <PageTitle>Home</PageTitle>
-        <TopMovies />
-        <TopTV />
-        <TopMusic />
-        <TopGames />
+        <TopMovies topMovies={movieList.top10} />
+        <TopTV topTV={tvList.top10} />
+        <TopMusic topMusic={musicList.top10} />
+        <TopGames topGames={gameList.top10} />
       </PageContainer>
     </>
   );

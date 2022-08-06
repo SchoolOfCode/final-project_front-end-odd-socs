@@ -8,45 +8,34 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { getArcadeGames } from "../../../api-routes/api-rawg";
-
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function ArcadeGames() {
+function ArcadeGames({ arcadeGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
-  const [arcadeGames, setArcadeGames] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getArcadeGames(setIsLoading, setArcadeGames);
-  }, []);
 
   return (
     <>
       <SectionTitle>Arcade</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : arcadeGames.map((game, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={game.background_image}
-                      objectFit="cover"
-                      alt="game"
-                      priority
-                      width={700}
-                      height={1000}
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{game.name}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {arcadeGames.map((game, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={game.background_image}
+                  objectFit="cover"
+                  alt="game"
+                  priority
+                  width={700}
+                  height={1000}
+                ></Image>
+              </ImageContainer>
+              <TitleText>{game.name}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );
