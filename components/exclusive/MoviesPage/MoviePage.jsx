@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopMovies from "../HomePage/TopMovies";
 import WatchlistMovies from "./WatchlistMovies";

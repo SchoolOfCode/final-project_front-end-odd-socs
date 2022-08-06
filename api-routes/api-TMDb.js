@@ -1,4 +1,5 @@
 import axios from "axios";
+import movieList from "../data/movie-data/movie-data";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY_TMDB;
 
 // MOVIES APIs
@@ -9,12 +10,14 @@ export const getTop10Movies = (setIsLoading, setTop10Movies) => {
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&adult='false'&language=en-US&page=1`
     )
     .then((response) => {
-      const top10 = response.data.results;
+      const top10 = response.data.results.slice(0, 10);
       setIsLoading(false);
       setTop10Movies(top10);
-      console.log(top10);
+      movieList.top10 = top10;
     });
 };
+
+// setInterval(getTop10Movies, 1000 * 60 * 60 * 24);
 
 // New Releases
 export const getMovieNewReleases = (setIsLoading, setMovieNewReleases) => {
@@ -23,9 +26,10 @@ export const getMovieNewReleases = (setIsLoading, setMovieNewReleases) => {
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&adult='false'&page=1`
     )
     .then((response) => {
-      const results = response.data.results;
+      const newReleases = response.data.results;
       setIsLoading(false);
-      setMovieNewReleases(results);
+      setMovieNewReleases(newReleases);
+      movieList.newReleases = newReleases;
     });
 };
 
@@ -36,9 +40,10 @@ export const getRandomMovies = (setIsLoading, setRandomMovies, pageNumber) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&adult='false'&p[…]ase_date.gte=1950-01-01&adult="false"&primary_release_date.lte=2022-01-01&page=${pageNumber}`
     )
     .then((response) => {
-      const results = response.data.results;
+      const randomMovs = response.data.results;
       setIsLoading(false);
-      setRandomMovies(results);
+      setRandomMovies(randomMovs);
+      movieList.random = randomMovs;
     });
 };
 
@@ -50,9 +55,10 @@ export const getActionGenre = (setIsLoading, setActionGenre) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&adult='false'&language=en-US&with_genres=28`
     )
     .then((response) => {
-      const genreResults = response.data.results;
+      const actionResults = response.data.results;
       setIsLoading(false);
-      setActionGenre(genreResults);
+      setActionGenre(actionResults);
+      movieList.action = actionResults;
     });
 };
 
@@ -63,9 +69,10 @@ export const getSciFiGenre = (setIsLoading, setSciFiGenre) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&adult='false'&language=en-US&with_genres=878`
     )
     .then((response) => {
-      const genreResults = response.data.results;
+      const scifiResults = response.data.results;
       setIsLoading(false);
-      setSciFiGenre(genreResults);
+      setSciFiGenre(scifiResults);
+      movieList.scifi = scifiResults;
     });
 };
 
@@ -76,9 +83,10 @@ export const getComedyGenre = (setIsLoading, setComedyGenre) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&adult='false'&with_genres=35`
     )
     .then((response) => {
-      const genreResults = response.data.results;
+      const comedyResults = response.data.results;
       setIsLoading(false);
-      setComedyGenre(genreResults);
+      setComedyGenre(comedyResults);
+      movieList.comedy = comedyResults;
     });
 };
 
@@ -89,9 +97,10 @@ export const getHorrorGenre = (setIsLoading, setHorrorGenre) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=27`
     )
     .then((response) => {
-      const genreResults = response.data.results;
+      const horrorResults = response.data.results;
       setIsLoading(false);
-      setHorrorGenre(genreResults);
+      setHorrorGenre(horrorResults);
+      movieList.horror = horrorResults;
     });
 };
 
@@ -102,9 +111,11 @@ export const getDocumentaryGenre = (setIsLoading, setDocumentaryGenre) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&adult='false'&with_genres=99`
     )
     .then((response) => {
-      const genreResults = response.data.results;
+      const documentaryResults = response.data.results;
       setIsLoading(false);
-      setDocumentaryGenre(genreResults);
+      setDocumentaryGenre(documentaryResults);
+      movieList.documentary = documentaryResults;
+      console.log(movieList);
     });
 };
 
