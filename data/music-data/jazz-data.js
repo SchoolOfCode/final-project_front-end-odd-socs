@@ -1,5 +1,3 @@
-const jazz = {
-  albums: {
     album: [
       {
         name: "Come Away with Me",
@@ -8748,5 +8746,4 @@ const jazz = {
         },
       },
     ],
-  },
-};
+

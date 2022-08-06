@@ -16,20 +16,20 @@ const PageTitle = styled.div`
   font-size: 3.5rem;
 `;
 
-function MoviesPage() {
+function MoviesPage({ movieList }) {
   return (
     <PageContainer>
       <PageTitle>Movies</PageTitle>
-      <TopMovies />
-      <NewReleasesMovies />
-      <WatchlistMovies />
-      <MyPicksMovies />
-      <ActionMovies />
-      <SciFiMovies />
-      <ComedyMovies />
-      <HorrorMovies />
-      <Documentary />
-      <RandomMovies />
+      <TopMovies topMovies={movieList.top10} />
+      <NewReleasesMovies newReleases={movieList.newReleases} />
+      {/* <WatchlistMovies /> */}
+      {/* <MyPicksMovies /> */}
+      <ActionMovies actionMovies={movieList.action} />
+      <SciFiMovies scifiMovies={movieList.scifi} />
+      <ComedyMovies comedyMovies={movieList.comedy} />
+      <HorrorMovies horrorMovies={movieList.horror} />
+      <Documentary documentaryMovies={movieList.documentary} />
+      <RandomMovies randomMovies={movieList.random} />
     </PageContainer>
   );
 }

@@ -8,49 +8,32 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-import { getRandomMovies } from "../../../api-routes/api-TMDb";
-
-function RandomMovies() {
+function RandomMovies({ randomMovies }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
-  const [randomMovies, setRandomMovies] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(Math.floor(Math.random() * 100));
-
-  const pageNumberUpdater = () => {
-    setPageNumber(Math.floor(Math.random() * 100));
-  };
-
-  useEffect(() => {
-    getRandomMovies(setIsLoading, setRandomMovies, pageNumber);
-    pageNumberUpdater();
-  }, []);
 
   return (
     <>
       <SectionTitle>Random Movies</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : randomMovies.map((movie, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                      layout="fill"
-                      alt={movie.title}
-                      priority
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{movie.title}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {randomMovies.map((movie, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  layout="fill"
+                  alt={movie.title}
+                  priority
+                ></Image>
+              </ImageContainer>
+              <TitleText>{movie.title}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );

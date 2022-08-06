@@ -1,5 +1,3 @@
-const rock = {
-  albums: {
     album: [
       {
         name: "Minutes to Midnight",
@@ -8743,6 +8741,4 @@ const rock = {
           rank: "50",
         },
       },
-    ],
-  },
-};
+    ]

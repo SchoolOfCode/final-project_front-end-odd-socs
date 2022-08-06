@@ -1,5 +1,3 @@
-const dance = {
-  albums: {
     album: [
       {
         name: "The Fame Monster (Deluxe Edition)",
@@ -8751,6 +8749,4 @@ const dance = {
           rank: "50",
         },
       },
-    ],
-  },
-};
+    ]

@@ -8,42 +8,32 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-import { getComedyGenre } from "../../../api-routes/api-TMDb";
-
-function ComedyMovies() {
+function ComedyMovies({ comedyMovies }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
-  const [comedyGenre, setComedyGenre] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getComedyGenre(setIsLoading, setComedyGenre);
-  }, []);
   return (
     <>
       <SectionTitle>Comedy</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : comedyGenre.map((movie, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                      layout="fill"
-                      alt={movie.title}
-                      priority
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{movie.title}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {comedyMovies.map((movie, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  layout="fill"
+                  alt={movie.title}
+                  priority
+                ></Image>
+              </ImageContainer>
+              <TitleText>{movie.title}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );

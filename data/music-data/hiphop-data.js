@@ -1,5 +1,3 @@
-const hiphop = {
-  albums: {
     album: [
       {
         name: "My Beautiful Dark Twisted Fantasy",
@@ -8751,6 +8749,5 @@ const hiphop = {
           rank: "50",
         },
       },
-    ],
-  },
-};
+    ]
+

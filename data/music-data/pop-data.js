@@ -1,5 +1,3 @@
-const pop = {
-  albums: {
     album: [
       {
         name: "LOVE YOURSELF 結 'Answer'",
@@ -8744,5 +8742,4 @@ const pop = {
         },
       },
     ],
-  },
-};
+

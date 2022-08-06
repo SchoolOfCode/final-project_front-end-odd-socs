@@ -8,43 +8,32 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-import { getActionGenre } from "../../../api-routes/api-TMDb";
-
-function ActionMovies() {
+function ActionMovies({ actionMovies }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
-  const [actionGenre, setActionGenre] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getActionGenre(setIsLoading, setActionGenre);
-  }, []);
 
   return (
     <>
       <SectionTitle>Action & Adventure</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : actionGenre.map((movie, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                      layout="fill"
-                      alt={movie.title}
-                      priority
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{movie.title}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {actionMovies.map((movie, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  layout="fill"
+                  alt={movie.title}
+                  priority
+                ></Image>
+              </ImageContainer>
+              <TitleText>{movie.title}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );

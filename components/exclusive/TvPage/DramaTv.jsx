@@ -8,42 +8,31 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import { getTVDramaGenre } from "../../../api-routes/api-TMDb";
-
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function DramaTv() {
+function DramaTv({ dramaTV }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
-  const [tvDramaGenre, setTVDramaGenre] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getTVDramaGenre(setIsLoading, setTVDramaGenre);
-  }, []);
 
   return (
     <>
       <SectionTitle>Drama</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {isLoading
-          ? null
-          : tvDramaGenre.map((tv, key) => {
-              return (
-                <TitleContainer key={key}>
-                  <ImageContainer>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
-                      layout="fill"
-                      alt={tv.title}
-                    ></Image>
-                  </ImageContainer>
-                  <TitleText>{tv.name}</TitleText>
-                </TitleContainer>
-              );
-            })}
+        {dramaTV.map((tv, key) => {
+          return (
+            <TitleContainer key={key}>
+              <ImageContainer>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
+                  layout="fill"
+                  alt={tv.title}
+                ></Image>
+              </ImageContainer>
+              <TitleText>{tv.name}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );

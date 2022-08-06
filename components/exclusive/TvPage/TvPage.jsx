@@ -17,20 +17,20 @@ const PageTitle = styled.div`
   font-size: 3.5rem;
 `;
 
-function TvPage() {
+function TvPage({ tvList }) {
   return (
     <PageContainer>
       <PageTitle>TV Shows</PageTitle>
-      <TopTV />
-      <WatchlistTv />
-      <MyPicksTv />
-      <AiringTodayTv />
-      <ActionTv />
-      <DramaTv />
-      <SciFiTv />
-      <AnimeTv />
-      <CrimeTv />
-      <RandomTv />
+      <TopTV topTV={tvList.top10} />
+      {/* <WatchlistTv /> */}
+      {/* <MyPicksTv /> */}
+      <AiringTodayTv airingToday={tvList.airingToday} />
+      <ActionTv actionTV={tvList.action} />
+      <DramaTv dramaTV={tvList.drama} />
+      <SciFiTv scifiTV={tvList.scifi} />
+      <AnimeTv animeTV={tvList.anime} />
+      <CrimeTv crimeTV={tvList.crime} />
+      <RandomTv randomTV={tvList.random} />
     </PageContainer>
   );
 }
