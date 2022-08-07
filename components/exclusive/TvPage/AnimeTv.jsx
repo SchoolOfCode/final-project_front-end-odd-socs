@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
@@ -22,14 +23,18 @@ function AnimeTv({ animeTV }) {
         {animeTV.map((tv, key) => {
           return (
             <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
-                  layout="fill"
-                  alt={tv.title}
-                  priority
-                ></Image>
-              </ImageContainer>
+              <Link href={`/title/tv/${tv.id}`}>
+                <a>
+                  <ImageContainer>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
+                      layout="fill"
+                      alt="tv"
+                      priority
+                    ></Image>
+                  </ImageContainer>
+                </a>
+              </Link>
               <TitleText>{tv.name}</TitleText>
             </TitleContainer>
           );

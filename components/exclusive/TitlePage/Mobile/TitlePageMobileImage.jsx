@@ -9,14 +9,23 @@ const TitleImageMobileContainer = styled.div`
   height: 70vh;
 `;
 
-function TitleImageMobile({ movieData }) {
+function TitleImageMobile({ movieData, tvData }) {
   return (
     <TitleImageMobileContainer>
-      <Image
-        src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
-        layout="fill"
-        alt="Title Image--Mobile"
-      ></Image>
+      {movieData && (
+        <Image
+          src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
+          layout="fill"
+          alt="Title Image--Mobile"
+        ></Image>
+      )}
+      {tvData && (
+        <Image
+          src={`https://image.tmdb.org/t/p/original${tvData.poster_path}`}
+          layout="fill"
+          alt="Title Image--Mobile"
+        ></Image>
+      )}
     </TitleImageMobileContainer>
   );
 }

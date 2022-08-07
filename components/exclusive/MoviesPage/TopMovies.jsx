@@ -11,6 +11,7 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
+
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 

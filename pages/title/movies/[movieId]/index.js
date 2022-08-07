@@ -1,6 +1,4 @@
-// import Title from "./[titleId]";
 
-// export default Title;
 
 import Header from "../../../../components/exclusive/Header/Header";
 import TitlePage from "../../../../components/exclusive/TitlePage/TitlePageMaster";

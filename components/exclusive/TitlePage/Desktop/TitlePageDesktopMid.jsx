@@ -88,16 +88,34 @@ const Synopsis = styled.p`
   font-weight: 300;
 `;
 
-function TitlePageDesktopMid({ movieData }) {
+const TitlePageStatsContainer = styled.div`
+  display: flex;
+  color: var(--highlight-1);
+  font-size: 1rem;
+`;
+
+function TitlePageDesktopMid({ movieData, tvData }) {
   return (
     <TitlePageMidContainer>
       <MidContainerTopSection>
-        <ContentTitle>{movieData.title}</ContentTitle>
-        <StatsContainer>{`${movieData.release_date.toString().slice(0, 4)} | ${
-          movieData.genres[0].name
-        } | ${movieData.runtime} mins | TMDb Score: ${
-          movieData.vote_average
-        }`}</StatsContainer>
+        {movieData && <ContentTitle>{movieData.title}</ContentTitle>}
+        {tvData && <ContentTitle>{tvData.original_name}</ContentTitle>}
+        {movieData && (
+          <StatsContainer>{`${movieData.release_date
+            .toString()
+            .slice(0, 4)} | ${movieData.genres[0].name} | ${
+            movieData.runtime
+          } mins | TMDb Score: ${movieData.vote_average}`}</StatsContainer>
+        )}
+        {tvData && (
+          <TitlePageStatsContainer>{`${tvData.first_air_date
+            .toString()
+            .slice(0, 4)} | ${tvData.genres[0].name} | ${
+            tvData.episode_run_time
+          } mins | TMDb Score: ${
+            tvData.vote_average
+          }`}</TitlePageStatsContainer>
+        )}
       </MidContainerTopSection>
       <MidContainerMidSection>
         <WatchOnContainer>
@@ -146,7 +164,8 @@ function TitlePageDesktopMid({ movieData }) {
         </VideoContainer>
       </MidContainerMidSection>
       <MidContainerBottomSection>
-        <Synopsis>{movieData.overview}</Synopsis>
+        {movieData && <Synopsis>{movieData.overview}</Synopsis>}
+        {tvData && <Synopsis>{tvData.overview}</Synopsis>}
       </MidContainerBottomSection>
     </TitlePageMidContainer>
   );

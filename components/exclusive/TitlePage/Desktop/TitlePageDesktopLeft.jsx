@@ -63,17 +63,28 @@ function handler() {
   console.log("clicked");
 }
 
-function TitlePageDesktopLeft({ movieData }) {
+function TitlePageDesktopLeft({ movieData, tvData }) {
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image
-          src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
-          layout="fill"
-          objectFit="contain"
-          alt="Title Image"
-          priority={true}
-        ></Image>
+        {movieData && (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
+            layout="fill"
+            objectFit="contain"
+            alt="Title Image"
+            priority={true}
+          ></Image>
+        )}
+        {tvData && (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${tvData.poster_path}`}
+            layout="fill"
+            objectFit="contain"
+            alt="Title Image"
+            priority={true}
+          ></Image>
+        )}
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>

@@ -131,10 +131,19 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-function TitlePageContents({ movieData }) {
+function TitlePageContents({ movieData, tvData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-  const shortSynopsis = `${movieData.overview.slice(0, 150)}...`;
+
+  let shortSynopsis;
+
+  if (movieData) {
+    shortSynopsis = `${movieData.overview.slice(0, 150)}...`;
+  }
+
+  if (tvData) {
+    shortSynopsis = `${tvData.overview.slice(0, 150)}...`;
+  }
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
@@ -147,9 +156,14 @@ function TitlePageContents({ movieData }) {
 
   useEffect(() => {
     if (isSynopsisOpen === true) {
-      setSynopsis(movieData.overview);
+      if (movieData) {
+        setSynopsis(movieData.overview);
+      }
+      if (tvData) {
+        setSynopsis(tvData.overview);
+      }
     }
-  }, [isSynopsisOpen, movieData.overview]);
+  }, [isSynopsisOpen]);
 
   useEffect(() => {
     if (isSynopsisOpen === false) {
@@ -167,8 +181,9 @@ function TitlePageContents({ movieData }) {
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
-        <Title>{movieData.title}</Title>
-        <TitlePageStatsContainer>
+        {movieData && <Title>{movieData.title}</Title>}
+        {tvData && <Title>{tvData.title}</Title>}
+        {movieData && (
           <TitlePageStatsContainer>{`${movieData.release_date
             .toString()
             .slice(0, 4)} | ${movieData.genres[0].name} | ${
@@ -176,7 +191,16 @@ function TitlePageContents({ movieData }) {
           } mins | TMDb Score: ${
             movieData.vote_average
           }`}</TitlePageStatsContainer>
-        </TitlePageStatsContainer>
+        )}
+        {tvData && (
+          <TitlePageStatsContainer>{`${tvData.first_air_date
+            .toString()
+            .slice(0, 4)} | ${tvData.genres[0].name} | ${
+            tvData.episode_run_time
+          } mins | TMDb Score: ${
+            tvData.vote_average
+          }`}</TitlePageStatsContainer>
+        )}
         <TitlePageSynopsisContainer>
           <Synopsis href="#">{synopsis}</Synopsis>
           {isSynopsisOpen ? (
