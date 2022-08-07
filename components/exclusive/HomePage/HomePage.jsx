@@ -29,10 +29,10 @@ function HomePage({ movieList, tvList, musicList, gameList }) {
           />
         )}
         <PageTitle>Home</PageTitle>
-        <TopMovies topMovies={movieList.top10} />
-        <TopTV topTV={tvList.top10} />
-        <TopMusic topMusic={musicList.top10} />
-        <TopGames topGames={gameList.top10} />
+        <TopMovies topMovies={movieList} />
+        <TopTV topTV={tvList} />
+        <TopMusic topMusic={musicList} />
+        <TopGames topGames={gameList} />
       </PageContainer>
     </>
   );

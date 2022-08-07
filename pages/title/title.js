@@ -1,10 +1,10 @@
-import Header from "../components/exclusive/Header/Header";
-import TitlePage from "../components/exclusive/TitlePage/TitlePageMaster";
+import Header from "../../components/exclusive/Header/Header";
+import TitlePage from "../../components/exclusive/TitlePage/TitlePageMaster";
 import styled from "styled-components";
 import {
   HeaderWrapper,
   PageWrapper,
-} from "../components/universal/Containers.styles";
+} from "../../components/universal/Containers.styles";
 
 function Title() {
   return (

@@ -14,10 +14,10 @@ import { gamelist } from "../public/games-data/games-data";
 export async function getStaticProps() {
   return {
     props: {
-      movieList: movielist,
-      tvList: tvlist,
-      musicList: musiclist,
-      gameList: gamelist,
+      movieList: movielist.top10.slice(0, 10),
+      tvList: tvlist.top10,
+      // musicList: music.top10,
+      gameList: gamelist.top10,
     },
   };
 }
@@ -32,7 +32,7 @@ function Home({ movieList, tvList, musicList, gameList }) {
         <HomePage
           movieList={movieList}
           tvList={tvList}
-          musicList={musicList}
+          // musicList={musicList}
           gameList={gameList}
         />
       </PageWrapper>
