@@ -6,7 +6,13 @@ import {
   PageWrapper,
 } from "../../components/universal/Containers.styles";
 
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 function Title() {
+  const router = useRouter();
+  console.log(router.query.titleId);
+
   return (
     <>
       <HeaderWrapper>

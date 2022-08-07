@@ -16,9 +16,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../public/assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../public/assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../public/assets/WatchIcons/APV-White.png";
 
 const TitlePageContentContainer = styled.div`
   background-color: var(--primary);
@@ -131,42 +131,42 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-function TitlePageContents({ movieInfo }) {
-  const [synopsis, setSynopsis] = useState("");
-  const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-  const shortSynopsis = `${movieInfo.plot.slice(0, 150)}...`;
+function TitlePageContents() {
+  // const [synopsis, setSynopsis] = useState("");
+  // const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
+  // const shortSynopsis = `${movieInfo.plot.slice(0, 150)}...`;
 
-  useEffect(() => {
-    setSynopsis(shortSynopsis);
-  }, [shortSynopsis]);
+  // useEffect(() => {
+  //   setSynopsis(shortSynopsis);
+  // }, [shortSynopsis]);
 
-  function toggleFullSynopsis(e) {
-    e.preventDefault;
-    setIsSynopsisOpen((prevSynopsisIsOpen) => !prevSynopsisIsOpen);
-  }
+  // function toggleFullSynopsis(e) {
+  //   e.preventDefault;
+  //   setIsSynopsisOpen((prevSynopsisIsOpen) => !prevSynopsisIsOpen);
+  // }
 
-  useEffect(() => {
-    if (isSynopsisOpen === true) {
-      setSynopsis(movieInfo.plot);
-    }
-  }, [isSynopsisOpen, movieInfo.plot]);
+  // useEffect(() => {
+  //   if (isSynopsisOpen === true) {
+  //     setSynopsis(movieInfo.plot);
+  //   }
+  // }, [isSynopsisOpen, movieInfo.plot]);
 
-  useEffect(() => {
-    if (isSynopsisOpen === false) {
-      setSynopsis(shortSynopsis);
-    }
-  }, [isSynopsisOpen, shortSynopsis]);
+  // useEffect(() => {
+  //   if (isSynopsisOpen === false) {
+  //     setSynopsis(shortSynopsis);
+  //   }
+  // }, [isSynopsisOpen, shortSynopsis]);
 
-  const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
+  // const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
 
-  function toggleWatchOnOpen(e) {
-    e.preventDefault;
-    setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
-  }
+  // function toggleWatchOnOpen(e) {
+  //   e.preventDefault;
+  //   setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
+  // }
 
   return (
     <TitlePageContentContainer>
-      <TitlePageTitleContainer>
+      {/* <TitlePageTitleContainer>
         <Title>{movieInfo.title}</Title>
         <TitlePageStatsContainer>
           <TitlePageStatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</TitlePageStatsContainer>
@@ -227,7 +227,7 @@ function TitlePageContents({ movieInfo }) {
             );
           })}
         </CommentSectionContainer>
-      </TitlePageTitleContainer>
+      </TitlePageTitleContainer> */}
     </TitlePageContentContainer>
   );
 }

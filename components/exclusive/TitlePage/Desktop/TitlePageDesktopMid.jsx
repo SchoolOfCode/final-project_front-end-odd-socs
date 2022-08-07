@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
 import YouTube from "react-youtube";
-import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../public/assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../public/assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../public/assets/WatchIcons/APV-White.png";
 import Link from "next/link";
 
 const TitlePageMidContainer = styled.div`
@@ -88,10 +88,10 @@ const Synopsis = styled.p`
   font-weight: 300;
 `;
 
-function TitlePageDesktopMid({ movieInfo }) {
+function TitlePageDesktopMid() {
   return (
     <TitlePageMidContainer>
-      <MidContainerTopSection>
+      {/* <MidContainerTopSection>
         <ContentTitle>{movieInfo.title}</ContentTitle>
         <StatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</StatsContainer>
       </MidContainerTopSection>
@@ -133,7 +133,7 @@ function TitlePageDesktopMid({ movieInfo }) {
       </MidContainerMidSection>
       <MidContainerBottomSection>
         <Synopsis>{movieInfo.plot}</Synopsis>
-      </MidContainerBottomSection>
+      </MidContainerBottomSection> */}
     </TitlePageMidContainer>
   );
 }

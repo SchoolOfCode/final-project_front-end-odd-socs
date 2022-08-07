@@ -22,9 +22,9 @@ function TitlePage() {
   return (
     <>
       {width >= 500 ? (
-        <TitlePageDesktop movieInfo={movieInfo} />
+        <TitlePageDesktop  />
       ) : (
-        <TitlePageMobile movieInfo={movieInfo} />
+        <TitlePageMobile />
       )}
     </>
   );

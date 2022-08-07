@@ -8,11 +8,11 @@ const MobilePageContainer = styled.div`
   width: 100vw;
 `;
 
-function TitlePageMobile({ movieInfo }) {
+function TitlePageMobile() {
   return (
     <MobilePageContainer>
-      <TitleImageMobile movieInfo={movieInfo} />
-      <TitlePageContents movieInfo={movieInfo} />
+      <TitleImageMobile />
+      <TitlePageContents  />
     </MobilePageContainer>
   );
 }

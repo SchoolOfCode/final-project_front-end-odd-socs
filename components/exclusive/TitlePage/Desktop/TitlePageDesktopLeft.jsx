@@ -58,13 +58,12 @@ function handler() {
   console.log("clicked");
 }
 
-function TitlePageDesktopLeft({ movieInfo }) {
-  const imageUrl = `${movieInfo.image.split("_")[0]}@.jpg`;
+function TitlePageDesktopLeft() {
 
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image src={imageUrl} layout="fill" objectFit="contain" alt="Title Image"></Image>
+        {/* <Image src={imageUrl} layout="fill" objectFit="contain" alt="Title Image"></Image> */}
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>

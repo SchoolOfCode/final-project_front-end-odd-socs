@@ -9,12 +9,11 @@ import styled from 'styled-components'
  height: 70vh;
  `
 
-function TitleImageMobile({movieInfo}) {
-    const imageUrl = `${movieInfo.image.split("_")[0]}@.jpg`;
-
+function TitleImageMobile() {
+    
     return (
 <TitleImageMobileContainer>
-    <Image src={imageUrl} layout="fill" alt = "Title Image--Mobile"></Image>
+    {/* <Image src={imageUrl} layout="fill" alt = "Title Image--Mobile"></Image> */}
 </TitleImageMobileContainer>
     )
 }
