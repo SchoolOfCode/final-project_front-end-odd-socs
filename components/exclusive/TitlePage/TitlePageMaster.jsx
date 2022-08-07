@@ -3,8 +3,7 @@ import TitlePageDesktop from "./Desktop/TitlePageDesktop";
 import TitlePageMobile from "./Mobile/TitlePageMobile";
 import { useState, useEffect } from "react";
 
-
-function TitlePage({movieData}) {
+function TitlePage({ movieData }) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -22,9 +21,9 @@ function TitlePage({movieData}) {
   return (
     <>
       {width >= 500 ? (
-        <TitlePageDesktop movieData={movieData}  />
+        <TitlePageDesktop movieData={movieData} />
       ) : (
-        <TitlePageMobile />
+        <TitlePageMobile movieData={movieData} />
       )}
     </>
   );

@@ -37,7 +37,7 @@ const TitlePageTitleContainer = styled.div`
   top: -7.5vh;
   height: 100%;
   padding: 0 2rem;
-  gap: 2rem;
+  gap: 1.5rem;
 `;
 
 const TitlePageStatsContainer = styled.div`
@@ -131,45 +131,51 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-function TitlePageContents() {
-  // const [synopsis, setSynopsis] = useState("");
-  // const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-  // const shortSynopsis = `${movieInfo.plot.slice(0, 150)}...`;
+function TitlePageContents({ movieData }) {
+  const [synopsis, setSynopsis] = useState("");
+  const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
+  const shortSynopsis = `${movieData.overview.slice(0, 150)}...`;
 
-  // useEffect(() => {
-  //   setSynopsis(shortSynopsis);
-  // }, [shortSynopsis]);
+  useEffect(() => {
+    setSynopsis(shortSynopsis);
+  }, [shortSynopsis]);
 
-  // function toggleFullSynopsis(e) {
-  //   e.preventDefault;
-  //   setIsSynopsisOpen((prevSynopsisIsOpen) => !prevSynopsisIsOpen);
-  // }
+  function toggleFullSynopsis(e) {
+    e.preventDefault;
+    setIsSynopsisOpen((prevSynopsisIsOpen) => !prevSynopsisIsOpen);
+  }
 
-  // useEffect(() => {
-  //   if (isSynopsisOpen === true) {
-  //     setSynopsis(movieInfo.plot);
-  //   }
-  // }, [isSynopsisOpen, movieInfo.plot]);
+  useEffect(() => {
+    if (isSynopsisOpen === true) {
+      setSynopsis(movieData.overview);
+    }
+  }, [isSynopsisOpen, movieData.overview]);
 
-  // useEffect(() => {
-  //   if (isSynopsisOpen === false) {
-  //     setSynopsis(shortSynopsis);
-  //   }
-  // }, [isSynopsisOpen, shortSynopsis]);
+  useEffect(() => {
+    if (isSynopsisOpen === false) {
+      setSynopsis(shortSynopsis);
+    }
+  }, [isSynopsisOpen, shortSynopsis]);
 
-  // const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
+  const [isWatchOnOpen, setIsWatchOnOpen] = useState(false);
 
-  // function toggleWatchOnOpen(e) {
-  //   e.preventDefault;
-  //   setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
-  // }
+  function toggleWatchOnOpen(e) {
+    e.preventDefault;
+    setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
+  }
 
   return (
     <TitlePageContentContainer>
-      {/* <TitlePageTitleContainer>
-        <Title>{movieInfo.title}</Title>
+      <TitlePageTitleContainer>
+        <Title>{movieData.title}</Title>
         <TitlePageStatsContainer>
-          <TitlePageStatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</TitlePageStatsContainer>
+          <TitlePageStatsContainer>{`${movieData.release_date
+            .toString()
+            .slice(0, 4)} | ${movieData.genres[0].name} | ${
+            movieData.runtime
+          } mins | TMDb Score: ${
+            movieData.vote_average
+          }`}</TitlePageStatsContainer>
         </TitlePageStatsContainer>
         <TitlePageSynopsisContainer>
           <Synopsis href="#">{synopsis}</Synopsis>
@@ -227,7 +233,7 @@ function TitlePageContents() {
             );
           })}
         </CommentSectionContainer>
-      </TitlePageTitleContainer> */}
+      </TitlePageTitleContainer>
     </TitlePageContentContainer>
   );
 }

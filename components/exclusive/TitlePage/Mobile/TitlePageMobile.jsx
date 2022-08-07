@@ -8,12 +8,12 @@ flex-direction: column;
 width: 100vw;
 `
 
-function TitlePageMobile({movieInfo}) {
+function TitlePageMobile({movieData}) {
 
     return (
         <MobilePageContainer>
-            <TitleImageMobile movieInfo={movieInfo}/>
-            <TitlePageContents movieInfo={movieInfo}/>
+            <TitleImageMobile movieData={movieData}/>
+            <TitlePageContents movieData={movieData}/>
         </MobilePageContainer>
     )
 }
