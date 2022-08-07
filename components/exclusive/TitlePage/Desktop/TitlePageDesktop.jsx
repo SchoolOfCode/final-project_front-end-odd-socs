@@ -22,13 +22,13 @@ const PageContentContainer = styled.div`
   max-height: 60rem;
 `;
 
-export function TitlePageDesktop() {
+export function TitlePageDesktop({movieData}) {
   return (
     <TitlePageContainer>
       <PageContentContainer>
-        <TitlePageDesktopLeft />
-        <TitlePageDesktopMid />
-        <TitlePageDesktopRight />
+        <TitlePageDesktopLeft movieData={movieData} />
+        <TitlePageDesktopMid movieData={movieData} />
+        <TitlePageDesktopRight movieData={movieData} />
       </PageContentContainer>
     </TitlePageContainer>
   );

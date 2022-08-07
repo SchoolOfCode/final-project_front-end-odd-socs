@@ -6,19 +6,20 @@ import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
-
 const share = {
-  config: [{
-        facebook: {
-          socialShareUrl: 'https://facebook.com'
-        }
-      },{
-        twitter: {
-          socialShareUrl: 'https://twitter.com'
-        }
-  }]
+  config: [
+    {
+      facebook: {
+        socialShareUrl: "https://facebook.com",
+      },
+    },
+    {
+      twitter: {
+        socialShareUrl: "https://twitter.com",
+      },
+    },
+  ],
 };
-
 
 const TitlePageLeftContainer = styled.div`
   display: flex;
@@ -32,6 +33,10 @@ const TitleImageContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: flex-start;
+
+  > * {
+    border-radius: 5px;
+  }
 `;
 
 const TitleIconsContainer = styled.div`
@@ -58,12 +63,17 @@ function handler() {
   console.log("clicked");
 }
 
-function TitlePageDesktopLeft() {
-
+function TitlePageDesktopLeft({ movieData }) {
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        {/* <Image src={imageUrl} layout="fill" objectFit="contain" alt="Title Image"></Image> */}
+        <Image
+          src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
+          layout="fill"
+          objectFit="contain"
+          alt="Title Image"
+          priority={true}
+        ></Image>
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>

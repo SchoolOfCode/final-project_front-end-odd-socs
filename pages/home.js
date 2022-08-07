@@ -40,4 +40,19 @@ function Home({ movieList, tvList, musicList, gameList }) {
   );
 }
 
+// const findMovieById = () => {
+//   let selectedMovie;
+//   Object.values(movielist).map((genres) => {
+//     genres.map((movie) => {
+//       if (movie.id === 585245) {
+//         selectedMovie = movie;
+//       }
+//     });
+//   });
+//   console.log(selectedMovie);
+//   return selectedMovie;
+// };
+
+// findMovieById();
+
 export default Home;

@@ -25,7 +25,7 @@ function TopMovies({ topMovies }) {
         {topMovies.map((movie, key) => {
           return (
             <TitleContainer key={key}>
-              <Link href="/title">
+              <Link href={`/title/movies/${movie.id}`}>
                 <a>
                   <ImageContainer>
                     <Image

@@ -88,12 +88,16 @@ const Synopsis = styled.p`
   font-weight: 300;
 `;
 
-function TitlePageDesktopMid() {
+function TitlePageDesktopMid({ movieData }) {
   return (
     <TitlePageMidContainer>
-      {/* <MidContainerTopSection>
-        <ContentTitle>{movieInfo.title}</ContentTitle>
-        <StatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</StatsContainer>
+      <MidContainerTopSection>
+        <ContentTitle>{movieData.title}</ContentTitle>
+        <StatsContainer>{`${movieData.release_date.toString().slice(0, 4)} | ${
+          movieData.genres[0].name
+        } | ${movieData.runtime} mins | TMDb Score: ${
+          movieData.vote_average
+        }`}</StatsContainer>
       </MidContainerTopSection>
       <MidContainerMidSection>
         <WatchOnContainer>
@@ -106,7 +110,7 @@ function TitlePageDesktopMid() {
                     src={GooglePlayIcon}
                     layout="fill"
                     objectFit="contain"
-                    alt = "Google Play Icon"
+                    alt="Google Play Icon"
                   />
                 </a>
               </Link>
@@ -114,14 +118,24 @@ function TitlePageDesktopMid() {
             <WatchOnIconStyle>
               <Link href="https://www.youtube.com/watch?v=LeilTRBt-h4">
                 <a target="_blank">
-                  <Image src={YouTubeIcon} layout="fill" objectFit="contain" alt = "YouTube Icon" />
+                  <Image
+                    src={YouTubeIcon}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="YouTube Icon"
+                  />
                 </a>
               </Link>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
               <Link href="https://www.amazon.co.uk/Shawshank-Redemption-Morgan-Freeman/dp/B00I6ER1OK">
                 <a target="blank">
-                  <Image src={AmazonIcon} layout="fill" objectFit="contain" alt = "Amazon Icon" />
+                  <Image
+                    src={AmazonIcon}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="Amazon Icon"
+                  />
                 </a>
               </Link>
             </WatchOnIconStyle>
@@ -132,8 +146,8 @@ function TitlePageDesktopMid() {
         </VideoContainer>
       </MidContainerMidSection>
       <MidContainerBottomSection>
-        <Synopsis>{movieInfo.plot}</Synopsis>
-      </MidContainerBottomSection> */}
+        <Synopsis>{movieData.overview}</Synopsis>
+      </MidContainerBottomSection>
     </TitlePageMidContainer>
   );
 }
