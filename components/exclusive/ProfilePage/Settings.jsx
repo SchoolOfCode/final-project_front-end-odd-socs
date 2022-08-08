@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useRouter } from "next/router"
+import {signOut} from "../../../firebase/config"
+
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -52,6 +55,8 @@ const DropDownContent = styled.h4`
   display: flex;
 `;
 
+ 
+
 export function Settings() {
   // STATES
   const [isMyAccountOpen, setIsMyAccountOpen] = useState(false);
@@ -86,6 +91,18 @@ export function Settings() {
     );
   }
 
+  //LOGOUT FUNCTION
+
+  function handleLogOutUser(){
+    const router = useRouter()
+    signOut(auth)
+
+    .then(()=>{
+        console.log('user signed out')
+        //push the user to the splash page
+        router.push("/")
+    })
+  }
   return (
     <ProfileSettingsContainer>
       {/* MY ACCOUNT */}
@@ -107,7 +124,7 @@ export function Settings() {
 
         {isMyAccountOpen && (
           <DropDownContentContainer>
-            <DropDownContent>Log Out</DropDownContent>
+            <DropDownContent onClick={handleLogOutUser}>Log Out</DropDownContent>
             <DropDownContent>Delete Account</DropDownContent>
           </DropDownContentContainer>
         )}
