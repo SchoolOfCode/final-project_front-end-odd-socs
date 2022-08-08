@@ -24,7 +24,9 @@ const LogInModal = () => {
     return (
         <PageContainer>
             <Background>
-                {/* <SignUpEmail/> */}
+                <SignUpEmail />
+                <SignUpGoogle />
+                <SignUpGithub />
             </Background>
         </PageContainer>
     )
