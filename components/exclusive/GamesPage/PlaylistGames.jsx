@@ -8,18 +8,13 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
-
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(80, 90);
 
 function PlaylistGames() {
   return (
     <>
-      <SectionTitle>My Playlist - games</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
+      <SectionTitle>Playlist - Games</SectionTitle>
+      {/* <RowContainer>
+        {moviesTop10.map((movie, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
@@ -34,7 +29,7 @@ function PlaylistGames() {
             </TitleContainer>
           );
         })}
-      </RowContainer>
+      </RowContainer> */}
     </>
   );
 }

@@ -1,36 +1,41 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { TitleText, SectionTitle } from "../../universal/Text.styles";
+import {
+  TitleText,
+  SectionTitle,
+} from "../../../components/universal/Text.styles";
 
 import {
-  ImageContainer,
   RowContainer,
   TitleContainer,
+  ImageContainer,
 } from "../../universal/Containers.styles";
 
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function ComedyMovies({ comedyMovies }) {
+function TopGames({ topGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
   return (
     <>
-      <SectionTitle>Comedy</SectionTitle>
+      <SectionTitle>Top 10 Video Games</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {comedyMovies.map((movie, key) => {
+        {topGames.slice(0, 10).map((game, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
                 <Image
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  layout="fill"
-                  alt={movie.title}
+                  src={game.background_image}
+                  objectFit="cover"
+                  alt="game"
                   priority
+                  width={700}
+                  height={1000}
                 ></Image>
               </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <TitleText>{game.name}</TitleText>
             </TitleContainer>
           );
         })}
@@ -39,4 +44,4 @@ function ComedyMovies({ comedyMovies }) {
   );
 }
 
-export default ComedyMovies;
+export default TopGames;

@@ -1,56 +1,36 @@
-/*
-    PLAN
-    create music page component
-    - display 10 category components
-        - Top Games - DONE
-        - Play list - DONE
-        - my picks - DONE
-        - Classics - DONE
-        - new releases - DONE
-        - random - DONE
-        - FPS - DONE
-        - RPG - DONE
-        - Driving - DONE
-        - Sport - DONE
-*/
-
 import styled from "styled-components";
-import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
-import TopGames from "../HomePage/TopGames";
+import TopGames from "./TopGames";
 import PlaylistGames from "./PlaylistGames";
 import MyPicksGames from "./MyPicksGames";
-import ClassicGames from "./ClassicGames";
-import NewReleaseGames from "./NewReleaseGames";
-import RandomGames from "./RandomGames";
-import FPSGames from "./FPSGames";
+import IndieGames from "./IndieGames";
+import ActionGames from "./ActionGames";
 import RPGGames from "./RPGGames";
-import DrivingGames from "./DrivingGames";
-import SportGames from "./SportGames";
+import FPSGames from "./FPSGames";
+import ArcadeGames from "./ArcadeGames";
+import MMORPGGames from "./MMORPGGames";
+import RandomGames from "./RandomGames";
 
 const PageTitle = styled.div`
   color: var(--secondary);
   font-size: 3.5rem;
 `;
 
-function GamesPage() {
+function GamesPage({ gameList }) {
   return (
     <PageContainer>
       <PageTitle>Video Games</PageTitle>
-      <TopGames />
+      <TopGames topGames={gameList.top10} />
       <PlaylistGames />
       <MyPicksGames />
-      <ClassicGames />
-      <NewReleaseGames />
-      <RandomGames />
-      <FPSGames />
-      <RPGGames />
-      <DrivingGames />
-      <SportGames />
-
-   
+      <IndieGames indieGames={gameList.indie} />
+      <ActionGames actionGames={gameList.action} />
+      <RPGGames rpgGames={gameList.rpg} />
+      <FPSGames fpsGames={gameList.fps} />
+      <ArcadeGames arcadeGames={gameList.arcade} />
+      <MMORPGGames mmorpgGames={gameList.mmorpg} />
+      <RandomGames randomGames={gameList.random} />
     </PageContainer>
-    
   );
 }
 

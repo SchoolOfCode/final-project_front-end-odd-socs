@@ -6,14 +6,24 @@ import {
   PageWrapper,
 } from "../components/universal/Containers.styles";
 
-function Games() {
+import { gamelist } from "../public/games-data/games-data";
+
+export async function getStaticProps() {
+  return {
+    props: {
+      gameList: gamelist,
+    },
+  };
+}
+
+function Games({ gameList }) {
   return (
     <>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
       <PageWrapper>
-        <GamesPage />
+        <GamesPage gameList={gameList} />
       </PageWrapper>
     </>
   );

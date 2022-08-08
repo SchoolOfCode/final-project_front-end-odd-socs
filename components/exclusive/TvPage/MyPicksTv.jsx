@@ -8,11 +8,6 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
-
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(220, 230);
 
 
 function MyPicksTv() {

@@ -6,14 +6,24 @@ import {
   PageWrapper,
 } from "../components/universal/Containers.styles";
 
-function Music() {
+import { musiclist } from "../public/music-data/music-data";
+
+export async function getStaticProps() {
+  return {
+    props: {
+      musicList: musiclist,
+    },
+  };
+}
+
+function Music({ musicList }) {
   return (
     <>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
       <PageWrapper>
-        <MusicPage />
+        <MusicPage musicList={musicList} />
       </PageWrapper>
     </>
   );

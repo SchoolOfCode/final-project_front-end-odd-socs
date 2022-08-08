@@ -11,26 +11,28 @@ import {
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function ComedyMovies({ comedyMovies }) {
+function MMORPGGames({ mmorpgGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
 
   return (
     <>
-      <SectionTitle>Comedy</SectionTitle>
+      <SectionTitle>MMORPG</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {comedyMovies.map((movie, key) => {
+        {mmorpgGames.map((game, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
                 <Image
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  layout="fill"
-                  alt={movie.title}
+                  src={game.background_image}
+                  objectFit="cover"
+                  alt="game"
                   priority
+                  width={700}
+                  height={1000}
                 ></Image>
               </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <TitleText>{game.name}</TitleText>
             </TitleContainer>
           );
         })}
@@ -39,4 +41,4 @@ function ComedyMovies({ comedyMovies }) {
   );
 }
 
-export default ComedyMovies;
+export default MMORPGGames;

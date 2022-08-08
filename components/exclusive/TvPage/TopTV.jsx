@@ -6,32 +6,34 @@ import {
 } from "../../../components/universal/Text.styles";
 
 import {
+  ImageContainer,
   RowContainer,
   TitleContainer,
-  ImageContainer,
 } from "../../universal/Containers.styles";
 
-// import { games } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-function TopGames() {
-  const gamesTop10 = moviesList.slice(11, 21);
+function TopTV({ topTV }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
+
   return (
     <>
-      <SectionTitle>Top 10 Video Games</SectionTitle>
-      <RowContainer>
-        {gamesTop10.map((game,key) => {
+      <SectionTitle>Top 10 TV Shows</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {topTV.slice(0, 10).map((tv, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
                 <Image
-                  src={`${game.image.split("_")[0]}@.jpg`}
+                  src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
                   layout="fill"
-                  style={{ zIndex: -1 }}
-                  alt="game"
+                  alt="tv"
+                  priority
                 ></Image>
               </ImageContainer>
-              <TitleText>{game.title}</TitleText>
+              <TitleText>{tv.name}</TitleText>
             </TitleContainer>
           );
         })}
@@ -40,4 +42,4 @@ function TopGames() {
   );
 }
 
-export default TopGames;
+export default TopTV;

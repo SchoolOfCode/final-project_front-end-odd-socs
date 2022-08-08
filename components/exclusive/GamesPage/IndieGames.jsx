@@ -9,18 +9,19 @@ import {
 } from "../../universal/Containers.styles";
 
 
-import {  useRef } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function FPSGames({fpsGames}) {
-   const ref = useRef();
-   const { events } = useDraggable(ref);
+function IndieGames({indieGames}) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
+
 
   return (
     <>
-      <SectionTitle>First Person Shooters</SectionTitle>
+      <SectionTitle>Indie</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {fpsGames.map((game, key) => {
+        {indieGames.map((game, key) => {
               return (
                 <TitleContainer key={key}>
                   <ImageContainer>
@@ -42,4 +43,4 @@ function FPSGames({fpsGames}) {
   );
 }
 
-export default FPSGames;
+export default IndieGames;

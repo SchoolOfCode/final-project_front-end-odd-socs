@@ -8,32 +8,29 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-import { music } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
-
 const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
   height: 8rem;
 `;
-let moviesTop10 = moviesList.slice(180, 190);
 
-function RockMusic() {
+function RockMusic({ rockMusic }) {
+  console.log(rockMusic);
   return (
     <>
       <SectionTitle>Rock</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie, key) => {
+        {rockMusic.slice(0, 20).map((album, key) => {
           return (
             <TitleContainer key={key}>
               <MusicImageContainer>
                 <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
+                  src={album.image[2]["#text"]}
                   layout="fill"
-                  style={{ zIndex: -1 }}
-                  alt={movie.title}
+                  alt={album.name}
+                  priority={true}
                 ></Image>
               </MusicImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <TitleText>{album.name}</TitleText>
             </TitleContainer>
           );
         })}

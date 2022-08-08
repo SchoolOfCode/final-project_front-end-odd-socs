@@ -14,7 +14,7 @@ export const PageWrapper = styled.div`
 
 // ------ NAVBAR & SEARCH SPECIFIC CONTAINERS ------
 export const NavIconContainer = {
-  fontSize: "2rem",
+  fontSize: "2.5rem",
   color: "var(--font-secondary-color)",
 };
 
@@ -49,21 +49,44 @@ export const RowContainer = styled.div`
   gap: 2rem;
   margin-bottom: 2rem;
   max-width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: grab;
+  /* min-height: max-content; */
+  overflow-x: scroll;
+  justify-content: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
   }
 `;
+
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.5;
   width: 100%;
+
+  /* padding: 1rem 1rem 0 1rem;
+  margin: 25px 0;
+
+  &:hover {
+    -webkit-box-shadow: -15px 25px 0px -10px var(--secondary),
+      20px -20px 0px -20px var(--primary), 20px -20px -0px -10px var(--primary),
+      -20px 20px 0px -10px var(--primary), 0px 0px 0px 5px var(--secondary),
+      25px 25px 15px 5px rgba(0, 0, 0, 0);
+
+    box-shadow: -15px 25px 0px -10px var(--primary),
+      20px -20px 0px -20px var(--primary), 20px -20px -0px -10px var(--primary),
+      -20px 20px 0px -10px var(--primary), 0px 0px 0px 5px var(--secondary),
+      25px 25px 15px 5px rgba(0, 0, 0, 0); */
+  /* padding: 1rem 1.5rem; */
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease-in;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -72,5 +95,9 @@ export const ImageContainer = styled.div`
   position: relative;
   &:hover {
     cursor: grab;
+  }
+
+  > * {
+    border-radius: 3px;
   }
 `;

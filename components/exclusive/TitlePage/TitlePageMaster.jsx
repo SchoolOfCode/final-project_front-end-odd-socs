@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import TitlePageDesktop from "./Desktop/TitlePageDesktop";
 import TitlePageMobile from "./Mobile/TitlePageMobile";
-import moviesList from "../../../data/movie-test-data/movies";
 import { useState, useEffect } from "react";
 
-const movieInfo = moviesList.slice(0, 1)[0];
 
 function TitlePage() {
   const [width, setWidth] = useState(0);

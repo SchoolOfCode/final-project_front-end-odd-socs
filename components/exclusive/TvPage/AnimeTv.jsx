@@ -8,29 +8,29 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
+function AnimeTv({ animeTV }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
-let moviesTop10 = moviesList.slice(170, 180);
-
-function AnimeTv() {
   return (
     <>
-      <SectionTitle>Anime</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie, key) => {
+      <SectionTitle>Animation</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {animeTV.map((tv, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
                 <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
+                  src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
                   layout="fill"
-                  alt={movie.title}
+                  alt={tv.title}
+                  priority
                 ></Image>
               </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <TitleText>{tv.name}</TitleText>
             </TitleContainer>
           );
         })}

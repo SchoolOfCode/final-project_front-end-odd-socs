@@ -8,29 +8,29 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
+function AiringToday({ airingToday }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
-let moviesTop10 = moviesList.slice(40, 50);
-
-function NinetiesMovies() {
   return (
     <>
-      <SectionTitle>90&apos;s Movies</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
+      <SectionTitle>Airing Today</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {airingToday.map((tv, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
                 <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
+                  src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
                   layout="fill"
-                  alt={movie.title}
+                  alt={tv.title}
+                  priority
                 ></Image>
               </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <TitleText>{tv.name}</TitleText>
             </TitleContainer>
           );
         })}
@@ -39,4 +39,4 @@ function NinetiesMovies() {
   );
 }
 
-export default NinetiesMovies;
+export default AiringToday;

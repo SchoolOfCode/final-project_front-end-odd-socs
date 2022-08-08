@@ -8,32 +8,35 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import {  useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
+function RPGGames({rpgGames}) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
-let moviesTop10 = moviesList.slice(230, 240);
 
-function RPGGames() {
   return (
     <>
       <SectionTitle>RPG</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <RowContainer {...events} ref={ref}>
+        {rpgGames.map((game, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={game.background_image}
+                      objectFit="cover"
+                      alt="game"
+                      priority
+                      width={700}
+                      height={1000}
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{game.name}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );

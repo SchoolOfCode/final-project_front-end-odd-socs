@@ -20,7 +20,7 @@ export const NavStyles = styled.div`
   left: 0;
   width: 100vw;
   height: 10vh;
-  padding: 0 1rem;
+  padding: 0 2.5rem;
   background-color: var(--primary);
 `;
 
