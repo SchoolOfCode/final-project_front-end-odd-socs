@@ -1,10 +1,9 @@
 // Log in with Email & Password component
-
+import styled from "styled-components";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { auth } from "../../../../../firebase/config";
-
 
 /*PLAN
 - Heading to say "Log in" (DONE)
@@ -14,49 +13,74 @@ import { auth } from "../../../../../firebase/config";
 
 */
 
-export default function LogInEmail(){
-    //Create a router
-    const router = useRouter()
+export const LoginText = styled.h3`
+  color: white;
+  font-weight: 400;
+  font-size: 2rem;
+  width: 100%;
+`;
 
-    //Set states for email and password
-    const [userEmail, setUserEmail] = useState("");
-    const [userPassword, setUserPassword] = useState("");
-    
-    //Create a function that logs the user in by email & passsword when the Login button is clicked
-    function handleLogin(){
-        //User signs in with email & password
-        signInWithEmailAndPassword(auth, userEmail, userPassword)
-        //then...
-        .then((response)=>{
-            //See the user details in the console
-            console.log(response.user);
-            //direct the user to the home page
-            router.push("/home")
-        }).catch((error)=>{
-            //See the error in the console
-            console.log(error);
-        })
-    }
+export const TextInput = styled.input`
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  font-size: 1.5rem;
+  border-radius: 2.5px;
+`;
 
-    return(
-        <>
-        <h1>Log in with email and password</h1>
-        <h3>Please enter your email address: <span>e.g. joebloggs@gmail.com</span></h3>
-        <input 
-        type="email" 
+export const LogInButton = styled.button`
+  padding: 0.5rem 4rem;
+  border: none;
+  border-radius: 2.5px;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+`;
+
+export default function LogInEmail() {
+  //Create a router
+  const router = useRouter();
+
+  //Set states for email and password
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  //Create a function that logs the user in by email & passsword when the Login button is clicked
+  function handleLogin() {
+    //User signs in with email & password
+    signInWithEmailAndPassword(auth, userEmail, userPassword)
+      //then...
+      .then((response) => {
+        //See the user details in the console
+        console.log(response.user);
+        //direct the user to the home page
+        router.push("/home");
+      })
+      .catch((error) => {
+        //See the error in the console
+        console.log(error);
+      });
+  }
+
+  return (
+    <>
+      <LoginText>Log in</LoginText>
+      <TextInput
+        type="email"
         placeholder="Email"
-        onChange={(event)=> setUserEmail(event.target.value)}
-        value={userEmail}/>
+        onChange={(event) => setUserEmail(event.target.value)}
+        value={userEmail}
+      />
 
-
-        <h3>Please enter your password:</h3>
-        <input 
-        type="password" 
+      <TextInput
+        type="password"
         placeholder="Password"
-        onChange={(event)=> setUserPassword(event.target.value)}
-        value={userPassword}/>
+        onChange={(event) => setUserPassword(event.target.value)}
+        value={userPassword}
+      />
 
-        <button onClick={handleLogin}>Log In</button>
-        </>
-    )
+      <LogInButton onClick={handleLogin}>Log In</LogInButton>
+    </>
+  );
 }

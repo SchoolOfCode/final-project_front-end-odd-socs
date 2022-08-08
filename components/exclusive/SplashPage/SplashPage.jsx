@@ -95,7 +95,6 @@ const SplashPage = () => {
     setIsSignUpModalOpen(false);
   };
 
-
   function handleLoginClick() {
     openLoginModalHandler();
   }
@@ -105,11 +104,15 @@ const SplashPage = () => {
   return (
     <>
       <PageContainer>
-        <Background />
-          <SiteLogo/>
+        <Background closeLoginModalHandler={closeLoginModalHandler} />
+        <SiteLogo />
+        {isLoginModalOpen && (
+          <LogInModal closeLoginModalHandler={closeLoginModalHandler} />
+        )}
+        {isSignUpModalOpen && (
+          <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />
+        )}
         <Main>
-          {isLoginModalOpen && <LogInModal closeLoginModalHandler={closeLoginModalHandler} />}
-          {isSignUpModalOpen && <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />}
           <ButtonGroup>
             <Button onClick={handleLoginClick}>Login</Button>
             <Button onClick={handleSignUpClick}>Sign Up</Button>

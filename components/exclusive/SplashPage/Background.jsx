@@ -14,6 +14,8 @@ import WebmGraphic from "../../../assets/video/1Source_Splash_With-bkg.webm";
 //   background-size: cover;
 // `;
 
+const BackgroundContainer = styled.a``;
+
 const BackgroundStyle = {
   minWidth: "100%",
   minHeight: "100%",
@@ -28,13 +30,19 @@ const BackgroundStyle = {
   objectFit: "fill",
 };
 
-function Background() {
+function Background({ closeLoginModalHandler }) {
   return (
-    // <BackgroundContainer>
-    <video style={BackgroundStyle} autoPlay loop muted>
-      <source src={WebmGraphic} type="video/webm" />
-    </video>
-    // </BackgroundContainer>
+    <BackgroundContainer>
+      <video
+        onClick={closeLoginModalHandler}
+        style={BackgroundStyle}
+        autoPlay
+        loop
+        muted
+      >
+        <source src={WebmGraphic} type="video/webm" />
+      </video>
+    </BackgroundContainer>
   );
 }
 
