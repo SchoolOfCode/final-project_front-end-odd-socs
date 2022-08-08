@@ -1,7 +1,7 @@
 import React from "react";
 import { Settings } from "./Settings";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, getByText, getByRole, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Account } from "./Account";
 import { ProfileAccountIcon } from "./ProfileAccountIcon";
@@ -12,7 +12,15 @@ describe("profile account section test", () => {
   it("check that the account container exists", () => {
     expect(screen.getByTestId("AccountContainer-Test")).toBeInTheDocument();
   });
+  it("check the year joined section contains the text 'Member since 2022'", () => {
+    expect(screen.getByTestId('YearJoined-Test')).toHaveTextContent('Member since 2022');
+  });
+  it("check the member initials section contains the text 'SP'", () => {
+    expect(screen.getByTestId('UserInitials-Test')).toHaveTextContent('SP');
+  });
 });
+
+
 
 describe("settings tests", () => {
   beforeEach(() => render(<Settings />));
