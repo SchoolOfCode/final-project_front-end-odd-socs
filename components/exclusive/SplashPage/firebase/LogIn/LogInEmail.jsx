@@ -1,5 +1,6 @@
 // Log in with Email & Password component
 
+
 /*PLAN
 - Heading to say "Log in" (DONE)
 - Email input field
