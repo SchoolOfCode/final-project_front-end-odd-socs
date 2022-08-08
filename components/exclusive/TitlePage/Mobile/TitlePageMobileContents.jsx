@@ -140,7 +140,8 @@ const Comment = styled.div`
 `;
 
 const CommentText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
   /* text-align: justify; */
 `;
 
@@ -164,7 +165,7 @@ const ReviewTextField = styled.textarea`
   border: 1px solid #1B2B3A;
   background-color:#1B2B3A;
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding: 2px 10px;
   color:var(--font-secondary-color);
   border: none;
@@ -187,6 +188,7 @@ const ReviewButton = styled.button `
   color: white;
   padding: 10px;
   font-weight: bold;
+  font-size: 1.2rem;
   color: var(--secondary);
 `
 
@@ -315,7 +317,6 @@ function TitlePageContents({ movieInfo }) {
                   <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
                   <ReviewButton>Post</ReviewButton>
                 </ReviewTextAndButtonContainer>
-
               </AddReviewContainer>
               <CommentSectionContainer>
                 {Object.values(CommentDummyData).map((comment, key) => {
