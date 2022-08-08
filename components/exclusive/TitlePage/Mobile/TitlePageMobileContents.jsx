@@ -98,7 +98,8 @@ const WatchOnContainer = styled.div`
 `;
 
 const WatchOnText = styled.h3`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight:400;
   color: white;
 `;
 
@@ -119,13 +120,14 @@ const CommentSectionContainer = styled.div`
 
 const ReviewHeaderContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 const CommentTitle = styled.h5`
   color: white;
-  font-weight: 300;
-  width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight:400;
 `;
 
 const Comment = styled.div`
@@ -145,22 +147,47 @@ const CommentText = styled.p`
 const AddReviewContainer = styled.div`
   display:flex;
   color: white;
+  align-items: center;
 `
-const ReviewTextField = styled.input`
+const AccountCircleIconContainer = styled.div `
+padding-right:1rem;
+`
+const ReviewTextAndButtonContainer = styled.div `
+display:flex;
+justify-content: space-between;
+align-items: center;
+background-color:#1B2B3A;
+border-radius: 10px;
+width: 100%;
+`
+const ReviewTextField = styled.textarea`
   border: 1px solid #1B2B3A;
   background-color:#1B2B3A;
   font-family: inherit;
-  font-size: 1rem;
-  padding: 1px 6px;
-  color:white;
+  font-size: 1.1rem;
+  padding: 2px 10px;
+  color:var(--font-secondary-color);
+  border: none;
+  outline:none;
+  border-radius: 10px;
 
+  
   display: block;
   width: 100%;
   overflow: hidden;
   resize: both;
   min-height: 1.2rem;
   line-height:30px;
-  
+`
+const ReviewButton = styled.button `
+  border: none;
+  outline:none;
+  text-decoration: none;
+  background-color:#1B2B3A;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  color: var(--secondary);
 `
 
 function TitlePageContents({ movieInfo }) {
@@ -266,7 +293,7 @@ function TitlePageContents({ movieInfo }) {
           <CommentTitle>
             {`Comments (${
             Object.values(CommentDummyData).length
-          })`}</CommentTitle>
+          }):`}</CommentTitle>
           <DropDownArrow>
             {isReviewsOpen ? (
               <ArrowDropUpIcon fontSize="large" />
@@ -281,8 +308,13 @@ function TitlePageContents({ movieInfo }) {
             {isReviewsOpen && (
               <>
               <AddReviewContainer>
-                <AccountCircleIcon />
-                <ReviewTextField/>
+                <AccountCircleIconContainer>
+                  <AccountCircleIcon />
+                </AccountCircleIconContainer>
+                <ReviewTextAndButtonContainer>
+                  <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
+                  <ReviewButton>Post</ReviewButton>
+                </ReviewTextAndButtonContainer>
 
               </AddReviewContainer>
               <CommentSectionContainer>
