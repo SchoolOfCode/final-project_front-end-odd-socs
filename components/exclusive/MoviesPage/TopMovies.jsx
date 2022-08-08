@@ -11,6 +11,7 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
+
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
@@ -25,7 +26,7 @@ function TopMovies({ topMovies }) {
         {topMovies.map((movie, key) => {
           return (
             <TitleContainer key={key}>
-              <Link href="/title">
+              <Link href={`/title/movies/${movie.id}`}>
                 <a>
                   <ImageContainer>
                     <Image

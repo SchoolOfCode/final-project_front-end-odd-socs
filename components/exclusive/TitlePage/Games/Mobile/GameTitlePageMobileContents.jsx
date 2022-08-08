@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import SeeMore from "./SeeMore";
-import SeeLess from "./SeeLess";
-import { NavHR } from "../../Header/NavMenu/NavModal";
+import SeeMore from "../../Movies-TV/Mobile/SeeMore";
+import SeeLess from "../../Movies-TV/Mobile/SeeLess";
+import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../Desktop/TitlePageDesktopRight";
+import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -15,10 +14,6 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-
-import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
 
 const TitlePageContentContainer = styled.div`
   background-color: var(--primary);
@@ -37,7 +32,7 @@ const TitlePageTitleContainer = styled.div`
   top: -7.5vh;
   height: 100%;
   padding: 0 2rem;
-  gap: 2rem;
+  gap: 1.5rem;
 `;
 
 const TitlePageStatsContainer = styled.div`
@@ -131,10 +126,11 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-function TitlePageContents({ movieInfo }) {
+function GameTitlePageMobileContents({ gameData, screenshotData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-  const shortSynopsis = `${movieInfo.plot.slice(0, 150)}...`;
+
+  const shortSynopsis = `${gameData.description_raw.slice(0, 150)}...`;
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
@@ -147,9 +143,9 @@ function TitlePageContents({ movieInfo }) {
 
   useEffect(() => {
     if (isSynopsisOpen === true) {
-      setSynopsis(movieInfo.plot);
+      setSynopsis(gameData.description_raw);
     }
-  }, [isSynopsisOpen, movieInfo.plot]);
+  }, [isSynopsisOpen]);
 
   useEffect(() => {
     if (isSynopsisOpen === false) {
@@ -167,10 +163,12 @@ function TitlePageContents({ movieInfo }) {
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
-        <Title>{movieInfo.title}</Title>
-        <TitlePageStatsContainer>
-          <TitlePageStatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</TitlePageStatsContainer>
-        </TitlePageStatsContainer>
+        <Title>{gameData.name}</Title>
+        <TitlePageStatsContainer>{`${gameData.released.slice(0, 4)} | ${
+          gameData.genres[0].name
+        } | ${gameData.esrb_rating.name} | Metacritic: ${
+          gameData.metacritic
+        }`}</TitlePageStatsContainer>
         <TitlePageSynopsisContainer>
           <Synopsis href="#">{synopsis}</Synopsis>
           {isSynopsisOpen ? (
@@ -194,24 +192,6 @@ function TitlePageContents({ movieInfo }) {
           </TitlePageIcon>
         </TitlePageIconsContainer>
         <NavHR />
-        <WatchOnContainer onClick={toggleWatchOnOpen}>
-          <WatchOnText>Watch on:</WatchOnText>
-          <WatchOnArrow>
-            {isWatchOnOpen ? (
-              <ArrowDropUpIcon fontSize="large" />
-            ) : (
-              <ArrowDropDownIcon fontSize="large" />
-            )}
-          </WatchOnArrow>
-        </WatchOnContainer>
-        {isWatchOnOpen && (
-          <WatchOnIconContainer>
-            <Image src={GooglePlayIcon} alt="Google Play Icon" />
-            <Image src={YouTubeIcon} alt="YouTube Icon" />
-            <Image src={AmazonIcon} alt="Amazon Icon" />
-          </WatchOnIconContainer>
-        )}
-        <NavHR />
         <CommentHeader>
           <CommentTitle>{`Comments (${
             Object.values(CommentDummyData).length
@@ -232,4 +212,4 @@ function TitlePageContents({ movieInfo }) {
   );
 }
 
-export default TitlePageContents;
+export default GameTitlePageMobileContents;

@@ -1,70 +1,33 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+import {
+  TitlePageLeftContainer,
+  TitleImageContainer,
+  TitleIconsContainer,
+  TitleIconContainer,
+} from "../../Movies-TV/Desktop/TitlePageDesktopLeft";
+
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
-
-const share = {
-  config: [{
-        facebook: {
-          socialShareUrl: 'https://facebook.com'
-        }
-      },{
-        twitter: {
-          socialShareUrl: 'https://twitter.com'
-        }
-  }]
-};
-
-
-const TitlePageLeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  min-width: 18rem;
-`;
-const TitleImageContainer = styled.div`
-  height: 100%;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const TitleIconsContainer = styled.div`
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-`;
-
-const TitleIconContainer = styled.div`
-  font-size: large;
-
-  &:hover {
-    color: var(--secondary);
-  }
-
-  &:focus {
-    color: var(--secondary);
-  }
-`;
-
 function handler() {
   console.log("clicked");
 }
 
-function TitlePageDesktopLeft({ movieInfo }) {
-  const imageUrl = `${movieInfo.image.split("_")[0]}@.jpg`;
-
+function GamesTitlePageDesktopLeft({ gameData }) {
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
-        <Image src={imageUrl} layout="fill" objectFit="contain" alt="Title Image"></Image>
+        <Image
+          src={gameData.background_image}
+          objectFit="cover"
+          alt="game"
+          priority
+          layout="fill"
+        ></Image>
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
@@ -84,4 +47,4 @@ function TitlePageDesktopLeft({ movieInfo }) {
   );
 }
 
-export default TitlePageDesktopLeft;
+export default GamesTitlePageDesktopLeft;

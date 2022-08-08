@@ -4,7 +4,7 @@ import TitlePageDesktopMid from "./TitlePageDesktopMid";
 import TitlePageDesktopRight from "./TitlePageDesktopRight";
 
 // Whole page container
-const TitlePageContainer = styled.div`
+export const TitlePageContainer = styled.div`
   width: 100vw;
   margin-top: 10vh;
   display: flex;
@@ -13,7 +13,7 @@ const TitlePageContainer = styled.div`
   padding: 0 3rem;
 `;
 
-const PageContentContainer = styled.div`
+export const PageContentContainer = styled.div`
   display: flex;
   justify-content: space-around;
   max-width: 80rem;
@@ -22,13 +22,13 @@ const PageContentContainer = styled.div`
   max-height: 60rem;
 `;
 
-export function TitlePageDesktop({ movieInfo }) {
+function TitlePageDesktop({ movieData, tvData }) {
   return (
     <TitlePageContainer>
       <PageContentContainer>
-        <TitlePageDesktopLeft movieInfo={movieInfo} />
-        <TitlePageDesktopMid movieInfo={movieInfo} />
-        <TitlePageDesktopRight movieInfo={movieInfo} />
+        <TitlePageDesktopLeft movieData={movieData} tvData={tvData} />
+        <TitlePageDesktopMid movieData={movieData} tvData={tvData} />
+        <TitlePageDesktopRight movieData={movieData} tvData={tvData} />
       </PageContentContainer>
     </TitlePageContainer>
   );

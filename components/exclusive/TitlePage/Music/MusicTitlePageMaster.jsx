@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import TitlePageDesktop from "./Desktop/TitlePageDesktop";
-import TitlePageMobile from "./Mobile/TitlePageMobile";
+import MusicTitlePageDesktop from "./Desktop/MusicTitlePageDesktop";
+import MusicTitlePageMobile from "./Mobile/MusicTitlePageMobile";
 import { useState, useEffect } from "react";
 
-
-function TitlePage() {
+function MusicTitlePage({ musicData }) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -22,12 +21,12 @@ function TitlePage() {
   return (
     <>
       {width >= 500 ? (
-        <TitlePageDesktop movieInfo={movieInfo} />
+        <MusicTitlePageDesktop musicData={musicData} />
       ) : (
-        <TitlePageMobile movieInfo={movieInfo} />
+        <MusicTitlePageMobile musicData={musicData} />
       )}
     </>
   );
 }
 
-export default TitlePage;
+export default MusicTitlePage;
