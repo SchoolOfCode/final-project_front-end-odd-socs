@@ -98,10 +98,8 @@ const SplashPage = () => {
         <Main>
           {isModalOpen && <LogInModal closeModalHandler={closeModalHandler} />}
           <ButtonGroup>
-            {/* <Button onClick={handleLoginClick}>Log In</Button>
-                    <Button onClick={handleSignUpClick}>Sign Up</Button> */}
-            <Button>Log In</Button>
-            <Button>Sign Up</Button>
+            <Button onClick={handleLoginClick}>Login</Button>
+            <Button onClick={handleSignUpClick}>Sign Up</Button>
           </ButtonGroup>
 
           <Link href="/home">
