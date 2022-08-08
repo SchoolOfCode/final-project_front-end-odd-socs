@@ -53,13 +53,24 @@ const TitlePageSynopsisContainer = styled.div`
 
 const TitlePageIconsContainer = styled.div`
   display: flex;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   color: white;
   justify-content: space-between;
 `;
 
+const TitlePageIconLabel = styled.h6`
+  color: var(--font-secondary-color);
+  font-weight: 400;
+`;
+
 const TitlePageIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
   &:hover {
     color: var(--secondary);
   }
@@ -87,11 +98,12 @@ const WatchOnContainer = styled.div`
 `;
 
 const WatchOnText = styled.h3`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: white;
 `;
 
-const WatchOnArrow = styled.span`
+const DropDownArrow = styled.span`
   color: white;
 `;
 
@@ -106,15 +118,16 @@ const CommentSectionContainer = styled.div`
   gap: 1rem;
 `;
 
-const CommentHeader = styled.div`
+const ReviewHeaderContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 const CommentTitle = styled.h5`
   color: white;
-  font-weight: 300;
-  width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 400;
 `;
 
 const Comment = styled.div`
@@ -127,8 +140,56 @@ const Comment = styled.div`
 `;
 
 const CommentText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
   /* text-align: justify; */
+`;
+
+
+const AddReviewContainer = styled.div`
+  display: flex;
+  color: white;
+  align-items: center;
+`;
+const AccountCircleIconContainer = styled.div`
+  padding-right: 1rem;
+`;
+const ReviewTextAndButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2b3a;
+  border-radius: 10px;
+  width: 100%;
+`;
+const ReviewTextField = styled.textarea`
+  border: 1px solid #1b2b3a;
+  background-color: #1b2b3a;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 2px 10px;
+  color: var(--font-secondary-color);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 1.2rem;
+  line-height: 30px;
+`;
+const ReviewButton = styled.button`
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background-color: #1b2b3a;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--secondary);
 `;
 
 function TitlePageContents({ movieData, tvData }) {
@@ -178,6 +239,14 @@ function TitlePageContents({ movieData, tvData }) {
     setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
   }
 
+  // Reviews section
+  const [isReviewsOpen, setIsReviewsOpen] = useState(false);
+
+  function toggleReviewsOpen(e) {
+    e.preventDefault;
+    setIsReviewsOpen((prevIsReviewsOpen) => !prevIsReviewsOpen);
+  }
+
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
@@ -212,28 +281,34 @@ function TitlePageContents({ movieData, tvData }) {
         <TitlePageIconsContainer>
           <TitlePageIcon>
             <AddCommentIcon fontSize="large" />
+            <TitlePageIconLabel>Comment</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <BeenhereIcon fontSize="large" />
+            <TitlePageIconLabel>Picks</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <BookmarkBorderIcon fontSize="large" />
+            <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <ShareIcon fontSize="large" />
+            <TitlePageIconLabel>Share</TitlePageIconLabel>
           </TitlePageIcon>
         </TitlePageIconsContainer>
         <NavHR />
+        {/* WATCH ON */}
         <WatchOnContainer onClick={toggleWatchOnOpen}>
           <WatchOnText>Watch on:</WatchOnText>
-          <WatchOnArrow>
+          <DropDownArrow>
             {isWatchOnOpen ? (
               <ArrowDropUpIcon fontSize="large" />
             ) : (
               <ArrowDropDownIcon fontSize="large" />
             )}
-          </WatchOnArrow>
+          </DropDownArrow>
         </WatchOnContainer>
+
         {isWatchOnOpen && (
           <WatchOnIconContainer>
             <Image src={GooglePlayIcon} alt="Google Play Icon" />
@@ -242,21 +317,48 @@ function TitlePageContents({ movieData, tvData }) {
           </WatchOnIconContainer>
         )}
         <NavHR />
-        <CommentHeader>
-          <CommentTitle>{`Comments (${
-            Object.values(CommentDummyData).length
-          })`}</CommentTitle>
-        </CommentHeader>
-        <CommentSectionContainer>
-          {Object.values(CommentDummyData).map((comment, key) => {
-            return (
-              <Comment key={key}>
+        {/* COMMENTS */}
+        {/* Review Section Container (IN PROGRESS - just need to add toggle to it)
+           - "Reviews" Header (DONE)
+           - Drop down/up arrow */}
+        <ReviewHeaderContainer onClick={toggleReviewsOpen}>
+          <CommentTitle>
+            {`Comments (${Object.values(CommentDummyData).length}):`}
+          </CommentTitle>
+          <DropDownArrow>
+            {isReviewsOpen ? (
+              <ArrowDropUpIcon fontSize="large" />
+            ) : (
+              <ArrowDropDownIcon fontSize="large" />
+            )}
+          </DropDownArrow>
+        </ReviewHeaderContainer>
+
+        {/* When the arrow is clicked
+            - We want to display the comments */}
+        {isReviewsOpen && (
+          <>
+            <AddReviewContainer>
+              <AccountCircleIconContainer>
                 <AccountCircleIcon />
-                <CommentText>{comment}</CommentText>
-              </Comment>
-            );
-          })}
-        </CommentSectionContainer>
+              </AccountCircleIconContainer>
+              <ReviewTextAndButtonContainer>
+                <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
+                <ReviewButton>Post</ReviewButton>
+              </ReviewTextAndButtonContainer>
+            </AddReviewContainer>
+            <CommentSectionContainer>
+              {Object.values(CommentDummyData).map((comment, key) => {
+                return (
+                  <Comment key={key}>
+                    <AccountCircleIcon />
+                    <CommentText>{comment}</CommentText>
+                  </Comment>
+                );
+              })}
+            </CommentSectionContainer>
+          </>
+        )}
       </TitlePageTitleContainer>
     </TitlePageContentContainer>
   );

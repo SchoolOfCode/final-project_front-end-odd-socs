@@ -28,5 +28,5 @@ function TitlePage({ movieData, tvData }) {
     </>
   );
 }
-
+//
 export default TitlePage;
