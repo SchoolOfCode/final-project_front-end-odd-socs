@@ -20,10 +20,7 @@
 // import firebase from "../../../firebase/clientApp"
 // import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
 
-import {
-  Title,
-  TitleSpan,
-} from "../../../components/exclusive/Header/NavMenu/NavMenu.jsx";
+
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";

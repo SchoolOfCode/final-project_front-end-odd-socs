@@ -3,6 +3,8 @@ import LogInEmail from "./firebase/LogIn/LogInEmail";
 import LogInGoogle from "./firebase/LogIn/LogInGoogle";
 import LogInGithub from "./firebase/LogIn/LogInGithub";
 import { useState } from "react";
+import CancelIcon from '@mui/icons-material/Cancel';
+import { CancelIconStyled } from "./SignUpModal";
 
 export const ModalBackground = styled.div`
   backdrop-filter: blur(30px);
@@ -53,7 +55,8 @@ const LogInModal = ({ closeLoginModalHandler }) => {
   }
 
   return (
-    <ModalBackground onClick={closeLoginModalHandler}>
+    <ModalBackground >
+    <CancelIconStyled onClick={closeLoginModalHandler}/>
       <LogInContainer>
         <LoginSectionEmail>
           <LogInEmail />
