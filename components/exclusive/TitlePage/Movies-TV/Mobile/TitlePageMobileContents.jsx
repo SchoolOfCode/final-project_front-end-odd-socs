@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import SeeMore from "./SeeMore";
 import SeeLess from "./SeeLess";
-import { NavHR } from "../../Header/NavMenu/NavModal";
+import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../Desktop/TitlePageDesktopRight";
+import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -16,9 +16,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-import GooglePlayIcon from "../../../../assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../../public/assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../../public/assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../../public/assets/WatchIcons/APV-White.png";
 
 const TitlePageContentContainer = styled.div`
   background-color: var(--primary);
@@ -37,7 +37,7 @@ const TitlePageTitleContainer = styled.div`
   top: -7.5vh;
   height: 100%;
   padding: 0 2rem;
-  gap: 2rem;
+  gap: 1.5rem;
 `;
 
 const TitlePageStatsContainer = styled.div`
@@ -145,6 +145,7 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
+
 const AddReviewContainer = styled.div`
   display: flex;
   color: white;
@@ -191,10 +192,19 @@ const ReviewButton = styled.button`
   color: var(--secondary);
 `;
 
-function TitlePageContents({ movieInfo }) {
+function TitlePageContents({ movieData, tvData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-  const shortSynopsis = `${movieInfo.plot.slice(0, 150)}...`;
+
+  let shortSynopsis;
+
+  if (movieData) {
+    shortSynopsis = `${movieData.overview.slice(0, 150)}...`;
+  }
+
+  if (tvData) {
+    shortSynopsis = `${tvData.overview.slice(0, 150)}...`;
+  }
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
@@ -207,9 +217,14 @@ function TitlePageContents({ movieInfo }) {
 
   useEffect(() => {
     if (isSynopsisOpen === true) {
-      setSynopsis(movieInfo.plot);
+      if (movieData) {
+        setSynopsis(movieData.overview);
+      }
+      if (tvData) {
+        setSynopsis(tvData.overview);
+      }
     }
-  }, [isSynopsisOpen, movieInfo.plot]);
+  }, [isSynopsisOpen]);
 
   useEffect(() => {
     if (isSynopsisOpen === false) {
@@ -235,10 +250,26 @@ function TitlePageContents({ movieInfo }) {
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
-        <Title>{movieInfo.title}</Title>
-        <TitlePageStatsContainer>
-          <TitlePageStatsContainer>{`${movieInfo.year} | Age | Runtime | IMDb: ${movieInfo.imDbRating}`}</TitlePageStatsContainer>
-        </TitlePageStatsContainer>
+        {movieData && <Title>{movieData.title}</Title>}
+        {tvData && <Title>{tvData.title}</Title>}
+        {movieData && (
+          <TitlePageStatsContainer>{`${movieData.release_date
+            .toString()
+            .slice(0, 4)} | ${movieData.genres[0].name} | ${
+            movieData.runtime
+          } mins | TMDb Score: ${
+            movieData.vote_average
+          }`}</TitlePageStatsContainer>
+        )}
+        {tvData && (
+          <TitlePageStatsContainer>{`${tvData.first_air_date
+            .toString()
+            .slice(0, 4)} | ${tvData.genres[0].name} | ${
+            tvData.episode_run_time
+          } mins | TMDb Score: ${
+            tvData.vote_average
+          }`}</TitlePageStatsContainer>
+        )}
         <TitlePageSynopsisContainer>
           <Synopsis href="#">{synopsis}</Synopsis>
           {isSynopsisOpen ? (
