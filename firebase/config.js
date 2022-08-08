@@ -31,6 +31,69 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app)
 export const db = getFirestore(app)
 
+/*PLAN
+- Set up our config file (DONE)
+
+AUTHENTICATION
+1. Firebase
+- Set up firebase for authentication 
+  - Email
+  - Github
+  - Google
+
+2. Code
+- SIGN UP functionality
+  - Email/password
+    - Form (for both email & password)
+    - Sign up button
+      - When clicked, change state to "isLoggedIn = true"
+      - Redirect to home page
+      - Add details to the database
+      - These will be the same for Google and Github sign up
+  - Google
+  - Github
+
+- LOGIN functinality
+  - Email/password
+  - Google
+  - Github
+
+- LOGOUT
+  - Log Out button
+  - Redirects you to the splash page
+  - Changes state to "isLoggedIn = false"
+
+3. Styling 
+
+DATABASE
+1. Firestore set up
+   - Set up a database
+    - Set the location to eu-west3
+   - Security rules for authenticated users
+
+
+2. Title Page (where the user can add something to their picks)
+  - Create a function that allows a user to add a pick to the database (using addDoc)
+  - Button onClick adds to the database (by running the function we've created)
+  - Repeat these steps for "watchlist" (and "reviews" as well)
+
+3. My Picks Page (where the user's picks are displayed)
+  - Create a function that GETs all of the users picks from the database
+  - Create a button that allows the user to delete each pick
+  - Add in authentication so that the picks are unique to each user (i.e. the user can only see their own picks)
+
+4. My WatchList
+  - Create a function that GETs all of the users watchlist items from the database
+  - Create a button that allows the user to delete each watchlist item
+  - Add in authentication so that the watchlist items are unique to each user (i.e. the user can only see their own watchlist item)
+
+
+4. Reviews (stretch goal)
+  - 
+
+
+
+*/
 
 
 
