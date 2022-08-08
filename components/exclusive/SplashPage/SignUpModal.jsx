@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import SignUpEmail from "./firebase/SignUp/SignUpEmail"
+import LogInGoogle from "./firebase/LogIn/LogInGoogle"
+import LogInGithub from "./firebase/LogIn/LogInGithub"
 
 const PageContainer = styled.div`
     display: flex;
@@ -33,8 +35,8 @@ const SignUpModal = () => {
             <Background>
                 <SignUpContainer>
                     <SignUpEmail />
-                    {/* <SignUpGoogle />
-                    <SignUpGithub /> */}
+                    <LogInGoogle/>
+                    <LogInGithub/>
                 </SignUpContainer>
             </Background>
         </PageContainer>
