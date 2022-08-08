@@ -1,3 +1,5 @@
+//This is the config file for Firebase services that we will use
+
 import {initializeApp} from 'firebase/app';
 import { getAuth, 
         createUserWithEmailAndPassword, 
