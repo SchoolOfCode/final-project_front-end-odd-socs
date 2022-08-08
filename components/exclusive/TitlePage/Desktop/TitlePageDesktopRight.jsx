@@ -19,23 +19,75 @@ const CommentSectionContainer = styled.div`
   gap: 1rem;
 `;
 
-const CommentHeader = styled.div`
-  display: flex;
-`;
-
-const CommentTitle = styled.h5`
-  color: white;
-  font-weight: 300;
-  width: 100%;
-  font-size: 1.5rem;
-`;
-
 const Comment = styled.div`
   display: flex;
   color: white;
-  font-weight: 300;
+  font-weight: 400;
   width: 100%;
   gap: 0.5rem;
+`;
+
+// review drop down components
+const ReviewHeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+const CommentTitle = styled.h5`
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 400;
+`;
+
+//review section
+
+const AddReviewContainer = styled.div`
+  display: flex;
+  color: white;
+  align-items: center;
+`;
+const AccountCircleIconContainer = styled.div`
+  padding-right: 0.5rem;
+`;
+const ReviewTextAndButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2b3a;
+  border-radius: 10px;
+  width: 100%;
+`;
+const ReviewTextField = styled.textarea`
+  border: 1px solid #1b2b3a;
+  background-color: #1b2b3a;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 2px 10px;
+  color: var(--font-secondary-color);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 1.2rem;
+  line-height: 30px;
+`;
+const ReviewButton = styled.button`
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background-color: #1b2b3a;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  color: var(--secondary);
+`;
+const CommentText = styled.p`
+  font-size: 1rem;
+  /* text-align: justify; */
 `;
 
 export const CommentDummyData = {
@@ -58,17 +110,26 @@ export const CommentDummyData = {
 function TitlePageDesktopRight() {
   return (
     <TitlePageRightContainer>
-      <CommentHeader>
-        <CommentTitle>{`Comments (${
-          Object.values(CommentDummyData).length
-        })`}</CommentTitle>
-      </CommentHeader>
+      <ReviewHeaderContainer>
+        <CommentTitle>
+          {`Comments (${Object.values(CommentDummyData).length})`}
+        </CommentTitle>
+      </ReviewHeaderContainer>
+      <AddReviewContainer>
+        <AccountCircleIconContainer>
+          <AccountCircleIcon />
+        </AccountCircleIconContainer>
+        <ReviewTextAndButtonContainer>
+          <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
+          <ReviewButton>Post</ReviewButton>
+        </ReviewTextAndButtonContainer>
+      </AddReviewContainer>
       <CommentSectionContainer>
         {Object.values(CommentDummyData).map((comment, key) => {
           return (
             <Comment key={key}>
               <AccountCircleIcon />
-              <p>{comment}</p>
+              <CommentText>{comment}</CommentText>
             </Comment>
           );
         })}
