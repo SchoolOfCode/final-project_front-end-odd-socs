@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useRouter } from "next/router"
-import {signOut} from "../../../firebase/config"
+import {signOut} from "firebase/auth"
+import { auth } from "../../../firebase/config";
 
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -92,9 +93,11 @@ export function Settings() {
   }
 
   //LOGOUT FUNCTION
-
+  
+  const router = useRouter()
+  
   function handleLogOutUser(){
-    const router = useRouter()
+    
     signOut(auth)
 
     .then(()=>{
