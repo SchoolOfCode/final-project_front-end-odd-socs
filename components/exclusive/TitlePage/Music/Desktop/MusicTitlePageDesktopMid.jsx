@@ -59,7 +59,6 @@ function MusicTitlePageDesktopMid({ musicData }) {
         <TracklistSubtitle>Tracklist:</TracklistSubtitle>
         <TrackContainer>
           {musicData.album.tracks.track.map((track) => {
-            console.log(track);
             return ` ${track.name} |`;
           })}
         </TrackContainer>

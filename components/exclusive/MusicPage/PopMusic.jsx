@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 import Link from "next/link";
 
@@ -16,10 +18,12 @@ const MusicImageContainer = styled(ImageContainer)`
 `;
 
 function PopMusic({ popMusic }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
   return (
     <>
       <SectionTitle>Pop Music</SectionTitle>
-      <RowContainer>
+      <RowContainer {...events} ref={ref}>
         {popMusic.slice(0, 20).map((album, key) => {
           return (
             <TitleContainer key={key}>

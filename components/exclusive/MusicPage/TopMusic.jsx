@@ -39,7 +39,6 @@ export const MusicRowContainer = styled.div`
 function TopMusic({ topMusic }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-  console.log(topMusic.slice(0, 10));
 
   return (
     <>
@@ -59,13 +58,13 @@ function TopMusic({ topMusic }) {
                     <Image
                       src={album.image[3]["#text"]}
                       layout="fill"
-                      alt={album.title}
+                      alt={album.name}
                       priority
                     />
                   </MusicImageContainer>
                 </a>
               </Link>
-              <TitleText>{album.title}</TitleText>
+              <TitleText>{album.name}</TitleText>
             </TitleContainer>
           );
         })}

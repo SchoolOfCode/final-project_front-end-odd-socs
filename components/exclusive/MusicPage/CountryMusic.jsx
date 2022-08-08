@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 import {
   RowContainer,
@@ -15,10 +17,12 @@ const MusicImageContainer = styled(ImageContainer)`
 `;
 
 function CountryMusic({ countryMusic }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
   return (
     <>
       <SectionTitle>Country</SectionTitle>
-      <RowContainer>
+      <RowContainer {...events} ref={ref}>
         {countryMusic.slice(0, 20).map((album, key) => {
           return (
             <TitleContainer key={key}>
