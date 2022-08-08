@@ -30,6 +30,7 @@ export const MusicRowContainer = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  align-items: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
