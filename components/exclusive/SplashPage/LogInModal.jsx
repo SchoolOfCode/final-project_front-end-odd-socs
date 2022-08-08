@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import LogInEmail from "./firebase/LogIn/LogInEmail"
+import LogInGoogle from "./firebase/LogIn/LogInGoogle"
+import LogInGithub from "./firebase/LogIn/LogInGithub"
 import { useState } from "react"
 
 const PageContainer = styled.div`
@@ -21,6 +23,14 @@ const PageContainer = styled.div`
     
     `
 
+    const LogInContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    `
+
 const LogInModal = () => {
     const [isModalOpen, setIsModalOpen] = useState(true)
 
@@ -36,11 +46,13 @@ const LogInModal = () => {
     return (
         <PageContainer>
             <Background>
-                <button onClick={handleExitClick}>X</button>
-                <LogInEmail />
-                {/* <LogInGoogle />
-                <LogInGithub /> */}
-            </Background>
+                <LogInContainer>   
+                    <button onClick={handleExitClick}>X</button>
+                    <LogInEmail />
+                    <LogInGoogle />
+                    <LogInGithub />
+                </LogInContainer>
+            </Background> 
         </PageContainer>
     )
 }
