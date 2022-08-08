@@ -7,15 +7,18 @@ import {
 
 import GamesTitlePageDesktopLeft from "./GamesTitlePageDesktopLeft";
 import GamesTitlePageDesktopMid from "./GamesTitlePageDesktopMid";
-// import GamesTitlePageDesktopRight from "./GamesTitlePageDesktopRight";
+import GamesTitlePageDesktopRight from "./GamesTitlePageDesktopRight";
 
-function GamesTitlePageDesktop({ gameData }) {
+function GamesTitlePageDesktop({ gameData, screenshotData }) {
   return (
     <TitlePageContainer>
       <PageContentContainer>
         <GamesTitlePageDesktopLeft gameData={gameData} />
-        <GamesTitlePageDesktopMid gameData={gameData} />
-        {/* <GamesTitlePageDesktopRight gameData={gameData} /> */}
+        <GamesTitlePageDesktopMid
+          gameData={gameData}
+          screenshotData={screenshotData}
+        />
+        <GamesTitlePageDesktopRight gameData={gameData} />
       </PageContentContainer>
     </TitlePageContainer>
   );

@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 import { gamelist } from "../../../../public/games-data/games-data";
 
-function GamesTitle({ gameData }) {
+function GamesTitle({ gameData, screenshotData }) {
   const router = useRouter();
   const titleId = router.query.gameId;
 
@@ -20,7 +20,7 @@ function GamesTitle({ gameData }) {
         <Header />
       </HeaderWrapper>
       <PageWrapper>
-        <GamesTitlePage gameData={gameData} />
+        <GamesTitlePage gameData={gameData} screenshotData={screenshotData} />
       </PageWrapper>
     </>
   );
@@ -55,17 +55,23 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const gameId = context.params.gameId;
-
-  const res = await fetch(
+  console.log(context.params);
+  const resGame = await fetch(
     `https://api.rawg.io/api/games/${gameId}?&key=5b68670474d34b3e9cbb4ed5cfe0d804`
   );
-  const selectedGame = await res.json();
+  const selectedGameData = await resGame.json();
 
-  console.log(selectedGame.background_image);
+  const selectedGameSlug = selectedGameData.slug;
+
+  const resScreenshot = await fetch(
+    `https://api.rawg.io/api/games/${selectedGameSlug}/screenshots?&key=5b68670474d34b3e9cbb4ed5cfe0d804`
+  );
+  const selectedGameScreenshots = await resScreenshot.json();
 
   return {
     props: {
-      gameData: selectedGame,
+      gameData: selectedGameData,
+      screenshotData: selectedGameScreenshots,
     },
   };
 }

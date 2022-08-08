@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import GamesTitlePageDesktop from "./Desktop/GamesTitlePageDesktop";
-// import GamesTitlePageMobile from "./Mobile/GamesTitlePageMobile";
+import GamesTitlePageMobile from "./Mobile/GamesTitlePageMobile";
 import { useState, useEffect } from "react";
 
-function GamesTitlePage({ gameData }) {
+function GamesTitlePage({ gameData, screenshotData }) {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -18,17 +18,21 @@ function GamesTitlePage({ gameData }) {
     window.addEventListener("resize", handleResize, false);
   }, []);
 
-  return <GamesTitlePageDesktop gameData={gameData} />;
-
-  // return (
-  //   <>
-  //     {width >= 500 ? (
-  //       <GamesTitlePageDesktop gameData={gameData} />
-  //     ) : (
-  //       <GamesTitlePageMobile gameData={gameData} />
-  //     )}
-  //   </>
-  // );
+  return (
+    <>
+      {width >= 500 ? (
+        <GamesTitlePageDesktop
+          screenshotData={screenshotData}
+          gameData={gameData}
+        />
+      ) : (
+        <GamesTitlePageMobile
+          screenshotData={screenshotData}
+          gameData={gameData}
+        />
+      )}
+    </>
+  );
 }
 
 export default GamesTitlePage;

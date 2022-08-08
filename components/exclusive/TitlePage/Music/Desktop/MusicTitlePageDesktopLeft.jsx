@@ -17,18 +17,26 @@ function handler() {
   console.log("clicked");
 }
 
-function GamesTitlePageDesktopLeft({ gameData }) {
+const MusicTitleImageContainer = styled(TitleImageContainer)`
+  height: 60%;
+`;
+
+const MusicTitlePageLeftContainer = styled(TitlePageLeftContainer)`
+  justify-content: flex-start;
+  gap: 2rem;
+`;
+
+function MusicTitlePageDesktopLeft({ musicData }) {
   return (
-    <TitlePageLeftContainer>
-      <TitleImageContainer>
+    <MusicTitlePageLeftContainer>
+      <MusicTitleImageContainer>
         <Image
-          src={gameData.background_image}
-          objectFit="cover"
+          src={musicData.album.image[3]["#text"]}
           alt="game"
           priority
           layout="fill"
         ></Image>
-      </TitleImageContainer>
+      </MusicTitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
           <AddCommentIcon onClick={handler} fontSize="large" />
@@ -43,8 +51,8 @@ function GamesTitlePageDesktopLeft({ gameData }) {
           <ShareIcon fontSize="large" />
         </TitleIconContainer>
       </TitleIconsContainer>
-    </TitlePageLeftContainer>
+    </MusicTitlePageLeftContainer>
   );
 }
 
-export default GamesTitlePageDesktopLeft;
+export default MusicTitlePageDesktopLeft;

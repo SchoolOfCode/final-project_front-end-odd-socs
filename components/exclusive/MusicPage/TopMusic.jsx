@@ -12,12 +12,14 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
+import { musiclist } from "../../../public/music-data/music-data";
+
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
 const MusicImageContainer = styled(ImageContainer)`
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
 `;
 
 export const MusicRowContainer = styled.div`
@@ -37,31 +39,36 @@ export const MusicRowContainer = styled.div`
 function TopMusic({ topMusic }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
+  console.log(topMusic.slice(0, 10));
 
   return (
     <>
       <SectionTitle>Top 10 Music</SectionTitle>
       <MusicRowContainer {...events} ref={ref}>
-        {/* {topMusic.map(function (key) {
-          console.log(top10Music.image[3]["#text"]);
+        {topMusic.slice(0, 10).map((album, key) => {
           return (
             <TitleContainer key={key}>
-              <Link href="/title">
+              <Link
+                href={`/title/music/${album.artist.name.replace(
+                  /\s/g,
+                  "+"
+                )}-${album.name.replace(/\s/g, "+")}`}
+              >
                 <a>
                   <MusicImageContainer>
                     <Image
-                      src={top10Music.image[3]["#text"]}
+                      src={album.image[3]["#text"]}
                       layout="fill"
-                      alt={top10Music.title}
+                      alt={album.title}
                       priority
                     />
                   </MusicImageContainer>
                 </a>
               </Link>
-              <TitleText>{top10Music.title}</TitleText>
+              <TitleText>{album.title}</TitleText>
             </TitleContainer>
           );
-        })} */}
+        })}
       </MusicRowContainer>
     </>
   );

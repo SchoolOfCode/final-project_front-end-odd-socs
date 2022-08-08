@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 import {
   TitlePageMidContainer,
@@ -10,22 +11,63 @@ import {
   Synopsis,
 } from "../../Movies-TV/Desktop/TitlePageDesktopMid";
 
-function GamesTitlePageDesktopMid({ gameData }) {
+import { RowContainer } from "../../../../universal/Containers.styles";
+
+const ScreenshotsAllContainer = styled.div`
+  display: flex;
+  min-width: 100%;
+  gap: 1rem;
+`;
+
+const GamesTitlePageMidContainer = styled(TitlePageMidContainer)`
+  max-width: 50%;
+`;
+
+const ScreenshotContainer = styled.div`
+  width: 10rem;
+  height: 7rem;
+  position: relative;
+`;
+
+const GamesMidContainerTopSection = styled(MidContainerTopSection)`
+  gap: 0.5rem;
+`;
+
+function GamesTitlePageDesktopMid({ gameData, screenshotData }) {
   return (
-    <TitlePageMidContainer>
-      <MidContainerTopSection>
+    <GamesTitlePageMidContainer>
+      <GamesMidContainerTopSection>
         <ContentTitle>{gameData.name}</ContentTitle>
         <StatsContainer>{`${gameData.released.slice(0, 4)} | ${
           gameData.genres[0].name
         } | ${gameData.esrb_rating.name} | Metacritic: ${
           gameData.metacritic
         }`}</StatsContainer>
-      </MidContainerTopSection>
-      <MidContainerMidSection></MidContainerMidSection>
+        <StatsContainer>
+          Play on:
+          {gameData.parent_platforms.map((platform) => {
+            console.log(platform);
+            return ` ${platform.platform.name} |`;
+          })}
+        </StatsContainer>
+      </GamesMidContainerTopSection>
+      <MidContainerMidSection style={{ border: "2px solid white" }}>
+        <RowContainer>
+          <ScreenshotsAllContainer>
+            {screenshotData.results.map((screenshot) => {
+              return (
+                <ScreenshotContainer>
+                  <Image src={screenshot.image} layout="fill"></Image>
+                </ScreenshotContainer>
+              );
+            })}
+          </ScreenshotsAllContainer>
+        </RowContainer>
+      </MidContainerMidSection>
       <MidContainerBottomSection>
-        <Synopsis>{gameData.description_raw}</Synopsis>
+        <Synopsis>{`${gameData.description_raw.slice(0, 400)}...`}</Synopsis>
       </MidContainerBottomSection>
-    </TitlePageMidContainer>
+    </GamesTitlePageMidContainer>
   );
 }
 

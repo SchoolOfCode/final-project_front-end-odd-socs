@@ -16,7 +16,7 @@ export async function getStaticProps() {
     props: {
       movieList: movielist.top10.slice(0, 10),
       tvList: tvlist.top10,
-      // musicList: music.top10,
+      musicList: musiclist.top10.album,
       gameList: gamelist.top10,
     },
   };
@@ -32,7 +32,7 @@ function Home({ movieList, tvList, musicList, gameList }) {
         <HomePage
           movieList={movieList}
           tvList={tvList}
-          // musicList={musicList}
+          musicList={musicList}
           gameList={gameList}
         />
       </PageWrapper>
