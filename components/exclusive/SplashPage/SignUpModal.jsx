@@ -17,16 +17,25 @@ const PageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    `
+
+    const SignUpContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
     `
 
 const SignUpModal = () => {
     return (
         <PageContainer>
             <Background>
-                <SignUpEmail />
-                {/* <SignUpGoogle />
-                <SignUpGithub /> */}
+                <SignUpContainer>
+                    <SignUpEmail />
+                    {/* <SignUpGoogle />
+                    <SignUpGithub /> */}
+                </SignUpContainer>
             </Background>
         </PageContainer>
     )
