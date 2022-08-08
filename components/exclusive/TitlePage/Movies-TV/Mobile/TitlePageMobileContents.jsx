@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import SeeMore from "./SeeMore";
 import SeeLess from "./SeeLess";
-import { NavHR } from "../../Header/NavMenu/NavModal";
+import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../Desktop/TitlePageDesktopRight";
+import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -16,9 +16,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-import GooglePlayIcon from "../../../../public/assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../public/assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../public/assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../../public/assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../../public/assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../../public/assets/WatchIcons/APV-White.png";
 
 const TitlePageContentContainer = styled.div`
   background-color: var(--primary);

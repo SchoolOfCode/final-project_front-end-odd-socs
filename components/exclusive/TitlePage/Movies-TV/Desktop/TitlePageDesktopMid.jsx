@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Image from "next/image";
 import YouTube from "react-youtube";
-import GooglePlayIcon from "../../../../public/assets/WatchIcons/google.png";
-import YouTubeIcon from "../../../../public/assets/WatchIcons/YT-White.png";
-import AmazonIcon from "../../../../public/assets/WatchIcons/APV-White.png";
+import GooglePlayIcon from "../../../../../public/assets/WatchIcons/google.png";
+import YouTubeIcon from "../../../../../public/assets/WatchIcons/YT-White.png";
+import AmazonIcon from "../../../../../public/assets/WatchIcons/APV-White.png";
 import Link from "next/link";
 
-const TitlePageMidContainer = styled.div`
+export const TitlePageMidContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,12 +16,12 @@ const TitlePageMidContainer = styled.div`
   gap: 1.5rem;
 `;
 
-const MidContainerTopSection = styled.div`
+export const MidContainerTopSection = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const MidContainerMidSection = styled.div`
+export const MidContainerMidSection = styled.div`
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-around;
@@ -29,15 +29,15 @@ const MidContainerMidSection = styled.div`
   gap: 1rem;
 `;
 
-const MidContainerBottomSection = styled.div``;
+export const MidContainerBottomSection = styled.div``;
 
-const ContentTitle = styled.h1`
+export const ContentTitle = styled.h1`
   color: white;
   font-size: 1.8rem;
   font-weight: 400;
 `;
 
-const StatsContainer = styled.div`
+export const StatsContainer = styled.div`
   display: flex;
   color: var(--highlight-1);
 `;
@@ -81,14 +81,14 @@ const VideoStyle = {
   },
 };
 
-const Synopsis = styled.p`
+export const Synopsis = styled.p`
   color: white;
   font-size: 1.2rem;
   text-align: justify;
   font-weight: 300;
 `;
 
-const TitlePageStatsContainer = styled.div`
+export const TitlePageStatsContainer = styled.div`
   display: flex;
   color: var(--highlight-1);
   font-size: 1rem;

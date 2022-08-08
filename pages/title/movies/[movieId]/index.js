@@ -1,7 +1,7 @@
 
 
 import Header from "../../../../components/exclusive/Header/Header";
-import TitlePage from "../../../../components/exclusive/TitlePage/TitlePageMaster";
+import TitlePage from "../../../../components/exclusive/TitlePage/Movies-TV/TitlePageMaster";
 import styled from "styled-components";
 import {
   HeaderWrapper,

@@ -21,14 +21,14 @@ const share = {
   ],
 };
 
-const TitlePageLeftContainer = styled.div`
+export const TitlePageLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   min-width: 18rem;
 `;
-const TitleImageContainer = styled.div`
+export const TitleImageContainer = styled.div`
   height: 100%;
   position: relative;
   display: flex;
@@ -39,7 +39,7 @@ const TitleImageContainer = styled.div`
   }
 `;
 
-const TitleIconsContainer = styled.div`
+export const TitleIconsContainer = styled.div`
   width: 100%;
   height: 10%;
   display: flex;
@@ -47,7 +47,7 @@ const TitleIconsContainer = styled.div`
   color: white;
 `;
 
-const TitleIconContainer = styled.div`
+export const TitleIconContainer = styled.div`
   font-size: large;
 
   &:hover {

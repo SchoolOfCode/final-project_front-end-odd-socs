@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import {
   TitleText,
   SectionTitle,
@@ -25,16 +26,20 @@ function TopGames({ topGames }) {
         {topGames.slice(0, 10).map((game, key) => {
           return (
             <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={game.background_image}
-                  objectFit="cover"
-                  alt="game"
-                  priority
-                  width={700}
-                  height={1000}
-                ></Image>
-              </ImageContainer>
+              <Link href={`/title/games/${game.id}`}>
+                <a>
+                  <ImageContainer>
+                    <Image
+                      src={game.background_image}
+                      objectFit="cover"
+                      alt="game"
+                      priority
+                      width={700}
+                      height={1000}
+                    ></Image>
+                  </ImageContainer>
+                </a>
+              </Link>
               <TitleText>{game.name}</TitleText>
             </TitleContainer>
           );
