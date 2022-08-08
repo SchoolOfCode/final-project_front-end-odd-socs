@@ -90,7 +90,7 @@ export function Settings() {
     <ProfileSettingsContainer>
       {/* MY ACCOUNT */}
       <SettingsSectionContainer>
-        <SettingsTitleContainer data-testid='myAccount' onClick={toggleMyAccountOpen}>
+        <SettingsTitleContainer data-testid='SettingsTitleContainer-Test' onClick={toggleMyAccountOpen}>
           <SettingHeaders  >My Account</SettingHeaders>
           {/* Depending on the state, the arrow icon changes 
                     When the state is TRUE - Arrow is UP
@@ -106,7 +106,7 @@ export function Settings() {
         </SettingsTitleContainer>
 
         {isMyAccountOpen && (
-          <DropDownContentContainer data-testid='dropDownContentContainer'>
+          <DropDownContentContainer data-testid='DropDownContentContainer-Test'>
             <DropDownContent>Log Out</DropDownContent>
             <DropDownContent>Delete Account</DropDownContent>
           </DropDownContentContainer>
