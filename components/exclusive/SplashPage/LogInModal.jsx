@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import LogInEmail from "./firebase/LogIn/LogInEmail"
+import { useState } from "react"
 
 const PageContainer = styled.div`
     display: flex;
@@ -20,12 +22,24 @@ const PageContainer = styled.div`
     `
 
 const LogInModal = () => {
+    const [isModalOpen, setIsModalOpen] = useState(true)
+
+    function closeModalHandler(){
+        setIsModalOpen(false);
+        console.log(isModalOpen)
+    }
+
+    function handleExitClick(){
+        closeModalHandler()
+    }
+
     return (
         <PageContainer>
             <Background>
+                <button onClick={handleExitClick}>X</button>
                 <LogInEmail />
-                <LogInGoogle />
-                <LogInGithub />
+                {/* <LogInGoogle />
+                <LogInGithub /> */}
             </Background>
         </PageContainer>
     )
