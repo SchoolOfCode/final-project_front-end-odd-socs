@@ -17,7 +17,6 @@ const PageTitle = styled.div`
 `;
 
 function MusicPage({ musicList }) {
-  console.log(musicList);
   return (
     <PageContainer>
       <PageTitle>Music</PageTitle>
