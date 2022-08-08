@@ -19,17 +19,6 @@ const CommentSectionContainer = styled.div`
   gap: 1rem;
 `;
 
-// const CommentHeader = styled.div`
-//   display: flex;
-// `;
-
-// const CommentTitle = styled.h5`
-//   color: white;
-//   font-weight: 300;
-//   width: 100%;
-//   font-size: 1.5rem;
-// `;
-
 const Comment = styled.div`
   display: flex;
   color: white;
