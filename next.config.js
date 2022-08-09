@@ -22,7 +22,7 @@ const nextConfig = {
   },
 };
 
-const withImages = require("next-images");
+import withImages from "next-images";
 module.exports = withImages();
 
 module.exports = nextConfig;
