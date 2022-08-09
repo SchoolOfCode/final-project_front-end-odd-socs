@@ -161,38 +161,38 @@ export const musiclist = {
         },
         "name": "Images and Words"
       },
-      {
-        "artist": {
-          "url": "https://www.last.fm/music/Pink+Floyd",
-          "name": "Pink Floyd",
-          "mbid": "83d91898-7763-47d7-b03b-b92132375c47"
-        },
-        "image": [
-          {
-            "size": "small",
-            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/cdee664c355c4c9dbb0e7ba8db690064.png"
-          },
-          {
-            "size": "medium",
-            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/cdee664c355c4c9dbb0e7ba8db690064.png"
-          },
-          {
-            "size": "large",
-            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/cdee664c355c4c9dbb0e7ba8db690064.png"
-          },
-          {
-            "size": "extralarge",
-            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/cdee664c355c4c9dbb0e7ba8db690064.png"
-          }
-        ],
-        "mbid": "2a49d08f-5dfc-4ba6-8b40-537e3aa778bd",
-        "url": "https://www.last.fm/music/Pink+Floyd/Echoes+-+The+Best+Of+Pink+Floyd",
-        "playcount": "267",
-        "@attr": {
-          "rank": "6"
-        },
-        "name": "Echoes - The Best Of Pink Floyd"
-      },
+      // {
+      //   "artist": {
+      //     "url": "https://www.last.fm/music/Pink+Floyd",
+      //     "name": "Pink Floyd",
+      //     "mbid": "83d91898-7763-47d7-b03b-b92132375c47"
+      //   },
+      //   "image": [
+      //     {
+      //       "size": "small",
+      //       "#text": "https://lastfm.freetls.fastly.net/i/u/34s/cdee664c355c4c9dbb0e7ba8db690064.png"
+      //     },
+      //     {
+      //       "size": "medium",
+      //       "#text": "https://lastfm.freetls.fastly.net/i/u/64s/cdee664c355c4c9dbb0e7ba8db690064.png"
+      //     },
+      //     {
+      //       "size": "large",
+      //       "#text": "https://lastfm.freetls.fastly.net/i/u/174s/cdee664c355c4c9dbb0e7ba8db690064.png"
+      //     },
+      //     {
+      //       "size": "extralarge",
+      //       "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/cdee664c355c4c9dbb0e7ba8db690064.png"
+      //     }
+      //   ],
+      //   "mbid": "2a49d08f-5dfc-4ba6-8b40-537e3aa778bd",
+      //   "url": "https://www.last.fm/music/Pink+Floyd/Echoes+-+The+Best+Of+Pink+Floyd",
+      //   "playcount": "267",
+      //   "@attr": {
+      //     "rank": "6"
+      //   },
+      //   "name": "Echoes - The Best Of Pink Floyd"
+      // },
       {
         "artist": {
           "url": "https://www.last.fm/music/Skid+Row",

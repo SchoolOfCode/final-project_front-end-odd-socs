@@ -51,19 +51,19 @@ function MusicTitlePageDesktopMid({ musicData }) {
   return (
     <MusicTitlePageMidContainer>
       <MusicMidContainerTopSection>
-      {musicData.album.name &&
-        <ContentTitle>{musicData.album.name}</ContentTitle>
+      {musicData.name &&
+        <ContentTitle>{musicData.name}</ContentTitle>
       }
-      {musicData.album.artist &&
-        <StatsContainer>{`${musicData.album.artist} | ${musicData.album.tags.tag[0].name} | Tracks: ${musicData.album.tracks.track.length}`}</StatsContainer>
+      {musicData.artist &&
+        <StatsContainer>{`${musicData.artist} | ${musicData.tags.tag[0].name} | Tracks: ${musicData.tracks.track.length}`}</StatsContainer>
       }
       </MusicMidContainerTopSection>
       <MusicMidContainerMidSection>
         {/* <RowContainer> */}
         <TracklistSubtitle>Tracklist:</TracklistSubtitle>
-        {musicData.album.tracks &&
+        {musicData.tracks &&
         <TrackContainer>
-          {musicData.album.tracks.track.map((track) => {
+          {musicData.tracks.track.map((track) => {
             return ` ${track.name} |`;
           })}
         </TrackContainer>
@@ -71,10 +71,10 @@ function MusicTitlePageDesktopMid({ musicData }) {
         {/* </RowContainer> */}
       </MusicMidContainerMidSection>
       <MidContainerBottomSection>
-      {musicData.album.wiki.content &&
+      {musicData.wiki &&
         <Synopsis>
-          {`${musicData.album.wiki.content.slice(0, 400)}...`}
-          <LastFMLink target="_blank" href={musicData.album.url}>
+          {`${musicData.wiki.slice(0, 400)}...`}
+          <LastFMLink target="_blank" href={musicData.url}>
             read more on LastFM
           </LastFMLink>
         </Synopsis>

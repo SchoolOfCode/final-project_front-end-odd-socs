@@ -87,6 +87,7 @@ export async function getStaticPaths() {
     ...rockIDs,
   ];
 
+
   return {
     fallback: true,
     paths: IDs.map((Id) => ({ params: { musicId: Id } })),
@@ -95,6 +96,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const musicId = context.params.musicId;
+  console.log(musicId);
   const artistAndAlbum = musicId.split("-");
 
   const artist = artistAndAlbum[0];
@@ -103,7 +105,19 @@ export async function getStaticProps(context) {
   const res = await fetch(
     `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=47a0d3657aa0b16a650b3476d333aab3&artist=${artist}&album=${album}&format=json`
   );
-  const selectedMusicData = await res.json();
+  let selectedMusicData = await res.json();
+  let wiki = "";
+
+  if (typeof selectedMusicData.album.wiki === "undefined") {
+    wiki = "";
+  } else {
+    wiki = selectedMusicData.album.wiki.content;
+  }
+
+  selectedMusicData = {
+    ...selectedMusicData.album,
+    wiki: wiki,
+  };
 
   return {
     props: {

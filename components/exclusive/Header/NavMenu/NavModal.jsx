@@ -88,7 +88,7 @@ function NavMenuModal() {
           <NavLink href="/games">Games</NavLink>
         </NavRow>
         <NavHR />
-        <NavRow>
+        {/* <NavRow>
           <MenuMyPicksIcon />
           <NavLink href="/mypicks">My Picks</NavLink>
         </NavRow>
@@ -96,7 +96,7 @@ function NavMenuModal() {
           <MenuWatchlistIcon />
           <NavLink href="/mywatchlist">My Watchlist</NavLink>
         </NavRow>
-        <NavHR />
+        <NavHR /> */}
         <NavRow>
           <MenuAccountIcon />
           <NavLink href="/profile">My Account</NavLink>

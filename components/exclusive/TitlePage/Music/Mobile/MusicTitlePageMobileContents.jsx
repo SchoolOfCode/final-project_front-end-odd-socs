@@ -131,9 +131,7 @@ function MusicTitlePageMobileContents({ musicData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
 
-  let shortSynopsis = ""
-
-   (musicData.album.wiki.content ? `${musicData.album.wiki.content.slice(0, 150)}...` : "")
+  const shortSynopsis = `${musicData.wiki.slice(0, 150)}...`;
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
@@ -146,7 +144,7 @@ function MusicTitlePageMobileContents({ musicData }) {
 
   useEffect(() => {
     if (isSynopsisOpen === true) {
-      setSynopsis(`${musicData.album.wiki.content.slice(0, 400)}...`);
+      setSynopsis(`${musicData.wiki.slice(0, 400)}...`);
     }
   }, [isSynopsisOpen]);
 
@@ -159,29 +157,27 @@ function MusicTitlePageMobileContents({ musicData }) {
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
-      {musicData.album.name &&
-        <Title>{musicData.album.name}</Title>
-      }
-      {musicData.album.artist &&
-        <TitlePageStatsContainer>{`${musicData.album.artist} | ${musicData.album.tags.tag[0].name} | Tracks: ${musicData.album.tracks.track.length}`}</TitlePageStatsContainer>
-      }
-      {musicData.album.wiki.content &&
-        <TitlePageSynopsisContainer>
-          <Synopsis href="#">
-            {synopsis}
-            {isSynopsisOpen && (
-              <LastFMLink target="_blank" href={musicData.album.url}>
-                read more on LastFM
-              </LastFMLink>
+        {musicData.name && <Title>{musicData.name}</Title>}
+        {musicData.artist && (
+          <TitlePageStatsContainer>{`${musicData.artist} | ${musicData.tags.tag[0].name} | Tracks: ${musicData.tracks.track.length}`}</TitlePageStatsContainer>
+        )}
+        {musicData.wiki.content && (
+          <TitlePageSynopsisContainer>
+            <Synopsis href="#">
+              {synopsis}
+              {isSynopsisOpen && (
+                <LastFMLink target="_blank" href={musicData.url}>
+                  read more on LastFM
+                </LastFMLink>
+              )}
+            </Synopsis>
+            {isSynopsisOpen ? (
+              <SeeLess toggleFullSynopsis={toggleFullSynopsis} />
+            ) : (
+              <SeeMore toggleFullSynopsis={toggleFullSynopsis} />
             )}
-          </Synopsis>
-          {isSynopsisOpen ? (
-            <SeeLess toggleFullSynopsis={toggleFullSynopsis} />
-          ) : (
-            <SeeMore toggleFullSynopsis={toggleFullSynopsis} />
-          )}
-        </TitlePageSynopsisContainer>
-      }
+          </TitlePageSynopsisContainer>
+        )}
         <TitlePageIconsContainer>
           <TitlePageIcon>
             <AddCommentIcon fontSize="large" />

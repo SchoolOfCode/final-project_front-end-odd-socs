@@ -55,7 +55,7 @@ export async function getStaticPaths() {
   // console.log(IDs);
 
   return {
-    fallback: false,
+    fallback: true,
     paths: IDs.map((ID) => ({ params: { movieId: ID } })),
   };
 }

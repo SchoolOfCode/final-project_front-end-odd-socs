@@ -30,9 +30,9 @@ function MusicTitlePageDesktopLeft({ musicData }) {
   return (
     <MusicTitlePageLeftContainer>
       <MusicTitleImageContainer>
-      {musicData.album.image[3]["#text"] && 
+      {musicData.image[3]["#text"] && 
         <Image
-          src={musicData.album.image[3]["#text"]}
+          src={musicData.image[3]["#text"]}
           alt="game"
           priority
           layout="fill"

@@ -48,7 +48,7 @@ export async function getStaticPaths() {
   ];
 
   return {
-    fallback: false,
+    fallback: true,
     paths: IDs.map((ID) => ({ params: { gameId: ID } })),
   };
 }

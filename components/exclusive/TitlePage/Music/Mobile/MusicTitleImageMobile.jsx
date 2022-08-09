@@ -13,7 +13,7 @@ function MusicTitleImageMobile({ musicData }) {
   return (
     <TitleImageMobileContainer>
       <Image
-        src={musicData.album.image[3]["#text"]}
+        src={musicData.image[3]["#text"]}
         layout="fill"
         alt="Title Image--Mobile"
       ></Image>
