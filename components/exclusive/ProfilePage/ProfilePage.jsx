@@ -20,33 +20,42 @@ PLAN
 
 */
 
+import styled from "styled-components";
+import Image from "next/image";
+import { Account } from "./Account";
+import { Settings } from "./Settings";
+import StaticBackground from "../../../public/assets/Images/1Source-static-bkg.png";
 
-
-
-
-import styled from "styled-components"
-import { Account } from "./Account"
-import { Settings } from "./Settings"
+const ProfileBackground = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   margin-top: 10vh;
-  height:90vh;
+  height: 90vh;
   width: 100vw;
   gap: 1rem;
   padding: 4rem 3rem;
-  position:relative;
+  position: relative;
 `;
 
-export function ProfilePage(){
-
-    return(
-        <PageContainer>
-            <Account />
-            <Settings/>
-        </PageContainer>
-        
-    )
+export function ProfilePage() {
+  return (
+    <>
+      <ProfileBackground>
+        <Image src={StaticBackground} objectFit="cover" layout="fill" />
+      </ProfileBackground>
+      <PageContainer>
+        <Account />
+        <Settings />
+      </PageContainer>
+    </>
+  );
 }

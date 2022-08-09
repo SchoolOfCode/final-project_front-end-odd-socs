@@ -5,7 +5,6 @@ import ListenListMusic from "./ListenListMusic";
 import TopMusic from "./TopMusic";
 import MyPicksMusic from "./MyPicksMusic";
 import PopMusic from "./PopMusic";
-import NewReleasesMusic from "./NewReleasesMusic";
 import DanceMusic from "./DanceMusic";
 import HiphopMusic from "./HiphopMusic";
 import JazzMusic from "./JazzMusic";
@@ -21,10 +20,9 @@ function MusicPage({ musicList }) {
   return (
     <PageContainer>
       <PageTitle>Music</PageTitle>
-      <TopMusic />
+      <TopMusic topMusic={musicList.top10.album} />
       <ListenListMusic />
       <MyPicksMusic />
-      <NewReleasesMusic />
       <PopMusic popMusic={musicList.popular.album} />
       <RockMusic rockMusic={musicList.rock.album} />
       <CountryMusic countryMusic={musicList.country.album} />
