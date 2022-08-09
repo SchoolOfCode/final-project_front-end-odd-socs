@@ -48,6 +48,11 @@ export const TitleIconsContainer = styled.div`
 `;
 
 export const TitleIconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;  
   font-size: large;
 
   &:hover {
@@ -58,6 +63,12 @@ export const TitleIconContainer = styled.div`
     color: var(--secondary);
   }
 `;
+
+const TitlePageIconLabel = styled.h6`
+  color: var(--font-secondary-color);
+  font-weight: 400;
+  font-size:0.9rem;
+`
 
 function handler() {
   console.log("clicked");
@@ -89,15 +100,19 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
           <AddCommentIcon onClick={handler} fontSize="large" />
+          <TitlePageIconLabel>Comment</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
           <BeenhereIcon fontSize="large" />
+          <TitlePageIconLabel>Picks</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
           <BookmarkBorderIcon fontSize="large" />
+          <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={4}>
           <ShareIcon fontSize="large" />
+          <TitlePageIconLabel>Share</TitlePageIconLabel>
         </TitleIconContainer>
       </TitleIconsContainer>
     </TitlePageLeftContainer>

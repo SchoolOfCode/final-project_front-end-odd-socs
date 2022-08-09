@@ -48,13 +48,24 @@ const TitlePageSynopsisContainer = styled.div`
 
 const TitlePageIconsContainer = styled.div`
   display: flex;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   color: white;
   justify-content: space-between;
 `;
 
+const TitlePageIconLabel = styled.h6`
+  color: var(--font-secondary-color);
+  font-weight: 400;
+`
+
 const TitlePageIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
   &:hover {
     color: var(--secondary);
   }
@@ -180,15 +191,19 @@ function GameTitlePageMobileContents({ gameData, screenshotData }) {
         <TitlePageIconsContainer>
           <TitlePageIcon>
             <AddCommentIcon fontSize="large" />
+            <TitlePageIconLabel>Comment</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <BeenhereIcon fontSize="large" />
+            <TitlePageIconLabel>Picks</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <BookmarkBorderIcon fontSize="large" />
+            <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
             <ShareIcon fontSize="large" />
+            <TitlePageIconLabel>Share</TitlePageIconLabel>
           </TitlePageIcon>
         </TitlePageIconsContainer>
         <NavHR />
