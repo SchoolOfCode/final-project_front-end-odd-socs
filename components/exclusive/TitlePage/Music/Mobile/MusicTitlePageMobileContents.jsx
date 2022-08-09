@@ -131,7 +131,9 @@ function MusicTitlePageMobileContents({ musicData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
 
-  const shortSynopsis = musicData.album.wiki.content ? `${musicData.album.wiki.content.slice(0, 150)}...` : "";
+  let shortSynopsis = ""
+
+   (musicData.album.wiki.content ? `${musicData.album.wiki.content.slice(0, 150)}...` : "")
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
