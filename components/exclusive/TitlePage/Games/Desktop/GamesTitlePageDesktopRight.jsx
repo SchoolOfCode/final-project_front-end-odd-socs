@@ -17,6 +17,12 @@ const CommentSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const CommentHeader = styled.div`
