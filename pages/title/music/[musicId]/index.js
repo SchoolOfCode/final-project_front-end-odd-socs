@@ -35,22 +35,46 @@ export async function getStaticPaths() {
       )}`
   );
   const countryIDs = musiclist.country.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
   const danceIDs = musiclist.dance.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
   const hiphopIDs = musiclist.hiphop.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
   const jazzIDs = musiclist.jazz.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
   const popularIDs = musiclist.popular.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
   const rockIDs = musiclist.rock.album.map(
-    (album) => `${album.artist}-${album.name}`
+    (album) =>
+      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+        /\s/g,
+        "+"
+      )}`
   );
 
   let IDs = [
@@ -65,7 +89,7 @@ export async function getStaticPaths() {
 
   return {
     fallback: true,
-    paths: IDs.map((ID) => ({ params: { musicId: ID } })),
+    paths: IDs.map((Id) => ({ params: { musicId: Id } })),
   };
 }
 
