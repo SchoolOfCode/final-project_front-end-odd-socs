@@ -5,6 +5,9 @@ import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import { app, db } from "../../../../../firebase/config";
+import { collection, addDoc } from "firebase/firestore";  
+
 
 const share = {
   config: [
@@ -52,7 +55,7 @@ export const TitleIconContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;  
+  gap: 0.5rem;
   font-size: large;
 
   &:hover {
@@ -67,14 +70,32 @@ export const TitleIconContainer = styled.div`
 const TitlePageIconLabel = styled.h6`
   color: var(--font-secondary-color);
   font-weight: 400;
-  font-size:0.9rem;
-`
+  font-size: 0.9rem;
+`;
 
 function handler() {
   console.log("clicked");
 }
 
 function TitlePageDesktopLeft({ movieData, tvData }) {
+
+  //setting up our database table
+  const myPicksDb = collection(db, "myPicks");
+
+  //creating a function that adds the title to myPicks
+
+  function addMyPick(){
+    //post request
+    addDoc(myPicksDb, { 
+      movieId:`${movieData.id}`,
+      title: `${movieData.title}`,
+      image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
+      
+     }).then(() => {
+      alert("data sent")
+     })
+  }
+
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
@@ -100,10 +121,10 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
           <AddCommentIcon onClick={handler} fontSize="large" />
-          <TitlePageIconLabel>Comment</TitlePageIconLabel>
+          <TitlePageIconLabel>Review</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
-          <BeenhereIcon fontSize="large" />
+          <BeenhereIcon onClick={addMyPick} fontSize="large" />
           <TitlePageIconLabel>Picks</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
