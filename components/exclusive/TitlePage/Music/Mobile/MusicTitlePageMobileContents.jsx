@@ -131,7 +131,7 @@ function MusicTitlePageMobileContents({ musicData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
 
-  const shortSynopsis = `${musicData.album.wiki.content.slice(0, 150)}...`;
+  const shortSynopsis = musicData.album.wiki.content ? `${musicData.album.wiki.content.slice(0, 150)}...` : "";
 
   useEffect(() => {
     setSynopsis(shortSynopsis);
@@ -157,8 +157,13 @@ function MusicTitlePageMobileContents({ musicData }) {
   return (
     <TitlePageContentContainer>
       <TitlePageTitleContainer>
+      {musicData.album.name &&
         <Title>{musicData.album.name}</Title>
+      }
+      {musicData.album.artist &&
         <TitlePageStatsContainer>{`${musicData.album.artist} | ${musicData.album.tags.tag[0].name} | Tracks: ${musicData.album.tracks.track.length}`}</TitlePageStatsContainer>
+      }
+      {musicData.album.wiki.content &&
         <TitlePageSynopsisContainer>
           <Synopsis href="#">
             {synopsis}
@@ -174,6 +179,7 @@ function MusicTitlePageMobileContents({ musicData }) {
             <SeeMore toggleFullSynopsis={toggleFullSynopsis} />
           )}
         </TitlePageSynopsisContainer>
+      }
         <TitlePageIconsContainer>
           <TitlePageIcon>
             <AddCommentIcon fontSize="large" />

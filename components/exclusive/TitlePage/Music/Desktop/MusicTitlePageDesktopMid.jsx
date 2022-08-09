@@ -51,26 +51,34 @@ function MusicTitlePageDesktopMid({ musicData }) {
   return (
     <MusicTitlePageMidContainer>
       <MusicMidContainerTopSection>
+      {musicData.album.name &&
         <ContentTitle>{musicData.album.name}</ContentTitle>
+      }
+      {musicData.album.artist &&
         <StatsContainer>{`${musicData.album.artist} | ${musicData.album.tags.tag[0].name} | Tracks: ${musicData.album.tracks.track.length}`}</StatsContainer>
+      }
       </MusicMidContainerTopSection>
       <MusicMidContainerMidSection>
         {/* <RowContainer> */}
         <TracklistSubtitle>Tracklist:</TracklistSubtitle>
+        {musicData.album.tracks &&
         <TrackContainer>
           {musicData.album.tracks.track.map((track) => {
             return ` ${track.name} |`;
           })}
         </TrackContainer>
+        }
         {/* </RowContainer> */}
       </MusicMidContainerMidSection>
       <MidContainerBottomSection>
+      {musicData.album.wiki.content &&
         <Synopsis>
           {`${musicData.album.wiki.content.slice(0, 400)}...`}
           <LastFMLink target="_blank" href={musicData.album.url}>
             read more on LastFM
           </LastFMLink>
         </Synopsis>
+      }
       </MidContainerBottomSection>
     </MusicTitlePageMidContainer>
   );
