@@ -8,32 +8,35 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
 
-import moviesList from "../../../data/movie-test-data/movies";
+import {  useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-let moviesTop10 = moviesList.slice(220, 230);
+function FPSGames({fpsGames}) {
+   const ref = useRef();
+   const { events } = useDraggable(ref);
 
-function FPSGames() {
   return (
     <>
       <SectionTitle>First Person Shooters</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
-          return (
-            <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
-          );
-        })}
+      <RowContainer {...events} ref={ref}>
+        {fpsGames.map((game, key) => {
+              return (
+                <TitleContainer key={key}>
+                  <ImageContainer>
+                    <Image
+                      src={game.background_image}
+                      objectFit="cover"
+                      alt="game"
+                      priority
+                      width={700}
+                      height={1000}
+                    ></Image>
+                  </ImageContainer>
+                  <TitleText>{game.name}</TitleText>
+                </TitleContainer>
+              );
+            })}
       </RowContainer>
     </>
   );

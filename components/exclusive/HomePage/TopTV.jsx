@@ -11,20 +11,18 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { tv } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
+import { tv } from "../../../data/home-test-data/home-test-data";
 
 function TopTV() {
-  const tvTop10 = moviesList.slice(35, 45);
   return (
     <>
       <SectionTitle>Top 10 TV Shows</SectionTitle>
       <RowContainer>
-        {tvTop10.map((tv, key) => {
+        {tv.map((tv) => {
           return (
-            <TitleContainer key={key}>
+            <TitleContainer>
               <ImageContainer>
-                <Image src={`${tv.image.split("_")[0]}@.jpg`} layout="fill" alt="tv"></Image>
+                <Image src={tv.image.src} layout="fill"></Image>
               </ImageContainer>
               <TitleText>{tv.title}</TitleText>
             </TitleContainer>

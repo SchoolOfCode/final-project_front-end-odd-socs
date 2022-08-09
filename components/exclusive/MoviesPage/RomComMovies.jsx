@@ -19,15 +19,14 @@ function RomComMovies() {
     <>
       <SectionTitle>Rom-Coms</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie,key) => {
+        {moviesTop10.map((movie) => {
           return (
-            <TitleContainer key={key}>
+            <TitleContainer>
               <ImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   style={{ zIndex: -1 }}
                   layout="fill"
-                  alt={movie.title}
                 ></Image>
               </ImageContainer>
               <TitleText>{movie.title}</TitleText>

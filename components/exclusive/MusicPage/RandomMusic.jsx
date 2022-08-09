@@ -22,15 +22,14 @@ function RandomMusic() {
     <>
       <SectionTitle>Random</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie,key) => {
+        {moviesTop10.map((movie) => {
           return (
-            <TitleContainer key={key}>
+            <TitleContainer>
               <MusicImageContainer>
                 <Image
                   src={`${movie.image.split("_")[0]}@.jpg`}
                   layout="fill"
                   style={{ zIndex: -1 }}
-                  alt={movie.title}
                 ></Image>
               </MusicImageContainer>
               <TitleText>{movie.title}</TitleText>

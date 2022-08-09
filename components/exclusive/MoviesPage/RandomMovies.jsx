@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
@@ -8,28 +9,32 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-import moviesList from "../../../data/movie-test-data/movies";
+function RandomMovies({ randomMovies }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
-let moviesTop10 = moviesList.slice(50, 60);
-
-function RandomMovies() {
   return (
     <>
-      <SectionTitle>Random</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
+      <SectionTitle>Random Movies</SectionTitle>
+      <RowContainer {...events} ref={ref}>
+        {randomMovies.map((movie, key) => {
           return (
             <TitleContainer key={key}>
-              <ImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  style={{ zIndex: -1 }}
-                  layout="fill"
-                  alt={movie.title}
-                ></Image>
-              </ImageContainer>
+              <Link href={`/title/movies/${movie.id}`}>
+                <a>
+                  <ImageContainer>
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      layout="fill"
+                      alt={movie.title}
+                      priority={true}
+                    />
+                  </ImageContainer>
+                </a>
+              </Link>
               <TitleText>{movie.title}</TitleText>
             </TitleContainer>
           );

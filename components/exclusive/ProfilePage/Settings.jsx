@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase/config";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -50,6 +53,11 @@ const DropDownContent = styled.h4`
   color: var(--font-secondary-color);
   justify-content: flex-end;
   display: flex;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--secondary);
+  }
 `;
 
 export function Settings() {
@@ -86,6 +94,17 @@ export function Settings() {
     );
   }
 
+  //LOGOUT FUNCTION
+
+  const router = useRouter();
+
+  function handleLogOutUser() {
+    signOut(auth).then(() => {
+      console.log("user signed out");
+      //push the user to the splash page
+      router.push("/");
+    });
+  }
   return (
     <ProfileSettingsContainer>
       {/* MY ACCOUNT */}
@@ -107,7 +126,9 @@ export function Settings() {
 
         {isMyAccountOpen && (
           <DropDownContentContainer>
-            <DropDownContent>Log Out</DropDownContent>
+            <DropDownContent onClick={handleLogOutUser}>
+              Log Out
+            </DropDownContent>
             <DropDownContent>Delete Account</DropDownContent>
           </DropDownContentContainer>
         )}
@@ -131,8 +152,8 @@ export function Settings() {
           </DropDownContentContainer>
         )}
       </SettingsSectionContainer>
-         {/* ACCESSIBILITY */}
-         <SettingsSectionContainer>
+      {/* ACCESSIBILITY */}
+      <SettingsSectionContainer>
         <SettingsTitleContainer onClick={toggleAccessibilityOpen}>
           <SettingHeaders>Accessibility</SettingHeaders>
           <SettingsArrow>
@@ -150,8 +171,8 @@ export function Settings() {
           </DropDownContentContainer>
         )}
       </SettingsSectionContainer>
-       {/* CUSTOMER SUPPORT */}
-       <SettingsSectionContainer>
+      {/* CUSTOMER SUPPORT */}
+      <SettingsSectionContainer>
         <SettingsTitleContainer onClick={toggleCustomerSupportOpen}>
           <SettingHeaders>Customer Support</SettingHeaders>
           <SettingsArrow>

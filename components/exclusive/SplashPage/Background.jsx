@@ -1,6 +1,6 @@
 import { filledInputClasses } from "@mui/material";
 import styled from "styled-components";
-import WebmGraphic from "../../../assets/video/1Source_Splash_With-bkg.webm";
+import WebmGraphic from "../../../public/assets/video/1Source_Splash_With-bkg.webm";
 
 // const BackgroundContainer = styled.div`
 //   position: absolute;
@@ -13,6 +13,8 @@ import WebmGraphic from "../../../assets/video/1Source_Splash_With-bkg.webm";
 //   display: block;
 //   background-size: cover;
 // `;
+
+const BackgroundContainer = styled.a``;
 
 const BackgroundStyle = {
   minWidth: "100%",
@@ -28,13 +30,19 @@ const BackgroundStyle = {
   objectFit: "fill",
 };
 
-function Background() {
+function Background({ closeLoginModalHandler }) {
   return (
-    // <BackgroundContainer>
-    <video style={BackgroundStyle} autoPlay loop muted>
-      <source src={WebmGraphic} type="video/webm" />
-    </video>
-    // </BackgroundContainer>
+    <BackgroundContainer>
+      <video
+        onClick={closeLoginModalHandler}
+        style={BackgroundStyle}
+        autoPlay
+        loop
+        muted
+      >
+        <source src={WebmGraphic} type="video/webm" />
+      </video>
+    </BackgroundContainer>
   );
 }
 

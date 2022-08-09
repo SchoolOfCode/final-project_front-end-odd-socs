@@ -1,38 +1,36 @@
 import styled from "styled-components";
-import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
-import TopMovies from "../HomePage/TopMovies";
+import TopMovies from "./TopMovies";
 import WatchlistMovies from "./WatchlistMovies";
 import MyPicksMovies from "./MyPicksMovies";
-import NinetiesMovies from "./NinetiesMovies";
+import ActionMovies from "./ActionMovies";
 import NewReleasesMovies from "./NewReleasesMovies";
 import RandomMovies from "./RandomMovies";
 import HorrorMovies from "./HorrorMovies";
 import SciFiMovies from "./SciFiMovies";
 import ComedyMovies from "./ComedyMovies";
-import RomComMovies from "./RomComMovies";
+import Documentary from "./Documentary";
 
 const PageTitle = styled.div`
   color: var(--secondary);
   font-size: 3.5rem;
 `;
 
-function MoviesPage() {
+function MoviesPage({ movieList }) {
   return (
     <PageContainer>
       <PageTitle>Movies</PageTitle>
-      <TopMovies />
-      <WatchlistMovies />
-      <MyPicksMovies/>
-      <NinetiesMovies/>
-      <NewReleasesMovies/>
-      <RandomMovies/>
-      <HorrorMovies />
-      <SciFiMovies />
-      <ComedyMovies />
-      <RomComMovies />
+      <TopMovies topMovies={movieList.top10} />
+      <NewReleasesMovies newReleases={movieList.newReleases} />
+      {/* <WatchlistMovies /> */}
+      {/* <MyPicksMovies /> */}
+      <ActionMovies actionMovies={movieList.action} />
+      <SciFiMovies scifiMovies={movieList.scifi} />
+      <ComedyMovies comedyMovies={movieList.comedy} />
+      <HorrorMovies horrorMovies={movieList.horror} />
+      <Documentary documentaryMovies={movieList.documentary} />
+      <RandomMovies randomMovies={movieList.random} />
     </PageContainer>
-    
   );
 }
 

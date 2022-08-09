@@ -11,24 +11,22 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-// import { games } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
+import { games } from "../../../data/home-test-data/home-test-data";
+
 
 function TopGames() {
-  const gamesTop10 = moviesList.slice(11, 21);
   return (
     <>
       <SectionTitle>Top 10 Video Games</SectionTitle>
       <RowContainer>
-        {gamesTop10.map((game,key) => {
+        {games.map((game) => {
           return (
-            <TitleContainer key={key}>
+            <TitleContainer>
               <ImageContainer>
                 <Image
-                  src={`${game.image.split("_")[0]}@.jpg`}
-                  layout="fill"
+                  src={game.image.src}
+                  layout='fill'
                   style={{ zIndex: -1 }}
-                  alt="game"
                 ></Image>
               </ImageContainer>
               <TitleText>{game.title}</TitleText>

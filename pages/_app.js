@@ -1,11 +1,11 @@
-import { GlobalStyles } from "../assets/GlobalStyles.styles";
+import { GlobalStyles } from "../public/assets/GlobalStyles.styles";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="/1Source-Tab-Icon.svg" />
+        <link rel="shortcut icon" href="/1Source-FaveIcon-Update.svg" />
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />

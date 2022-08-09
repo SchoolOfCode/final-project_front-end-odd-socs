@@ -20,16 +20,14 @@
 // import firebase from "../../../firebase/clientApp"
 // import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
 
-import {
-  Title,
-  TitleSpan,
-} from "../../../components/exclusive/Header/NavMenu/NavMenu.jsx";
+
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 import LogInModal from "./LogInModal.jsx";
 import SiteLogo from "../Header/NavMenu/SiteLogo.jsx";
 import Background from "./Background.jsx";
+import SignUpModal from "./SignUpModal.jsx";
 
 const LinkStyles = styled.a`
   display: flex;
@@ -77,31 +75,44 @@ const Main = styled.div`
   width: 100%;
 `;
 const SplashPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModalHandler = () => {
-    setIsModalOpen(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const openLoginModalHandler = () => {
+    setIsLoginModalOpen(true);
   };
-  const closeModalHandler = () => {
-    setIsModalOpen(false);
+  const closeLoginModalHandler = () => {
+    setIsLoginModalOpen(false);
   };
+
+  const openSignUpModalHandler = () => {
+    setIsSignUpModalOpen(true);
+  };
+
+  const closeSignUpModalHandler = () => {
+    setIsSignUpModalOpen(false);
+  };
+
   function handleLoginClick() {
-    openModalHandler();
+    openLoginModalHandler();
   }
   function handleSignUpClick() {
-    openModalHandler();
+    openSignUpModalHandler();
   }
   return (
     <>
       <PageContainer>
-        <Background />
-          <SiteLogo/>
+        <Background closeLoginModalHandler={closeLoginModalHandler} />
+        <SiteLogo />
+        {isLoginModalOpen && (
+          <LogInModal closeLoginModalHandler={closeLoginModalHandler} />
+        )}
+        {isSignUpModalOpen && (
+          <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />
+        )}
         <Main>
-          {isModalOpen && <LogInModal closeModalHandler={closeModalHandler} />}
           <ButtonGroup>
-            {/* <Button onClick={handleLoginClick}>Log In</Button>
-                    <Button onClick={handleSignUpClick}>Sign Up</Button> */}
-            <Button>Log In</Button>
-            <Button>Sign Up</Button>
+            <Button onClick={handleLoginClick}>Login</Button>
+            <Button onClick={handleSignUpClick}>Sign Up</Button>
           </ButtonGroup>
 
           <Link href="/home">

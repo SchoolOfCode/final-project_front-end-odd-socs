@@ -14,7 +14,7 @@ export const PageWrapper = styled.div`
 
 // ------ NAVBAR & SEARCH SPECIFIC CONTAINERS ------
 export const NavIconContainer = {
-  fontSize: "2rem",
+  fontSize: "2.5rem",
   color: "var(--font-secondary-color)",
 };
 
@@ -49,21 +49,29 @@ export const RowContainer = styled.div`
   gap: 2rem;
   margin-bottom: 2rem;
   max-width: 100%;
-  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
   cursor: grab;
+  min-height: max-content;
+  overflow-x: scroll;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
   }
 `;
+
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.5;
   width: 100%;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease-in;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -72,5 +80,9 @@ export const ImageContainer = styled.div`
   position: relative;
   &:hover {
     cursor: grab;
+  }
+
+  > * {
+    border-radius: 3px;
   }
 `;

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 import {
   RowContainer,
@@ -8,32 +11,39 @@ import {
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-import { music } from "../../../data/home-test-data/home-test-data";
-import moviesList from "../../../data/movie-test-data/movies";
-
 const MusicImageContainer = styled(ImageContainer)`
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
 `;
-let moviesTop10 = moviesList.slice(50, 60);
 
-function JazzMusic() {
+function JazzMusic({ jazzMusic }) {
+  const ref = useRef();
+  const { events } = useDraggable(ref);
   return (
     <>
       <SectionTitle>Jazz</SectionTitle>
-      <RowContainer>
-        {moviesTop10.map((movie,key) => {
+      <RowContainer {...events} ref={ref}>
+        {jazzMusic.slice(0, 20).map((album, key) => {
           return (
             <TitleContainer key={key}>
-              <MusicImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  layout="fill"
-                  style={{ zIndex: -1 }}
-                  alt={movie.title}
-                ></Image>
-              </MusicImageContainer>
-              <TitleText>{movie.title}</TitleText>
+              <Link
+                href={`/title/music/${album.artist.name.replace(
+                  /\s/g,
+                  "+"
+                )}-${album.name.replace(/\s/g, "+")}`}
+              >
+                <a>
+                  <MusicImageContainer>
+                    <Image
+                      src={album.image[2]["#text"]}
+                      layout="fill"
+                      alt={album.name}
+                      priority={true}
+                    ></Image>
+                  </MusicImageContainer>
+                </a>
+              </Link>
+              <TitleText>{album.name}</TitleText>
             </TitleContainer>
           );
         })}

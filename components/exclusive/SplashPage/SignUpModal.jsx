@@ -1,32 +1,52 @@
-import styled from "styled-components"
-// import { SignUpEmail } from "./firebase/SignUpEmail"
+import styled from "styled-components";
+import SignUpEmail from "./firebase/SignUp/SignUpEmail";
+import LogInGoogle from "./firebase/LogIn/LogInGoogle";
+import LogInGithub from "./firebase/LogIn/LogInGithub";
+import {
+  ModalBackground,
+  LogInContainer,
+  LoginSectionEmail,
+  LoginSectionSocial,
+} from "./LogInModal";
+import CancelIcon from "@mui/icons-material/Cancel";
 
-const PageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    `
-    const Background = styled.div`
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(30px);
-    top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const SignUpContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+`;
+
+//change the style of the Cancel Icon to be the secondary color and the size to be 1.5rem in the top right of the modal
+export const CancelIconStyled = styled(CancelIcon)`
+  color: white; 
+  font-size: 10rem;
+  position: absolute;
+  display: flex;
+  justify-content: right;
+  top: 3rem;
+  right: 3rem;
+  &:hover {
+    color: var(--secondary);
+  }
+  `;
+
+const SignUpModal = ({ closeSignUpModalHandler }) => {
+  return (
+    <ModalBackground>
     
-    `
-
-const LogInModal = () => {
-    return (
-        <PageContainer>
-            <Background>
-                {/* <SignUpEmail/> */}
-            </Background>
-        </PageContainer>
-    )
-}
-export default LogInModal
+    <CancelIconStyled onClick={closeSignUpModalHandler}/>
+      <LogInContainer>
+        <LoginSectionEmail>
+          <SignUpEmail />
+        </LoginSectionEmail>
+        <LoginSectionSocial>
+          <LogInGoogle />
+          <LogInGithub />
+        </LoginSectionSocial>
+      </LogInContainer>
+    </ModalBackground>
+  );
+};
+export default SignUpModal;

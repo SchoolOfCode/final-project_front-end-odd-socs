@@ -1,15 +1,12 @@
-
-
 import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import ListenListMusic from "./ListenListMusic";
-import TopHitsMusic from "./TopHitsMusic";
+import TopMusic from "./TopMusic";
 import MyPicksMusic from "./MyPicksMusic";
-import NintiesMusic from "./NinetiesMusic";
-import NewReleasesMusic from "./NewReleasesMusic";
-import RandomMusic from "./RandomMusic";
-import RnbMusic from "./RnbMusic";
+import PopMusic from "./PopMusic";
+import DanceMusic from "./DanceMusic";
+import HiphopMusic from "./HiphopMusic";
 import JazzMusic from "./JazzMusic";
 import RockMusic from "./RockMusic";
 import CountryMusic from "./CountryMusic";
@@ -19,20 +16,19 @@ const PageTitle = styled.div`
   font-size: 3.5rem;
 `;
 
-function MusicPage() {
+function MusicPage({ musicList }) {
   return (
     <PageContainer>
       <PageTitle>Music</PageTitle>
-      <TopHitsMusic />
+      <TopMusic topMusic={musicList.top10.album} />
       <ListenListMusic />
-      <MyPicksMusic/>
-      <NintiesMusic/>
-      <NewReleasesMusic/>
-      <RandomMusic/>
-      <RnbMusic/>
-      <JazzMusic/>
-      <RockMusic/>
-      <CountryMusic/>
+      <MyPicksMusic />
+      <PopMusic popMusic={musicList.popular.album} />
+      <RockMusic rockMusic={musicList.rock.album} />
+      <CountryMusic countryMusic={musicList.country.album} />
+      <JazzMusic jazzMusic={musicList.jazz.album} />
+      <HiphopMusic hiphopMusic={musicList.hiphop.album} />
+      <DanceMusic danceMusic={musicList.dance.album} />
     </PageContainer>
   );
 }

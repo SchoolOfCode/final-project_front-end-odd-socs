@@ -8,17 +8,13 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { movies } from "../../../data/home-test-data/home-test-data";
 
-import moviesList from "../../../data/movie-test-data/movies";
-
-let moviesTop10 = moviesList.slice(10, 20);
 
 function WatchlistMovies() {
   return (
     <>
       <SectionTitle>Watchlist - Movies</SectionTitle>
-      <RowContainer>
+      {/* <RowContainer>
         {moviesTop10.map((movie,key) => {
           return (
             <TitleContainer key={key}>
@@ -34,7 +30,7 @@ function WatchlistMovies() {
             </TitleContainer>
           );
         })}
-      </RowContainer>
+      </RowContainer> */}
     </>
   );
 }

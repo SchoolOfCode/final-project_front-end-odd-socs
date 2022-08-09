@@ -13,30 +13,22 @@ import {
 
 import moviesList from "../../../data/movie-test-data/movies";
 
-import { useRef } from "react";
-import { useDraggable } from "react-use-draggable-scroll";
-
-export const moviesTop10 = moviesList.slice(0, 10);
+const moviesTop10 = moviesList.slice(0, 10);
 
 function TopMovies() {
-  const ref = useRef();
-  const { events } = useDraggable(ref);
-
   return (
     <>
       <SectionTitle>Top 10 Movies</SectionTitle>
-      <RowContainer {...events} ref={ref}>
-        {moviesTop10.map((movie, key) => {
+      <RowContainer>
+        {moviesTop10.map((movie) => {
           return (
-            <TitleContainer key={key}>
+            <TitleContainer>
               <Link href="/title">
                 <a>
                   <ImageContainer>
                     <Image
                       src={`${movie.image.split("_")[0]}@.jpg`}
                       layout="fill"
-                      style={{ borderRadius: "3px" }}
-                      alt={movie.title}
                     />
                   </ImageContainer>
                 </a>
