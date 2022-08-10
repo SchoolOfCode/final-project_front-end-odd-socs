@@ -61,6 +61,12 @@ export async function getServerSideProps(context) {
   );
   const selectedTV = await res.json();
 
+  //  const resTrailer = await fetch(
+  //    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=5b12a167b6f95af9455340da9de5a3ad&language=en-US`
+  //  );
+
+  //  const movieTrailer = await resTrailer.json();
+
   return {
     props: {
       tvData: selectedTV,
