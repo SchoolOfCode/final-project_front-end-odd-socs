@@ -67,6 +67,7 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   gap: 0.5;
   width: 100%;
+  justify-content: flex-start;
 
   &:hover {
     transform: scale(1.05);

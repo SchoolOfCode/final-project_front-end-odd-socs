@@ -7,12 +7,10 @@ import {
 } from "../../../components/universal/Text.styles";
 
 import {
-  // RowContainer,
   TitleContainer,
   ImageContainer,
 } from "../../universal/Containers.styles";
 
-import { musiclist } from "../../../public/music-data/music-data";
 
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
@@ -31,6 +29,7 @@ export const MusicRowContainer = styled.div`
   -ms-overflow-style: none;
   scrollbar-width: none;
   align-items: flex-start;
+  justify-content: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
