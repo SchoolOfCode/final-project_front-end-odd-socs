@@ -23,6 +23,10 @@ import {
 // import { ConstructionOutlined } from "@mui/icons-material";
 import Link from "next/link";
 
+const MyPicksTitleContainer = styled(TitleContainer)`
+  max-width: 10rem;
+`
+
 function MyPicksMovies() {
   //Authentication
   const auth = getAuth();
@@ -58,7 +62,7 @@ function MyPicksMovies() {
           return (
             <>
               {signedInUser.uid === picksData.userID.uid && (
-                <TitleContainer key={key}>
+                <MyPicksTitleContainer key={key}>
                   <Link href={`/title/movies/${picksData.movieId}`}>
                     <a>
                       <ImageContainer>
@@ -72,7 +76,7 @@ function MyPicksMovies() {
                     </a>
                   </Link>
                   <TitleText>{picksData.title}</TitleText>
-                </TitleContainer>
+                </MyPicksTitleContainer>
               )}
             </>
           );
