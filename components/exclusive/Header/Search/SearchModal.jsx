@@ -136,7 +136,7 @@ const Searchbar = styled.input`
   }
 `;
 
-function NavSearchModal() {
+function NavSearchModal({ searchModalCloseHandler }) {
   const [mediaType, setMediaType] = useState("");
   const [mediaList, setMediaList] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -210,6 +210,18 @@ function NavSearchModal() {
       case "music":
 
       case "games":
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value).map(function (entry) {
+            if (entry.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              if (!resultsArray.includes(entry.name)) {
+                resultsArray.push({ title: entry.name, id: entry.id });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
     }
 
     // Add link to returned items to direct to title page
@@ -256,6 +268,7 @@ function NavSearchModal() {
                 dataResults={dataResults}
                 searchTerm={searchTerm}
                 mediaType={mediaType}
+                searchModalCloseHandler={searchModalCloseHandler}
               />
             </RightSearchContainer>
           </IconsAndInputContainer>

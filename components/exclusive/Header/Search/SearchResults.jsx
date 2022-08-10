@@ -17,9 +17,19 @@ const SearchResultLink = styled.a`
   color: white;
   text-decoration: none;
   font-size: 1.2rem;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--secondary);
+  }
 `;
 
-function SearchResults({ dataResults, searchTerm, mediaType }) {
+function SearchResults({
+  dataResults,
+  searchTerm,
+  mediaType,
+  searchModalCloseHandler,
+}) {
   if (mediaType == "movies") {
     return (
       <ResultsBox>
@@ -28,7 +38,9 @@ function SearchResults({ dataResults, searchTerm, mediaType }) {
             if (title.title.indexOf(title) === title.title.lastIndexOf(title)) {
               return (
                 <Link href={`/title/movies/${title.id}`}>
-                  <SearchResultLink>{title.title}</SearchResultLink>
+                  <SearchResultLink onClick={searchModalCloseHandler}>
+                    {title.title}
+                  </SearchResultLink>
                 </Link>
               );
             }
@@ -44,7 +56,27 @@ function SearchResults({ dataResults, searchTerm, mediaType }) {
             if (title.title.indexOf(title) === title.title.lastIndexOf(title)) {
               return (
                 <Link href={`/title/tv/${title.id}`}>
-                  <SearchResultLink>{title.title}</SearchResultLink>
+                  <SearchResultLink onClick={searchModalCloseHandler}>
+                    {title.title}
+                  </SearchResultLink>
+                </Link>
+              );
+            }
+          }
+        })}
+      </ResultsBox>
+    );
+  } else if (mediaType == "games") {
+    return (
+      <ResultsBox>
+        {dataResults.map((title) => {
+          if (title.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+            if (title.title.indexOf(title) === title.title.lastIndexOf(title)) {
+              return (
+                <Link href={`/title/games/${title.id}`}>
+                  <SearchResultLink onClick={searchModalCloseHandler}>
+                    {title.title}
+                  </SearchResultLink>
                 </Link>
               );
             }

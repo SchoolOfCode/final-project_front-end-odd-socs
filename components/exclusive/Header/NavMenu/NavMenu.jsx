@@ -72,7 +72,7 @@ function NavMenu() {
       ) : (
         <NavSearchIcon searchModalOpenHandler={searchModalOpenHandler} />
       )}
-      {isSearchModalOpen && <NavSearchModal />}
+      {isSearchModalOpen && <NavSearchModal searchModalCloseHandler={searchModalCloseHandler}/>}
     </NavStyles>
   );
 }
