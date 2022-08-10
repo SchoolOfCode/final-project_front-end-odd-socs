@@ -1,25 +1,3 @@
-/* PLAN
-1. Title
-    - Shall we reuse the header component? Or do we need to create a new component?
-
-2. Login/Sign up button
-    - Button
-    - Add styling
-    - Link to authenticator
-
-3. Continue as guest button
-    - Button
-    - Add styling
-    - Link to the homepage!
-
-4. Graphics
-    - Ask CJ if we wants to add a background. 
-*/
-
-// import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-// import firebase from "../../../firebase/clientApp"
-// import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
-
 
 import styled from "styled-components";
 import Link from "next/link";
@@ -39,6 +17,12 @@ const LinkStyles = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
+
+const TagLine = styled.a`
+  color: white;
+  font-size: 1.25rem;
+`;
+
 const PageContainer = styled.div`
   justify-content: space-between;
   display: flex;
@@ -109,8 +93,11 @@ const SplashPage = () => {
         {isSignUpModalOpen && (
           <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />
         )}
+       
         <Main>
           <ButtonGroup>
+          <TagLine> No matter the Movie, TV show, Music or Game. Find your next source of entertainment with 1Source </TagLine>
+          <br/>
             <Button onClick={handleLoginClick}>Login</Button>
             <Button onClick={handleSignUpClick}>Sign Up</Button>
           </ButtonGroup>
