@@ -18,10 +18,10 @@ const LinkStyles = styled.a`
   cursor: pointer;
 `;
 
-const TagLine = styled.a`
-  color: white;
-  font-size: 1.25rem;
-`;
+// const TagLine = styled.a`
+//   color: white;
+//   font-size: 1.25rem;
+// `;
 
 const PageContainer = styled.div`
   justify-content: space-between;
@@ -96,7 +96,7 @@ const SplashPage = () => {
        
         <Main>
           <ButtonGroup>
-          <TagLine> No matter the Movie, TV show, Music or Game. Find your next source of entertainment with 1Source </TagLine>
+          {/* <TagLine> No matter the Movie, TV show, Music or Game. Find your next source of entertainment with 1Source </TagLine> */}
           <br/>
             <Button onClick={handleLoginClick}>Login</Button>
             <Button onClick={handleSignUpClick}>Sign Up</Button>
