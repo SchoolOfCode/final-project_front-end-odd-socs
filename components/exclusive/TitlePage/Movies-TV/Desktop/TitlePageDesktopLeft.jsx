@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //Firebase imports
 import { app, db } from "../../../../../firebase/config";
@@ -84,13 +84,23 @@ function handler() {
 function TitlePageDesktopLeft({ movieData, tvData }) {
   //setting up our database table
   const myPicksDb = collection(db, "myPicks");
-  //authentication
+  
+  //AUTHENTICATION
+  //Initialising authentication
   const auth = getAuth();
+  //Creating a state so we can capture the user's uid
+  const [userIdState, setUserIdState] = useState("");
+
+
   // let's check if the user is logged in
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user);
+
+        const uid = user.uid
+        setUserIdState({uid})
+        console.log(userIdState)
       } else {
         console.log("user is not logged in");
       }
@@ -104,8 +114,11 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
       movieId: `${movieData.id}`,
       title: `${movieData.title}`,
       image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
+      userID: userIdState
     }).then(() => {
       alert("data sent");
+    }).catch((err)=>{
+      alert("Data has not been sent")
     });
   }
 

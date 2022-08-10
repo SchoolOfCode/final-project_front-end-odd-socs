@@ -11,6 +11,9 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
+//Authentication imports
+import { getAuth } from "firebase/auth";
+
 //Imports for the containers
 import {
   ImageContainer,
@@ -21,14 +24,24 @@ import { ConstructionOutlined } from "@mui/icons-material";
 import Link from "next/link";
 
 /* PLAN
+Database
   - create a state to store our data that we've retrieved from firebase (DONE)
   - connect to the right database (DONE)
   - create our fucntion for our GET request (DONE)
-  - display the data in the jsx 
+  - display the data in the jsx (DONE)
   - run our function when the user first goes onto the mypicks page (useEffect) (DONE)
+
+Authentication
+- If you're logged in, we want to retrieve the picks that match the user ID
+
 */ 
 
 function MyPicksMovies() {
+
+  //Authentication
+  const auth = getAuth();
+  const signedInUser = auth.currentUser;
+  console.log(signedInUser)
 
   const [fireData, setFireData] = useState([]);
   const myPicksDb = collection(db, "myPicks");
@@ -41,6 +54,7 @@ function MyPicksMovies() {
     }))
     })
   }
+
 
   useEffect(() => {
     getPicksData()
@@ -66,10 +80,13 @@ function MyPicksMovies() {
       })
     } */}
       <SectionTitle>My Picks - Movies</SectionTitle>
+
       <RowContainer {...events} ref={ref}>
 
         {fireData.map((picksData, key)=>{
           return (
+            <>
+            {signedInUser.uid === picksData.userID.uid &&
             <TitleContainer key={key}>
               <Link href={`/title/movies/${picksData.movieId}`}>
                 <a>
@@ -85,6 +102,8 @@ function MyPicksMovies() {
               </Link>
               <TitleText>{picksData.title}</TitleText>
             </TitleContainer>
+            }
+            </>
           );
         })}
       </RowContainer>
