@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 import {
@@ -8,21 +9,22 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-import {  useRef } from "react";
+import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
-function RPGGames({rpgGames}) {
+function RPGGames({ rpgGames }) {
   const ref = useRef();
   const { events } = useDraggable(ref);
-
 
   return (
     <>
       <SectionTitle>RPG</SectionTitle>
       <RowContainer {...events} ref={ref}>
         {rpgGames.map((game, key) => {
-              return (
-                <TitleContainer key={key}>
+          return (
+            <TitleContainer key={key}>
+              <Link href={`/title/games/${game.id}`}>
+                <a>
                   <ImageContainer>
                     <Image
                       src={game.background_image}
@@ -33,10 +35,12 @@ function RPGGames({rpgGames}) {
                       height={1000}
                     ></Image>
                   </ImageContainer>
-                  <TitleText>{game.name}</TitleText>
-                </TitleContainer>
-              );
-            })}
+                </a>
+              </Link>
+              <TitleText>{game.name}</TitleText>
+            </TitleContainer>
+          );
+        })}
       </RowContainer>
     </>
   );
