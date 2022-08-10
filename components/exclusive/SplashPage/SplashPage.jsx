@@ -39,6 +39,13 @@ const LinkStyles = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
+
+const TagLine = styled.a`
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+`;
+
 const PageContainer = styled.div`
   justify-content: space-between;
   display: flex;
@@ -110,6 +117,9 @@ const SplashPage = () => {
           <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />
         )}
         <Main>
+          <TagLine> For movies, tv, games and Music. Find your next slice of entertainment with 1Source</TagLine>
+          <br></br>
+
           <ButtonGroup>
             <Button onClick={handleLoginClick}>Login</Button>
             <Button onClick={handleSignUpClick}>Sign Up</Button>

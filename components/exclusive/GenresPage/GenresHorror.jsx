@@ -29,7 +29,7 @@ const GenreTitleContainer = styled(
 width: 10rem;
 `
 
-import moviesList from "../../../data/movie-test-data/movies";
+import moviesList from "../../../../public/movie-data/movie-data";
 
 let moviesTop10 = moviesList.slice(150, 180);
 
