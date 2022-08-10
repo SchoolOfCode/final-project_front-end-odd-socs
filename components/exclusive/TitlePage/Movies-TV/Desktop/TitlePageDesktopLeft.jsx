@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { useEffect } from "react";
 
 //Firebase imports
 import { app, db } from "../../../../../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
+// ICON IMPORTS
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
@@ -56,7 +59,7 @@ export const TitleIconContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;  
+  gap: 0.5rem;
   font-size: large;
 
   &:hover {
@@ -71,33 +74,41 @@ export const TitleIconContainer = styled.div`
 const TitlePageIconLabel = styled.h6`
   color: var(--font-secondary-color);
   font-weight: 400;
-  font-size:0.9rem;
-`
+  font-size: 0.9rem;
+`;
 
 function handler() {
   console.log("clicked");
 }
 
 function TitlePageDesktopLeft({ movieData, tvData }) {
-  
-   //setting up our database table
-   const myPicksDb = collection(db, "myPicks");
-   
-   //creating a function that adds the title to myPicks
-   function addMyPick(){
-     //post request
-     addDoc(myPicksDb, {
-       movieId:`${movieData.id}`,
-       title: `${movieData.title}`,
-       image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
-      }).then(() => {
-       alert("data sent")
-      })
-   }
-  
-  
-  
-  
+  //setting up our database table
+  const myPicksDb = collection(db, "myPicks");
+  //authentication
+  const auth = getAuth();
+  // let's check if the user is logged in
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+      } else {
+        console.log("user is not logged in");
+      }
+    });
+  }, []);
+
+  //creating a function that adds the title to myPicks
+  function addMyPick() {
+    //post request
+    addDoc(myPicksDb, {
+      movieId: `${movieData.id}`,
+      title: `${movieData.title}`,
+      image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
+    }).then(() => {
+      alert("data sent");
+    });
+  }
+
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
