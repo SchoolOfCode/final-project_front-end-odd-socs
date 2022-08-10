@@ -26,75 +26,74 @@ function MusicTitle({ musicData }) {
   );
 }
 
-export async function getStaticPaths() {
-  const topMusicIDs = musiclist.top10.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const countryIDs = musiclist.country.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const danceIDs = musiclist.dance.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const hiphopIDs = musiclist.hiphop.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const jazzIDs = musiclist.jazz.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const popularIDs = musiclist.popular.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
-  const rockIDs = musiclist.rock.album.map(
-    (album) =>
-      `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
-        /\s/g,
-        "+"
-      )}`
-  );
+// export async function getStaticPaths() {
+//   const topMusicIDs = musiclist.top10.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const countryIDs = musiclist.country.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const danceIDs = musiclist.dance.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const hiphopIDs = musiclist.hiphop.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const jazzIDs = musiclist.jazz.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const popularIDs = musiclist.popular.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
+//   const rockIDs = musiclist.rock.album.map(
+//     (album) =>
+//       `${album.artist.name.replace(/\s/g, "+")}-${album.name.replace(
+//         /\s/g,
+//         "+"
+//       )}`
+//   );
 
-  let IDs = [
-    ...topMusicIDs,
-    ...countryIDs,
-    ...danceIDs,
-    ...hiphopIDs,
-    ...jazzIDs,
-    ...popularIDs,
-    ...rockIDs,
-  ];
+//   let IDs = [
+//     ...topMusicIDs,
+//     ...countryIDs,
+//     ...danceIDs,
+//     ...hiphopIDs,
+//     ...jazzIDs,
+//     ...popularIDs,
+//     ...rockIDs,
+//   ];
 
+//   return {
+//     fallback: true,
+//     paths: IDs.map((Id) => ({ params: { musicId: Id } })),
+//   };
+// }
 
-  return {
-    fallback: true,
-    paths: IDs.map((Id) => ({ params: { musicId: Id } })),
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const musicId = context.params.musicId;
   console.log(musicId);
   const artistAndAlbum = musicId.split("-");

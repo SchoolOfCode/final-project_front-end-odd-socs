@@ -26,34 +26,34 @@ function Title({ tvData }) {
   );
 }
 
-export async function getStaticPaths() {
-  const topTVIDs = tvlist.top10.map((tv) => tv.id.toString());
-  const airingTodayIDs = tvlist.airingToday.map((tv) => tv.id.toString());
-  const actionIDs = tvlist.action.map((tv) => tv.id).toString();
-  const dramaIDs = tvlist.drama.map((tv) => tv.id.toString());
-  const scifiIDs = tvlist.scifi.map((tv) => tv.id.toString());
-  const animeIDs = tvlist.anime.map((tv) => tv.id.toString());
-  const crimeIDs = tvlist.crime.map((tv) => tv.id).toString();
-  const randomIDs = tvlist.random.map((tv) => tv.id.toString());
+// export async function getStaticPaths() {
+//   const topTVIDs = tvlist.top10.map((tv) => tv.id.toString());
+//   const airingTodayIDs = tvlist.airingToday.map((tv) => tv.id.toString());
+//   const actionIDs = tvlist.action.map((tv) => tv.id).toString();
+//   const dramaIDs = tvlist.drama.map((tv) => tv.id.toString());
+//   const scifiIDs = tvlist.scifi.map((tv) => tv.id.toString());
+//   const animeIDs = tvlist.anime.map((tv) => tv.id.toString());
+//   const crimeIDs = tvlist.crime.map((tv) => tv.id).toString();
+//   const randomIDs = tvlist.random.map((tv) => tv.id.toString());
 
-  let IDs = [
-    ...topTVIDs,
-    ...airingTodayIDs,
-    ...actionIDs,
-    ...dramaIDs,
-    ...scifiIDs,
-    ...animeIDs,
-    ...crimeIDs,
-    ...randomIDs,
-  ];
+//   let IDs = [
+//     ...topTVIDs,
+//     ...airingTodayIDs,
+//     ...actionIDs,
+//     ...dramaIDs,
+//     ...scifiIDs,
+//     ...animeIDs,
+//     ...crimeIDs,
+//     ...randomIDs,
+//   ];
 
-  return {
-    fallback: true,
-    paths: IDs.map((ID) => ({ params: { tvId: ID } })),
-  };
-}
+//   return {
+//     fallback: true,
+//     paths: IDs.map((ID) => ({ params: { tvId: ID } })),
+//   };
+// }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const tvId = context.params.tvId;
 
   const res = await fetch(

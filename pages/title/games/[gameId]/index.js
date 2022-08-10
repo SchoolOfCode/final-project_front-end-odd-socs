@@ -26,36 +26,35 @@ function GamesTitle({ gameData, screenshotData }) {
   );
 }
 
-export async function getStaticPaths() {
-  const topGamesIDs = gamelist.top10.map((game) => game.id.toString());
-  const indieIDs = gamelist.indie.map((game) => game.id.toString());
-  const actionIDs = gamelist.action.map((game) => game.id).toString();
-  const rpgIDs = gamelist.rpg.map((game) => game.id.toString());
-  const fpsIDs = gamelist.fps.map((game) => game.id.toString());
-  const arcadeIDs = gamelist.arcade.map((game) => game.id.toString());
-  const mmorpgIDs = gamelist.mmorpg.map((game) => game.id).toString();
-  const randomIDs = gamelist.random.map((game) => game.id.toString());
+// export async function getStaticPaths() {
+//   const topGamesIDs = gamelist.top10.map((game) => game.id.toString());
+//   const indieIDs = gamelist.indie.map((game) => game.id.toString());
+//   const actionIDs = gamelist.action.map((game) => game.id).toString();
+//   const rpgIDs = gamelist.rpg.map((game) => game.id.toString());
+//   const fpsIDs = gamelist.fps.map((game) => game.id.toString());
+//   const arcadeIDs = gamelist.arcade.map((game) => game.id.toString());
+//   const mmorpgIDs = gamelist.mmorpg.map((game) => game.id).toString();
+//   const randomIDs = gamelist.random.map((game) => game.id.toString());
 
-  let IDs = [
-    ...topGamesIDs,
-    ...indieIDs,
-    ...actionIDs,
-    ...rpgIDs,
-    ...fpsIDs,
-    ...arcadeIDs,
-    ...mmorpgIDs,
-    ...randomIDs,
-  ];
+//   let IDs = [
+//     ...topGamesIDs,
+//     ...indieIDs,
+//     ...actionIDs,
+//     ...rpgIDs,
+//     ...fpsIDs,
+//     ...arcadeIDs,
+//     ...mmorpgIDs,
+//     ...randomIDs,
+//   ];
 
-  return {
-    fallback: true,
-    paths: IDs.map((ID) => ({ params: { gameId: ID } })),
-  };
-}
+//   return {
+//     fallback: true,
+//     paths: IDs.map((ID) => ({ params: { gameId: ID } })),
+//   };
+// }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const gameId = context.params.gameId;
-  console.log(context.params);
   const resGame = await fetch(
     `https://api.rawg.io/api/games/${gameId}?&key=5b68670474d34b3e9cbb4ed5cfe0d804`
   );
