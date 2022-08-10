@@ -94,7 +94,7 @@ export const TitlePageStatsContainer = styled.div`
   font-size: 1rem;
 `;
 
-function TitlePageDesktopMid({ movieData, tvData }) {
+function TitlePageDesktopMid({ movieData, trailerData, tvData }) {
   return (
     <TitlePageMidContainer>
       <MidContainerTopSection>
@@ -160,7 +160,9 @@ function TitlePageDesktopMid({ movieData, tvData }) {
           </WatchOnIconsContainer>
         </WatchOnContainer>
         <VideoContainer>
-          <YouTube videoId="6hB3S9bIaco" opts={VideoStyle} />
+          {trailerData && (
+            <YouTube videoId={trailerData.results[0].key} opts={VideoStyle} />
+          )}
         </VideoContainer>
       </MidContainerMidSection>
       <MidContainerBottomSection>
