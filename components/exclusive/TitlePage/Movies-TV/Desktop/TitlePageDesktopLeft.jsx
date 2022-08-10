@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+//Firebase imports
+import { app, db } from "../../../../../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
+
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
@@ -75,6 +79,25 @@ function handler() {
 }
 
 function TitlePageDesktopLeft({ movieData, tvData }) {
+  
+   //setting up our database table
+   const myPicksDb = collection(db, "myPicks");
+   
+   //creating a function that adds the title to myPicks
+   function addMyPick(){
+     //post request
+     addDoc(myPicksDb, {
+       movieId:`${movieData.id}`,
+       title: `${movieData.title}`,
+       image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
+      }).then(() => {
+       alert("data sent")
+      })
+   }
+  
+  
+  
+  
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
@@ -103,7 +126,7 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
           <TitlePageIconLabel>Comment</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
-          <BeenhereIcon fontSize="large" />
+          <BeenhereIcon onClick={addMyPick} fontSize="large" />
           <TitlePageIconLabel>Picks</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
