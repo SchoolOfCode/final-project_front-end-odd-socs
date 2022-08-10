@@ -13,7 +13,7 @@ function WatchlistTv() {
     <>
       <SectionTitle>Watchlist - TV</SectionTitle>
       <RowContainer>
-        {moviesTop10.map((movie, key) => {
+        {/* {moviesTop10.map((movie, key) => {
           return (
             <TitleContainer key={key}>
               <ImageContainer>
@@ -27,7 +27,7 @@ function WatchlistTv() {
               <TitleText>{movie.title}</TitleText>
             </TitleContainer>
           );
-        })}
+        })} */}
       </RowContainer>
     </>
   );

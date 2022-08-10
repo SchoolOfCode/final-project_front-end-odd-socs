@@ -19,7 +19,6 @@ function MyPicksPage() {
       <MyPicksTv/>
       <MyPicksMusic/>
       <MyPicksGames/>
-      
     </PageContainer>
   );
 }
