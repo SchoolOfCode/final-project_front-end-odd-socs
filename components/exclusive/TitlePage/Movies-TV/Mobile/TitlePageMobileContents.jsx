@@ -5,6 +5,7 @@ import Link from "next/link";
 import SeeMore from "./SeeMore";
 import SeeLess from "./SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
+import {getReviews, addReview, deleteReview} from "../Desktop/TitlePageDesktopRight";
 
 import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -145,7 +146,6 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-
 const AddReviewContainer = styled.div`
   display: flex;
   color: white;
@@ -191,10 +191,20 @@ const ReviewButton = styled.button`
   font-size: 1.2rem;
   color: var(--secondary);
 `;
+// pass in userReview and setUserReview from useState into the function
 
-function TitlePageContents({ movieData, tvData }) {
+function TitlePageContents({
+  movieData,
+  tvData,
+  userReview,
+  setUserReview,
+  fireData,
+  setFireData,
+}) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
+
+
 
   let shortSynopsis;
 
@@ -322,9 +332,10 @@ function TitlePageContents({ movieData, tvData }) {
            - "Reviews" Header (DONE)
            - Drop down/up arrow */}
         <ReviewHeaderContainer onClick={toggleReviewsOpen}>
-          {/* <CommentTitle>
-            {`Comments (${Object.values(CommentDummyData).length}):`}
-          </CommentTitle> */}
+          <CommentTitle>Reviews</CommentTitle>
+           
+            {/* {`Comments (${Object.values(CommentDummyData).length}):`} */}
+
           <DropDownArrow>
             {isReviewsOpen ? (
               <ArrowDropUpIcon fontSize="large" />
@@ -343,20 +354,26 @@ function TitlePageContents({ movieData, tvData }) {
                 <AccountCircleIcon />
               </AccountCircleIconContainer>
               <ReviewTextAndButtonContainer>
-                <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
-                <ReviewButton>Post</ReviewButton>
+                <ReviewTextField
+                  placeholder="Leave a review..."
+                  type="text"
+                  value={userReview}
+                  onChange={(event) => setUserReview(event.target.value)}
+                ></ReviewTextField>
+                <ReviewButton onClick={addReview} >Post</ReviewButton>
+                {/* <ReviewButton onClick={deleteReview}>Delete</ReviewButton> */}
               </ReviewTextAndButtonContainer>
             </AddReviewContainer>
-            {/* <CommentSectionContainer>
-              {Object.values(CommentDummyData).map((comment, key) => {
+            <CommentSectionContainer>
+              {fireData.map((data, key) => {
                 return (
                   <Comment key={key}>
                     <AccountCircleIcon />
-                    <CommentText>{comment}</CommentText>
+                    <CommentText>{data.review}</CommentText>
                   </Comment>
                 );
               })}
-            </CommentSectionContainer> */}
+            </CommentSectionContainer>
           </>
         )}
       </TitlePageTitleContainer>
