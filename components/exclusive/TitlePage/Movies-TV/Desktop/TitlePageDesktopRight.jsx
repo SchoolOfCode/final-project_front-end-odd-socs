@@ -134,7 +134,15 @@ const addReview = () => {
     })
   )
 
-
+  const deleteReview = (id) => {
+    let fieldToDelete = doc(reviewTable, `${movieData.title} Reviews`, id );
+    deleteDoc(fieldToDelete)
+    .then(()=>{
+      getReviews()
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
 
 
 
@@ -150,16 +158,23 @@ const addReview = () => {
           <AccountCircleIcon />
         </AccountCircleIconContainer>
         <ReviewTextAndButtonContainer>
-          <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
-          <ReviewButton>Post</ReviewButton>
+          {/* REVIEW INPUT FIELD */}
+          <ReviewTextField 
+          placeholder="Leave a review..."
+          type="text"
+          value={userReview}
+          onChange={event => setUserReview(event.target.value)}
+          ></ReviewTextField>
+          <ReviewButton onClick={addReview}>Post</ReviewButton>
+          {/* <ReviewButton onClick={deleteReview}>Delete</ReviewButton> */}
         </ReviewTextAndButtonContainer>
       </AddReviewContainer>
       <CommentSectionContainer>
-        {Object.values(CommentDummyData).map((comment, key) => {
+        {Object.values(fireData).map((data, key) => {
           return (
             <Comment key={key}>
               <AccountCircleIcon />
-              <CommentText>{comment}</CommentText>
+              <CommentText>{data.review}</CommentText>
             </Comment>
           );
         })}

@@ -322,9 +322,9 @@ function TitlePageContents({ movieData, tvData }) {
            - "Reviews" Header (DONE)
            - Drop down/up arrow */}
         <ReviewHeaderContainer onClick={toggleReviewsOpen}>
-          <CommentTitle>
+          {/* <CommentTitle>
             {`Comments (${Object.values(CommentDummyData).length}):`}
-          </CommentTitle>
+          </CommentTitle> */}
           <DropDownArrow>
             {isReviewsOpen ? (
               <ArrowDropUpIcon fontSize="large" />
@@ -347,7 +347,7 @@ function TitlePageContents({ movieData, tvData }) {
                 <ReviewButton>Post</ReviewButton>
               </ReviewTextAndButtonContainer>
             </AddReviewContainer>
-            <CommentSectionContainer>
+            {/* <CommentSectionContainer>
               {Object.values(CommentDummyData).map((comment, key) => {
                 return (
                   <Comment key={key}>
@@ -356,7 +356,7 @@ function TitlePageContents({ movieData, tvData }) {
                   </Comment>
                 );
               })}
-            </CommentSectionContainer>
+            </CommentSectionContainer> */}
           </>
         )}
       </TitlePageTitleContainer>
