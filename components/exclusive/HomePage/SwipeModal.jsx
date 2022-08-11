@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SwipeIcon from '@mui/icons-material/Swipe';
+import SwipeIcon from "@mui/icons-material/Swipe";
 import { useEffect, useState } from "react";
 
 const ModalBackgroundMobile = styled.div`
@@ -19,33 +19,41 @@ const ModalBackgroundMobile = styled.div`
 `;
 
 const ModalBackgroundDesktop = styled(ModalBackgroundMobile)`
-justify-content: flex-start;
-padding-top: 15rem;
-overflow: hidden;
-`
+  justify-content: flex-start;
+  padding-top: 15rem;
+  overflow: hidden;
+`;
 
 const ModalText = styled.h2`
-font-size: 2.5rem;
-font-weight: 300;
-color: var(--secondary);
-`
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--secondary);
+`;
 
 const modalStyle = {
   fontSize: "7rem",
   color: "var(--secondary)",
-  zIndex: "1999"
-  
-}
+  zIndex: "1999",
+};
 
-
-function SwipeModal({setIsFirstLoad, setCount, count}) {
+function SwipeModal() {
   const [isSwipeModalOpen, setIsSwipeModalOpen] = useState(true);
 
   function handleCloseModal() {
     setIsSwipeModalOpen(false);
-    setIsFirstLoad(false);
-    setCount (count + 1);
   }
+
+  useEffect(() => {
+    let pop_status = localStorage.getItem("pop_status");
+    if (!pop_status) {
+      setIsSwipeModalOpen(true);
+      localStorage.setItem("pop_status", 1);
+    }
+  }, []);
+
+  // if (!isSwipeModalOpen) {
+  //   return null;
+  // }
 
   const [width, setWidth] = useState(0);
 
@@ -61,20 +69,20 @@ function SwipeModal({setIsFirstLoad, setCount, count}) {
     window.addEventListener("resize", handleResize, false);
   }, []);
 
-
   return (
     <>
       {isSwipeModalOpen && width < 500 && (
         <ModalBackgroundMobile onClick={handleCloseModal}>
-          <SwipeIcon style = {modalStyle}/>
+          <SwipeIcon style={modalStyle} />
           <ModalText>Swipe to Browse </ModalText>
-        </ModalBackgroundMobile>)}
-      {isSwipeModalOpen && width >= 500 && ( 
-        (<ModalBackgroundDesktop onClick={handleCloseModal}>
-          <SwipeIcon style = {modalStyle}/>
+        </ModalBackgroundMobile>
+      )}
+      {isSwipeModalOpen && width >= 500 && (
+        <ModalBackgroundDesktop onClick={handleCloseModal}>
+          <SwipeIcon style={modalStyle} />
           <ModalText>Swipe or Click & Drag to Browse </ModalText>
-        </ModalBackgroundDesktop>)
-      )};
+        </ModalBackgroundDesktop>
+      )}
     </>
   );
 }

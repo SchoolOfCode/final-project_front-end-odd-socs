@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,12 +15,20 @@ const LinkStyles = styled.a`
   color: white;
   text-decoration: none;
   cursor: pointer;
+  /* font-weight: 300; */
+
+  &:hover {
+    color: var(--secondary);
+  }
 `;
 
-// const TagLine = styled.a`
-//   color: white;
-//   font-size: 1.25rem;
-// `;
+const TagLine = styled.h3`
+  color: white;
+  font-size: 1.25rem;
+  max-width: 70%;
+  font-weight: 300;
+  text-align: center;
+`;
 
 const PageContainer = styled.div`
   justify-content: space-between;
@@ -30,6 +37,7 @@ const PageContainer = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
+  padding: 1rem 0 5rem;
 `;
 
 const Button = styled.div`
@@ -41,13 +49,18 @@ const Button = styled.div`
   padding: 0.7rem;
   width: 10rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--secondary);
+    transition: 300ms ease-in-out;
+  }
 `;
 const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   margin-bottom: 10vh;
 `;
 const Main = styled.div`
@@ -58,6 +71,7 @@ const Main = styled.div`
   height: 100%;
   width: 100%;
 `;
+
 const SplashPage = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
@@ -93,19 +107,22 @@ const SplashPage = () => {
         {isSignUpModalOpen && (
           <SignUpModal closeSignUpModalHandler={closeSignUpModalHandler} />
         )}
-       
+
         <Main>
           <ButtonGroup>
-          {/* <TagLine> No matter the Movie, TV show, Music or Game. Find your next source of entertainment with 1Source </TagLine> */}
-          <br/>
+            <TagLine>
+              {" "}
+              No matter the Movie, TV show, Music or Game. Find your next source
+              of entertainment with 1Source{" "}
+            </TagLine>
+            <br />
             <Button onClick={handleLoginClick}>Login</Button>
             <Button onClick={handleSignUpClick}>Sign Up</Button>
           </ButtonGroup>
-
-          <Link href="/home">
-            <LinkStyles> Continue as Guest...</LinkStyles>
-          </Link>
         </Main>
+        <Link href="/home">
+          <LinkStyles> Continue as Guest</LinkStyles>
+        </Link>
       </PageContainer>
     </>
   );

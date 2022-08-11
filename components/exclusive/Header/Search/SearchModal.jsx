@@ -33,7 +33,6 @@ const ModalStyles = styled.div`
 `;
 
 const ModalContentContainer = styled.div`
-  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,8 +46,15 @@ const ModalContentContainer = styled.div`
 const IconsAndInputContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  /* align-items: flex-end; */
   gap: 1.5rem;
   min-width: 40rem;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    min-width: 20rem;
+    align-items: center;
+  }
 `;
 
 const NavRowSearch = styled.div`
@@ -82,16 +88,17 @@ const IconsStyle = styled.div`
   border: 2px solid transparent;
   padding: 0.5rem;
 
-  &:focus {
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-  }
-
   &:hover {
     color: var(--secondary);
-    transition: 400ms ease-in-out;
+    transition: 300ms ease-in-out;
   }
 `;
+
+const iconClickStyle = {
+  color: "var(--secondary)",
+  border: "2px solid var(--secondary)",
+  transition: "300ms ease-in-out",
+};
 
 const LeftSearchContainer = styled.div`
   display: flex;
@@ -106,6 +113,8 @@ const RightSearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 25rem;
+  justify-content: flex-end;
+  position: relative;
 `;
 
 const SearchPrompt = styled.h1`
@@ -113,6 +122,10 @@ const SearchPrompt = styled.h1`
   font-weight: 300;
   font-size: 1.5rem;
   padding-left: 0.5rem;
+
+  @media screen and (max-width: 400px) {
+    text-align: center;
+  }
 `;
 
 const Searchbar = styled.input`
@@ -167,7 +180,7 @@ function NavSearchModal({ searchModalCloseHandler }) {
     e.preventDefault;
     const searchWord = e.target.value;
     console.log(mediaType);
-    if (searchWord.length >= 2) {
+    if (searchWord.length >= 3) {
       setSearchTerm(searchWord);
     } else if (searchWord.length < 3) {
       setDataResults([]);
@@ -208,7 +221,23 @@ function NavSearchModal({ searchModalCloseHandler }) {
         });
         break;
       case "music":
-
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value.album).map(function (entry) {
+            if (
+              entry.artist.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (!resultsArray.includes(entry.artist.name)) {
+                resultsArray.push({
+                  title: entry.name,
+                  artist: entry.artist.name,
+                });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
       case "games":
         setDataResults([]);
         Object.values(mediaList).map(function (value) {
@@ -248,16 +277,32 @@ function NavSearchModal({ searchModalCloseHandler }) {
                 Please select a content type before searching:
               </SearchPrompt>
               <SearchIconsContainer>
-                <IconsStyle onClick={movieSelectHandle} tabIndex={1}>
+                <IconsStyle
+                  onClick={movieSelectHandle}
+                  tabIndex={1}
+                  style={mediaType === "movies" ? iconClickStyle : null}
+                >
                   <LocalMoviesIcon />
                 </IconsStyle>
-                <IconsStyle onClick={tvSelectHandle} tabIndex={2}>
+                <IconsStyle
+                  onClick={tvSelectHandle}
+                  tabIndex={2}
+                  style={mediaType === "tv" ? iconClickStyle : null}
+                >
                   <TvIcon />
                 </IconsStyle>
-                <IconsStyle onClick={musicSelectHandle} tabIndex={3}>
+                <IconsStyle
+                  onClick={musicSelectHandle}
+                  tabIndex={3}
+                  style={mediaType === "music" ? iconClickStyle : null}
+                >
                   <LibraryMusicIcon />
                 </IconsStyle>
-                <IconsStyle onClick={gamesSelectHandle} tabIndex={4}>
+                <IconsStyle
+                  onClick={gamesSelectHandle}
+                  tabIndex={4}
+                  style={mediaType === "games" ? iconClickStyle : null}
+                >
                   <SportsEsportsIcon />
                 </IconsStyle>
               </SearchIconsContainer>
