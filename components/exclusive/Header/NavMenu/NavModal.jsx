@@ -8,21 +8,24 @@ import MenuMyPicksIcon from "./MenuMyPicksIcon";
 import MenuWatchlistIcon from "./MenuWatchlistIcon";
 import MenuAccountIcon from "./MenuAccountIcon";
 
+
+
 const ModalStyles = styled.div`
   position: fixed;
   display: flex;
-  width: 20rem;
+  width: 17rem;
   height: 90vh;
   top: 0;
   left: 0;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(45px);
   margin-top: 10vh;
   padding: 2rem 0;
   overflow: hidden;
-
+  
   @media screen and (max-width: 400px) {
     width: 100vw;
-  }
+  };
+  
 `;
 
 const ModalContentContainer = styled.div`
@@ -54,6 +57,7 @@ const NavLink = styled.a`
   font-weight: 300;
   text-decoration: none;
 
+
   &:hover {
     color: var(--secondary);
   }
@@ -66,6 +70,7 @@ const NavLink = styled.a`
 function NavMenuModal() {
   return (
     <ModalStyles>
+      
       <ModalContentContainer>
         <NavRow>
           <MenuHomeIcon />
@@ -102,6 +107,7 @@ function NavMenuModal() {
           <NavLink href="/profile">My Account</NavLink>
         </NavRow>
       </ModalContentContainer>
+      
     </ModalStyles>
   );
 }
