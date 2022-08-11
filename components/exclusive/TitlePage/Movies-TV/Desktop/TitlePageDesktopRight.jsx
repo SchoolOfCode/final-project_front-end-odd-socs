@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Image from "next/image";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useState } from "react";
+import {collection, addDoc, getDocs, deleteDoc, doc} from "firebase/firestore"
+import {app, db, auth} from "../../../../../firebase/config"
+
 
 const TitlePageRightContainer = styled.div`
   display: flex;
@@ -96,29 +100,49 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-export const CommentDummyData = {
-  text1:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text2:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text3:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text4:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text5:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text6:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text7:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-};
 
-function TitlePageDesktopRight() {
+
+function TitlePageDesktopRight({movieData}) {
+// const [userId, setUserId] =  useState("")
+// const [userName, setUserName] = useState("")
+// const [userImage, setUserImage] = useState("")
+const [userReview, setUserReview] = useState("")
+const [fireData, setFireData] = useState([])
+
+const reviewTable = collection(db,`${movieData.title} Reviews` )
+// const user = auth.currentUser
+
+const getReviews = async () => {
+  await getDocs(reviewTable)
+  .then((response)=>{
+    setFireData(response.docs.map((data)=>{
+      return {...data.data(), id: data.id}
+    }))
+  }).catch((error)=>{
+    console.log(error)
+  })
+}
+  
+
+const addReview = () => {
+  addDoc(reviewTable, {review: userReview}
+    .then(() => {
+      getReviews()
+      setUserReview("")
+    }).catch((error) => {
+      console.log(error)
+    })
+  )
+
+
+
+
+
   return (
     <TitlePageRightContainer>
       <ReviewHeaderContainer>
         <CommentTitle>
-          {`Comments (${Object.values(CommentDummyData).length})`}
+          {/* {`Comments (${Object.values(CommentDummyData).length})`} */}
         </CommentTitle>
       </ReviewHeaderContainer>
       <AddReviewContainer>
@@ -143,5 +167,5 @@ function TitlePageDesktopRight() {
     </TitlePageRightContainer>
   );
 }
-
+}
 export default TitlePageDesktopRight;
