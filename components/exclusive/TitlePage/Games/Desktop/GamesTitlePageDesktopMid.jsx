@@ -33,6 +33,18 @@ const GamesMidContainerTopSection = styled(MidContainerTopSection)`
   gap: 0.5rem;
 `;
 
+const showImgModal = e => {
+  setModalImgUrl(screenshot.image)
+};
+
+let ScreenshotArray=[].map(screenshot => {
+  return <Image key={image} 
+    src={screenshot.image} 
+    width={100} 
+    height={100} 
+    onClick={showImgModal} />});
+
+
 function GamesTitlePageDesktopMid({ gameData, screenshotData }) {
   return (
     <GamesTitlePageMidContainer>
@@ -53,7 +65,7 @@ function GamesTitlePageDesktopMid({ gameData, screenshotData }) {
       </GamesMidContainerTopSection>
       <MidContainerMidSection>
         <RowContainer>
-          <ScreenshotsAllContainer>
+          <ScreenshotsAllContainer onClick={() => ScreenshotArray}>
             {screenshotData.results.map((screenshot) => {
               return (
                 <ScreenshotContainer>
