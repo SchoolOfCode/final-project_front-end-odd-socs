@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+
 //Firebase imports
 import { app, db } from "../../../../../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
@@ -77,9 +78,11 @@ const TitlePageIconLabel = styled.h6`
   font-size: 0.9rem;
 `;
 
-function TitlePageDesktopLeft({ movieData, tvData }) {
+function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
   //setting up our database table
   const myPicksDb = collection(db, "myPicks");
+  const myPicksDbTv = collection(db, "myPicksTv");
+
 
   //AUTHENTICATION
   //Initialising authentication
@@ -99,11 +102,26 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
 
   //creating a function that adds the title to myPicks
   function addMyPick() {
+    if(movieData) {
     //post request
     addDoc(myPicksDb, {
       movieId: `${movieData.id}`,
       title: `${movieData.title}`,
       image: `https://image.tmdb.org/t/p/original${movieData.poster_path}`,
+      userID: userIdState,
+    
+    })
+      .then(() => {
+        console.log("data sent");
+      })
+      .catch((err) => {
+        console.log("Data has not been sent");
+    });
+  } else {
+    addDoc(myPicksDbTv, {
+      TvId: `${tvData.id}`,
+      TvTitle: `${tvData.name}`,
+      TvImage: `https://image.tmdb.org/t/p/original${tvData.poster_path}`,
       userID: userIdState,
     })
       .then(() => {
@@ -112,7 +130,9 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
       .catch((err) => {
         console.log("Data has not been sent");
       });
-  }
+  }}
+
+
 
   return (
     <TitlePageLeftContainer>
@@ -159,3 +179,10 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
 }
 
 export default TitlePageDesktopLeft;
+
+
+/*
+get my picks to work for TV, Music & Games
+- send a tv title to our database
+- return the tv title from the database
+*/
