@@ -74,37 +74,37 @@ function NavMenuModal() {
       <ModalContentContainer>
         <NavRow>
           <MenuHomeIcon />
-          <NavLink href="/home">Home</NavLink>
+          <NavLink href="/home" aria-label="Go to the home page">Home</NavLink>
         </NavRow>
         <NavRow>
           <MenuMoviesIcon />
-          <NavLink href="/movies">Movies</NavLink>
+          <NavLink href="/movies" aria-label="Go to the movies page">Movies</NavLink>
         </NavRow>
         <NavRow>
           <MenuTvIcon />
-          <NavLink href="/tv">TV</NavLink>
+          <NavLink href="/tv" aria-label="Go to the television page">TV</NavLink>
         </NavRow>
         <NavRow>
           <MenuMusicIcon />
-          <NavLink href="/music">Music</NavLink>
+          <NavLink href="/music" aria-label="Go to the music page">Music</NavLink>
         </NavRow>
         <NavRow>
           <MenuGamesIcon />
-          <NavLink href="/games">Games</NavLink>
+          <NavLink href="/games" aria-label="Go to the games page">Games</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuMyPicksIcon />
-          <NavLink href="/mypicks">My Picks</NavLink>
+          <NavLink href="/mypicks" aria-label="Go to the my picks page">My Picks</NavLink>
         </NavRow>
         <NavRow>
           <MenuWatchlistIcon />
-          <NavLink href="/mywatchlist">My Watchlist</NavLink>
+          <NavLink href="/mywatchlist" aria-label="Go to the my watch list page">My Watchlist</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuAccountIcon />
-          <NavLink href="/profile">My Account</NavLink>
+          <NavLink href="/profile" aria-label="Go to the my profile page">My Account</NavLink>
         </NavRow>
       </ModalContentContainer>
       

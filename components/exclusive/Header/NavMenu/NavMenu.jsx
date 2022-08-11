@@ -61,7 +61,7 @@ function NavMenu() {
   return (
     <NavStyles>
       {isMenuModalOpen ? (
-        <NavCloseIcon menuModalCloseHandler={menuModalCloseHandler} />
+        <NavCloseIcon aria-label="Close the menu" menuModalCloseHandler={menuModalCloseHandler} />
       ) : (
         <HamburgerIcon menuModalOpenHandler={menuModalOpenHandler} />
       )}
@@ -70,7 +70,7 @@ function NavMenu() {
       {isSearchModalOpen ? (
         <SearchCloseIcon searchModalCloseHandler={searchModalCloseHandler} />
       ) : (
-        <NavSearchIcon searchModalOpenHandler={searchModalOpenHandler} />
+        <NavSearchIcon aria-label="search one source" searchModalOpenHandler={searchModalOpenHandler} />
       )}
       {isSearchModalOpen && <NavSearchModal />}
     </NavStyles>

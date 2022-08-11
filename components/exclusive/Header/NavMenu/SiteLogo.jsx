@@ -16,6 +16,7 @@ function SiteLogo() {
       <Link href="/home">
         <a>
           <Image
+          aria-label="one source website logo"
             src={Logo2}
             width={150}
             height={100}
