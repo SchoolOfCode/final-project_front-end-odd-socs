@@ -26,7 +26,8 @@ export const MidContainerMidSection = styled.div`
   flex-direction: column-reverse;
   justify-content: space-around;
   width: 100%;
-  gap: 1rem;
+  height: 6rem;
+  gap: 0rem;
 `;
 
 export const MidContainerBottomSection = styled.div``;

@@ -51,7 +51,7 @@ function GamesTitlePageDesktopMid({ gameData, screenshotData }) {
           })}
         </StatsContainer>
       </GamesMidContainerTopSection>
-      <MidContainerMidSection style={{ border: "2px solid white" }}>
+      <MidContainerMidSection>
         <RowContainer>
           <ScreenshotsAllContainer>
             {screenshotData.results.map((screenshot) => {
