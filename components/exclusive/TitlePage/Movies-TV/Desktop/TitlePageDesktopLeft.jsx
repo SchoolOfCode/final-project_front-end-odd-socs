@@ -71,7 +71,7 @@ const TitlePageIconLabel = styled.h6`
 `
 
 function handler() {
-  console.log("clicked");
+
 }
 
 function TitlePageDesktopLeft({ movieData, tvData }) {

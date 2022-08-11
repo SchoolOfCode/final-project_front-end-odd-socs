@@ -100,7 +100,7 @@ export function Settings() {
 
   function handleLogOutUser() {
     signOut(auth).then(() => {
-      console.log("user signed out");
+
       //push the user to the splash page
       router.push("/");
     });

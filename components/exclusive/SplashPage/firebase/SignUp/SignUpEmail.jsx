@@ -14,11 +14,11 @@ const SignUpEmail = () => {
   const handleSignUp = async () => {
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
       .then((response) => {
-        console.log(response.user);
+
         router.push("/home");
       })
       .catch((error) => {
-        console.log(error);
+
       });
   };
   return (

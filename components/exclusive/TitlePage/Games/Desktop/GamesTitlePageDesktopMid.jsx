@@ -79,7 +79,7 @@ function GamesTitlePageDesktopMid({ gameData, screenshotData }) {
         <StatsContainer>
           Play on:
           {gameData.parent_platforms.map((platform) => {
-            // console.log(platform);
+
             return ` ${platform.platform.name} |`;
           })}
         </StatsContainer>

@@ -47,7 +47,7 @@ const LogInModal = ({ closeLoginModalHandler }) => {
 
   function closeModalHandler() {
     setIsModalOpen(false);
-    console.log(isModalOpen);
+
   }
 
   function handleExitClick() {

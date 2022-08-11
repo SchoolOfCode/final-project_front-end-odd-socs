@@ -25,7 +25,7 @@ const ModalStyles = styled.div`
   @media screen and (max-width: 400px) {
     width: 100vw;
   };
-  
+
 `;
 
 const ModalContentContainer = styled.div`

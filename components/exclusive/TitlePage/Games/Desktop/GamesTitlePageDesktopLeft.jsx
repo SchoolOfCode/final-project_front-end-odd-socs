@@ -13,9 +13,6 @@ import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
-function handler() {
-  console.log("clicked");
-}
 
 function GamesTitlePageDesktopLeft({ gameData }) {
   return (

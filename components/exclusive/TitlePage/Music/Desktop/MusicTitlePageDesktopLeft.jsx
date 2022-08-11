@@ -14,7 +14,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
 function handler() {
-  console.log("clicked");
+
 }
 
 const MusicTitleImageContainer = styled(TitleImageContainer)`

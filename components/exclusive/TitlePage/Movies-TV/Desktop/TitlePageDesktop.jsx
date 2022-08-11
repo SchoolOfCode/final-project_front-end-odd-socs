@@ -23,7 +23,7 @@ export const PageContentContainer = styled.div`
 `;
 
 function TitlePageDesktop({ movieData, trailerData, tvData }) {
-  console.log(trailerData);
+
   return (
     <TitlePageContainer>
       <PageContentContainer>

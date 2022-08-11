@@ -21,7 +21,7 @@ const LogInGoogle = () => {
     const handleGoogleLogin = async () => {
     signInWithPopup(auth, googleProvider)
     .then((result) => {
-        console.log(result);
+
         router.push('/home');
     })}
     return (
