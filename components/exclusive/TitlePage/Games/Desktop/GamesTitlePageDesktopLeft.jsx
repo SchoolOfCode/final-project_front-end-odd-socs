@@ -28,7 +28,7 @@ function GamesTitlePageDesktopLeft({ gameData }) {
       </TitleImageContainer>
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
-          <AddCommentIcon onClick={handler} fontSize="large" />
+          <AddCommentIcon  fontSize="large" />
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
           <BeenhereIcon fontSize="large" />
