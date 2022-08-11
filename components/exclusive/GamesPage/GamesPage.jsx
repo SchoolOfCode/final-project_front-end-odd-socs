@@ -21,8 +21,6 @@ function GamesPage({ gameList }) {
     <PageContainer>
       <PageTitle>Video Games</PageTitle>
       <TopGames topGames={gameList.top10} />
-      <PlaylistGames />
-      <MyPicksGames />
       <IndieGames indieGames={gameList.indie} />
       <ActionGames actionGames={gameList.action} />
       <RPGGames rpgGames={gameList.rpg} />

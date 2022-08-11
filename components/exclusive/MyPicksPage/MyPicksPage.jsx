@@ -15,10 +15,10 @@ function MyPicksPage() {
   return (
     <PageContainer>
       <PageTitle>My Picks</PageTitle>
-      <MyPicksMovies/>
-      <MyPicksTv/>
-      <MyPicksMusic/>
-      <MyPicksGames/>
+      <MyPicksMovies />
+      <MyPicksTv />
+      <MyPicksMusic />
+      <MyPicksGames />
     </PageContainer>
   );
 }
