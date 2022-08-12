@@ -21,7 +21,6 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-// import { ConstructionOutlined } from "@mui/icons-material";
 import Link from "next/link";
 
 

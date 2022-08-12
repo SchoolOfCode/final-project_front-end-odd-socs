@@ -23,6 +23,8 @@ function SiteLogo() {
     let currentPath = router.pathname;
     if (currentPath === "/") {
       setPageType("splash");
+    } else if (currentPath.includes("/home")) {
+      setPageType("home");
     } else if (currentPath.includes("/movies")) {
       setPageType("movies");
     } else if (currentPath.includes("/tv")) {
@@ -39,6 +41,14 @@ function SiteLogo() {
       <Link href="/home">
         <a>
           {pageType === "splash" && (
+            <Image
+              src={Logo2}
+              width={200}
+              height={100}
+              alt="1Source Logo"
+            ></Image>
+          )}
+          {pageType === "home" && (
             <Image
               src={Logo2}
               width={200}
@@ -78,13 +88,13 @@ function SiteLogo() {
               alt="1Source Logo"
             ></Image>
           )}
-          <Image
+          {/* <Image
           aria-label="one source website logo"
             src={Logo2}
             width={150}
             height={100}
             alt="1Source Logo"
-          ></Image>
+          ></Image> */}
         </a>
       </Link>
       {/* <PageLogo>
