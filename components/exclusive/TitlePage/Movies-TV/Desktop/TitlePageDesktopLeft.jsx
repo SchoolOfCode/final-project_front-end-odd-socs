@@ -5,6 +5,11 @@ import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import SocialFacebook from "../../../social/SocialFacebook";
+import SocialReddit from "../../../social/SocialReddit";
+import SocialTwitter from "../../../social/SocialTwitter";
+import SocialWhatsApp from "../../../social/SocialWhatsApp";
+import { useState } from "react";
 
 const share = {
   config: [
@@ -22,11 +27,13 @@ const share = {
 };
 
 export const TitlePageLeftContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   min-width: 18rem;
+  
 `;
 export const TitleImageContainer = styled.div`
   height: 100%;
@@ -52,7 +59,7 @@ export const TitleIconContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;  
+  gap: 0.5rem;
   font-size: large;
 
   &:hover {
@@ -64,17 +71,46 @@ export const TitleIconContainer = styled.div`
   }
 `;
 
-const TitlePageIconLabel = styled.h6`
+export const TitlePageIconLabel = styled.h6`
   color: var(--font-secondary-color);
   font-weight: 400;
-  font-size:0.9rem;
-`
+  font-size: 0.9rem;
+`;
+export const TitlePageSocialShareModal = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: large;
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 5px;
+  
+  top: 32rem;
+  right: 0rem;
+  padding: 0.5rem;
+  
+`;
 
-function handler() {
+export const SocialShareRowContainer = styled.div`
+  display: flex;
+  max-width: 20rem;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  
+`;
+//modalhandler functions
 
-}
+function handler() {}
 
 function TitlePageDesktopLeft({ movieData, tvData }) {
+  const [isSocialShareModalOpen, setIsSocialShareModalOpen] = useState(false);
+
+  function socialShareModalToggleHandler() {
+    setIsSocialShareModalOpen((isSocialShareModalOpen)=> !isSocialShareModalOpen);
+  }
+
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
@@ -100,7 +136,7 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
           <AddCommentIcon onClick={handler} fontSize="large" />
-          <TitlePageIconLabel>Comment</TitlePageIconLabel>
+          <TitlePageIconLabel>Review</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
           <BeenhereIcon fontSize="large" />
@@ -111,10 +147,20 @@ function TitlePageDesktopLeft({ movieData, tvData }) {
           <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={4}>
-          <ShareIcon fontSize="large" />
+          <ShareIcon onClick={socialShareModalToggleHandler} fontSize="large" />
           <TitlePageIconLabel>Share</TitlePageIconLabel>
         </TitleIconContainer>
       </TitleIconsContainer>
+      {isSocialShareModalOpen && (
+        <TitlePageSocialShareModal>
+          <SocialShareRowContainer>
+            <SocialFacebook />
+            <SocialReddit />
+            <SocialTwitter />
+            <SocialWhatsApp />
+          </SocialShareRowContainer>
+        </TitlePageSocialShareModal>
+      )}
     </TitlePageLeftContainer>
   );
 }
