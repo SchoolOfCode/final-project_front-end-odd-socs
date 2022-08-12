@@ -23,10 +23,9 @@ import {
 
 import Link from "next/link";
 
-
 const MyPicksTitleContainer = styled(TitleContainer)`
   max-width: 10rem;
-`
+`;
 
 function MyPicksTv() {
   //Authentication
@@ -38,7 +37,7 @@ function MyPicksTv() {
 
   const getPicksData = async () => {
     await getDocs(myPicksDbTv).then((response) => {
-      console.log(response)
+      console.log(response);
       setFireDataTv(
         response.docs.map((picksData) => {
           return { ...picksData.data(), id: picksData.id };
@@ -60,7 +59,7 @@ function MyPicksTv() {
       <SectionTitle>My Picks - TV</SectionTitle>
 
       <RowContainer {...events} ref={ref}>
-        {fireDataTv.map((picksData, key) => {
+        {/* {fireDataTv.map((picksData, key) => {
           return (
             <>
               {signedInUser.uid === picksData.userID.uid && (
@@ -82,18 +81,13 @@ function MyPicksTv() {
               )}
             </>
           );
-        })}
+        })} */}
       </RowContainer>
     </>
   );
 }
 
 export default MyPicksTv;
-
-
-
-
-
 
 // function MyPicksTv() {
 //   return (
