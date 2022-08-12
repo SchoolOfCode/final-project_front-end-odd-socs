@@ -1,13 +1,23 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
+//imports for the backend
+import { app, db } from "../../../firebase/config";
+import { collection, getDocs, doc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+
+//Import for the carousel
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
+
+//Authentication imports
+import { getAuth } from "firebase/auth";
 
 import {
   RowContainer,
   TitleContainer,
   ImageContainer,
 } from "../../universal/Containers.styles";
-
 
 const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
@@ -16,25 +26,53 @@ const MusicImageContainer = styled(ImageContainer)`
 
 
 function MyPicksMusic() {
+  //Authentication
+  const auth = getAuth();
+  const signedInUser = auth.currentUser;
+
+  const [fireData, setFireData] = useState([]);
+  const myPicksDbMusic = collection(db, "myPicksmusic");
+
+  const getPicksData = async () => {
+    await getDocs(myPicksDbMusic).then((response) => {
+      setFireData(
+        response.docs.map((picksData) => {
+          return { ...picksData.data(), id: picksData.id };
+        })
+      );
+    });
+  };
+
+  useEffect(() => {
+    getPicksData();
+  }, []);
+
+  //For the carousel
+  const ref = useRef();
+  const { events } = useDraggable(ref);
   return (
     <>
       <SectionTitle>My Picks - Music</SectionTitle>
-      <RowContainer>
-        {/* {moviesTop10.map((movie,key) => {
+      <RowContainer {...events} ref={ref}>
+        {fireData.map((picksData, key) => {
           return (
-            <TitleContainer key={key}>
-              <MusicImageContainer>
-                <Image
-                  src={`${movie.image.split("_")[0]}@.jpg`}
-                  layout="fill"
-                  style={{ zIndex: -1 }}
-                  alt={movie.title}
-                ></Image>
-              </MusicImageContainer>
-              <TitleText>{movie.title}</TitleText>
-            </TitleContainer>
+            <>
+              {signedInUser.uid === picksData.userID.uid && (
+                <TitleContainer key={key}>
+                  <MusicImageContainer>
+                    <Image
+                      src={picksData.MusicImage}
+                      layout="fill"
+                      style={{ zIndex: -1 }}
+                      alt={picksData.Album}
+                    ></Image>
+                  </MusicImageContainer>
+                  <TitleText>{picksData.Album}</TitleText>
+                </TitleContainer>
+              )}
+            </>
           );
-        })} */}
+        })}
       </RowContainer>
     </>
   );
