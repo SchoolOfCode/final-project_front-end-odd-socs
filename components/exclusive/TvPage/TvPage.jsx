@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopTV from "./TopTV";
-import WatchlistTv from "./WatchlistTv";
 import MyPicksTv from "./MyPicksTv";
 import RandomTv from "./RandomTv";
 import AiringTodayTv from "./AiringTodayTv";
@@ -22,8 +21,7 @@ function TvPage({ tvList }) {
     <PageContainer>
       <PageTitle>TV Shows</PageTitle>
       <TopTV topTV={tvList.top10} />
-      {/* <WatchlistTv /> */}
-      {/* <MyPicksTv /> */}
+      <MyPicksTv />
       <AiringTodayTv airingToday={tvList.airingToday} />
       <ActionTv actionTV={tvList.action} />
       <DramaTv dramaTV={tvList.drama} />
