@@ -6,6 +6,7 @@ export const TitleText = styled.p`
   font-weight: 400;
   margin-top: 0.5rem;
   text-align: center;
+  max-width: 10rem;
 `;
 
 export const SectionTitle = styled.h1`
