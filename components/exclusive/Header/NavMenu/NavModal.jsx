@@ -96,10 +96,6 @@ function NavMenuModal() {
           <MenuMyPicksIcon />
           <NavLink href="/mypicks" aria-label="Go to the my picks page">My Picks</NavLink>
         </NavRow>
-        <NavRow>
-          <MenuWatchlistIcon />
-          <NavLink href="/mywatchlist" aria-label="Go to the my watch list page">My Watchlist</NavLink>
-        </NavRow>
         <NavHR />
         <NavRow>
           <MenuAccountIcon />
