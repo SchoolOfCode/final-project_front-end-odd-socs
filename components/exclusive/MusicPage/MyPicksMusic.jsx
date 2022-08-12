@@ -18,12 +18,13 @@ import {
   TitleContainer,
   ImageContainer,
 } from "../../universal/Containers.styles";
+// import { ConstructionOutlined } from "@mui/icons-material";
+import Link from "next/link";
 
 const MusicImageContainer = styled(ImageContainer)`
   width: 8rem;
   height: 8rem;
 `;
-
 
 function MyPicksMusic() {
   //Authentication
@@ -60,12 +61,22 @@ function MyPicksMusic() {
               {signedInUser.uid === picksData.userID.uid && (
                 <TitleContainer key={key}>
                   <MusicImageContainer>
-                    <Image
-                      src={picksData.MusicImage}
-                      layout="fill"
-                      style={{ zIndex: -1 }}
-                      alt={picksData.Album}
-                    ></Image>
+                    <Link
+                      href={`/title/music/${picksData.Artist.replace(
+                        /\s/g,
+                        "+"
+                      )}-${picksData.Album.replace(/\s/g, "+")}`}
+                    >
+                      <a>
+                        <Image
+                          src={picksData.MusicImage}
+                          layout="fill"
+                          style={{ zIndex: -1 }}
+                          alt={picksData.Album}
+                        ></Image>
+                        
+                      </a>
+                    </Link>
                   </MusicImageContainer>
                   <TitleText>{picksData.Album}</TitleText>
                 </TitleContainer>
