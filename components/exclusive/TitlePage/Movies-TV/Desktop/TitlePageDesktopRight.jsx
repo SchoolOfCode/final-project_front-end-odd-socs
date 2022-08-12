@@ -115,7 +115,7 @@ const [fireData, setFireData] = useState([]);
 
 
 //Setting up the database
-const reviewTable = collection(db, `${movieData.title} Reviews`);
+//const reviewTable = collection(db, `${movieData.title} Reviews`);
 
 //AUTHENTICATION
  //If you check the console, you can see the details of the user that is currently logged in!
@@ -129,7 +129,8 @@ useEffect(() => {
 
 //GET reviews
 const getReviews = async () => {
-  await getDocs(reviewTable)
+  if(movieData){
+  await getDocs(collection(db, `${movieData.title} Reviews`))
     .then((response) => {
       setFireData(
         response.docs.map((data) => {
@@ -141,21 +142,46 @@ const getReviews = async () => {
     .catch((error) => {
       console.log(error);
     });
+  }else{
+    await getDocs(collection(db, `${tvData.name} Reviews`))
+    .then((response) => {
+      setFireData(
+        response.docs.map((data) => {
+          return { ...data.data(), id: data.id };
+        })
+      )
+      console.log(fireData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 };
 
 //ADD reviews
 const addReview = () => {
-  addDoc(reviewTable,
+  if(movieData){
+  addDoc(collection(db, `${movieData.title} Reviews`),
     { review: 
       userReview })
       .then(() => {
         getReviews()
         setUserReview("");
       });
+    }else{
+      addDoc(collection(db, `${tvData.name} Reviews`),
+    { review: 
+      userReview })
+      .then(() => {
+        getReviews()
+        setUserReview("");
+      });
+    }
 };
 
 //DELETE reviews
 const deleteReview = (id) => {
+  if(movieData){
   let fieldToDelete = doc(db, `${movieData.title} Reviews`, id);
   deleteDoc(fieldToDelete)
     .then(() => {
@@ -164,6 +190,16 @@ const deleteReview = (id) => {
     .catch((error) => {
       console.log(error);
     });
+  }else{
+    let fieldToDelete = doc(db, `${tvData.name} Reviews`, id);
+  deleteDoc(fieldToDelete)
+    .then(() => {
+      getReviews();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 };
 
 
