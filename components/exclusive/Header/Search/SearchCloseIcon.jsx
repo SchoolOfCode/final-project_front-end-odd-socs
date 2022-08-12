@@ -3,7 +3,7 @@ import { NavIconContainer } from "../../../universal/Containers.styles";
 
 function SearchCloseIcon({ searchModalCloseHandler }) {
   return (
-    <CloseIcon onClick={searchModalCloseHandler} style={NavIconContainer} />
+    <CloseIcon aria-label="Close search" onClick={searchModalCloseHandler} style={NavIconContainer} />
   );
 }
 

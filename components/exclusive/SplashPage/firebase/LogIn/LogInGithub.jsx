@@ -21,7 +21,7 @@ const LogInGithub = () => {
     const handleGithubLogin = async () => {
     signInWithPopup(auth, githubProvider)
     .then((result) => {
-        console.log(result);
+
         router.push('/home');
     })}
     return (

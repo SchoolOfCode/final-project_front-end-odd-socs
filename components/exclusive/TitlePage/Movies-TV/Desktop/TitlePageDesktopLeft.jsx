@@ -13,6 +13,11 @@ import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import SocialFacebook from "../../../social/SocialFacebook";
+import SocialReddit from "../../../social/SocialReddit";
+import SocialTwitter from "../../../social/SocialTwitter";
+import SocialWhatsApp from "../../../social/SocialWhatsApp";
+import { useState } from "react";
 
 const share = {
   config: [
@@ -30,11 +35,13 @@ const share = {
 };
 
 export const TitlePageLeftContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
   min-width: 18rem;
+  
 `;
 export const TitleImageContainer = styled.div`
   height: 100%;
@@ -72,10 +79,35 @@ export const TitleIconContainer = styled.div`
   }
 `;
 
-const TitlePageIconLabel = styled.h6`
+export const TitlePageIconLabel = styled.h6`
   color: var(--font-secondary-color);
   font-weight: 400;
   font-size: 0.9rem;
+`;
+
+export const TitlePageSocialShareModal = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: large;
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 5px;
+  
+  top: 32rem;
+  right: 0rem;
+  padding: 0.5rem;
+  
+`;
+
+export const SocialShareRowContainer = styled.div`
+  display: flex;
+  max-width: 20rem;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  
 `;
 
 function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
@@ -132,7 +164,13 @@ function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
       });
   }}
 
+//modalhandler functions
 
+  const [isSocialShareModalOpen, setIsSocialShareModalOpen] = useState(false);
+
+  function socialShareModalToggleHandler() {
+    setIsSocialShareModalOpen((isSocialShareModalOpen)=> !isSocialShareModalOpen);
+  }
 
   return (
     <TitlePageLeftContainer>
@@ -159,7 +197,7 @@ function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
       <TitleIconsContainer>
         <TitleIconContainer tabIndex={1}>
           <AddCommentIcon fontSize="large" />
-          <TitlePageIconLabel>Comment</TitlePageIconLabel>
+          <TitlePageIconLabel>Review</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
           <BeenhereIcon onClick={addMyPick} fontSize="large" />
@@ -170,10 +208,20 @@ function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
           <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={4}>
-          <ShareIcon fontSize="large" />
+          <ShareIcon onClick={socialShareModalToggleHandler} fontSize="large" />
           <TitlePageIconLabel>Share</TitlePageIconLabel>
         </TitleIconContainer>
       </TitleIconsContainer>
+      {isSocialShareModalOpen && (
+        <TitlePageSocialShareModal>
+          <SocialShareRowContainer>
+            <SocialFacebook />
+            <SocialReddit />
+            <SocialTwitter />
+            <SocialWhatsApp />
+          </SocialShareRowContainer>
+        </TitlePageSocialShareModal>
+      )}
     </TitlePageLeftContainer>
   );
 }
@@ -181,8 +229,3 @@ function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
 export default TitlePageDesktopLeft;
 
 
-/*
-get my picks to work for TV, Music & Games
-- send a tv title to our database
-- return the tv title from the database
-*/

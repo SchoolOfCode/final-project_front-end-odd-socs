@@ -13,16 +13,20 @@ import {
   TitleImageContainer,
   TitleIconsContainer,
   TitleIconContainer,
+  TitlePageIconLabel,
+  TitlePageSocialShareModal,
+  SocialShareRowContainer,
 } from "../../Movies-TV/Desktop/TitlePageDesktopLeft";
-
+import SocialFacebook from "../../../social/SocialFacebook";
+import SocialReddit from "../../../social/SocialReddit";
+import SocialTwitter from "../../../social/SocialTwitter";
+import SocialWhatsApp from "../../../social/SocialWhatsApp";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
-function handler() {
-  console.log("clicked");
-}
+function handler() {}
 
 const MusicTitleImageContainer = styled(TitleImageContainer)`
   height: 60%;
@@ -34,6 +38,13 @@ const MusicTitlePageLeftContainer = styled(TitlePageLeftContainer)`
 `;
 
 function MusicTitlePageDesktopLeft({ musicData }) {
+  const [isSocialShareModalOpen, setIsSocialShareModalOpen] = useState(false);
+
+  function socialShareModalToggleHandler() {
+    setIsSocialShareModalOpen(
+      (isSocialShareModalOpen) => !isSocialShareModalOpen
+    );
+  }
  
   //setting up our database table
   const myPicksDbmusic = collection(db, "myPicksmusic");
@@ -53,7 +64,7 @@ function MusicTitlePageDesktopLeft({ musicData }) {
       }
     });
   }, []);
-
+  
   // creating a function that adds the title to myPicks
   function addMyPick() {
     addDoc(myPicksDbmusic, {
@@ -69,66 +80,51 @@ function MusicTitlePageDesktopLeft({ musicData }) {
       .catch((err) => {
         console.log("Data has not been sent");
       });
-  }
+    }
 
   return (
-    <>
-      <MusicTitlePageLeftContainer>
-        <MusicTitleImageContainer>
-          {musicData.image[3]["#text"] && (
-            <Image
-              src={musicData.image[3]["#text"]}
-              alt="game"
-              priority
-              layout="fill"
-            ></Image>
-          )}
-        </MusicTitleImageContainer>
-        <TitleIconsContainer>
-          <TitleIconContainer tabIndex={1}>
-            <AddCommentIcon onClick={handler} fontSize="large" />
-          </TitleIconContainer>
-          <TitleIconContainer tabIndex={2}>
-            <BeenhereIcon fontSize="large" onClick={addMyPick} />
-          </TitleIconContainer>
-          <TitleIconContainer tabIndex={3}>
-            <BookmarkBorderIcon fontSize="large" />
-          </TitleIconContainer>
-          <TitleIconContainer tabIndex={4}>
-            <ShareIcon fontSize="large" />
-          </TitleIconContainer>
-        </TitleIconsContainer>
-      </MusicTitlePageLeftContainer>
-    </>
+    <MusicTitlePageLeftContainer>
+      <MusicTitleImageContainer>
+        {musicData.image[3]["#text"] && (
+          <Image
+            src={musicData.image[3]["#text"]}
+            alt="game"
+            priority
+            layout="fill"
+          ></Image>
+        )}
+      </MusicTitleImageContainer>
+      <TitleIconsContainer>
+        <TitleIconContainer tabIndex={1}>
+          <AddCommentIcon onClick={handler} fontSize="large" />
+          <TitlePageIconLabel>Review</TitlePageIconLabel>
+        </TitleIconContainer>
+        <TitleIconContainer tabIndex={2}>
+          <BeenhereIcon fontSize="large" onClick={addMyPick}/>
+          <TitlePageIconLabel>Picks</TitlePageIconLabel>
+        </TitleIconContainer>
+        <TitleIconContainer tabIndex={3}>
+          <BookmarkBorderIcon fontSize="large" />
+          <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
+        </TitleIconContainer>
+        <TitleIconContainer tabIndex={4}>
+          <ShareIcon onClick={socialShareModalToggleHandler} fontSize="large" />
+          <TitlePageIconLabel>Share</TitlePageIconLabel>
+        </TitleIconContainer>
+      </TitleIconsContainer>
+      {isSocialShareModalOpen && (
+        <TitlePageSocialShareModal>
+          <SocialShareRowContainer>
+            <SocialFacebook />
+            <SocialReddit />
+            <SocialTwitter />
+            <SocialWhatsApp />
+          </SocialShareRowContainer>
+        </TitlePageSocialShareModal>
+      )}
+    </MusicTitlePageLeftContainer>
   );
 }
 
 export default MusicTitlePageDesktopLeft;
 
-//   <MusicTitlePageLeftContainer>
-//     <MusicTitleImageContainer>
-//       {musicData.image[3]["#text"] && (
-//         <Image
-//           src={musicData.image[3]["#text"]}
-//           alt="game"
-//           priority
-//           layout="fill"
-//         ></Image>
-//       )}
-//     </MusicTitleImageContainer>
-//     <TitleIconsContainer>
-//       <TitleIconContainer tabIndex={1}>
-//         <AddCommentIcon onClick={handler} fontSize="large" />
-//       </TitleIconContainer>
-//       <TitleIconContainer tabIndex={2}>
-//         <BeenhereIcon fontSize="large" />
-//       </TitleIconContainer>
-//       <TitleIconContainer tabIndex={3}>
-//         <BookmarkBorderIcon fontSize="large" />
-//       </TitleIconContainer>
-//       <TitleIconContainer tabIndex={4}>
-//         <ShareIcon fontSize="large" />
-//       </TitleIconContainer>
-//     </TitleIconsContainer>
-//   </MusicTitlePageLeftContainer>
-// );

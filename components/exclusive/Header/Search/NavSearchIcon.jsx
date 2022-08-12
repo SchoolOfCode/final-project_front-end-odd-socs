@@ -3,7 +3,7 @@ import { NavIconContainer } from "../../../universal/Containers.styles";
 
 function NavSearchIcon({ searchModalOpenHandler }) {
   return (
-    <SearchIcon onClick={searchModalOpenHandler} style={NavIconContainer} />
+    <SearchIcon aria-label="Search" onClick={searchModalOpenHandler} style={NavIconContainer} />
   );
 }
 

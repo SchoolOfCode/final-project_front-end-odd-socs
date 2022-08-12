@@ -53,13 +53,13 @@ export default function LogInEmail() {
       //then...
       .then((response) => {
         //See the user details in the console
-        console.log(response.user);
+
         //direct the user to the home page
         router.push("/home");
       })
       .catch((error) => {
         //See the error in the console
-        console.log(error);
+
       });
   }
 

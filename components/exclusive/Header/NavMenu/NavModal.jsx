@@ -7,21 +7,24 @@ import MenuGamesIcon from "./MenuGamesIcon";
 import MenuMyPicksIcon from "./MenuMyPicksIcon";
 import MenuAccountIcon from "./MenuAccountIcon";
 
+
+
 const ModalStyles = styled.div`
   position: fixed;
   display: flex;
-  width: 20rem;
+  width: 17rem;
   height: 90vh;
   top: 0;
   left: 0;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(45px);
   margin-top: 10vh;
   padding: 2rem 0;
   overflow: hidden;
-
+  
   @media screen and (max-width: 400px) {
     width: 100vw;
-  }
+  };
+
 `;
 
 const ModalContentContainer = styled.div`
@@ -53,6 +56,7 @@ const NavLink = styled.a`
   font-weight: 300;
   text-decoration: none;
 
+
   &:hover {
     color: var(--secondary);
   }
@@ -65,38 +69,44 @@ const NavLink = styled.a`
 function NavMenuModal() {
   return (
     <ModalStyles>
+      
       <ModalContentContainer>
         <NavRow>
           <MenuHomeIcon />
-          <NavLink href="/home">Home</NavLink>
+          <NavLink href="/home" aria-label="Go to the home page">Home</NavLink>
         </NavRow>
         <NavRow>
           <MenuMoviesIcon />
-          <NavLink href="/movies">Movies</NavLink>
+          <NavLink href="/movies" aria-label="Go to the movies page">Movies</NavLink>
         </NavRow>
         <NavRow>
           <MenuTvIcon />
-          <NavLink href="/tv">TV</NavLink>
+          <NavLink href="/tv" aria-label="Go to the television page">TV</NavLink>
         </NavRow>
         <NavRow>
           <MenuMusicIcon />
-          <NavLink href="/music">Music</NavLink>
+          <NavLink href="/music" aria-label="Go to the music page">Music</NavLink>
         </NavRow>
         <NavRow>
           <MenuGamesIcon />
-          <NavLink href="/games">Games</NavLink>
+          <NavLink href="/games" aria-label="Go to the games page">Games</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuMyPicksIcon />
-          <NavLink href="/mypicks">My Picks</NavLink>
+          <NavLink href="/mypicks" aria-label="Go to the my picks page">My Picks</NavLink>
+        </NavRow>
+        <NavRow>
+          <MenuWatchlistIcon />
+          <NavLink href="/mywatchlist" aria-label="Go to the my watch list page">My Watchlist</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>
           <MenuAccountIcon />
-          <NavLink href="/profile">My Account</NavLink>
+          <NavLink href="/profile" aria-label="Go to the my profile page">My Account</NavLink>
         </NavRow>
       </ModalContentContainer>
+      
     </ModalStyles>
   );
 }

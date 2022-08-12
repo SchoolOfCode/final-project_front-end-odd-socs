@@ -1,29 +1,29 @@
-import Header from "../../../../components/exclusive/Header/Header";
-import MusicTitlePage from "../../../../components/exclusive/TitlePage/Music/MusicTitlePageMaster";
+import Header from '../../../../components/exclusive/Header/Header';
+import MusicTitlePage from '../../../../components/exclusive/TitlePage/Music/MusicTitlePageMaster';
 
 import {
-  HeaderWrapper,
-  PageWrapper,
-} from "../../../../components/universal/Containers.styles";
+	HeaderWrapper,
+	PageWrapper,
+} from '../../../../components/universal/Containers.styles';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { musiclist } from "../../../../public/music-data/music-data";
+import { musiclist } from '../../../../public/music-data/music-data';
 
 function MusicTitle({ musicData }) {
-  const router = useRouter();
-  const titleId = router.query.gameId;
+	const router = useRouter();
+	const titleId = router.query.gameId;
 
-  return (
-    <>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
-      <PageWrapper>
-        <MusicTitlePage musicData={musicData} />
-      </PageWrapper>
-    </>
-  );
+	return (
+		<>
+			<HeaderWrapper>
+				<Header />
+			</HeaderWrapper>
+			<PageWrapper>
+				<MusicTitlePage musicData={musicData} />
+			</PageWrapper>
+		</>
+	);
 }
 
 // export async function getStaticPaths() {
@@ -94,35 +94,35 @@ function MusicTitle({ musicData }) {
 // }
 
 export async function getServerSideProps(context) {
-  const musicId = context.params.musicId;
-  console.log(musicId);
-  const artistAndAlbum = musicId.split("-");
+	const musicId = context.params.musicId;
 
-  const artist = artistAndAlbum[0];
-  const album = artistAndAlbum[1];
+	const artistAndAlbum = musicId.split('-');
 
-  const res = await fetch(
-    `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=47a0d3657aa0b16a650b3476d333aab3&artist=${artist}&album=${album}&format=json`
-  );
-  let selectedMusicData = await res.json();
-  let wiki = "";
+	const artist = artistAndAlbum[0];
+	const album = artistAndAlbum[1];
 
-  if (typeof selectedMusicData.album.wiki === "undefined") {
-    wiki = "";
-  } else {
-    wiki = selectedMusicData.album.wiki.content;
-  }
+	const res = await fetch(
+		`https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=47a0d3657aa0b16a650b3476d333aab3&artist=${artist}&album=${album}&format=json`
+	);
+	let selectedMusicData = await res.json();
+	let wiki = '';
 
-  selectedMusicData = {
-    ...selectedMusicData.album,
-    wiki: wiki,
-  };
+	if (typeof selectedMusicData.album.wiki === 'undefined') {
+		wiki = '';
+	} else {
+		wiki = selectedMusicData.album.wiki.content;
+	}
 
-  return {
-    props: {
-      musicData: selectedMusicData,
-    },
-  };
+	selectedMusicData = {
+		...selectedMusicData.album,
+		wiki: wiki,
+	};
+
+	return {
+		props: {
+			musicData: selectedMusicData,
+		},
+	};
 }
 
 export default MusicTitle;

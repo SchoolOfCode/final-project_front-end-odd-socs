@@ -78,6 +78,13 @@ function SiteLogo() {
               alt="1Source Logo"
             ></Image>
           )}
+          <Image
+          aria-label="one source website logo"
+            src={Logo2}
+            width={150}
+            height={100}
+            alt="1Source Logo"
+          ></Image>
         </a>
       </Link>
       {/* <PageLogo>

@@ -3,7 +3,7 @@ import { NavIconContainer } from "../../../universal/Containers.styles";
 
 function HamburgerIcon({ menuModalOpenHandler}) {
   return (
-    <MenuIcon
+    <MenuIcon aria-label="Menu"
       style={NavIconContainer}
       onClick={menuModalOpenHandler}
     ></MenuIcon>
