@@ -17,7 +17,7 @@ import SocialFacebook from "../../../social/SocialFacebook";
 import SocialReddit from "../../../social/SocialReddit";
 import SocialTwitter from "../../../social/SocialTwitter";
 import SocialWhatsApp from "../../../social/SocialWhatsApp";
-import { useState } from "react";
+
 
 const share = {
   config: [
