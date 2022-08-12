@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { PageContainer } from "../../universal/Containers.styles";
 import TopGames from "./TopGames";
-import PlaylistGames from "./PlaylistGames";
 import MyPicksGames from "./MyPicksGames";
 import IndieGames from "./IndieGames";
 import ActionGames from "./ActionGames";

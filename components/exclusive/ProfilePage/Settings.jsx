@@ -17,12 +17,19 @@ const ProfileSettingsContainer = styled.div`
   top: 25px;
   right: 15px;
   gap: 1.5rem;
+  align-items: flex-end;
+  width: 100%;
 `;
 
 const SettingHeaders = styled.h3`
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.1rem;
   color: var(--font-primary-color);
+
+  @media screen and (max-width: 400px) {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
 `;
 const SettingsArrow = styled.div`
   color: var(--font-primary-color);
@@ -32,6 +39,7 @@ const SettingsArrow = styled.div`
 const SettingsSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: max-content;
 `;
 
 const SettingsTitleContainer = styled.div`
@@ -57,6 +65,10 @@ const DropDownContent = styled.h4`
   &:hover {
     cursor: pointer;
     color: var(--secondary);
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 1.5rem;
   }
 `;
 

@@ -52,10 +52,14 @@ function NavMenu() {
   function searchModalOpenHandler() {
     setIsSearchModalOpen(true);
     setIsMenuModalOpen(false);
+    document.documentElement.style.overflow = "hidden";
+    document.body.scroll = "no";
   }
 
   function searchModalCloseHandler() {
     setIsSearchModalOpen(false);
+    document.documentElement.style.overflow = "scroll";
+    document.body.scroll = "yes";
   }
 
   return (
@@ -72,7 +76,9 @@ function NavMenu() {
       ) : (
         <NavSearchIcon searchModalOpenHandler={searchModalOpenHandler} />
       )}
-      {isSearchModalOpen && <NavSearchModal />}
+      {isSearchModalOpen && (
+        <NavSearchModal searchModalCloseHandler={searchModalCloseHandler} />
+      )}
     </NavStyles>
   );
 }

@@ -5,7 +5,6 @@ import MenuTvIcon from "./MenuTVIcon";
 import MenuMusicIcon from "./MenuMusicIcon";
 import MenuGamesIcon from "./MenuGamesIcon";
 import MenuMyPicksIcon from "./MenuMyPicksIcon";
-import MenuWatchlistIcon from "./MenuWatchlistIcon";
 import MenuAccountIcon from "./MenuAccountIcon";
 
 const ModalStyles = styled.div`
@@ -91,10 +90,6 @@ function NavMenuModal() {
         <NavRow>
           <MenuMyPicksIcon />
           <NavLink href="/mypicks">My Picks</NavLink>
-        </NavRow>
-        <NavRow>
-          <MenuWatchlistIcon />
-          <NavLink href="/mywatchlist">My Watchlist</NavLink>
         </NavRow>
         <NavHR />
         <NavRow>

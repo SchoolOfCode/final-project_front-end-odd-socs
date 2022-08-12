@@ -10,6 +10,14 @@ import TvIcon from "@mui/icons-material/Tv";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { BsSearch } from "react-icons/bs";
+import { useEffect, useState } from "react";
+
+import SearchResults from "./SearchResults";
+
+import { movielist } from "../../../../public/movie-data/movie-data";
+import { tvlist } from "../../../../public/tv-data/tv-data";
+import { musiclist } from "../../../../public/music-data/music-data";
+import { gamelist } from "../../../../public/games-data/games-data";
 
 const ModalStyles = styled.div`
   position: fixed;
@@ -25,7 +33,6 @@ const ModalStyles = styled.div`
 `;
 
 const ModalContentContainer = styled.div`
-  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +41,20 @@ const ModalContentContainer = styled.div`
   width: 100%;
   gap: 8rem;
   z-index: 10;
+`;
+
+const IconsAndInputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  gap: 1.5rem;
+  min-width: 40rem;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    min-width: 20rem;
+    align-items: center;
+  }
 `;
 
 const NavRowSearch = styled.div`
@@ -67,14 +88,43 @@ const IconsStyle = styled.div`
   border: 2px solid transparent;
   padding: 0.5rem;
 
-  &:focus {
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-  }
-
   &:hover {
     color: var(--secondary);
-    transition: 400ms ease-in-out;
+    transition: 300ms ease-in-out;
+  }
+`;
+
+const iconClickStyle = {
+  color: "var(--secondary)",
+  border: "2px solid var(--secondary)",
+  transition: "300ms ease-in-out",
+};
+
+const LeftSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 20rem;
+  gap: 1rem;
+`;
+
+const RightSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  justify-content: flex-end;
+  position: relative;
+`;
+
+const SearchPrompt = styled.h1`
+  color: white;
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+
+  @media screen and (max-width: 400px) {
+    text-align: center;
   }
 `;
 
@@ -88,6 +138,7 @@ const Searchbar = styled.input`
   border-left: none;
   border-top: none;
   padding: 0 0.5rem;
+  max-height: 50px;
 
   &:focus {
     outline: none;
@@ -98,7 +149,120 @@ const Searchbar = styled.input`
   }
 `;
 
-function NavSearchModal() {
+function NavSearchModal({ searchModalCloseHandler }) {
+  const [mediaType, setMediaType] = useState("");
+  const [mediaList, setMediaList] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dataResults, setDataResults] = useState([]);
+  const [filteredResults, setFilteredResuls] = useState([]);
+
+  function movieSelectHandle() {
+    setMediaType("movies");
+    setMediaList(movielist);
+  }
+
+  function tvSelectHandle() {
+    setMediaType("tv");
+    setMediaList(tvlist);
+  }
+
+  function musicSelectHandle() {
+    setMediaType("music");
+    setMediaList(musiclist);
+  }
+
+  function gamesSelectHandle() {
+    setMediaType("games");
+    setMediaList(gamelist);
+  }
+
+  function handleSearch(e) {
+    e.preventDefault;
+    const searchWord = e.target.value;
+    console.log(mediaType);
+    if (searchWord.length >= 3) {
+      setSearchTerm(searchWord);
+    } else if (searchWord.length < 3) {
+      setDataResults([]);
+    }
+  }
+
+  // Map over media object and return matches
+
+  let resultsArray = [];
+
+  useEffect(() => {
+    switch (mediaType) {
+      case "movies":
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value).map(function (entry) {
+            if (entry.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+              if (!resultsArray.includes(entry.name)) {
+                resultsArray.push({ title: entry.title, id: entry.id });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
+
+      case "tv":
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value).map(function (entry) {
+            if (entry.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              if (!resultsArray.includes(entry.name)) {
+                resultsArray.push({ title: entry.name, id: entry.id });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
+      case "music":
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value.album).map(function (entry) {
+            if (
+              entry.artist.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              if (!resultsArray.includes(entry.artist.name)) {
+                resultsArray.push({
+                  title: entry.name,
+                  artist: entry.artist.name,
+                });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
+      case "games":
+        setDataResults([]);
+        Object.values(mediaList).map(function (value) {
+          Object.values(value).map(function (entry) {
+            if (entry.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              if (!resultsArray.includes(entry.name)) {
+                resultsArray.push({ title: entry.name, id: entry.id });
+              }
+            }
+          });
+          setDataResults(resultsArray);
+        });
+        break;
+    }
+
+    // Add link to returned items to direct to title page
+  }, [searchTerm]);
+
+  // console.log(dataResults);
+
+  const clearInput = () => {
+    setSearchTerm("");
+    setDataResults([]);
+  };
+
   return (
     <ModalStyles>
       <ModalContentContainer>
@@ -107,21 +271,52 @@ function NavSearchModal() {
           <BsSearch style={SearchIconContainer} />
         </NavRowSearch>
         <NavRow>
-          <SearchIconsContainer>
-            <IconsStyle tabIndex={1}>
-              <LocalMoviesIcon />
-            </IconsStyle>
-            <IconsStyle tabIndex={2}>
-              <TvIcon />
-            </IconsStyle>
-            <IconsStyle tabIndex={3}>
-              <LibraryMusicIcon />
-            </IconsStyle>
-            <IconsStyle tabIndex={4}>
-              <SportsEsportsIcon />
-            </IconsStyle>
-          </SearchIconsContainer>
-          <Searchbar />
+          <IconsAndInputContainer>
+            <LeftSearchContainer>
+              <SearchPrompt>
+                Please select a content type before searching:
+              </SearchPrompt>
+              <SearchIconsContainer>
+                <IconsStyle
+                  onClick={movieSelectHandle}
+                  tabIndex={1}
+                  style={mediaType === "movies" ? iconClickStyle : null}
+                >
+                  <LocalMoviesIcon />
+                </IconsStyle>
+                <IconsStyle
+                  onClick={tvSelectHandle}
+                  tabIndex={2}
+                  style={mediaType === "tv" ? iconClickStyle : null}
+                >
+                  <TvIcon />
+                </IconsStyle>
+                <IconsStyle
+                  onClick={musicSelectHandle}
+                  tabIndex={3}
+                  style={mediaType === "music" ? iconClickStyle : null}
+                >
+                  <LibraryMusicIcon />
+                </IconsStyle>
+                <IconsStyle
+                  onClick={gamesSelectHandle}
+                  tabIndex={4}
+                  style={mediaType === "games" ? iconClickStyle : null}
+                >
+                  <SportsEsportsIcon />
+                </IconsStyle>
+              </SearchIconsContainer>
+            </LeftSearchContainer>
+            <RightSearchContainer>
+              <Searchbar onChange={handleSearch} />
+              <SearchResults
+                dataResults={dataResults}
+                searchTerm={searchTerm}
+                mediaType={mediaType}
+                searchModalCloseHandler={searchModalCloseHandler}
+              />
+            </RightSearchContainer>
+          </IconsAndInputContainer>
         </NavRow>
       </ModalContentContainer>
     </ModalStyles>

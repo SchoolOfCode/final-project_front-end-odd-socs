@@ -68,14 +68,14 @@ const WatchOnIconStyle = styled.div`
   position: relative;
 `;
 
-const VideoContainer = styled.div`
-  width: 50%;
-  height: 100%;
-`;
+// const VideoContainer = styled.div`
+//   width: 500px;
+//   height: auto;
+// `;
 
 const VideoStyle = {
-  height: "auto",
-  width: "90%",
+  height: "200px",
+  width: "300px",
   playerVars: {
     autoplay: 0,
   },
@@ -122,7 +122,7 @@ function TitlePageDesktopMid({ movieData, trailerData, tvData }) {
           <WatchOnText>Watch on:</WatchOnText>
           <WatchOnIconsContainer>
             <WatchOnIconStyle>
-              <Link href="https://play.google.com/store/movies/details/The_Shawshank_Redemption?id=McibEy8umXo.P">
+              <Link href="https://play.google.com/store/movies/details/Jurassic_World_Dominion?id=r7yQmvn5_XM.P&hl=en&gl=US">
                 <a target="_blank">
                   <Image
                     src={GooglePlayIcon}
@@ -146,7 +146,7 @@ function TitlePageDesktopMid({ movieData, trailerData, tvData }) {
               </Link>
             </WatchOnIconStyle>
             <WatchOnIconStyle>
-              <Link href="https://www.amazon.co.uk/Shawshank-Redemption-Morgan-Freeman/dp/B00I6ER1OK">
+              <Link href="https://www.amazon.com/Jurassic-World-Dominion-Chris-Pratt/dp/B0B5M9RNVF/ref=sr_1_1?keywords=jurassic+world+dominion&qid=1660303085&s=instant-video&sprefix=jur%2Cinstant-video%2C168&sr=1-1">
                 <a target="blank">
                   <Image
                     src={AmazonIcon}
@@ -159,11 +159,9 @@ function TitlePageDesktopMid({ movieData, trailerData, tvData }) {
             </WatchOnIconStyle>
           </WatchOnIconsContainer>
         </WatchOnContainer>
-        <VideoContainer>
-          {trailerData && (
-            <YouTube videoId={trailerData.results[0].key} opts={VideoStyle} />
-          )}
-        </VideoContainer>
+        {trailerData && (
+          <YouTube videoId={trailerData.results[0].key} opts={VideoStyle} />
+        )}
       </MidContainerMidSection>
       <MidContainerBottomSection>
         {movieData && <Synopsis>{movieData.overview}</Synopsis>}

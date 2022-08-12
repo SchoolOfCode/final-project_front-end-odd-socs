@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { PageContainer } from "../../universal/Containers.styles";
-import ListenListMusic from "./ListenListMusic";
 import TopMusic from "./TopMusic";
 import MyPicksMusic from "./MyPicksMusic";
 import PopMusic from "./PopMusic";
@@ -21,7 +20,6 @@ function MusicPage({ musicList }) {
     <PageContainer>
       <PageTitle>Music</PageTitle>
       <TopMusic topMusic={musicList.top10.album} />
-      <ListenListMusic />
       <MyPicksMusic />
       <PopMusic popMusic={musicList.popular.album} />
       <RockMusic rockMusic={musicList.rock.album} />
