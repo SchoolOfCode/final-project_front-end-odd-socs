@@ -11,7 +11,6 @@ import {
   TitleContainer,
 } from "../../universal/Containers.styles";
 
-
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
@@ -23,7 +22,7 @@ function TopMovies({ topMovies }) {
     <>
       <SectionTitle>Top 10 Movies</SectionTitle>
       <RowContainer {...events} ref={ref}>
-        {topMovies.map((movie, key) => {
+        {topMovies.slice(0, 10).map((movie, key) => {
           return (
             <TitleContainer key={key}>
               <Link href={`/title/movies/${movie.id}`}>
