@@ -113,10 +113,6 @@ function TitlePageDesktopRight({movieData, tvData}) {
 const [userReview, setUserReview] = useState("");
 const [fireData, setFireData] = useState([]);
 
-
-//Setting up the database
-//const reviewTable = collection(db, `${movieData.title} Reviews`);
-
 //AUTHENTICATION
  //If you check the console, you can see the details of the user that is currently logged in!
  const signedInUser = auth.currentUser;
