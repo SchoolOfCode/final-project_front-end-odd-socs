@@ -6,7 +6,7 @@ import SeeLess from "../../Movies-TV/Mobile/SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
 import { LastFMLink } from "../Desktop/MusicTitlePageDesktopMid";
 
-import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
+import { CommentDummyData } from "../Desktop/MusicTitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";

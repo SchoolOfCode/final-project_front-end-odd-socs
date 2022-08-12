@@ -5,7 +5,7 @@ import SeeMore from "../../Movies-TV/Mobile/SeeMore";
 import SeeLess from "../../Movies-TV/Mobile/SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
+import { CommentDummyData } from "../Desktop/GamesTitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";

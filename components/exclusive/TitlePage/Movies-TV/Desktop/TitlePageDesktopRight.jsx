@@ -2,6 +2,17 @@ import styled from "styled-components";
 import Image from "next/image";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+//Firebase Imports
+import { useEffect, useState } from "react";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { app, db, auth } from "../../../../../firebase/config";
+
 const TitlePageRightContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,29 +107,103 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-export const CommentDummyData = {
-  text1:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text2:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text3:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text4:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text5:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text6:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  text7:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+
+function TitlePageDesktopRight({movieData, tvData}) {
+//STATES
+const [userReview, setUserReview] = useState("");
+const [fireData, setFireData] = useState([]);
+
+//AUTHENTICATION
+ //If you check the console, you can see the details of the user that is currently logged in!
+ const signedInUser = auth.currentUser;
+ console.log(signedInUser)
+
+//INTIAL RENDER
+useEffect(() => {
+  getReviews();
+}), [];
+
+//GET reviews
+const getReviews = async () => {
+  if(movieData){
+  await getDocs(collection(db, `${movieData.title} Reviews`))
+    .then((response) => {
+      setFireData(
+        response.docs.map((data) => {
+          return { ...data.data(), id: data.id };
+        })
+      )
+      console.log(fireData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }else{
+    await getDocs(collection(db, `${tvData.name} Reviews`))
+    .then((response) => {
+      setFireData(
+        response.docs.map((data) => {
+          return { ...data.data(), id: data.id };
+        })
+      )
+      console.log(fireData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 };
 
-function TitlePageDesktopRight() {
+//ADD reviews
+const addReview = () => {
+  if(movieData){
+  addDoc(collection(db, `${movieData.title} Reviews`),
+    { review: 
+      userReview })
+      .then(() => {
+        getReviews()
+        setUserReview("");
+      });
+    }else{
+      addDoc(collection(db, `${tvData.name} Reviews`),
+    { review: 
+      userReview })
+      .then(() => {
+        getReviews()
+        setUserReview("");
+      });
+    }
+};
+
+//DELETE reviews
+const deleteReview = (id) => {
+  if(movieData){
+  let fieldToDelete = doc(db, `${movieData.title} Reviews`, id);
+  deleteDoc(fieldToDelete)
+    .then(() => {
+      getReviews();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }else{
+    let fieldToDelete = doc(db, `${tvData.name} Reviews`, id);
+  deleteDoc(fieldToDelete)
+    .then(() => {
+      getReviews();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+};
+
+
   return (
     <TitlePageRightContainer>
       <ReviewHeaderContainer>
         <CommentTitle>
-          {`Comments (${Object.values(CommentDummyData).length})`}
+          Reviews
         </CommentTitle>
       </ReviewHeaderContainer>
       <AddReviewContainer>
@@ -126,19 +211,26 @@ function TitlePageDesktopRight() {
           <AccountCircleIcon />
         </AccountCircleIconContainer>
         <ReviewTextAndButtonContainer>
-          <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
-          <ReviewButton>Post</ReviewButton>
+          <ReviewTextField 
+          placeholder="Leave a review..."
+          type="text"
+          value={userReview}
+          onChange={(event) => setUserReview(event.target.value)}
+          >
+          </ReviewTextField>
+          <ReviewButton onClick={addReview}>Post</ReviewButton>
         </ReviewTextAndButtonContainer>
       </AddReviewContainer>
       <CommentSectionContainer>
-        {Object.values(CommentDummyData).map((comment, key) => {
-          return (
-            <Comment key={key}>
-              <AccountCircleIcon />
-              <CommentText>{comment}</CommentText>
-            </Comment>
-          );
-        })}
+      {fireData.map((data, key) => {
+            return (
+              <Comment key={key}>
+                <AccountCircleIcon />
+                <CommentText>{data.review}</CommentText>
+                <ReviewButton onClick={() => deleteReview(data.id)}>Remove</ReviewButton>
+              </Comment>
+            );
+          })}
       </CommentSectionContainer>
     </TitlePageRightContainer>
   );
