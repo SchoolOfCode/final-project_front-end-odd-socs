@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+//Firebase imports
+import { app, db } from "../../../../../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 import {
   TitlePageLeftContainer,
@@ -18,6 +24,42 @@ function handler() {
 }
 
 function GamesTitlePageDesktopLeft({ gameData }) {
+  //setting up our database table
+  const myPicksDb = collection(db, "myPicksGame");
+
+  //AUTHENTICATION
+  //Initialising authentication
+  const auth = getAuth();
+  //Creating a state so we can capture the user's uid
+  const [userIdState, setUserIdState] = useState("");
+
+  // let's check if the user is logged in
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setUserIdState({ uid });
+      }
+    });
+  }, []);
+
+  //creating a function that adds the title to myPicks
+  function addMyPick() {
+    //post request
+    addDoc(myPicksDb, {
+      gameId: `${gameData.id}`,
+      gameTitle: `${gameData.name}`,
+      gameImage: `${gameData.background_image}`,
+      userID: userIdState,
+    })
+      .then(() => {
+        console.log("data sent");
+      })
+      .catch((err) => {
+        console.log("Data has not been sent");
+      });
+  }
+
   return (
     <TitlePageLeftContainer>
       <TitleImageContainer>
@@ -34,7 +76,7 @@ function GamesTitlePageDesktopLeft({ gameData }) {
           <AddCommentIcon onClick={handler} fontSize="large" />
         </TitleIconContainer>
         <TitleIconContainer tabIndex={2}>
-          <BeenhereIcon fontSize="large" />
+          <BeenhereIcon onClick={addMyPick} fontSize="large" />
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
           <BookmarkBorderIcon fontSize="large" />
