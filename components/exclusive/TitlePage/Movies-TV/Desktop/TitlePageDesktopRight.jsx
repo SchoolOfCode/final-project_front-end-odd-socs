@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+//Firebase Imports
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -105,104 +107,101 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
-function TitlePageDesktopRight({ movieData }) {
-  // const [userId, setUserId] =  useState("")
-  // const [userName, setUserName] = useState("")
-  // const [userImage, setUserImage] = useState("")
-  const [userReview, setUserReview] = useState("");
-  const [fireData, setFireData] = useState([]);
 
-  const reviewTable = collection(db, `${movieData.title} Reviews`);
-  // const user = auth.currentUser
+function TitlePageDesktopRight({movieData, tvData}) {
+//STATES
+const [userReview, setUserReview] = useState("");
+const [fireData, setFireData] = useState([]);
 
-  const getReviews = async () => {
-    await getDocs(reviewTable)
-      .then((response) => {
-        setFireData(
-          response.docs.map((data) => {
-            return { ...data.data(), id: data.id };
-          })
-        )
-        console.log(fireData);
-      })
-      .catch((error) => {
-        console.log(error);
+
+//Setting up the database
+const reviewTable = collection(db, `${movieData.title} Reviews`);
+
+//AUTHENTICATION
+ //If you check the console, you can see the details of the user that is currently logged in!
+ const signedInUser = auth.currentUser;
+ console.log(signedInUser)
+
+//INTIAL RENDER
+useEffect(() => {
+  getReviews();
+}), [];
+
+//GET reviews
+const getReviews = async () => {
+  await getDocs(reviewTable)
+    .then((response) => {
+      setFireData(
+        response.docs.map((data) => {
+          return { ...data.data(), id: data.id };
+        })
+      )
+      console.log(fireData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+//ADD reviews
+const addReview = () => {
+  addDoc(reviewTable,
+    { review: 
+      userReview })
+      .then(() => {
+        getReviews()
+        setUserReview("");
       });
-  };
+};
 
-  const addReview = () => {
-    addDoc(
-      reviewTable,
-      { review: userReview }
-        .then(() => {
-          getReviews();
-          setUserReview("");
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-    );
-
-    const deleteReview = (id) => {
-      let fieldToDelete = doc(reviewTable, `${movieData.title} Reviews`, id);
-      deleteDoc(fieldToDelete)
-        .then(() => {
-          getReviews();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
-    useEffect(() => {
+//DELETE reviews
+const deleteReview = (id) => {
+  let fieldToDelete = doc(db, `${movieData.title} Reviews`, id);
+  deleteDoc(fieldToDelete)
+    .then(() => {
       getReviews();
-    }), [];
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-    // create a useEffect for getting the user data
-    // useEffect(() => {
-    //   auth.onAuthStateChanged(user => {
-    //     if (user) {
-    //       setUserId(user.uid)
-    //       setUserName(user.displayName)
-    //       setUserImage(user.photoURL)
-    //     }
-    // }), [])
 
-    return (
-      <TitlePageRightContainer>
-        <ReviewHeaderContainer>
-          <CommentTitle>
-            {/* {`Comments (${Object.values(CommentDummyData).length})`} */}
-          </CommentTitle>
-        </ReviewHeaderContainer>
-        <AddReviewContainer>
-          <AccountCircleIconContainer>
-            <AccountCircleIcon />
-          </AccountCircleIconContainer>
-          <ReviewTextAndButtonContainer>
-            {/* REVIEW INPUT FIELD */}
-            <ReviewTextField
-              placeholder="Leave a review..."
-              type="text"
-              value={userReview}
-              onChange={(event) => setUserReview(event.target.value)}
-            ></ReviewTextField>
-            <ReviewButton onClick={addReview}>Post</ReviewButton>
-            {/* <ReviewButton onClick={deleteReview}>Delete</ReviewButton> */}
-          </ReviewTextAndButtonContainer>
-        </AddReviewContainer>
-        <CommentSectionContainer>
-          {fireData.map((data, key) => {
+  return (
+    <TitlePageRightContainer>
+      <ReviewHeaderContainer>
+        <CommentTitle>
+          Reviews
+        </CommentTitle>
+      </ReviewHeaderContainer>
+      <AddReviewContainer>
+        <AccountCircleIconContainer>
+          <AccountCircleIcon />
+        </AccountCircleIconContainer>
+        <ReviewTextAndButtonContainer>
+          <ReviewTextField 
+          placeholder="Leave a review..."
+          type="text"
+          value={userReview}
+          onChange={(event) => setUserReview(event.target.value)}
+          >
+          </ReviewTextField>
+          <ReviewButton onClick={addReview}>Post</ReviewButton>
+        </ReviewTextAndButtonContainer>
+      </AddReviewContainer>
+      <CommentSectionContainer>
+      {fireData.map((data, key) => {
             return (
               <Comment key={key}>
                 <AccountCircleIcon />
                 <CommentText>{data.review}</CommentText>
+                <ReviewButton onClick={() => deleteReview(data.id)}>Remove</ReviewButton>
               </Comment>
             );
           })}
-        </CommentSectionContainer>
-      </TitlePageRightContainer>
-    );
-  };
+      </CommentSectionContainer>
+    </TitlePageRightContainer>
+  );
 }
+
 export default TitlePageDesktopRight;

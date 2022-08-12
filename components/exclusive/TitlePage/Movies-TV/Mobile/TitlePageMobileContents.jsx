@@ -5,9 +5,8 @@ import Link from "next/link";
 import SeeMore from "./SeeMore";
 import SeeLess from "./SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
-import {getReviews, addReview, deleteReview} from "../Desktop/TitlePageDesktopRight";
 
-import { CommentDummyData } from "../../Movies-TV/Desktop/TitlePageDesktopRight";
+
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -146,6 +145,7 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
+
 const AddReviewContainer = styled.div`
   display: flex;
   color: white;
@@ -191,20 +191,27 @@ const ReviewButton = styled.button`
   font-size: 1.2rem;
   color: var(--secondary);
 `;
-// pass in userReview and setUserReview from useState into the function
 
-function TitlePageContents({
-  movieData,
-  tvData,
-  userReview,
-  setUserReview,
-  fireData,
-  setFireData,
-}) {
+const CommentDummyData = {
+  text1:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text2:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text3:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text4:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text5:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text6:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text7:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+};
+
+function TitlePageContents({ movieData, tvData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
-
-
 
   let shortSynopsis;
 
@@ -332,10 +339,9 @@ function TitlePageContents({
            - "Reviews" Header (DONE)
            - Drop down/up arrow */}
         <ReviewHeaderContainer onClick={toggleReviewsOpen}>
-          <CommentTitle>Reviews</CommentTitle>
-           
-            {/* {`Comments (${Object.values(CommentDummyData).length}):`} */}
-
+          <CommentTitle>
+            {`Comments (${Object.values(CommentDummyData).length}):`}
+          </CommentTitle>
           <DropDownArrow>
             {isReviewsOpen ? (
               <ArrowDropUpIcon fontSize="large" />
@@ -354,22 +360,16 @@ function TitlePageContents({
                 <AccountCircleIcon />
               </AccountCircleIconContainer>
               <ReviewTextAndButtonContainer>
-                <ReviewTextField
-                  placeholder="Leave a review..."
-                  type="text"
-                  value={userReview}
-                  onChange={(event) => setUserReview(event.target.value)}
-                ></ReviewTextField>
-                <ReviewButton onClick={addReview} >Post</ReviewButton>
-                {/* <ReviewButton onClick={deleteReview}>Delete</ReviewButton> */}
+                <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
+                <ReviewButton>Post</ReviewButton>
               </ReviewTextAndButtonContainer>
             </AddReviewContainer>
             <CommentSectionContainer>
-              {fireData.map((data, key) => {
+              {Object.values(CommentDummyData).map((comment, key) => {
                 return (
                   <Comment key={key}>
                     <AccountCircleIcon />
-                    <CommentText>{data.review}</CommentText>
+                    <CommentText>{comment}</CommentText>
                   </Comment>
                 );
               })}
