@@ -227,7 +227,7 @@ const deleteReview = (id) => {
               <Comment key={key}>
                 <AccountCircleIcon />
                 <CommentText>{data.review}</CommentText>
-                <ReviewButton onClick={() => deleteReview(data.id)}>Remove</ReviewButton>
+                {/* <ReviewButton onClick={() => deleteReview(data.id)}>Remove</ReviewButton> */}
               </Comment>
             );
           })}

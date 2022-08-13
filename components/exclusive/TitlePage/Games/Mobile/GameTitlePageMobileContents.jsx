@@ -5,7 +5,7 @@ import SeeMore from "../../Movies-TV/Mobile/SeeMore";
 import SeeLess from "../../Movies-TV/Mobile/SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../Desktop/GamesTitlePageDesktopRight";
+
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -208,19 +208,19 @@ function GameTitlePageMobileContents({ gameData, screenshotData }) {
         </TitlePageIconsContainer>
         <NavHR />
         <CommentHeader>
-          <CommentTitle>{`Comments (${
+          {/* <CommentTitle>{`Comments (${
             Object.values(CommentDummyData).length
-          })`}</CommentTitle>
+          })`}</CommentTitle> */}
         </CommentHeader>
         <CommentSectionContainer>
-          {Object.values(CommentDummyData).map((comment, key) => {
+          {/* {Object.values(CommentDummyData).map((comment, key) => {
             return (
               <Comment key={key}>
                 <AccountCircleIcon />
                 <CommentText>{comment}</CommentText>
               </Comment>
             );
-          })}
+          })} */}
         </CommentSectionContainer>
       </TitlePageTitleContainer>
     </TitlePageContentContainer>
