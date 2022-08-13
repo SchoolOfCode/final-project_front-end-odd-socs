@@ -20,17 +20,6 @@ import GooglePlayIcon from "../../../../../public/assets/WatchIcons/google.png";
 import YouTubeIcon from "../../../../../public/assets/WatchIcons/YT-White.png";
 import AmazonIcon from "../../../../../public/assets/WatchIcons/APV-White.png";
 
-//Firebase imports
-//Firebase Imports
-import {
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
-import { app, db, auth } from "../../../../../firebase/config";
-
 const TitlePageContentContainer = styled.div`
   background-color: var(--primary);
   margin-top: 55vh;
@@ -203,6 +192,23 @@ const ReviewButton = styled.button`
   color: var(--secondary);
 `;
 
+const CommentDummyData = {
+  text1:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text2:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text3:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text4:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text5:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text6:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text7:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+};
+
 function TitlePageContents({ movieData, tvData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
@@ -250,76 +256,13 @@ function TitlePageContents({ movieData, tvData }) {
     setIsWatchOnOpen((prevIsWatchOnOpen) => !prevIsWatchOnOpen);
   }
 
-  // Reviews toggle section
+  // Reviews section
   const [isReviewsOpen, setIsReviewsOpen] = useState(false);
 
   function toggleReviewsOpen(e) {
     e.preventDefault;
     setIsReviewsOpen((prevIsReviewsOpen) => !prevIsReviewsOpen);
   }
-
-//Reviews firebase section
-//STATES
-const [userReview, setUserReview] = useState("");
-const [fireData, setFireData] = useState([]);
-
-//ADD reviews
-const addReview = () => {
-  if(movieData){
-  addDoc(collection(db, `${movieData.title} Reviews`),
-    { review: 
-      userReview })
-      .then(() => {
-        // getReviews()
-        setUserReview("");
-      });
-    }else{
-      addDoc(collection(db, `${tvData.name} Reviews`),
-    { review: 
-      userReview })
-      .then(() => {
-        // getReviews()
-        setUserReview("");
-      });
-    }
-};
-
-//INTIAL RENDER
-useEffect(() => {
-  getReviews();
-}), [];
-
-//GET reviews
-const getReviews = async () => {
-  if(movieData){
-  await getDocs(collection(db, `${movieData.title} Reviews`))
-    .then((response) => {
-      setFireData(
-        response.docs.map((data) => {
-          return { ...data.data(), id: data.id };
-        })
-      )
-      console.log(fireData);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }else{
-    await getDocs(collection(db, `${tvData.name} Reviews`))
-    .then((response) => {
-      setFireData(
-        response.docs.map((data) => {
-          return { ...data.data(), id: data.id };
-        })
-      )
-      console.log(fireData);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-};
-
 
   return (
     <TitlePageContentContainer>
@@ -392,9 +335,12 @@ const getReviews = async () => {
         )}
         <NavHR />
         {/* COMMENTS */}
+        {/* Review Section Container (IN PROGRESS - just need to add toggle to it)
+           - "Reviews" Header (DONE)
+           - Drop down/up arrow */}
         <ReviewHeaderContainer onClick={toggleReviewsOpen}>
           <CommentTitle>
-            Reviews
+            {`Comments (${Object.values(CommentDummyData).length}):`}
           </CommentTitle>
           <DropDownArrow>
             {isReviewsOpen ? (
@@ -414,26 +360,19 @@ const getReviews = async () => {
                 <AccountCircleIcon />
               </AccountCircleIconContainer>
               <ReviewTextAndButtonContainer>
-                <ReviewTextField 
-                placeholder="Leave a review..."
-                type="text"
-                value={userReview}
-                onChange={(event) => setUserReview(event.target.value)}
-                >
-
-                </ReviewTextField>
-                <ReviewButton onClick={addReview}>Post</ReviewButton>
+                <ReviewTextField placeholder="Leave a review..."></ReviewTextField>
+                <ReviewButton>Post</ReviewButton>
               </ReviewTextAndButtonContainer>
             </AddReviewContainer>
             <CommentSectionContainer>
-            {fireData.map((data, key) => {
-            return (
-              <Comment key={key}>
-                <AccountCircleIcon />
-                <CommentText>{data.review}</CommentText>
-              </Comment>
-            );
-          })}
+              {Object.values(CommentDummyData).map((comment, key) => {
+                return (
+                  <Comment key={key}>
+                    <AccountCircleIcon />
+                    <CommentText>{comment}</CommentText>
+                  </Comment>
+                );
+              })}
             </CommentSectionContainer>
           </>
         )}

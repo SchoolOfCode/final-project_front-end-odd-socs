@@ -5,7 +5,6 @@ import SeeMore from "../../Movies-TV/Mobile/SeeMore";
 import SeeLess from "../../Movies-TV/Mobile/SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -137,6 +136,23 @@ const CommentText = styled.p`
   /* text-align: justify; */
 `;
 
+const CommentDummyData = {
+  text1:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text2:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text3:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text4:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text5:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text6:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text7:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+};
+
 function GameTitlePageMobileContents({ gameData, screenshotData }) {
   const [synopsis, setSynopsis] = useState("");
   const [isSynopsisOpen, setIsSynopsisOpen] = useState(false);
@@ -208,19 +224,19 @@ function GameTitlePageMobileContents({ gameData, screenshotData }) {
         </TitlePageIconsContainer>
         <NavHR />
         <CommentHeader>
-          {/* <CommentTitle>{`Comments (${
+          <CommentTitle>{`Comments (${
             Object.values(CommentDummyData).length
-          })`}</CommentTitle> */}
+          })`}</CommentTitle>
         </CommentHeader>
         <CommentSectionContainer>
-          {/* {Object.values(CommentDummyData).map((comment, key) => {
+          {Object.values(CommentDummyData).map((comment, key) => {
             return (
               <Comment key={key}>
                 <AccountCircleIcon />
                 <CommentText>{comment}</CommentText>
               </Comment>
             );
-          })} */}
+          })}
         </CommentSectionContainer>
       </TitlePageTitleContainer>
     </TitlePageContentContainer>

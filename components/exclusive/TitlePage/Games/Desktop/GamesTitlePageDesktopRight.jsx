@@ -115,10 +115,10 @@ function TitlePageDesktopRight({gameData}) {
 const [userReview, setUserReview] = useState("");
 const [fireData, setFireData] = useState([]);
 
-//INTIAL RENDER
-useEffect(() => {
-  getReviews();
-}), [];
+// //INTIAL RENDER
+// useEffect(() => {
+//   getReviews();
+// }), [];
 
 //GET reviews
 const getReviews = async () => {

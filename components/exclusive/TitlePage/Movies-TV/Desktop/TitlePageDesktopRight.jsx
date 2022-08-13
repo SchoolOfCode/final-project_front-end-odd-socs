@@ -118,10 +118,10 @@ const [fireData, setFireData] = useState([]);
  const signedInUser = auth.currentUser;
  console.log(signedInUser)
 
-//INTIAL RENDER
-useEffect(() => {
-  getReviews();
-}), [];
+// //INTIAL RENDER
+// useEffect(() => {
+//   getReviews();
+// }), [];
 
 //GET reviews
 const getReviews = async () => {
