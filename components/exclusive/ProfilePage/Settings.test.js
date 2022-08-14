@@ -22,23 +22,23 @@ describe("profile account section test", () => {
 
 
 
-describe("settings tests", () => {
-  beforeEach(() => render(<Settings />));
-  it("check the settings component has rendered", () => {
-    expect(
-      screen.getByTestId("SettingsTitleContainer-Test")
-    ).toBeInTheDocument();
-  });
-  it("dropdown expands when clicked", async () => {
-    let dropdown = screen.getByTestId("SettingsTitleContainer-Test");
-    expect(screen.queryByTestId("DropDownContentContainer-Test")).toBeFalsy();
-    userEvent.click(dropdown);
-    expect(await screen.findByText("Log Out")).toBeVisible();
-  });
-});
+// describe("settings tests", () => {
+//   beforeEach(() => render(<Settings />));
+//   it("check the settings component has rendered", () => {
+//     expect(
+//       screen.getByTestId("SettingsTitleContainer-Test")
+//     ).toBeInTheDocument();
+//   });
+//   it("dropdown expands when clicked", async () => {
+//     let dropdown = screen.getByTestId("SettingsTitleContainer-Test");
+//     expect(screen.queryByTestId("DropDownContentContainer-Test")).toBeFalsy();
+//     userEvent.click(dropdown);
+//     expect(await screen.findByText("Log Out")).toBeVisible();
+//   });
+// });
 
-describe("My work", () => {
-  test("works", () => {
-    expect(2).toEqual(2);
-  });
-});
+// describe("My work", () => {
+//   test("works", () => {
+//     expect(2).toEqual(2);
+//   });
+// });

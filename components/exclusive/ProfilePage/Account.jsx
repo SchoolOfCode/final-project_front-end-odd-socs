@@ -27,11 +27,11 @@ const AccountContainer = styled.div`
 export function Account() {
   return (
     <>
-      <AccountContainer>
+      <AccountContainer data-testid="AccountContainer-Test">
         <ProfileAccountIcon />
-        <UserInitials>SP</UserInitials>
+        <UserInitials data-testid="UserInitials-Test" >SP</UserInitials>
 
-        <YearJoined>Member since 2022</YearJoined>
+        <YearJoined data-testid="YearJoined-Test" >Member since 2022</YearJoined>
       </AccountContainer>
     </>
   );
