@@ -3,7 +3,7 @@ const createJestConfig = nextJest({
   dir: "./",
 });
 const customJestConfig = {
-  
+  transformIgnorePatterns: ['/node_modules\/(?!firebase)(.*)'],
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
 };
