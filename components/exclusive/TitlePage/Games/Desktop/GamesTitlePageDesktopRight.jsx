@@ -117,8 +117,8 @@ const [fireData, setFireData] = useState([]);
 
 // //INTIAL RENDER
 useEffect(() => {
-  getReviews();
-}), [];
+  
+
 
 //GET reviews
 const getReviews = async () => {
@@ -134,7 +134,8 @@ const getReviews = async () => {
     .catch((error) => {
       console.log(error);
     });
-};
+}
+}), [];
 
 //ADD reviews
 const addReview = () => {
