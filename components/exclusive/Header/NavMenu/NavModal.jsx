@@ -66,7 +66,36 @@ const NavLink = styled.a`
   }
 `;
 
+const LoggedInModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 12rem;
+  max-height: 8;
+  backdrop-filter: blur(30px);
+`
+
 function NavMenuModal() {
+  const [isMyPicksModalOpen, setIsMyPicksModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  function loggedInHandler() {
+    if (isLoggedIn) {
+      setIsMyPicksModalOpen(false);
+    }
+    else {
+      setIsLoggedIn(false)
+      setIsMyPicksModalOpen(true);
+      return(
+        <>
+          <LoggedInModal>
+            Please log in to access My Picks
+          </LoggedInModal>
+        </>
+      )
+    }
+  }
+
   return (
     <ModalStyles>
       
@@ -93,8 +122,17 @@ function NavMenuModal() {
         </NavRow>
         <NavHR />
         <NavRow>
-          <MenuMyPicksIcon />
-          <NavLink href="/mypicks" aria-label="Go to the my picks page">My Picks</NavLink>
+          {isLoggedIn ? (
+            <>
+            <MenuMyPicksIcon />
+            <NavLink href="/mypicks" aria-label="Go to the my picks page">Login</NavLink>
+            </>
+          ) : (
+            <>
+            <MenuMyPicksIcon />
+            <NavLink onClick={loggedInHandler} aria-label="Go to the log in page">My Picks</NavLink>
+            </>
+            )}
         </NavRow>
         <NavHR />
         <NavRow>
