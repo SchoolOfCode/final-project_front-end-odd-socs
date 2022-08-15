@@ -5,7 +5,6 @@ import SeeMore from "../../Movies-TV/Mobile/SeeMore";
 import SeeLess from "../../Movies-TV/Mobile/SeeLess";
 import { NavHR } from "../../../Header/NavMenu/NavModal";
 
-import { CommentDummyData } from "../Desktop/GamesTitlePageDesktopRight";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -136,6 +135,23 @@ const CommentText = styled.p`
   font-size: 1.5rem;
   /* text-align: justify; */
 `;
+
+const CommentDummyData = {
+  text1:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text2:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text3:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text4:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text5:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text6:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  text7:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+};
 
 function GameTitlePageMobileContents({ gameData, screenshotData }) {
   const [synopsis, setSynopsis] = useState("");
