@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { auth } from "../../../../firebase/config";
 import MenuHomeIcon from "./MenuHomeIcon";
 import MenuMoviesIcon from "./MenuMoviesIcon";
 import MenuTvIcon from "./MenuTVIcon";
@@ -6,8 +8,6 @@ import MenuMusicIcon from "./MenuMusicIcon";
 import MenuGamesIcon from "./MenuGamesIcon";
 import MenuMyPicksIcon from "./MenuMyPicksIcon";
 import MenuAccountIcon from "./MenuAccountIcon";
-
-
 
 const ModalStyles = styled.div`
   position: fixed;
@@ -20,11 +20,10 @@ const ModalStyles = styled.div`
   margin-top: 10vh;
   padding: 2rem 0;
   overflow: hidden;
-  
+
   @media screen and (max-width: 400px) {
     width: 100vw;
-  };
-
+  } ;
 `;
 
 const ModalContentContainer = styled.div`
@@ -56,7 +55,6 @@ const NavLink = styled.a`
   font-weight: 300;
   text-decoration: none;
 
-
   &:hover {
     color: var(--secondary);
   }
@@ -67,81 +65,99 @@ const NavLink = styled.a`
 `;
 
 const LoggedInModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 12rem;
-  max-height: 8;
+  max-height: 8rem;
   backdrop-filter: blur(30px);
-`
+  color: white;
+`;
+
+const LoginLink = styled.a`
+  color: var(--secondary);
+  cursor: pointer;
+`;
 
 function NavMenuModal() {
   const [isMyPicksModalOpen, setIsMyPicksModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function loggedInHandler() {
-    if (isLoggedIn) {
-      setIsMyPicksModalOpen(false);
-    }
-    else {
-      setIsLoggedIn(false)
-      setIsMyPicksModalOpen(true);
-      return(
-        <>
-          <LoggedInModal>
-            Please log in to access My Picks
-          </LoggedInModal>
-        </>
-      )
-    }
+    setIsMyPicksModalOpen(true);
   }
 
   return (
-    <ModalStyles>
-      
-      <ModalContentContainer>
-        <NavRow>
-          <MenuHomeIcon />
-          <NavLink href="/home" aria-label="Go to the home page">Home</NavLink>
-        </NavRow>
-        <NavRow>
-          <MenuMoviesIcon />
-          <NavLink href="/movies" aria-label="Go to the movies page">Movies</NavLink>
-        </NavRow>
-        <NavRow>
-          <MenuTvIcon />
-          <NavLink href="/tv" aria-label="Go to the television page">TV</NavLink>
-        </NavRow>
-        <NavRow>
-          <MenuMusicIcon />
-          <NavLink href="/music" aria-label="Go to the music page">Music</NavLink>
-        </NavRow>
-        <NavRow>
-          <MenuGamesIcon />
-          <NavLink href="/games" aria-label="Go to the games page">Games</NavLink>
-        </NavRow>
-        <NavHR />
-        <NavRow>
-          {isLoggedIn ? (
-            <>
-            <MenuMyPicksIcon />
-            <NavLink href="/mypicks" aria-label="Go to the my picks page">Login</NavLink>
-            </>
-          ) : (
-            <>
-            <MenuMyPicksIcon />
-            <NavLink onClick={loggedInHandler} aria-label="Go to the log in page">My Picks</NavLink>
-            </>
+    <>
+      <ModalStyles>
+        <ModalContentContainer>
+          <NavRow>
+            <MenuHomeIcon />
+            <NavLink href="/home" aria-label="Go to the home page">
+              Home
+            </NavLink>
+          </NavRow>
+          <NavRow>
+            <MenuMoviesIcon />
+            <NavLink href="/movies" aria-label="Go to the movies page">
+              Movies
+            </NavLink>
+          </NavRow>
+          <NavRow>
+            <MenuTvIcon />
+            <NavLink href="/tv" aria-label="Go to the television page">
+              TV
+            </NavLink>
+          </NavRow>
+          <NavRow>
+            <MenuMusicIcon />
+            <NavLink href="/music" aria-label="Go to the music page">
+              Music
+            </NavLink>
+          </NavRow>
+          <NavRow>
+            <MenuGamesIcon />
+            <NavLink href="/games" aria-label="Go to the games page">
+              Games
+            </NavLink>
+          </NavRow>
+          <NavHR />
+          <NavRow>
+            {auth.currentUser ? (
+              <>
+                <MenuMyPicksIcon />
+                <NavLink href="/mypicks" aria-label="Go to the my picks page">
+                  My Picks
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <MenuMyPicksIcon />
+                <NavLink
+                  onClick={loggedInHandler}
+                  aria-label="Go to the log in page"
+                >
+                  My Picks (Login)
+                </NavLink>
+              </>
             )}
-        </NavRow>
-        <NavHR />
-        <NavRow>
-          <MenuAccountIcon />
-          <NavLink href="/profile" aria-label="Go to the my profile page">My Account</NavLink>
-        </NavRow>
-      </ModalContentContainer>
-      
-    </ModalStyles>
+          </NavRow>
+          {isMyPicksModalOpen && (
+            <NavRow>
+              <LoggedInModal>
+                {`Please `}
+                <LoginLink href="/">log in/sign up</LoginLink>
+                {` to access My Picks`}
+              </LoggedInModal>
+            </NavRow>
+          )}
+          <NavHR />
+          <NavRow>
+            <MenuAccountIcon />
+            <NavLink href="/profile" aria-label="Go to the my profile page">
+              My Account
+            </NavLink>
+          </NavRow>
+        </ModalContentContainer>
+      </ModalStyles>
+    </>
   );
 }
 
