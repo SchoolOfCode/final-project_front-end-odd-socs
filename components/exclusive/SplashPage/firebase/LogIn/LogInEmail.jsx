@@ -24,7 +24,8 @@ export const TextInput = styled.input`
   width: 100%;
   border: none;
   box-shadow: none;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  padding: 0.4rem;
   border-radius: 2.5px;
 `;
 
