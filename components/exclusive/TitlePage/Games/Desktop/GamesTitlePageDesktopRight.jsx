@@ -116,9 +116,9 @@ const [userReview, setUserReview] = useState("");
 const [fireData, setFireData] = useState([]);
 
 // //INTIAL RENDER
-// useEffect(() => {
-//   getReviews();
-// }), [];
+useEffect(() => {
+  getReviews();
+}), [];
 
 //GET reviews
 const getReviews = async () => {
