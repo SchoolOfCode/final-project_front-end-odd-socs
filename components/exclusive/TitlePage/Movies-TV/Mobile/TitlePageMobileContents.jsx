@@ -305,10 +305,6 @@ function TitlePageContents({ movieData, tvData }) {
             <TitlePageIconLabel>Picks</TitlePageIconLabel>
           </TitlePageIcon>
           <TitlePageIcon>
-            <BookmarkBorderIcon fontSize="large" />
-            <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
-          </TitlePageIcon>
-          <TitlePageIcon>
             <ShareIcon fontSize="large" />
             <TitlePageIconLabel>Share</TitlePageIconLabel>
           </TitlePageIcon>

@@ -104,10 +104,6 @@ function MusicTitlePageDesktopLeft({ musicData }) {
           <TitlePageIconLabel>Picks</TitlePageIconLabel>
         </TitleIconContainer>
         <TitleIconContainer tabIndex={3}>
-          <BookmarkBorderIcon fontSize="large" />
-          <TitlePageIconLabel>Watchlist</TitlePageIconLabel>
-        </TitleIconContainer>
-        <TitleIconContainer tabIndex={4}>
           <ShareIcon onClick={socialShareModalToggleHandler} fontSize="large" />
           <TitlePageIconLabel>Share</TitlePageIconLabel>
         </TitleIconContainer>

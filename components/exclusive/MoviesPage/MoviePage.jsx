@@ -21,8 +21,6 @@ function MoviesPage({ movieList }) {
       <PageTitle>Movies</PageTitle>
       <TopMovies topMovies={movieList.top10} />
       <NewReleasesMovies newReleases={movieList.newReleases} />
-      {/* <WatchlistMovies /> */}
-      {/* <MyPicksMovies /> */}
       <ActionMovies actionMovies={movieList.action} />
       <SciFiMovies scifiMovies={movieList.scifi} />
       <ComedyMovies comedyMovies={movieList.comedy} />
