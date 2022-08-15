@@ -40,6 +40,11 @@ height:100%;
 width:100%;
 object-fit:cover;
 `
+const NotLoggedIn = styled.h1`
+    color: var(--font-primary-color);
+    font-size:2.5rem;
+    font-weight: 500;
+`
 
 export function Account(){
    //Setting states for the user's profile image and displayName (username) so that they can change them if they want to
@@ -137,7 +142,7 @@ export function Account(){
             </AccountContainer>
         
         // If the user is not logged in, the following will be rendered on the page.
-          :<h1>You are not logged in</h1>
+          :<NotLoggedIn>You are not logged in</NotLoggedIn>
         }
         </>
     )

@@ -133,7 +133,7 @@ const getReviews = async () => {
           return { ...data.data(), id: data.id };
         })
       )
-      console.log(fireData);
+      ;
     })
     .catch((error) => {
       console.log(error);
@@ -146,7 +146,7 @@ const getReviews = async () => {
           return { ...data.data(), id: data.id };
         })
       )
-      console.log(fireData);
+      ;
     })
     .catch((error) => {
       console.log(error);
