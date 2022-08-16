@@ -152,9 +152,9 @@ export function Account() {
           <button onClick={updateUserImage}>Update Your Profile Pic!</button>
         </AccountContainer>
       )}
-      {/* // If the user is not logged in, the following will be rendered on the page. */}
+      {/* // If the user is not logged in, the following will be rendered on the page.. */}
       {auth.currentUser === null && (
-        <NotLoggedIn>You are not logged in</NotLoggedIn>
+        <NotLoggedIn>Hey...Odd Socs</NotLoggedIn>
       )}
     </>
   );
