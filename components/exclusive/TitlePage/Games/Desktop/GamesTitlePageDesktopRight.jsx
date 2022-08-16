@@ -118,7 +118,7 @@ const [fireData, setFireData] = useState([]);
 // //INTIAL RENDER
 useEffect(() => {
 //GET reviews
-    await getDocs(collection(db, `${gameData.name} Reviews`))
+    getDocs(collection(db, `${gameData.name} Reviews`))
     .then((response) => {
       setFireData(
         response.docs.map((data) => {
