@@ -117,11 +117,7 @@ const [fireData, setFireData] = useState([]);
 
 // //INTIAL RENDER
 useEffect(() => {
-  
-
-
 //GET reviews
-const getReviews = async () => {
     await getDocs(collection(db, `${gameData.name} Reviews`))
     .then((response) => {
       setFireData(
@@ -134,19 +130,18 @@ const getReviews = async () => {
     .catch((error) => {
       console.log(error);
     });
-}
-}), [];
+},[fireData]) ;
 
 //ADD reviews
 const addReview = () => {
+if(gameData){
       addDoc(collection(db, `${gameData.name} Reviews`),
     { review: 
       userReview })
       .then(() => {
-        getReviews()
         setUserReview("");
       });
-};
+}};
 
 
   return (
