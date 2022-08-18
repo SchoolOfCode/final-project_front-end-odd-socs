@@ -25,7 +25,6 @@ const MyPicksTitleContainer = styled(TitleContainer)`
   max-width: 10rem;
 `;
 
-
 function MyPicksGames() {
   //Authentication
   const auth = getAuth();
@@ -65,9 +64,11 @@ function MyPicksGames() {
                       <ImageContainer>
                         <Image
                           src={picksData.gameImage}
-                          layout="fill"
+                          objectFit="cover"
                           alt={picksData.title}
-                          priority={true}
+                          priority
+                          width={700}
+                          height={1000}
                         />
                       </ImageContainer>
                     </a>
