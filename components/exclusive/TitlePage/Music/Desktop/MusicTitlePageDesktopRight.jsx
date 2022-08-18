@@ -114,12 +114,8 @@ const [fireData, setFireData] = useState([]);
 
 //INTIAL RENDER
 useEffect(() => {
-  
-
-
 //GET reviews
-const getReviews = async () => {
-    await getDocs(collection(db, `${musicData.name} Reviews`))
+    getDocs(collection(db, `${musicData.name} Reviews`))
     .then((response) => {
       setFireData(
         response.docs.map((data) => {
@@ -132,7 +128,7 @@ const getReviews = async () => {
       console.log(error);
     });
 }
-}), [];
+, [fireData]);
 
 //ADD reviews
 const addReview = () => {
@@ -140,7 +136,7 @@ const addReview = () => {
 { review: 
   userReview })
   .then(() => {
-    //getReviews()
+   
     setUserReview("");
   });
 };

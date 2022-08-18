@@ -121,12 +121,10 @@ const [fireData, setFireData] = useState([]);
 //INTIAL RENDER
 useEffect(() => {
 
-
-
 //GET reviews
-const getReviews = async () => {
+
   if(movieData){
-  await getDocs(collection(db, `${movieData.title} Reviews`))
+  getDocs(collection(db, `${movieData.title} Reviews`))
     .then((response) => {
       setFireData(
         response.docs.map((data) => {
@@ -139,7 +137,7 @@ const getReviews = async () => {
       console.log(error);
     });
   }else{
-    await getDocs(collection(db, `${tvData.name} Reviews`))
+    getDocs(collection(db, `${tvData.name} Reviews`))
     .then((response) => {
       setFireData(
         response.docs.map((data) => {
@@ -151,9 +149,8 @@ const getReviews = async () => {
     .catch((error) => {
       console.log(error);
     });
-  }
 }
-}), [];
+}, [fireData])
 
 //ADD reviews
 const addReview = () => {
@@ -162,7 +159,6 @@ const addReview = () => {
     { review: 
       userReview })
       .then(() => {
-        getReviews()
         setUserReview("");
       });
     }else{
@@ -170,7 +166,6 @@ const addReview = () => {
     { review: 
       userReview })
       .then(() => {
-        getReviews()
         setUserReview("");
       });
     }
