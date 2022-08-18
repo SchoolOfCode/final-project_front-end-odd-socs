@@ -12,7 +12,13 @@
 
 
 ## Frontend
+
 # Why Next.js?
+
+# Why Styled Components?
+
+
+## How to use the App
 
 
 
