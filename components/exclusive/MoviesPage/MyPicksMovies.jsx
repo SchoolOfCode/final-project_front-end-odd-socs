@@ -36,8 +36,9 @@ function MyPicksMovies() {
         setUserIdState(uid);
       }
     });
+
   }, []);
-  //Authentication
+  //Authentication.
   const auth = getAuth();
   const signedInUser = auth.currentUser;
 
@@ -53,10 +54,10 @@ function MyPicksMovies() {
       );
     });
   };
-
-  useEffect(() => {
-    getPicksData();
-  }, []);
+  getPicksData()
+  // useEffect(() => {
+  //   getPicksData();
+  // }, []);
 
   //For the carousel
   const ref = useRef();
@@ -65,7 +66,6 @@ function MyPicksMovies() {
   return (
     <>
       <SectionTitle>My Picks - Movies</SectionTitle>
-
       <RowContainer {...events} ref={ref}>
         {fireData.map((picksData, key) => {
           return (
