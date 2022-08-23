@@ -2,15 +2,15 @@
 
 1Source is a multimedia discovery app that can be used to discover new TV, Movies, Music & Games all on the same website. 
 
+This is the desktop view of the homepage:
 <img src="./public/assets/readmeImages/HomepageDesktop.png" alt="homepage screenshot" width="500px" />
-This is the desktop view of the homepage
 
+This is a title page displayed for desktop:
 <img src="./public/assets/readmeImages/TitleDesktop.png" alt="Title Page Mobile screenshot" width="500px" />
-This is a title page displayed for desktop
 
-
+This is a title page displayed for mobile:
 <img src="./public/assets/readmeImages/TitleMobile.png" alt="Title Page Mobile screenshot" width="200px" />
-This is a title page displayed for mobile 
+ 
 
 ## COMPONENT TREE
 
