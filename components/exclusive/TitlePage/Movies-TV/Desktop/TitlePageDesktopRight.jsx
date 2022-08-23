@@ -116,7 +116,7 @@ const [fireData, setFireData] = useState([]);
 //AUTHENTICATION
  //If you check the console, you can see the details of the user that is currently logged in!
  const signedInUser = auth.currentUser;
- console.log(signedInUser)
+ 
 
 //INTIAL RENDER
 useEffect(() => {

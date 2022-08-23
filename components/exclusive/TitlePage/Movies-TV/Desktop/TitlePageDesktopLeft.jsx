@@ -107,7 +107,7 @@ export const SocialShareRowContainer = styled.div`
 
 function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
   //setting up our database table
-  const myPicksDb = collection(db, "myPicks");
+  
   const myPicksDbTv = collection(db, "myPicksTv");
 
   //AUTHENTICATION
@@ -121,11 +121,11 @@ function TitlePageDesktopLeft({ movieData, tvData, tvList }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        setUserIdState({ uid });
+        setUserIdState( uid )
       }
     });
   }, []);
-
+const myPicksDb = collection(db, `myPicks${userIdState}`);
   //creating a function that adds the title to myPicks
   function addMyPick() {
     if (movieData) {

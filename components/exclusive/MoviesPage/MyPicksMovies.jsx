@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { TitleText, SectionTitle } from "../../universal/Text.styles";
 
 //imports for the backend
@@ -12,7 +13,6 @@ import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 
 //Authentication imports
-import { getAuth } from "firebase/auth";
 
 //Imports for the containers
 import {
@@ -25,15 +25,24 @@ import Link from "next/link";
 
 const MyPicksTitleContainer = styled(TitleContainer)`
   max-width: 10rem;
-`
+`;
 
 function MyPicksMovies() {
+  const [userIdState, setUserIdState] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setUserIdState(uid);
+      }
+    });
+  }, []);
   //Authentication
   const auth = getAuth();
   const signedInUser = auth.currentUser;
 
   const [fireData, setFireData] = useState([]);
-  const myPicksDb = collection(db, "myPicks");
+  const myPicksDb = collection(db, `myPicks${userIdState}`);
 
   const getPicksData = async () => {
     await getDocs(myPicksDb).then((response) => {
@@ -61,23 +70,21 @@ function MyPicksMovies() {
         {fireData.map((picksData, key) => {
           return (
             <>
-              {signedInUser.uid === picksData.userID.uid && (
-                <MyPicksTitleContainer key={key}>
-                  <Link href={`/title/movies/${picksData.movieId}`}>
-                    <a>
-                      <ImageContainer>
-                        <Image
-                          src={`https://image.tmdb.org/t/p/original${picksData.image}`}
-                          layout="fill"
-                          alt={picksData.title}
-                          priority={true}
-                        />
-                      </ImageContainer>
-                    </a>
-                  </Link>
-                  <TitleText>{picksData.title}</TitleText>
-                </MyPicksTitleContainer>
-              )}
+              <MyPicksTitleContainer key={key}>
+                <Link href={`/title/movies/${picksData.movieId}`}>
+                  <a>
+                    <ImageContainer>
+                      <Image
+                        src={`https://image.tmdb.org/t/p/original${picksData.image}`}
+                        layout="fill"
+                        alt={picksData.title}
+                        priority={true}
+                      />
+                    </ImageContainer>
+                  </a>
+                </Link>
+                <TitleText>{picksData.title}</TitleText>
+              </MyPicksTitleContainer>
             </>
           );
         })}

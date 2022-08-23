@@ -60,7 +60,7 @@ export function Account() {
   //If you check the console, you can see the details of the user that is currently logged in!!
 
   const signedInUser = auth.currentUser;
-  console.log(signedInUser);
+  
 
   // || UPDATING USER DETAILS
   //PROFILE PIC - Updating the user's profile image (this function will run when we click the "update your profile image" button)
